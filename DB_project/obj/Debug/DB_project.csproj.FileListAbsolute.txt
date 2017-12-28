@@ -1,0 +1,6 @@
+C:\project\Solution\DB_project\bin\Debug\DB_project.dll
+C:\project\Solution\DB_project\bin\Debug\DB_project.pdb
+C:\project\Solution\DB_project\obj\Debug\DB_project.csprojResolveAssemblyReference.cache
+C:\project\Solution\DB_project\obj\Debug\DB_project.dll
+C:\project\Solution\DB_project\obj\Debug\DB_project.pdb
+C:\project\Solution\DB_project\obj\Debug\DB_project.csproj.CoreCompileInputs.cache

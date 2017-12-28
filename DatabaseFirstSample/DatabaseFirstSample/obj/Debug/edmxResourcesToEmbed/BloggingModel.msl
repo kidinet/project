@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseFirstBloggingModelStoreContainer" CdmEntityContainer="BloggingContext">
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="build" ColumnName="build" />
+          <ScalarProperty Name="streat" ColumnName="streat" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="build" ColumnName="build" />
+          <ScalarProperty Name="streat" ColumnName="streat" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="type_" ColumnName="type_" />
+          <ScalarProperty Name="password_" ColumnName="password_" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="profile_" ColumnName="profile_" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="childLastName" ColumnName="childLastName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInGroups">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.UserInGroup">
+        <MappingFragment StoreEntitySet="UserInGroup">
+          <ScalarProperty Name="userMail" ColumnName="userMail" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabaseFirst.BloggingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" />
+          <Property Name="city" Type="varchar" MaxLength="20" />
+          <Property Name="streat" Type="varchar" MaxLength="20" />
+          <Property Name="build" Type="int" />
+          <Property Name="phone" Type="varchar" MaxLength="10" />
+          <Property Name="mail" Type="varchar" MaxLength="30" />
+          <Property Name="fax" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="UserInGroup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userMail" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="groupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="mail" />
+          </Key>
+          <Property Name="firstName" Type="varchar" MaxLength="20" />
+          <Property Name="lastName" Type="varchar" MaxLength="20" />
+          <Property Name="childFirstName" Type="varchar" MaxLength="20" />
+          <Property Name="childLastName" Type="varchar" MaxLength="20" />
+          <Property Name="nickname" Type="varchar" MaxLength="20" />
+          <Property Name="profile_" Type="varchar" MaxLength="30" />
+          <Property Name="mail" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="password_" Type="varchar" MaxLength="30" />
+          <Property Name="type_" Type="bit" />
+          <Property Name="city" Type="varchar" MaxLength="20" />
+          <Property Name="streat" Type="varchar" MaxLength="20" />
+          <Property Name="build" Type="int" />
+        </EntityType>
+        <Association Name="FK__UserInGro__group__1CBC4616">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserInGroup">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserInGro__userM__1BC821DD">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="mail" />
+            </Principal>
+            <Dependent Role="UserInGroup">
+              <PropertyRef Name="userMail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseFirstBloggingModelStoreContainer">
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInGroup" EntityType="Self.UserInGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__UserInGro__group__1CBC4616" Association="Self.FK__UserInGro__group__1CBC4616">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="UserInGroup" EntitySet="UserInGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserInGro__userM__1BC821DD" Association="Self.FK__UserInGro__userM__1BC821DD">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserInGroup" EntitySet="UserInGroup" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseFirst.BloggingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BloggingContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Groups" EntityType="DatabaseFirst.BloggingModel.Group" />
+          <EntitySet Name="Users" EntityType="DatabaseFirst.BloggingModel.Users" />
+          <EntitySet Name="UserInGroups" EntityType="DatabaseFirst.BloggingModel.UserInGroup" />
+          <AssociationSet Name="FK__UserInGro__group__1CBC4616" Association="DatabaseFirst.BloggingModel.FK__UserInGro__group__1CBC4616">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="UserInGroup" EntitySet="UserInGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserInGro__userM__1BC821DD" Association="DatabaseFirst.BloggingModel.FK__UserInGro__userM__1BC821DD">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserInGroup" EntitySet="UserInGroups" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="streat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="build" Type="Int32" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__1CBC4616" FromRole="Group" ToRole="UserInGroup" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="mail" />
+          </Key>
+          <Property Name="firstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="childLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="profile_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="type_" Type="Boolean" />
+          <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="streat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="build" Type="Int32" />
+          <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__1BC821DD" FromRole="Users" ToRole="UserInGroup" />
+        </EntityType>
+        <EntityType Name="UserInGroup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="groupId" Type="Int32" Nullable="false" />
+          <Property Name="userMail" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__1CBC4616" FromRole="UserInGroup" ToRole="Group" />
+          <NavigationProperty Name="User" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__1BC821DD" FromRole="UserInGroup" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK__UserInGro__group__1CBC4616">
+          <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="DatabaseFirst.BloggingModel.UserInGroup" Role="UserInGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserInGroup">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserInGro__userM__1BC821DD">
+          <End Type="DatabaseFirst.BloggingModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="DatabaseFirst.BloggingModel.UserInGroup" Role="UserInGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="mail" />
+            </Principal>
+            <Dependent Role="UserInGroup">
+              <PropertyRef Name="userMail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseFirstBloggingModelStoreContainer" CdmEntityContainer="BloggingContext">
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="build" ColumnName="build" />
+                <ScalarProperty Name="streat" ColumnName="streat" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="build" ColumnName="build" />
+                <ScalarProperty Name="streat" ColumnName="streat" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="type_" ColumnName="type_" />
+                <ScalarProperty Name="password_" ColumnName="password_" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="profile_" ColumnName="profile_" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="childLastName" ColumnName="childLastName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInGroups">
+            <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.UserInGroup">
+              <MappingFragment StoreEntitySet="UserInGroup">
+                <ScalarProperty Name="userMail" ColumnName="userMail" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
