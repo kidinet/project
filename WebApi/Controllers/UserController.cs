@@ -19,21 +19,20 @@ namespace WebApi.Controllers
     public class GeneralController : BaseController
     {
         BL_USER bl_user = new BL_USER();
-    
+
         [HttpGet]
         [Route("getUser/{Language}/{Registered}")]
-        public IHttpActionResult getUser(string Language, bool Registered,string mail)
+        public IHttpActionResult getUser(string Language, bool Registered, string mail)
         {
             Users[] b = bl_user.getUser(mail);
             return Ok(b);
         }
         [HttpGet]
         [Route("addUser/{Language}/{Registered}")]
-        public IHttpActionResult addUser(string Language, bool Registered, string mail,int groupId)
+        public IHttpActionResult addUser(string Language, bool Registered, string mail, int groupId)
         {
             return Ok(bl_user.addUser(mail, groupId));
         }
-
         [HttpGet]
         [Route("updateUser/{Language}/{Registered}")]
         public IHttpActionResult updateUser(
@@ -67,9 +66,37 @@ namespace WebApi.Controllers
                         build);
             return Ok(b);
         }
-    }
-
-    internal class UserBl
-    {
+    [HttpGet]
+        [Route("createUser/{Language}/{Registered}")]
+        public IHttpActionResult createUser(
+            string Language,
+            bool Registered,
+            string mail,
+            string firstName,
+            string lastName,
+            string childFirstName,
+            string childLastName,
+            string nickName,
+            string profile,
+            string password,
+            bool type,
+            string city,
+            string streat,
+            int build)
+        {
+            Boolean b = bl_user.createUser(
+                        mail,
+                        firstName,
+                        lastName,
+                        childFirstName,
+                        childLastName,
+                        nickName,
+                        profile,
+                        password,
+                        city,
+                        streat,
+                        build);
+            return Ok(b);
+        }
     }
 }

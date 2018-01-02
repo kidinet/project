@@ -38,7 +38,6 @@
     <Property Name="profile_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="password_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="type_" Type="Boolean" />
     <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="streat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="build" Type="Int32" />
@@ -53,6 +52,7 @@
     <Property Name="userMail" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__1CBC4616" FromRole="UserInGroup" ToRole="Group" />
     <NavigationProperty Name="User" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__1BC821DD" FromRole="UserInGroup" ToRole="Users" />
+    <Property Name="type_" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK__UserInGro__group__1CBC4616">
     <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />

@@ -25,6 +25,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userMail" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="groupId" Type="int" Nullable="false" />
+          <Property Name="type_" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -38,7 +39,6 @@
           <Property Name="profile_" Type="varchar" MaxLength="30" />
           <Property Name="mail" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="password_" Type="varchar" MaxLength="30" />
-          <Property Name="type_" Type="bit" />
           <Property Name="city" Type="varchar" MaxLength="20" />
           <Property Name="streat" Type="varchar" MaxLength="20" />
           <Property Name="build" Type="int" />
@@ -122,7 +122,6 @@
           <Property Name="profile_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="type_" Type="Boolean" />
           <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="streat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="build" Type="Int32" />
@@ -137,6 +136,7 @@
           <Property Name="userMail" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__1CBC4616" FromRole="UserInGroup" ToRole="Group" />
           <NavigationProperty Name="User" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__1BC821DD" FromRole="UserInGroup" ToRole="Users" />
+          <Property Name="type_" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__UserInGro__group__1CBC4616">
           <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
@@ -188,7 +188,6 @@
                 <ScalarProperty Name="build" ColumnName="build" />
                 <ScalarProperty Name="streat" ColumnName="streat" />
                 <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="type_" ColumnName="type_" />
                 <ScalarProperty Name="password_" ColumnName="password_" />
                 <ScalarProperty Name="mail" ColumnName="mail" />
                 <ScalarProperty Name="profile_" ColumnName="profile_" />
@@ -202,6 +201,7 @@
           <EntitySetMapping Name="UserInGroups">
             <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.UserInGroup">
               <MappingFragment StoreEntitySet="UserInGroup">
+                <ScalarProperty Name="type_" ColumnName="type_" />
                 <ScalarProperty Name="userMail" ColumnName="userMail" />
                 <ScalarProperty Name="groupId" ColumnName="groupId" />
                 <ScalarProperty Name="id" ColumnName="id" />

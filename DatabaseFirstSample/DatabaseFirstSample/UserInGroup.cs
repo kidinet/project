@@ -23,10 +23,19 @@ namespace DatabaseFirstSample
         public int groupId { get; set; }
         [DataMember]
         public string userMail { get; set; }
-    
+        [DataMember]
+        public bool type_ { get; set; }
         [DataMember]
         public virtual Group Group { get; set; }
         [DataMember]
         public virtual Users User { get; set; }
+        public UserInGroup(int groupId, string mail,bool type)
+        {
+            this.userMail = mail;
+            this.groupId = groupId;
+            this.type_ = type;
+        }
     }
 }
+
+

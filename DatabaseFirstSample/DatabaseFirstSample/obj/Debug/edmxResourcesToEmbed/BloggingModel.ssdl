@@ -20,6 +20,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="userMail" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="groupId" Type="int" Nullable="false" />
+    <Property Name="type_" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -33,7 +34,6 @@
     <Property Name="profile_" Type="varchar" MaxLength="30" />
     <Property Name="mail" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="password_" Type="varchar" MaxLength="30" />
-    <Property Name="type_" Type="bit" />
     <Property Name="city" Type="varchar" MaxLength="20" />
     <Property Name="streat" Type="varchar" MaxLength="20" />
     <Property Name="build" Type="int" />

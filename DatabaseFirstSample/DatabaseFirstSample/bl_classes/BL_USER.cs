@@ -12,19 +12,28 @@ namespace DatabaseFirstSample
     {
         public BL_USER() { }
         
-        public bool addUser(string mail,int groupId)
+        public bool addUser(string mail,int groupId,bool type)
         {
             using (var db = new BloggingContext())
             {
+                Users user = db.Users.FirstOrDefault(x => x.mail == mail);
+                if (user == null)
+                {
+                    user = new Users(mail);
+                    try
+                    {
+                        db.Users.Add(user);
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex) { throw ex; };
+                }
                 try
                 {
-                    db.Users.Add(new Users(mail, groupId));
+                    db.UserInGroups.Add(new UserInGroup(groupId,mail,type));
                     db.SaveChanges();
                 }
-                catch(Exception ex)
-                {
-                    throw ex;
-                }
+                catch (Exception ex) { throw ex; };
+
             }
             return true;
         }
@@ -47,7 +56,8 @@ namespace DatabaseFirstSample
             {
                 try
                 {
-                    db.Users.Add(new Users(groupId, mail, firstName, lastName, childFirstName, childLastName, nickName, profile, password, type, city, streat));
+                    db.Users.Add(new Users(mail, firstName, lastName, childFirstName, childLastName, nickName, profile, password,city, streat));
+                    db.UserInGroups.Add(new UserInGroup(groupId, mail,type));
                     db.SaveChanges();
                 }
                 catch (Exception ex)
@@ -91,26 +101,50 @@ namespace DatabaseFirstSample
             {
                 try
                 {
-                    var user= db.Users.Where(x => x.mail == mail);
-                    Console.WriteLine(user.ToList());
-                    foreach (Users u in user)
-                    {
-                        u.firstName = firstName;
-                        u.lastName = lastName;
-                        u.childFirstName = childFirstName;
-                        u.childLastName = childLastName;
-                        u.nickname = nickName;
-                        u.profile_ = profile;
-                        u.password_ = password;
-                        u.type_ = type;
-                        u.city = city;
-                        u.streat = streat;
-                        u.build = build;
-
-                        db.Users.Attach(u);
-                        db.Entry(u).State = EntityState.Modified;
+                    var user = db.Users.Where(x => x.mail == mail);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            return true;
+        }
+        public bool createUser(
+            string mail,
+            string firstName,
+            string lastName,
+            string childFirstName,
+            string childLastName,
+            string nickName,
+            string profile,
+            string password,    
+            string city,
+            string streat,
+            int build
+            )
+        {
+            using (var db = new BloggingContext())
+            {
+                var existentUser = db.Users.FirstOrDefault(x => x.mail == mail);
+                 if (existentUser != null)
+                     return false;
+                try
+                {
+                        Users user=new Users(mail,
+                        firstName,
+                        lastName,
+                        childFirstName,
+                        childLastName,
+                        nickName,
+                        profile,
+                        password,
+                        city,
+                        streat,
+                        build); 
+                        db.Users.Attach(user);
+                        db.Entry(user).State = EntityState.Modified;
                         db.SaveChanges();
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -120,4 +154,5 @@ namespace DatabaseFirstSample
             return true;
         }
     }
+    
 }

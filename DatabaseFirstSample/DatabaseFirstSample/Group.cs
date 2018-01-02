@@ -22,7 +22,16 @@ namespace DatabaseFirstSample
         {
             this.UserInGroups = new HashSet<UserInGroup>();
         }
-    
+        public Group(string name, string city, int build, string phone, string mail, string fax)
+        {
+            this.name = name;
+            this.city = city;
+            this.build = build;
+            this.phone = phone;
+            this.mail = mail;
+            this.fax = fax;
+            this.UserInGroups = new HashSet<UserInGroup>();
+        }
         [DataMember]
         public int id { get; set; }
         [DataMember]

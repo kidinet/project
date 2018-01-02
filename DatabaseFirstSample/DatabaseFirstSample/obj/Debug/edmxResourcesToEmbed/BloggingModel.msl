@@ -21,7 +21,6 @@
           <ScalarProperty Name="build" ColumnName="build" />
           <ScalarProperty Name="streat" ColumnName="streat" />
           <ScalarProperty Name="city" ColumnName="city" />
-          <ScalarProperty Name="type_" ColumnName="type_" />
           <ScalarProperty Name="password_" ColumnName="password_" />
           <ScalarProperty Name="mail" ColumnName="mail" />
           <ScalarProperty Name="profile_" ColumnName="profile_" />
@@ -35,6 +34,7 @@
     <EntitySetMapping Name="UserInGroups">
       <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.UserInGroup">
         <MappingFragment StoreEntitySet="UserInGroup">
+          <ScalarProperty Name="type_" ColumnName="type_" />
           <ScalarProperty Name="userMail" ColumnName="userMail" />
           <ScalarProperty Name="groupId" ColumnName="groupId" />
           <ScalarProperty Name="id" ColumnName="id" />

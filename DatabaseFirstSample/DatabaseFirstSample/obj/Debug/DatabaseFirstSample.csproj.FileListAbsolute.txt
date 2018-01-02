@@ -39,4 +39,3 @@ C:\project\Solution\DatabaseFirstSample\DatabaseFirstSample\bin\Debug\EntityFram
 C:\project\Solution\DatabaseFirstSample\DatabaseFirstSample\obj\Debug\DatabaseFirstSample.dll
 C:\project\Solution\DatabaseFirstSample\DatabaseFirstSample\obj\Debug\DatabaseFirstSample.pdb
 C:\project\Solution\DatabaseFirstSample\DatabaseFirstSample\obj\Debug\DatabaseFirstSample.csprojResolveAssemblyReference.cache
-C:\project\Solution\DatabaseFirstSample\DatabaseFirstSample\obj\Debug\DatabaseFirstSample.csproj.CoreCompileInputs.cache

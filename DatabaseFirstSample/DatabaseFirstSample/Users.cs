@@ -18,11 +18,64 @@ namespace DatabaseFirstSample
     public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public Users(string mail)
         {
+            this.mail = mail;
             this.UserInGroups = new HashSet<UserInGroup>();
         }
-    
+        public Users(
+            string mail,
+            string firstName,
+            string lastName,
+            string childFirstName,
+            string childLastName,
+            string nickName,
+            string profile,
+            string password,
+            string city,
+            string streat
+            )
+        {
+            this.mail = mail;
+            this.firstName = firstName;
+            this.lastName=lastName;
+            this.childLastName=childFirstName;
+            this.childLastName= childLastName;
+            this.nickname= nickName;
+            this.profile_= profile;
+            this.password_=password;
+            this.city=city;
+            this.streat=streat;
+            this.UserInGroups = new HashSet<UserInGroup>();
+        }
+        public Users(
+           string mail,
+           string firstName,
+           string lastName,
+           string childFirstName,
+           string childLastName,
+           string nickName,
+           string profile,
+           string password,
+           string city,
+           string streat,
+           int build
+           )
+        {
+            this.mail = mail;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.childLastName = childFirstName;
+            this.childLastName = childLastName;
+            this.nickname = nickName;
+            this.profile_ = profile;
+            this.password_ = password;
+            this.city = city;
+            this.streat = streat;
+            this.build = build;
+            this.UserInGroups = new HashSet<UserInGroup>();
+        }
+        
         [DataMember]
         public string firstName { get; set; }
         [DataMember]
@@ -37,8 +90,6 @@ namespace DatabaseFirstSample
         public string mail { get; set; }
         [DataMember]
         public string password_ { get; set; }
-        [DataMember]
-        public Nullable<bool> type_ { get; set; }
         [DataMember]
         public string city { get; set; }
         [DataMember]
