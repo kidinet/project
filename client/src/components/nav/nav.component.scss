@@ -1,0 +1,35 @@
+@import "../../globalStyle.scss";
+nav {
+    background-color:$second_color;
+    margin:10px 0 0 0;
+    padding:18px;
+    max-height: 64px;
+    a {
+        box-sizing:content-box;
+        padding: 3px 10px;
+        text-decoration:none;
+        font-size:20px;
+         border-left:1px solid $primary_color;
+         transition: 0.2s;
+         i{
+             padding: 0 10px 0 0;
+             transition: 0.2s;
+             vertical-align: middle;
+         }
+        &:active,&:focus,&:visited,&:hover{
+            color:$primary_color;
+            text-decoration:none;
+        }
+        &:last-child{
+             border-left:none;
+        }
+        &:hover{
+            padding: 0 8px;
+            color:$dark_primary_color;
+            i{
+                font-size: 21px;
+                padding:0 15px 0 0;
+            }
+        }
+    }
+}

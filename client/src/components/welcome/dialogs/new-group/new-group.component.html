@@ -1,0 +1,59 @@
+<h1>The hero's birthday is {{ggg}}</h1>
+
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="createGroupForm">
+        <div class="wrapper">
+            <ng-template matStepLabel>פרטי הגן</ng-template>
+            <form [formGroup]="createGroupForm" (ngSubmit)="createGroup() ">
+                <mat-form-field class="input">
+                    <input matInput placeholder="שם" type="text" name="username" [formControl]="name">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="עיר" type="text" name="username" [formControl]="city">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="רחוב" type="text" name="username" [formControl]="street">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="בנין" type="number" name="username" [formControl]="build">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="פקס" type="text" name="username" [formControl]="fax">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="מייל" type="mail" name="mail" [formControl]="mail">
+                </mat-form-field>
+                <button  type="submit" mat-raised-button class="new_group">צור</button>
+            </form>
+        </div>
+    </mat-step>
+    <h2>{{errorCreateGroup}}</h2>
+    <mat-step [stepControl]="createUserForm">
+        <ng-template matStepLabel>פרטים אישיים</ng-template>
+        <div class="wrapper">
+            <form [formGroup]="createUserForm" (ngSubmit)="createManager()" >
+                <h3>פרטים אישיים</h3>
+                <mat-form-field class="input">
+                    <input matInput placeholder="שם" type="text" name="username" [formControl]="name">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="עיר" type="text" name="username" [formControl]="city">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="רחוב" type="text" name="username" [formControl]="street">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="בנין" type="number" name="username" [formControl]="build">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="מייל" type="mail" name="mail" [formControl]="mail">
+                </mat-form-field>
+                <button type="submit" matStepperNext mat-raised-button class="new_group">צור</button>
+            </form>
+        </div>-->
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <div class="wrapper">You are now done.</div>
+    </mat-step>
+</mat-horizontal-stepper>

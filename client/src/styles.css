@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "/assets/fonts/bootstrap.min.css";
+@import "/assets/fonts/font-awesome/font-awesome/css/font-awesome.min.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+  @font-face {
+            font-family: 'bokertovregular';
+            src: url('/assets/fonts/bokertovregular.TTF') format('truetype');
+        }
+        
+        * {
+            font-family: bokertovregular;
+            direction: rtl;
+            word-spacing: 5px;
+            margin:0;
+        }

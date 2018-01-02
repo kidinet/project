@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <header></header>
+  <div class="content">
+    <img src="../../assets/images/kidinet_logo.svg" />
+    <form [formGroup]="loginForm" (ngSubmit)="login() ">
+      <input placeholder="הכנס שם" type="text" name="username" [formControl]="password">
+      <div [hidden]="!password.hasError('required')">
+        שדה חובה
+      </div>
+      <input placeholder="מייל" type="mail" name="mail" [formControl]="mail">
+      <div [hidden]="mail.valid|| mail.untouched">כתובת המייל אינה בתבנית הנכונה</div>
+      <button mat-raised-button type="submit" [disabled]="!loginForm.valid" class=welcome>
+        <span>הכנס</span>
+        <i class="fa fa-sign-in" aria-hidden="true"></i>        
+      </button>
+    </form>
+    <button class="new_group" mat-raised-button (click)="openNewGroupDialog()">
+         אני רוצה לפתוח קבוצה חדשה
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+          </button>
+  </div>
+  <footer></footer>
+</div>

@@ -1,0 +1,83 @@
+
+@import "../../globalStyle.scss";
+@import '~@angular/material/theming';
+
+.wrapper{
+    position: relative;
+    height: 100vh;
+    width:100%;
+ header{
+     position: fixed;
+     top:0;
+     right:0;
+     height:50px;
+     width: 100%;
+     background-color:$second_color;
+     z-index:2;
+ }   
+ .content{
+     height:100%;
+     width:100%;
+     background-image: url('../../assets/images/kidinet_back.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+     position:relative;
+     img{
+         width:300px;
+         margin: 100px calc(50% - 150px) 0;
+     }
+     form{
+          margin:5px 40%;
+          textarea, input { 
+                outline: none;
+                box-shadow: 0px 1px 7px 0px #737070;
+                border:none;
+                width:100%;
+                padding: 10px;
+                border-radius: 7px;
+                font-size: 20px;
+                margin :5px 0;
+            }
+            h3{
+                font-weight: 200;
+                text-align: left;
+            }
+            button.welcome{
+                background-color: $app_red;
+                margin: 20px calc(50% - 60px);
+                padding: 5px 25px;
+                border-radius: 7px;
+                font-size: 20px;
+                color:white;
+                i{
+                    transform:rotate(90deg);
+                }
+              
+            }
+     }
+       button.new_group{
+                position:absolute;
+                bottom:100px;
+                left:50%;
+                transform: translate(-50%, -50%);
+                border-radius: 7px;
+                padding: 3px 16px;
+                border-radius: 7px;
+                font-size: 20px;
+                color:$primary_color;
+            }
+ }
+ footer{
+     bottom:0;
+     right:0;
+     height:50px;
+     background-color:$primary_color;
+     position: fixed;
+     width: 100%;
+ }
+}
+
+.ng-star-inserted{
+    display:none !important;
+}
+   
