@@ -12,16 +12,22 @@ namespace DatabaseFirstSample
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using System.Data.Entity;
+    using System.Runtime.Serialization.Json;
 
     [Serializable]
     [DataContract]
-    public partial class Users
+    public class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users(string mail)
         {
             this.mail = mail;
             this.UserInGroups = new HashSet<UserInGroup>();
+        }
+        public Users()
+        {
+            
         }
         public Users(
             string mail,
@@ -59,7 +65,8 @@ namespace DatabaseFirstSample
            string password,
            string city,
            string streat,
-           int build
+           int build,
+           string phone
            )
         {
             this.mail = mail;
@@ -96,8 +103,8 @@ namespace DatabaseFirstSample
         public string streat { get; set; }
         [DataMember]
         public Nullable<int> build { get; set; }
-        [DataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [DataMember]
         public virtual ICollection<UserInGroup> UserInGroups { get; set; }
     }
 }

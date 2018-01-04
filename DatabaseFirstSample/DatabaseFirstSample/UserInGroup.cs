@@ -12,6 +12,7 @@ namespace DatabaseFirstSample
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using System.Data.Entity;
 
     [Serializable]
     [DataContract]

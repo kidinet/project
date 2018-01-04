@@ -6,6 +6,7 @@ import { MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angu
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { GroupService } from '../../services/group.service';
+import {FormValidateService} from '../../services/form-validate.service'
 import * as store from '../../store/store'
 import { group } from '../../entities/group'
 
@@ -18,14 +19,15 @@ import { group } from '../../entities/group'
 export class WelcomeComponent implements OnInit {
   constructor(public newGroupDialog: MatDialog,
     private builder: FormBuilder,
-    private userService: UserService) { }
+    private userService: UserService,
+    private FormValidateService:FormValidateService) { }
 
   openNewGroupDialog(): void {
     let NewGroupDialogRef = this.newGroupDialog.open(NewGroup, {
     });
   }
   password = new FormControl('', [Validators.required]);
-  mail = new FormControl('', this.validateEmail)
+  mail = new FormControl('', this.FormValidateService.validateEmail)
   //form declare:
   loginForm = this.builder.group({
     mail: this.mail,
@@ -37,14 +39,7 @@ export class WelcomeComponent implements OnInit {
     console.log(this.loginForm.value);
   }
 
-  validateEmail(c: FormControl) {
-    var EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return EMAIL_REGEXP.test(c.value) ? null : {
-      validateEmail: {
-        valid: false
-      }
-    };
-  }
+
   ngOnInit() {
     //  this.userService.getUser();
   }
@@ -62,22 +57,27 @@ export class NewGroup {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private builder: FormBuilder,
     private userService: UserService,
-    private groupService: GroupService) {
+    private groupService: GroupService,
+    private formValidateService:FormValidateService) {
   }
 
-  name = new FormControl('', )
-  city = new FormControl('', )
-  street = new FormControl('', )
-  build = new FormControl('', )
-  phone = new FormControl('', )
-  fax = new FormControl('', )
-  mail = new FormControl('', )
+  name = new FormControl('', Validators.required)
+  firtstName = new FormControl('',Validators.required )
+  lastName = new FormControl('', Validators.required)
+  city = new FormControl('', Validators.required)
+  street = new FormControl('', Validators.required)
+  build = new FormControl('', Validators.required)
+  phone = new FormControl('', this.formValidateService.validatePhone)
+  fax = new FormControl('', Validators.required)
+  mail = new FormControl('',this.formValidateService.validateEmail )
+  password = new FormControl('',Validators.required )
+  confirmPassword = new FormControl('',this.formValidateService.confirmPassword(this.password))
 
 
   createGroupForm = this.builder.group({
-    groupName: this.name,
+    name: this.name,
     city: this.city,
-    streat: this.street,
+    street: this.street,
     build: this.build,
     phone: this.phone,
     fax: this.fax,
@@ -86,12 +86,15 @@ export class NewGroup {
 
 
   createUserForm = this.builder.group({
-    name: this.name,
+    firstName: this.firtstName,
+    lastName: this.lastName,
     city: this.city,
-    streat: this.street,
+    street: this.street,
     build: this.build,
     phone: this.phone,
     mail: this.mail,
+    password:this.password,
+    confirmPassword:this.confirmPassword
   });
 
 
@@ -101,7 +104,6 @@ export class NewGroup {
   //variables
   errorCreateGroup = '';
 
-  get format() { return store.getCreateGroup() ? 'shortDate' : 'fullDate'; }
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -117,7 +119,13 @@ export class NewGroup {
   }
 
   createManager() {
-    this.userService.createuser(this.createUserForm.value);
+    this.userService.creatUser(this.createUserForm.value).then(result => {
+      console.log(result)
+      if (result) {
+         this.stepper.selectedIndex=1;
+      }
+    
+    })
   }
 }
 

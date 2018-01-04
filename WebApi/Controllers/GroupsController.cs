@@ -23,10 +23,10 @@ namespace WebApi.Controllers
         Bl_Group Bl_Group = new Bl_Group();
         [HttpGet]
         [Route("createGroup/{Language}/{Registered}")]
-        public IHttpActionResult createGrop(string Language, bool Registered, string name, string city, int build, string phone, string mail, string fax)
+        public IHttpActionResult createGroup(string Language, bool Registered, string name, string city, string street, int build, string phone, string mail, string fax)
         {
-          //  http://localhost:7022/api/createGroup/he/true?name=kidinet&city=BneiBraq&build=2&phone=5798888&mail=kidinet@gmail.com&fax=1234567
-            return Ok(Bl_Group.createGroup(name, city, build, phone, mail, fax));
+            //  http://localhost:7022/api/createGroup/he/true?name=kidinet&city=BneiBraq&street=lklklklk&build=2&phone=5798888&mail=kidinet@gmail.com&fax=1234567
+            return Ok(Bl_Group.createGroup(name, city, street, build, phone, mail, fax));
         }
     }
 }

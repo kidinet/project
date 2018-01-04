@@ -10,13 +10,13 @@ using System.Net.Http;
 using System.Web.Script.Serialization;
 using DatabaseFirstSample;
 using System.Data.Entity;
-
+using System.Linq;
 
 namespace WebApi.Controllers
 {
     [EnableCors("*", "*", "*")]
     [RoutePrefix("api")]
-    public class GeneralController : BaseController
+    public class UserlController : BaseController
     {
         BL_USER bl_user = new BL_USER();
 
@@ -25,13 +25,25 @@ namespace WebApi.Controllers
         public IHttpActionResult getUser(string Language, bool Registered, string mail)
         {
             Users[] b = bl_user.getUser(mail);
-            return Ok(b);
+            using (var db = new BloggingContext())
+            {
+                try
+                {
+                    var user = db.Users.Where(x => x.mail == mail).ToArray();
+                    return Ok(b);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            //return Ok(b);
         }
         [HttpGet]
         [Route("addUser/{Language}/{Registered}")]
         public IHttpActionResult addUser(string Language, bool Registered, string mail, int groupId)
         {
-            return Ok(bl_user.addUser(mail, groupId));
+            return Ok(true);
         }
         [HttpGet]
         [Route("updateUser/{Language}/{Registered}")]
@@ -79,12 +91,13 @@ namespace WebApi.Controllers
             string nickName,
             string profile,
             string password,
-            bool type,
             string city,
-            string streat,
-            int build)
+            string street,
+            int build,
+            string phone)
         {
-            Boolean b = bl_user.createUser(
+            //localhost:7022/api/createUser/he/true?&mail=ghjghj@kjkjk3333j.com&firstName=12334&lastName=dADSASD&childFirstName=undefined&childLastName=undefined&nickName=undefined&profile=undefined&password=1&city=sdfsda&build=3&street=dsfa&phone=0588822808
+            var user = bl_user.createUser(
                         mail,
                         firstName,
                         lastName,
@@ -94,9 +107,10 @@ namespace WebApi.Controllers
                         profile,
                         password,
                         city,
-                        streat,
-                        build);
-            return Ok(b);
+                        street,
+                        build,
+                        phone);
+            return Ok(user);
         }
     }
 }

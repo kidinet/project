@@ -78,7 +78,6 @@ C:\project\Solution\WebApi\bin\System.Web.Cors.dll
 C:\project\Solution\WebApi\bin\System.Web.Http.Cors.dll
 C:\project\Solution\WebApi\bin\System.Web.Http.dll
 C:\project\Solution\WebApi\bin\System.Web.Http.WebHost.dll
-C:\project\Solution\WebApi\bin\EntityFramework.dll
 C:\project\Solution\WebApi\bin\DatabaseFirstSample.pdb
 C:\project\Solution\WebApi\bin\EntityFramework.SqlServer.xml
 C:\project\Solution\WebApi\bin\Microsoft.AI.DependencyCollector.xml

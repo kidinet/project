@@ -1,4 +1,3 @@
-<h1>The hero's birthday is {{ggg}}</h1>
 
 <mat-horizontal-stepper #stepper>
     <mat-step [stepControl]="createGroupForm">
@@ -6,35 +5,40 @@
             <ng-template matStepLabel>פרטי הגן</ng-template>
             <form [formGroup]="createGroupForm" (ngSubmit)="createGroup() ">
                 <mat-form-field class="input">
-                    <input matInput placeholder="שם" type="text" name="username" [formControl]="name">
+                    <input matInput placeholder="שם" type="text" name="name" [formControl]="name">
                 </mat-form-field>
                 <mat-form-field class="input">
-                    <input matInput placeholder="עיר" type="text" name="username" [formControl]="city">
+                    <input matInput placeholder="עיר" type="text" name="city" [formControl]="city">
                 </mat-form-field>
                 <mat-form-field class="input">
-                    <input matInput placeholder="רחוב" type="text" name="username" [formControl]="street">
+                    <input matInput placeholder="טלפון" type="text" name="phone" [formControl]="phone">
                 </mat-form-field>
                 <mat-form-field class="input">
-                    <input matInput placeholder="בנין" type="number" name="username" [formControl]="build">
+                    <input matInput placeholder="רחוב" type="text" name="street" [formControl]="street">
                 </mat-form-field>
                 <mat-form-field class="input">
-                    <input matInput placeholder="פקס" type="text" name="username" [formControl]="fax">
+                    <input matInput placeholder="בנין" type="number" name="build" [formControl]="build">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="פקס" type="text" name="fax" [formControl]="fax">
                 </mat-form-field>
                 <mat-form-field class="input">
                     <input matInput placeholder="מייל" type="mail" name="mail" [formControl]="mail">
                 </mat-form-field>
-                <button  type="submit" mat-raised-button class="new_group">צור</button>
+                <button type="submit" mat-raised-button class="new_group">צור</button>
             </form>
         </div>
     </mat-step>
-    <h2>{{errorCreateGroup}}</h2>
     <mat-step [stepControl]="createUserForm">
         <ng-template matStepLabel>פרטים אישיים</ng-template>
         <div class="wrapper">
-            <form [formGroup]="createUserForm" (ngSubmit)="createManager()" >
+            <form [formGroup]="createUserForm" (ngSubmit)="createManager()">
                 <h3>פרטים אישיים</h3>
                 <mat-form-field class="input">
-                    <input matInput placeholder="שם" type="text" name="username" [formControl]="name">
+                    <input matInput placeholder="שם פרטי" type="text" name="username" [formControl]="name">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="שם משפחה" type="text" name="username" [formControl]="name">
                 </mat-form-field>
                 <mat-form-field class="input">
                     <input matInput placeholder="עיר" type="text" name="username" [formControl]="city">
@@ -48,7 +52,22 @@
                 <mat-form-field class="input">
                     <input matInput placeholder="מייל" type="mail" name="mail" [formControl]="mail">
                 </mat-form-field>
-                <button type="submit" matStepperNext mat-raised-button class="new_group">צור</button>
+                <mat-form-field class="input">
+                    <input matInput placeholder="סיסמא" type="password" name="password" [formControl]="password">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <input matInput placeholder="אשר סיסמא" type="password" name="confirmPassword" [formControl]="confirmPassword">
+                </mat-form-field>
+                <div [hidden]="!confirmPassword.hasError('validatePassword')||confirmPassword.untouched">
+                   הסיסמאות אינן תואמות
+                </div>
+                <mat-form-field class="input">
+                    <input matInput placeholder="טלפון" type="text" name="phone" [formControl]="phone">
+                </mat-form-field>
+                <div [hidden]="!phone.hasError('validatePhone')||phone.untouched">
+                  הטלפון אינו בתבנית הנכונה
+                </div>
+                <button type="submit" mat-raised-button class="new_group">צור</button>
             </form>
         </div>-->
     </mat-step>

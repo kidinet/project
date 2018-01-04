@@ -15,6 +15,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from "rxjs";
 import {UserService} from '../services/user.service'
 import {GroupService} from '../services/group.service'
+import {FormValidateService} from '../services/form-validate.service'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import {GroupService} from '../services/group.service'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService,GroupService],
+  providers: [UserService,GroupService,FormValidateService],
   exports: [
   ],
   

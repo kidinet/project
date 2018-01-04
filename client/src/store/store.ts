@@ -1,18 +1,20 @@
+import { group } from '../entities/group'
+import { User } from '../entities/user'
 //variables
-export let User;
-export let createGroup=false;
+export let currentUser;
+export let currentGroup;
+
 //setters
-export function setValue(newValue:any) {
-    User = newValue;
+export function setGroup(group: group) {
+    currentGroup = group;
+}
+export function setUser(user: User) {
+    currentUser = user;
 }
 //getters
 export function getUser() {
-    return User
+    return currentUser
 }
-
-export function CreateGroup(request:any) {
-    createGroup = request;
-}
-export function getCreateGroup() {
-    return createGroup;
+export function getGroup() {
+    return currentGroup
 }

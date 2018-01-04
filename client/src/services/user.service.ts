@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import { Observable } from "rxjs";
 import *  as store from '../store/store';
-// import {User} from '../entities/user'
+import {User} from '../entities/user'
 
 @Injectable()
 export class UserService {
@@ -19,26 +19,26 @@ export class UserService {
         .then(
         results => {
           console.log(results)
-          store.setValue(results)// Success
           return results;
         },
       );
     });
   }
-  createuser(user): any {
+  creatUser(user:User): any {
     var url = 'http://localhost:7022/api/createUser/he/true?' +
-      '&firstName' + user.firstName +
-      '&lastName' + user.lastName +
-      '&childFirstName' + user.childFirstName +
-      '&childLastName' + user.childLastName +
-      '&nickName' + user.nickName +
-      '&profile' + user.profile +
-      '&password' + user.password +
+      '&mail=' + user.mail+
+      '&firstName=' + user.firstName +
+      '&lastName=' + user.lastName +
+      '&childFirstName=' + user.childFirstName +
+      '&childLastName=' + user.childLastName +
+      '&nickName=' + user.nickName +
+      '&profile=' + user.profile +
+      '&password=' + user.password +
       '&city=' + user.city +
       '&build=' + user.build +
-      '&street' + user.street +
-      '&phone=' + user.phone +
-      '&mail=' + user.mail;
+      '&street=' + user.street +
+      '&phone=' + user.phone       
+      console.log(url);
     return this.http.get(url)
       .toPromise()
   }

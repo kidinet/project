@@ -10,15 +10,8 @@ namespace DatabaseFirstSample
     {
         static void Main(string[] args)
         {
+
         }
         
-    }
-    public class Test
-    {
-        public Test()
-        {
-            Console.WriteLine("Arrive");
-            
-        }
     }
 }

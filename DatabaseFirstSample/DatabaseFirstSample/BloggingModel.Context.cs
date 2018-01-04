@@ -18,6 +18,7 @@ namespace DatabaseFirstSample
         public BloggingContext()
             : base("name=BloggingContext")
         {
+          
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

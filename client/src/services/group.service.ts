@@ -14,9 +14,11 @@ export class GroupService {
 
 
   createGroup(group: group): any {
+    console.log(group,'group')
     var url = 'http://localhost:7022/api/createGroup/he/true?name='
      + group.name +
       '&city=' + group.city +
+      '&street=' + group.street +
       '&build=' + group.build +
       '&phone=' + group.phone +
       '&mail=' + group.mail +

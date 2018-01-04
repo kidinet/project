@@ -12,6 +12,7 @@ namespace DatabaseFirstSample
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using System.Data.Entity;
 
     [Serializable]
     [DataContract]
@@ -22,7 +23,7 @@ namespace DatabaseFirstSample
         {
             this.UserInGroups = new HashSet<UserInGroup>();
         }
-        public Group(string name, string city, int build, string phone, string mail, string fax)
+        public Group(string name, string city,string street, int build, string phone, string mail, string fax)
         {
             this.name = name;
             this.city = city;
@@ -30,6 +31,7 @@ namespace DatabaseFirstSample
             this.phone = phone;
             this.mail = mail;
             this.fax = fax;
+            this.streat = street;
             this.UserInGroups = new HashSet<UserInGroup>();
         }
         [DataMember]

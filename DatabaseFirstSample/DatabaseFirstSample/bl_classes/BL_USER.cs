@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace DatabaseFirstSample
 {
     public class BL_USER
@@ -110,7 +109,7 @@ namespace DatabaseFirstSample
             }
             return true;
         }
-        public bool createUser(
+        public Users createUser(
             string mail,
             string firstName,
             string lastName,
@@ -121,14 +120,19 @@ namespace DatabaseFirstSample
             string password,    
             string city,
             string streat,
-            int build
+            int build,
+            string phone
             )
         {
             using (var db = new BloggingContext())
             {
-                var existentUser = db.Users.FirstOrDefault(x => x.mail == mail);
-                 if (existentUser != null)
-                     return false;
+                Users existentUser = new Users();
+                existentUser = db.Users.FirstOrDefault(x => x.mail == mail);
+                if (existentUser != null)
+                {
+                    db.UserInGroups.Add(new UserInGroup(1, mail, true));
+                    return existentUser;
+                }
                 try
                 {
                         Users user=new Users(mail,
@@ -141,17 +145,17 @@ namespace DatabaseFirstSample
                         password,
                         city,
                         streat,
-                        build); 
-                        db.Users.Attach(user);
-                        db.Entry(user).State = EntityState.Modified;
+                        build,
+                        phone); 
+                        db.Users.Add(user);
                         db.SaveChanges();
+                        return user;
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
             }
-            return true;
         }
     }
     
