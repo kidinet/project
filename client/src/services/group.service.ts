@@ -14,16 +14,14 @@ export class GroupService {
 
 
   createGroup(group: group): any {
-    console.log(group,'group')
     var url = 'http://localhost:7022/api/createGroup/he/true?name='
-     + group.name +
+      + group.name +
       '&city=' + group.city +
       '&street=' + group.street +
       '&build=' + group.build +
       '&phone=' + group.phone +
       '&mail=' + group.mail +
       '&fax=' + group.fax;
-      console.log('url')
     return this.http.get(url)
       .toPromise()
   }

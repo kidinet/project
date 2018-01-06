@@ -74,6 +74,7 @@
       <DependentUpon>BloggingModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="bl_classes\BL_USER.cs" />
+    <Compile Include="bl_classes\Result.cs" />
     <Compile Include="Group.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>

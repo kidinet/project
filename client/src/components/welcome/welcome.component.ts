@@ -6,7 +6,7 @@ import { MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angu
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { GroupService } from '../../services/group.service';
-import {FormValidateService} from '../../services/form-validate.service'
+import { FormValidateService } from '../../services/form-validate.service'
 import * as store from '../../store/store'
 import { group } from '../../entities/group'
 
@@ -20,7 +20,7 @@ export class WelcomeComponent implements OnInit {
   constructor(public newGroupDialog: MatDialog,
     private builder: FormBuilder,
     private userService: UserService,
-    private FormValidateService:FormValidateService) { }
+    private FormValidateService: FormValidateService) { }
 
   openNewGroupDialog(): void {
     let NewGroupDialogRef = this.newGroupDialog.open(NewGroup, {
@@ -58,20 +58,20 @@ export class NewGroup {
     private builder: FormBuilder,
     private userService: UserService,
     private groupService: GroupService,
-    private formValidateService:FormValidateService) {
+    private formValidateService: FormValidateService) {
   }
 
   name = new FormControl('', Validators.required)
-  firtstName = new FormControl('',Validators.required )
+  firtstName = new FormControl('', Validators.required)
   lastName = new FormControl('', Validators.required)
   city = new FormControl('', Validators.required)
   street = new FormControl('', Validators.required)
   build = new FormControl('', Validators.required)
   phone = new FormControl('', this.formValidateService.validatePhone)
   fax = new FormControl('', Validators.required)
-  mail = new FormControl('',this.formValidateService.validateEmail )
-  password = new FormControl('',Validators.required )
-  confirmPassword = new FormControl('',this.formValidateService.confirmPassword(this.password))
+  mail = new FormControl('', this.formValidateService.validateEmail)
+  password = new FormControl('', Validators.required)
+  confirmPassword = new FormControl('', this.formValidateService.confirmPassword(this.password))
 
 
   createGroupForm = this.builder.group({
@@ -93,38 +93,37 @@ export class NewGroup {
     build: this.build,
     phone: this.phone,
     mail: this.mail,
-    password:this.password,
-    confirmPassword:this.confirmPassword
+    password: this.password,
+    confirmPassword: this.confirmPassword
   });
 
 
   //children
   @ViewChild('stepper') stepper;
 
-  //variables
-  errorCreateGroup = '';
+  //variable
+  createGroupField = false;
+  //pipe
+  get createGroupFieldMessage() { return this.createGroupField ? 'לא ניתן ליצור קבוצה זו, אנא בדקו את הפרטים שנית' : ''; }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
   createGroup() {
     this.groupService.createGroup(this.createGroupForm.value).then(result => {
-      console.log(result)
-      if (result) {
-         this.stepper.selectedIndex=1;
+      if (result.Success) {
+        this.stepper.selectedIndex += 1;
       }
-
-      else this.errorCreateGroup = 'לא ניתן ליצר קבוצה זו, אנא בדקו את הפרטים בשנית'
-    })
+      else this.createGroupField = true;
+    });
   }
 
   createManager() {
     this.userService.creatUser(this.createUserForm.value).then(result => {
       console.log(result)
-      if (result) {
-         this.stepper.selectedIndex=1;
+      if (result.Success) {
+        this.stepper.selectedIndex += 1;
       }
-    
     })
   }
 }

@@ -13,13 +13,10 @@ namespace DatabaseFirstSample
     using System.Collections.Generic;
     using System.Runtime.Serialization;
     using System.Data.Entity;
-    using System.Runtime.Serialization.Json;
-
     [Serializable]
     [DataContract]
     public class Users
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users(string mail)
         {
             this.mail = mail;

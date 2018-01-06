@@ -18,7 +18,7 @@ namespace DatabaseFirstSample
         public BloggingContext()
             : base("name=BloggingContext")
         {
-          
+            base.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -16,16 +16,18 @@ namespace WebApi
 
         public static void Register(HttpConfiguration config)
         {
+
             var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
             // Web API routes
             config.MapHttpAttributeRoutes();
             //test
-            
+
             var json = config.Formatters.JsonFormatter;
             json.UseDataContractJsonSerializer = true;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             json.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
-            json.SerializerSettings.DateFormatHandling= Newtonsoft.Json.DateFormatHandling.MicrosoftDateFormat;
+            json.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.MicrosoftDateFormat;
             json.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
             json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 

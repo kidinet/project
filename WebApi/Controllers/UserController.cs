@@ -24,13 +24,13 @@ namespace WebApi.Controllers
         [Route("getUser/{Language}/{Registered}")]
         public IHttpActionResult getUser(string Language, bool Registered, string mail)
         {
-            Users[] b = bl_user.getUser(mail);
+       
             using (var db = new BloggingContext())
             {
                 try
                 {
-                    var user = db.Users.Where(x => x.mail == mail).ToArray();
-                    return Ok(b);
+                    db.Configuration.ProxyCreationEnabled = false;
+                    return Ok(bl_user.getUser(mail));
                 }
                 catch (Exception ex)
                 {
@@ -46,39 +46,6 @@ namespace WebApi.Controllers
             return Ok(true);
         }
         [HttpGet]
-        [Route("updateUser/{Language}/{Registered}")]
-        public IHttpActionResult updateUser(
-            string Language,
-            bool Registered,
-            string mail,
-            string firstName,
-            string lastName,
-            string childFirstName,
-            string childLastName,
-            string nickName,
-            string profile,
-            string password,
-            bool type,
-            string city,
-            string streat,
-            int build)
-        {
-            Boolean b = bl_user.updateUser(
-                        mail,
-                        firstName,
-                        lastName,
-                        childFirstName,
-                        childLastName,
-                        nickName,
-                        profile,
-                        password,
-                        type,
-                        city,
-                        streat,
-                        build);
-            return Ok(b);
-        }
-    [HttpGet]
         [Route("createUser/{Language}/{Registered}")]
         public IHttpActionResult createUser(
             string Language,
@@ -97,7 +64,7 @@ namespace WebApi.Controllers
             string phone)
         {
             //localhost:7022/api/createUser/he/true?&mail=ghjghj@kjkjk3333j.com&firstName=12334&lastName=dADSASD&childFirstName=undefined&childLastName=undefined&nickName=undefined&profile=undefined&password=1&city=sdfsda&build=3&street=dsfa&phone=0588822808
-            var user = bl_user.createUser(
+            return Ok(bl_user.createUser(
                         mail,
                         firstName,
                         lastName,
@@ -109,8 +76,7 @@ namespace WebApi.Controllers
                         city,
                         street,
                         build,
-                        phone);
-            return Ok(user);
+                        phone));
         }
     }
 }

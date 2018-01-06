@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseFirstSample.bl_classes;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -11,68 +12,13 @@ namespace DatabaseFirstSample
     {
         public BL_USER() { }
         
-        public bool addUser(string mail,int groupId,bool type)
-        {
-            using (var db = new BloggingContext())
-            {
-                Users user = db.Users.FirstOrDefault(x => x.mail == mail);
-                if (user == null)
-                {
-                    user = new Users(mail);
-                    try
-                    {
-                        db.Users.Add(user);
-                        db.SaveChanges();
-                    }
-                    catch (Exception ex) { throw ex; };
-                }
-                try
-                {
-                    db.UserInGroups.Add(new UserInGroup(groupId,mail,type));
-                    db.SaveChanges();
-                }
-                catch (Exception ex) { throw ex; };
-
-            }
-            return true;
-        }
-        public bool addUser(
-            int groupId,
-            string mail,
-            string firstName,
-            string lastName,
-            string childFirstName,
-            string childLastName,
-            string nickName,
-            string profile,
-            string password,
-            bool type,
-            string city,
-            string streat
-            )
+        public Users getUser(string mail)
         {
             using (var db = new BloggingContext())
             {
                 try
                 {
-                    db.Users.Add(new Users(mail, firstName, lastName, childFirstName, childLastName, nickName, profile, password,city, streat));
-                    db.UserInGroups.Add(new UserInGroup(groupId, mail,type));
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-            return true;
-        }
-        public Users[] getUser(string mail)
-        {
-            using (var db = new BloggingContext())
-            {
-                try
-                {
-                    var user= db.Users.Where(x => x.mail == mail).ToArray();
+                    var user= db.Users.FirstOrDefault(x => x.mail == mail);
                     return user;
                 }
                 catch (Exception ex)
@@ -82,34 +28,8 @@ namespace DatabaseFirstSample
             }
         }
 
-        public bool updateUser(
-            string mail,
-            string firstName,
-            string lastName,
-            string childFirstName,
-            string childLastName,
-            string nickName,
-            string profile,
-            string password,
-            bool type,
-            string city,
-            string streat,
-            int build)
-        {
-            using (var db = new BloggingContext())
-            {
-                try
-                {
-                    var user = db.Users.Where(x => x.mail == mail);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-            return true;
-        }
-        public Users createUser(
+
+        public Result<Users> createUser(
             string mail,
             string firstName,
             string lastName,
@@ -126,12 +46,10 @@ namespace DatabaseFirstSample
         {
             using (var db = new BloggingContext())
             {
-                Users existentUser = new Users();
-                existentUser = db.Users.FirstOrDefault(x => x.mail == mail);
+                Users existentUser = db.Users.FirstOrDefault(x => x.mail == mail);
                 if (existentUser != null)
                 {
-                    db.UserInGroups.Add(new UserInGroup(1, mail, true));
-                    return existentUser;
+                    return new Result<Users>(false, new Users(),1);
                 }
                 try
                 {
@@ -149,7 +67,7 @@ namespace DatabaseFirstSample
                         phone); 
                         db.Users.Add(user);
                         db.SaveChanges();
-                        return user;
+                        return new Result<Users>(true,user);
                 }
                 catch (Exception ex)
                 {
