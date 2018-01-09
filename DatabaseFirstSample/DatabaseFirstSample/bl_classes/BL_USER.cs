@@ -34,14 +34,16 @@ namespace DatabaseFirstSample
             string firstName,
             string lastName,
             string childFirstName,
-            string childLastName,
-            string nickName,
-            string profile,
-            string password,    
-            string city,
-            string streat,
-            int build,
-            string phone
+            string childLastName
+            // string nickName
+            //string profile,
+            //string password,
+            //string city,
+            //string streat,
+            //int build,
+            //string phone,
+            //bool type,
+            //int groupId
             )
         {
             using (var db = new BloggingContext())
@@ -53,19 +55,20 @@ namespace DatabaseFirstSample
                 }
                 try
                 {
-                        Users user=new Users(mail,
-                        firstName,
-                        lastName,
-                        childFirstName,
-                        childLastName,
-                        nickName,
-                        profile,
-                        password,
-                        city,
-                        streat,
-                        build,
-                        phone); 
+                    Users user = new Users(mail,
+                    firstName,
+                    lastName,
+                    childFirstName,
+                    childLastName);
+                   // nickName);
+                        //profile,
+                        //password,
+                        //city,
+                        //streat,
+                        //build,
+                        //phone); 
                         db.Users.Add(user);
+                        //db.UserInGroups.Add(new UserInGroup(groupId, mail, type));
                         db.SaveChanges();
                         return new Result<Users>(true,user);
                 }

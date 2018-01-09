@@ -112,6 +112,8 @@ export class NewGroup {
   createGroup() {
     this.groupService.createGroup(this.createGroupForm.value).then(result => {
       if (result.Success) {
+        console.log(result)
+        store.setGroup(result.returnObject);
         this.stepper.selectedIndex += 1;
       }
       else this.createGroupField = true;
@@ -119,9 +121,9 @@ export class NewGroup {
   }
 
   createManager() {
-    this.userService.creatUser(this.createUserForm.value).then(result => {
-      console.log(result)
+    this.userService.creatUser(this.createUserForm.value,true).then(result => {
       if (result.Success) {
+        console.log(result.returnObject);
         this.stepper.selectedIndex += 1;
       }
     })

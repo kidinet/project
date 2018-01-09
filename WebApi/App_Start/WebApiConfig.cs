@@ -17,7 +17,8 @@ namespace WebApi
         public static void Register(HttpConfiguration config)
         {
 
-            var cors = new EnableCorsAttribute("*", "*", "*");
+            var cors1 = new EnableCorsAttribute("*", "*", "*");
+            var cors = new EnableCorsAttribute("http://localhost:4200"," http://localhost:4200","*");
             config.EnableCors(cors);
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -35,8 +36,7 @@ namespace WebApi
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-               // routeTemplate: "api/{controller}/{id}",
-               routeTemplate: "institute/{controller}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                defaults: new { id = RouteParameter.Optional }
             );
         }

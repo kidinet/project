@@ -12,13 +12,14 @@ namespace DatabaseFirstSample
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class BloggingContext : DbContext
     {
         public BloggingContext()
             : base("name=BloggingContext")
         {
             base.Configuration.ProxyCreationEnabled = false;
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

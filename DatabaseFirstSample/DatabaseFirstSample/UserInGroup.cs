@@ -36,6 +36,10 @@ namespace DatabaseFirstSample
             this.groupId = groupId;
             this.type_ = type;
         }
+        public UserInGroup()
+        {
+            
+        }
     }
 }
 

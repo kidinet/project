@@ -31,12 +31,12 @@ namespace DatabaseFirstSample
             string firstName,
             string lastName,
             string childFirstName,
-            string childLastName,
-            string nickName,
-            string profile,
-            string password,
-            string city,
-            string streat
+            string childLastName
+            //string nickName,
+            //string profile,
+            //string password,
+            //string city,
+            //string streat
             )
         {
             this.mail = mail;
@@ -44,11 +44,11 @@ namespace DatabaseFirstSample
             this.lastName=lastName;
             this.childLastName=childFirstName;
             this.childLastName= childLastName;
-            this.nickname= nickName;
-            this.profile_= profile;
-            this.password_=password;
-            this.city=city;
-            this.streat=streat;
+            //this.nickname= nickName;
+            //this.profile_= profile;
+            //this.password_=password;
+            //this.city=city;
+            //this.streat=streat;
             this.UserInGroups = new HashSet<UserInGroup>();
         }
         public Users(

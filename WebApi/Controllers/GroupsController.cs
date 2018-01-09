@@ -27,5 +27,6 @@ namespace WebApi.Controllers
             //  localhost:7022/api/createGroup/he/true?name=kidinet&city=BneiBraq&street=lklklklk&build=2&phone=5798888&mail=kidinet@gmail.com&fax=1234567
             return Ok(Bl_Group.createGroup(name, city, street, build, phone, mail, fax));
         }
+
     }
 }

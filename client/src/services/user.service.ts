@@ -24,21 +24,23 @@ export class UserService {
       );
     });
   }
-  creatUser(user:User): any {
+  creatUser(user:User,type:boolean): any {
+    console.log(user)
     var url = 'http://localhost:7022/api/createUser/he/true?' +
       '&mail=' + user.mail+
       '&firstName=' + user.firstName +
       '&lastName=' + user.lastName +
       '&childFirstName=' + user.childFirstName +
-      '&childLastName=' + user.childLastName +
-      '&nickName=' + user.nickName +
-      '&profile=' + user.profile +
-      '&password=' + user.password +
-      '&city=' + user.city +
-      '&build=' + user.build +
-      '&street=' + user.street +
-      '&phone=' + user.phone       
-      console.log(url);
+      '&childLastName=' + user.childLastName;
+    //   '&nickName=' + user.nickName +
+    //   '&profile=' + user.profile +
+    //   '&password=' + user.password +
+    //   '&city=' + user.city +
+    //   '&build=' + user.build +
+    //   '&street=' + user.street +
+    //   '&phone=' + user.phone  +
+    //   '&type='+type+
+    //  '&groupId='+store.getGroup().id;
     return this.http.get(url)
       .toPromise()
   }
