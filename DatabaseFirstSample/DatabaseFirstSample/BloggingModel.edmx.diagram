@@ -5,11 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f53e32d11eb84fe8bddec0ecad437aa3" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.Group" Width="1.5" PointX="4.5" PointY="0.5" />
-        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.Users" Width="2.25" PointX="1" PointY="0.625" />
-        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.UserInGroup" Width="1.5" PointX="4.25" PointY="3.625" />
-        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__UserInGro__group__1CBC4616" />
-        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__UserInGro__userM__1BC821DD" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.about" Width="1.5" PointX="3.75" PointY="14.875" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.AdministratorSetting" Width="1.5" PointX="3" PointY="19.875" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.FormDilemma" Width="1.5" PointX="3.75" PointY="22.875" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.FormResponse" Width="1.5" PointX="6" PointY="23.125" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.Group" Width="1.5" PointX="1.5" PointY="14.625" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.ImageGallery" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.LikeImage" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.Reminder" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.UserInGroup" Width="1.5" PointX="6" PointY="7.25" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.User" Width="1.5" PointX="0.75" PointY="6.625" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.ResponseImage" Width="1.5" PointX="3" PointY="11.5" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__Administra__mail__367C1819" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__FormDilem__group__41EDCAC5" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__FormRespo__dilem__44CA3770" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__ImageGall__group__395884C4" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__Reminder__groupI__489AC854" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__LikeImage__image__503BEA1C" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__ResponseI__image__3C34F16F" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__LikeImage__userM__4F47C5E3" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__Reminder__userMa__47A6A41B" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__UserInGro__userM__32AB8735" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__ResponseI__userM__3B40CD36" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

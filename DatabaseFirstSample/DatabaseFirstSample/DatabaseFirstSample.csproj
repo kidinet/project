@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="about.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorSetting.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="bl_classes\Bl_Group.cs" />
     <Compile Include="BloggingModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -75,16 +81,34 @@
     </Compile>
     <Compile Include="bl_classes\BL_USER.cs" />
     <Compile Include="bl_classes\Result.cs" />
+    <Compile Include="FormDilemma.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormResponse.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Group.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageGallery.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LikeImage.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserInGroup.cs">
+    <Compile Include="Reminder.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs">
+    <Compile Include="ResponseImage.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserInGroup.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -11,48 +11,39 @@ namespace DatabaseFirstSample
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-    using System.Data.Entity;
-
-    [Serializable]
-    [DataContract]
+    
     public partial class Group
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Group()
         {
+            this.abouts = new HashSet<about>();
+            this.FormDilemmas = new HashSet<FormDilemma>();
+            this.ImageGalleries = new HashSet<ImageGallery>();
+            this.Reminders = new HashSet<Reminder>();
             this.UserInGroups = new HashSet<UserInGroup>();
         }
-        public Group(string name, string city,string street, int build, string phone, string mail, string fax)
-        {
-            this.name = name;
-            this.city = city;
-            this.build = build;
-            this.phone = phone;
-            this.mail = mail;
-            this.fax = fax;
-            this.streat = street;
-            this.UserInGroups = new HashSet<UserInGroup>();
-        }
-        [DataMember]
+    
         public int id { get; set; }
-        [DataMember]
         public string name { get; set; }
-        [DataMember]
         public string city { get; set; }
-        [DataMember]
         public string streat { get; set; }
-        [DataMember]
         public Nullable<int> build { get; set; }
-        [DataMember]
         public string phone { get; set; }
-        [DataMember]
         public string mail { get; set; }
-        [DataMember]
         public string fax { get; set; }
+        public Nullable<double> latitute { get; set; }
+        public Nullable<double> longitude { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [DataMember]
+        public virtual ICollection<about> abouts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FormDilemma> FormDilemmas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImageGallery> ImageGalleries { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reminder> Reminders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserInGroup> UserInGroups { get; set; }
     }
 }

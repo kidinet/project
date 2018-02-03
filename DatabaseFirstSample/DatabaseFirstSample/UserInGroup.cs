@@ -11,36 +11,17 @@ namespace DatabaseFirstSample
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-    using System.Data.Entity;
-
-    [Serializable]
-    [DataContract]
+    
     public partial class UserInGroup
     {
-        [DataMember]
-        public int id { get; set; }
-        [DataMember]
-        public int groupId { get; set; }
-        [DataMember]
         public string userMail { get; set; }
-        [DataMember]
-        public bool type_ { get; set; }
-        [DataMember]
+        public int groupId { get; set; }
+        public bool isAdministrator { get; set; }
+        public string childFirstName { get; set; }
+        public string childLastName { get; set; }
+        public string nickname { get; set; }
+    
         public virtual Group Group { get; set; }
-        [DataMember]
-        public virtual Users User { get; set; }
-        public UserInGroup(int groupId, string mail,bool type)
-        {
-            this.userMail = mail;
-            this.groupId = groupId;
-            this.type_ = type;
-        }
-        public UserInGroup()
-        {
-            
-        }
+        public virtual User User { get; set; }
     }
 }
-
-
