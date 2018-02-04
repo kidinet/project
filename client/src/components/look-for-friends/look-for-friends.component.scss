@@ -1,1 +1,15 @@
-@import "../../globalStyle.scss";
+@import "../../assets/style/globalStyle";
+
+.look_fom_friends {
+  padding: 30px;
+  font-size: 0;
+  agm-map {
+    height: 500px;
+  }
+  .asaid{
+    display: inline-block;
+    width: 180px;
+    height:50px;
+    background-color: #bce8f1;
+  }
+}

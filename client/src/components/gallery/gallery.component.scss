@@ -1,1 +1,36 @@
-@import "../../globalStyle.scss";
+@import "../../assets/style/globalStyle";
+
+.gallery {
+  padding: 20px;
+  .gallery_content {
+    font-size: 0;
+    margin: 0 auto;
+    max-width: 855px;
+    .filters_container {
+      font-size: 16px;
+      text-align: left;
+    }
+    .image_galley_wrapper {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      display: inline-block;
+      margin: 10px 10px 0 0;
+      font-size: 22px;
+    }
+  }
+  .show_more {
+    padding: 10px;
+    text-align: left;
+    button{
+      font-size: 20px;
+      padding: 2px 10px;
+      i {
+        font-size: 25px;
+      }
+    }
+
+  }
+}
+
+

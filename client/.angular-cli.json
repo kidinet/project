@@ -19,11 +19,13 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "customTheme.scss"
       ],
       "stylePreprocessorOptions": {
         "includePaths": [
-          "src/globalStyle.scss"
+          "src/globalStyle.scss",
+          "customTheme.scss"
         ]
       },
       "scripts": [],

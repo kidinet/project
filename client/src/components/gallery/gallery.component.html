@@ -1,3 +1,25 @@
-<p>
-  gallery works!
-</p>
+<div class="gallery">
+    <button mat-raised-button color="accent" (click)="openaddNewImageDialog()">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        הוסף תמונה חדשה
+    </button>
+    <div class="gallery_content">
+        <div class="filters_container">
+            <mat-form-field>
+                <mat-select>
+                    <mat-option *ngFor="let filter of sortFilters" [value]="filter.value">
+                        {{ filter.title }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <app-image-gallery *ngFor="let image of images" [imageGallery]="image" class="image_galley_wrapper"
+                           (close)="closeImageResponse"></app-image-gallery>
+        <div class="show_more">
+            <button mat-raised-button color="accent" (click)="addMoreImages()">
+                הצג עוד
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>

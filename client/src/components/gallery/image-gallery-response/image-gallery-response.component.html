@@ -1,0 +1,21 @@
+<div class="image_gallery_response_wrapper">
+    <div class="response_container_wrapper" *ngFor="let respone of this.imageGalleryResponseArray">
+        <div class="response_container">
+            <h5 class="response_content">
+                {{respone.text}}
+            </h5>
+            <h6 class="details">
+                <span>{{respone.details}},</span>
+                <span>{{respone.date}}</span>
+            </h6>
+        </div>
+    </div>
+    <h6>הוסף תגובה</h6>
+    <input type="text">
+    <div class="button_container">
+        <button class="new_group" mat-raised-button>שלח
+            <i class="fa fa-reply" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<div class="overlay" (click)="closeMe()"></div>

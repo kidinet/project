@@ -1,1 +1,15 @@
-@import "../../globalStyle.scss";
+@import "../../assets/style/globalStyle";
+.home{
+  .router {
+    width: calc(100% - 300px);
+    display: inline-block;
+  }
+  .asaid {
+    width: 293px;
+    display:inline-block;
+    vertical-align: top;
+    height: 700px;
+    border-right: solid 2px $primary_color;
+    margin: 50px 0;
+  }
+}

@@ -1,0 +1,17 @@
+<div class="reply_wrapper">
+  <form [formGroup]="replyForm" (ngSubmit)="reply() ">
+
+    <mat-form-field class="input">
+      <input matInput placeholder="כותרת" type="text" name="replyTitle" [formControl]="replyTitle">
+    </mat-form-field>
+    <!--<div [hidden]="replyTitle.untouched||!replyTitle.hasError('required')">שדה נדרש</div>-->
+
+    <mat-form-field class="input">
+      <textarea matInput placeholder="התגובה שלך כאן" name="replyContent" [formControl]="replyTitle"></textarea>
+    </mat-form-field>
+    <!--<div [hidden]="replyTitle.untouched||!replyTitle.hasError('required')">שדה נדרש</div>-->
+    <div class="button_wrapper">
+      <button type="submit" mat-raised-button class="new_group">שלח</button>
+    </div>
+  </form>
+</div>

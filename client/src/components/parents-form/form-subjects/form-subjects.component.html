@@ -1,0 +1,30 @@
+
+
+
+    <mat-form-field class="input_wrapper">
+        <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <mat-autocomplete (optionSelected)="chooseOption($event)" #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{ option.text }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+<div class="button_wrapper">
+    <button mat-button (click)="toggleShowDetails()">{{isExpanded?'הסתר פרטים':'הראה פרטים'}}</button>
+</div>
+
+<div class="form_subjects" [ngClass]="{'expanded':isExpanded}">
+    <div class="subject" *ngFor="let subject of formSubjects">
+        <h3>{{subject.text}}</h3>
+        <div class="details">
+            <h6>{{subject.details}}</h6>
+            <h6>{{subject.date}}</h6>
+        </div>
+        <h5 class="count">
+            <span>{{subject.cout}}</span>
+            <span>תגובות</span>
+        </h5>
+    </div>
+</div>

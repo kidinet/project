@@ -1,30 +1,46 @@
-
 <mat-horizontal-stepper #stepper class="stepper">
     <mat-step [stepControl]="createGroupForm">
         <div class="wrapper">
             <ng-template matStepLabel>פרטי הגן</ng-template>
             <form [formGroup]="createGroupForm" (ngSubmit)="createGroup() ">
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="שם" type="text" name="name" [formControl]="name">
+                    <input matInput placeholder="שם" type="text" name="groupName" [formControl]="groupName">
                 </mat-form-field>
+                <div [hidden]="groupName.untouched||!groupName.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="עיר" type="text" name="city" [formControl]="city">
+                    <input matInput placeholder="עיר" type="text" name="groupCity" [formControl]="groupCity">
                 </mat-form-field>
+                <div [hidden]="groupCity.untouched||!groupCity.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="טלפון" type="text" name="phone" [formControl]="phone">
+                    <input matInput placeholder="טלפון" type="text" name="groupPhone" [formControl]="groupPhone">
                 </mat-form-field>
+                <div [hidden]="groupPhone.untouched||!groupPhone.hasError('required')">שדה נדרש</div>
+                <div [hidden]="groupPhone.untouched||!groupPhone.hasError('validatePhone')">הטלפון אינו בתבנית הנכונה</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="רחוב" type="text" name="street" [formControl]="street">
+                    <input matInput placeholder="רחוב" type="text" name="groupStreet" [formControl]="groupStreet">
                 </mat-form-field>
+                <div [hidden]="groupStreet.untouched||!groupStreet.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="בנין" type="number" name="build" [formControl]="build">
+                    <input matInput placeholder="בנין" type="number" name="groupBuild" [formControl]="groupBuild">
                 </mat-form-field>
+                <div [hidden]="groupBuild.untouched||!groupBuild.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="פקס" type="text" name="fax" [formControl]="fax">
+                    <input matInput placeholder="פקס" type="text" name="groupFax" [formControl]="groupFax">
                 </mat-form-field>
+                <div [hidden]="groupFax.untouched||!groupFax.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="מייל" type="mail" name="mail" [formControl]="mail">
+                    <input matInput placeholder="מייל" type="mail" name="groupMail" [formControl]="groupMail">
                 </mat-form-field>
+                <!--<div [hidden]="groupMail.untouched||!groupMail.hasError('required')">שדה נדרש</div>                                               -->
+                <div [hidden]="groupMail.untouched||!groupMail.hasError('validateMail')">כתובת המייל אינה בתבנית הנכונה</div>
+
                 <button type="submit" mat-raised-button class="new_group">צור</button>
             </form>
         </div>
@@ -36,44 +52,65 @@
             <form [formGroup]="createUserForm" (ngSubmit)="createManager()">
                 <h3>פרטים אישיים</h3>
                 <mat-form-field class="input">
-                    <input matInput placeholder="שם פרטי" type="text" name="username" [formControl]="name">
+                    <input matInput placeholder="שם פרטי" type="text" name="firstName" [formControl]="firstName">
                 </mat-form-field>
+                <div [hidden]="firstName.untouched||!firstName.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="שם משפחה" type="text" name="username" [formControl]="name">
+                    <input matInput placeholder="שם משפחה" type="text" name="lastName" [formControl]="lastName">
                 </mat-form-field>
+                <div [hidden]="lastName.untouched||!lastName.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="עיר" type="text" name="username" [formControl]="city">
+                    <input matInput placeholder="עיר" type="text" name="userCity" [formControl]="userCity">
                 </mat-form-field>
+                <div [hidden]="userCity.untouched||!userCity.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="רחוב" type="text" name="username" [formControl]="street">
+                    <input matInput placeholder="רחוב" type="text" name="userStreet" [formControl]="userStreet">
                 </mat-form-field>
+                <div [hidden]="userStreet.untouched||!userStreet.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="בנין" type="number" name="username" [formControl]="build">
+                    <input matInput placeholder="בנין" type="number" name="userBuild" [formControl]="userBuild">
                 </mat-form-field>
+                <div [hidden]="userBuild.untouched||!userBuild.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
-                    <input matInput placeholder="מייל" type="mail" name="mail" [formControl]="mail">
+                    <input matInput placeholder="טלפון" type="text" name="userPhone" [formControl]="userPhone">
                 </mat-form-field>
+                <div [hidden]="userPhone.untouched||!userPhone.hasError('required')">שדה נדרש</div>
+                <div [hidden]="userPhone.untouched||!userPhone.hasError('validatePhone')">
+                    הטלפון אינו בתבנית הנכונה
+                </div>
+
+                <mat-form-field class="input">
+                    <input matInput placeholder="מייל" type="text" name="userMail" [formControl]="userMail">
+                </mat-form-field>
+                <div [hidden]="userMail.untouched||!userMail.hasError('required')">שדה נדרש</div>
+                <div [hidden]="userMail.untouched||!userMail.hasError('validateMail')">כתובת המייל אינה בתבנית הנכונה</div>
+
                 <mat-form-field class="input">
                     <input matInput placeholder="סיסמא" type="password" name="password" [formControl]="password">
                 </mat-form-field>
+                <div [hidden]="password.untouched||!password.hasError('required')">שדה נדרש</div>
+
                 <mat-form-field class="input">
                     <input matInput placeholder="אשר סיסמא" type="password" name="confirmPassword" [formControl]="confirmPassword">
                 </mat-form-field>
+                <div [hidden]="confirmPassword.untouched||!confirmPassword.hasError('required')">שדה נדרש</div>
                 <div [hidden]="!confirmPassword.hasError('validatePassword')||confirmPassword.untouched">
-                   הסיסמאות אינן תואמות
-                </div>
-                <mat-form-field class="input">
-                    <input matInput placeholder="טלפון" type="text" name="phone" [formControl]="phone">
-                </mat-form-field>
-                <div [hidden]="!phone.hasError('validatePhone')||phone.untouched">
-                  הטלפון אינו בתבנית הנכונה
+                    הסיסמאות אינן תואמות
                 </div>
                 <button type="submit" mat-raised-button class="new_group">צור</button>
             </form>
-        </div>-->
+        </div>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <div class="wrapper">You are now done.</div>
     </mat-step>
 </mat-horizontal-stepper>
+<div class="spinner">
+    <mat-spinner *ngIf=isLoading [color]="'app-red'"></mat-spinner>
+</div>

@@ -1,0 +1,53 @@
+<form [formGroup]="createGroupForm" (ngSubmit)="updateGroup()">
+
+    <div class="input_wrapper">
+        <mat-form-field class="input">
+            <input matInput [(ngModel)]="currentGroup.groupName" placeholder="שם" type="text" name="groupName" [formControl]="groupName">
+        </mat-form-field>
+        <div [hidden]="groupName.untouched||!groupName.hasError('required')">שדה נדרש</div>
+    </div>
+
+    <div class="input_wrapper">
+        <mat-form-field class="input">
+            <input matInput [(ngModel)]="currentGroup.groupCity" placeholder="עיר" type="text" name="groupCity" [formControl]="groupCity">
+        </mat-form-field>
+        <div [hidden]="groupCity.untouched||!groupCity.hasError('required')">שדה נדרש</div>
+    </div>
+    <div class="input_wrapper">
+        <mat-form-field class="input">
+            <input matInput [(ngModel)]="currentGroup.groupPhone" placeholder="טלפון" type="text" name="groupPhone" [formControl]="groupPhone">
+        </mat-form-field>
+        <div [hidden]="groupPhone.untouched||!groupPhone.hasError('required')">שדה נדרש</div>
+        <div [hidden]="groupPhone.untouched||!groupPhone.hasError('validatePhone')">הטלפון אינו בתבנית הנכונה</div>
+    </div>
+    <div class="input_wrapper">
+        <mat-form-field class="input">
+            <input matInput [(ngModel)]="currentGroup.groupStreet" placeholder="רחוב" type="text" name="groupStreet" [formControl]="groupStreet">
+        </mat-form-field>
+        <div [hidden]="groupStreet.untouched||!groupStreet.hasError('required')">שדה נדרש</div>
+    </div>
+    <div class="input_wrapper">
+        <mat-form-field class="input">
+            <input matInput [(ngModel)]="currentGroup.groupBuild" placeholder="בנין" type="number" name="groupBuild" [formControl]="groupBuild">
+        </mat-form-field>
+        <div [hidden]="groupBuild.untouched||!groupBuild.hasError('required')">שדה נדרש</div>
+    </div>
+    <div class="input_wrapper">
+        <mat-form-field class="input">
+            <input matInput [(ngModel)]="currentGroup.groupFax" placeholder="פקס" type="text" name="groupFax" [formControl]="groupFax">
+        </mat-form-field>
+        <div [hidden]="groupFax.untouched||!groupFax.hasError('required')">שדה נדרש</div>
+    </div>
+    <div class="input_wrapper">
+        <mat-form-field class="input">
+            <input matInput [(ngModel)]="currentGroup.groupMail" placeholder="מייל" type="mail" name="groupMail" [formControl]="groupMail">
+        </mat-form-field>
+        <!--<div [hidden]="groupMail.untouched||!groupMail.hasError('required')">שדה נדרש</div>                                               -->
+        <div [hidden]="groupMail.untouched||!groupMail.hasError('validateMail')">כתובת המייל אינה בתבנית הנכונה</div>
+    </div>
+    <div class="input_wrapper"></div>
+    <div class="input_wrapper"></div>
+
+
+    <button type="submit" mat-raised-button color="accent" class="update_group">עדכן</button>
+</form>

@@ -3,14 +3,24 @@
 @import "/assets/fonts/bootstrap.min.css";
 @import "/assets/fonts/font-awesome/font-awesome/css/font-awesome.min.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-  @font-face {
-            font-family: 'bokertovregular';
-            src: url('/assets/fonts/bokertovregular.TTF') format('truetype');
-        }
-        
-        * {
-            font-family: bokertovregular;
-            direction: rtl;
-            word-spacing: 5px;
-            margin:0;
-        }
+
+@font-face {
+    font-family: 'bokertovregular';
+    src: url('/assets/fonts/bokertovregular.TTF') format('truetype');
+}
+
+* {
+    font-family: bokertovregular;
+    direction: rtl;
+    word-spacing: 5px;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+button {
+    min-height: 0;
+    min-width: 0;
+}

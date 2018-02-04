@@ -1,15 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PersonalAreaSettingsComponent} from '../personal-area/personal-area-settings/personal-area-settings.component';
+import {ConfirmPasswordComponent} from '../personal-area/confirm-password/confirm-password.component';
+import {GroupSettingsComponent} from '../personal-area/group-settings/group-settings.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+    selector: 'app-nav',
+    templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+    constructor(public personalSettings: MatDialog,
+                public confirmPassword: MatDialog,
+                public groupSettings: MatDialog) {
+    }
 
-  ngOnInit() {
-  }
+    isPersonalAreaNavOpen = false;
 
+    ngOnInit() {
+    }
+
+    openPersonalSettings() {
+        const addNewImageDialogRef = this.personalSettings.open(PersonalAreaSettingsComponent, {});
+    }
+
+    openConfirmPassword() {
+        const addNewImageDialogRef = this.confirmPassword.open(ConfirmPasswordComponent, {});
+    }
+
+    openGroupSettings() {
+        const addNewImageDialogRef = this.groupSettings.open(GroupSettingsComponent, {});
+    }
+
+    toggleSettings() {
+        this.isPersonalAreaNavOpen = !this.isPersonalAreaNavOpen;
+    }
 }

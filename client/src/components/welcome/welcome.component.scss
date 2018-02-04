@@ -1,5 +1,5 @@
 
-@import "../../globalStyle.scss";
+@import "../../assets/style/globalStyle";
 @import '~@angular/material/theming';
 
 .wrapper{
@@ -18,7 +18,7 @@
  .content{
      height:100%;
      width:100%;
-     background-image: url('../../assets/images/kidinet_back.jpg');
+     background-image: url('../../assets/images/logo/kidinet_back.jpg');
       background-repeat: no-repeat;
       background-size: cover;
      position:relative;
