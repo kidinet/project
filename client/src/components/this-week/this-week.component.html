@@ -1,3 +1,48 @@
-<p>
-  this-week works!
-</p>
+<div class="this_day">
+    <div class="date_wrapper">
+        <i class="fa fa-angle-double-right" aria-hidden="true" (click)="prevDay()" matTooltip="היום הקודם" [matTooltipPosition]="'before'"></i>
+        <span>יום</span>
+        <span class="day">{{currentDay}}</span>
+        <span class="date">{{currentDate}}</span>
+        <i class="fa fa-angle-double-left" aria-hidden="true" (click)="nextDay()" matTooltip="היום הבא" [matTooltipPosition]="'after'"></i>
+
+    </div>
+    <div class="wrapper what_we_ate" [ngClass]="{'blur':isLoading}">
+        <h2 class="title">מה אכלנו?</h2>
+        <h3 class="sub_title">בבוקר</h3>
+        <h4 (blur)="updateThisDayTitles()" class="value" [attr.contenteditable]="isEditable" [textContent]="thisDayTitles.eat_morning.title" (input)="thisDayTitles.eat_morning.title=$event.target.textContent">{{thisDayTitles.eat_morning.title}}</h4>
+        <h3 class="sub_title">בצהריים</h3>
+        <h4 (blur)="updateThisDayTitles()" class="value" [attr.contenteditable]="isEditable" [textContent]="thisDayTitles.eat_noon.title" (input)="thisDayTitles.eat_noon.title=$event.target.textContent" >{{thisDayTitles.eat_noon.title}}</h4>
+        <i class="fa fa-cutlery" aria-hidden="true"></i>
+    </div>
+    <div class="wrapper learn" [ngClass]="{'blur':isLoading}">
+        <h2 class="title">מה למדנו במפגש?</h2>
+        <h4 (blur)="updateThisDayTitles()" class="value" [attr.contenteditable]="isEditable" [textContent]="thisDayTitles.learn.title" (input)="thisDayTitles.learn.title=$event.target.textContent">{{thisDayTitles.learn.title}}</h4>
+        <i class="fa fa-leanpub" aria-hidden="true"></i>
+
+    </div>
+    <div class="wrapper subjects" [ngClass]="{'blur':isLoading}">
+        <h2 class="title">מושגים ונושאים</h2>
+        <h4 (blur)="updateThisDayTitles()" class="value" [attr.contenteditable]="isEditable" [textContent]="thisDayTitles.subjects.title" (input)="thisDayTitles.subjects.title=$event.target.textContent">{{thisDayTitles.subjects.title}}</h4>
+        <i class="fa fa-exclamation" aria-hidden="true"></i>
+    </div>
+    <div class="wrapper games" [ngClass]="{'blur':isLoading}">
+        <h2 class="title"> משחק/ יצירה</h2>
+        <h4 (blur)="updateThisDayTitles()" class="value" [attr.contenteditable]="isEditable" [textContent]="thisDayTitles.game.title" (input)="thisDayTitles.game.title=$event.target.textContent">{{thisDayTitles.game.title}}</h4>
+        <i class="fa fa-gamepad" aria-hidden="true"></i>
+
+    </div>
+    <div class="wrapper what_we_do" [ngClass]="{'blur':isLoading}">
+        <h2 class="title">מה עשינו היום בחוג</h2>
+        <h4 (blur)="updateThisDayTitles()" class="value" [attr.contenteditable]="isEditable" [textContent]="thisDayTitles.do.title" (input)="thisDayTitles.do.title=$event.target.textContent">{{thisDayTitles.do.title}}</h4>
+        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+    </div>
+    <div class="wrapper read" [ngClass]="{'blur':isLoading}">
+        <h2 class="title">ספר שקראנו</h2>
+        <h4 (blur)="updateThisDayTitles()" [attr.contenteditable]="isEditable" [textContent]="thisDayTitles.read.title" (input)="thisDayTitles.read.title=$event.target.textContent" class="value">{{thisDayTitles.read.title}}</h4>
+        <h2 class="title">שיר ששרנו</h2>
+        <i class="fa fa-book" aria-hidden="true"></i>
+        <h4 (blur)="updateThisDayTitles()" class="value" [attr.contenteditable]="isEditable" [textContent]="thisDayTitles.sing.title" (input)="thisDayTitles.sing.title=$event.target.textContent">{{thisDayTitles.sing.title}}</h4>
+    </div>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
