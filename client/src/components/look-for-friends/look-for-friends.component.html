@@ -1,16 +1,33 @@
 <div class="look_fom_friends">
-    <agm-map #gm [latitude]="groupLatitude" [longitude]="groupLongitude" [zoom]="14">
-        <!--<agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>-->
-
-        <agm-marker *ngFor="let user of usersLocaltion; let i = index" (markerClick)="opneMarger(i)" [latitude]="user.latitude" [longitude]="user.longitude"></agm-marker>
-        <agm-info-window #infoWindow *ngFor="let user of usersLocaltion; let i = index" [latitude]="user.latitude" [longitude]="user.longitude" [isOpen]="currentUser===user" >
-            <div class="info_window">
-              <span>{{user.firstName}}</span>
-              <span>{{user.lastName}}</span>
-            </div>
-        </agm-info-window>
-    </agm-map>
-    <div class="asaid"></div>
+    <div class="asaid">
+        <div class="user_in_group" *ngFor="let user of usersInCurrentGroup" (click)="setCurrentUser(user)">
+            <span>{{user.firstName}}</span>
+            <span>{{user.lastName}}</span>
+            <img src="../../assets/images/progile.jpg"  class="profile">
+        </div>
+    </div>
+    <div class="map">
+        <agm-map #gm [latitude]="groupLatitude" [longitude]="groupLongitude" [zoom]="14">
+            <!--<agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>-->
+            <agm-marker *ngFor="let user of usersInCurrentGroup; let i = index" (markerClick)="onMarkerClicked(i)"
+                        [latitude]="user.latitude" [longitude]="user.longitude"></agm-marker>
+            <agm-info-window #infoWindow *ngFor="let user of usersInCurrentGroup; let i = index"
+                             [latitude]="user.latitude" [longitude]="user.longitude" [isOpen]="currentUser===user">
+                <div class="info_window">
+                    <span>{{user.firstName}}</span>
+                    <span>{{user.lastName}}</span>
+                </div>
+            </agm-info-window>
+            <agm-marker (markerClick)="toggleCurrentGroupInfoOpen()"
+                        [latitude]="currentGroup.latitude" [longitude]="currentGroup.longitude"></agm-marker>
+            <agm-info-window #infoWindowCurrentGroup
+                             [latitude]="currentGroup.latitude" [longitude]="currentGroup.longitude" [isOpen]="isCurrentGroupInfoOpen">
+                <div class="info_window">
+                    <span>{{currentGroup.groupName}}</span>
+                </div>
+            </agm-info-window>
+        </agm-map>
+    </div>
 </div>
 
 

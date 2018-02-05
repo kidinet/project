@@ -19,30 +19,16 @@ export class LookForFriendsComponent implements OnInit {
     groupLatitude = appGlobalsService.currentGroup.latitude;
     groupLongitude = appGlobalsService.currentGroup.longitude;
     currentUser: User;
-    usersLocaltion: User[] = [
-        new User('משה', 'ללללל', 'הרב בלוי', 'בני ברק', 12, '0504109999', 'g0504108130@gmail.com', null, '1234', 32.087804, 34.837290),
-        new User('יעקב', 'ללללל', 'הרב בלוי', 'בני ברק', 12, '0504109999', 'g0504108130@gmail.com', null, '1234', 32.0869944, 34.8325423)
-    ]
+    currentGroup = appGlobalsService.currentGroup;
+    isCurrentGroupInfoOpen = true;
 
-    // inputAddress = 'רבי עקיבא 122 בני ברק'
-    // API_KEY = 'AIzaSyAftTULF-1UvfWrffosDlIChTWfhN_EqRU'
-    // API_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAftTULF-1UvfWrffosDlIChTWfhN_EqRU&address=`;
-    // dir = undefined;
-
-    ngOnInit() {
-        // console.log(this.userService.findFromAddress('הרב בלוי 11 בני ברק'));
-        // this.getDirection();
+    get usersInCurrentGroup() {
+        return appGlobalsService.usersInCurrentGroup;
     }
 
-    // findFromAddress(address: string): any {
-    //     const compositeAddress = [address];
-    //     const url = `${this.API_URL}${compositeAddress.join(',')}`;
-    //
-    //     return this.http.get(url).toPromise().then(
-    //         results => {
-    //             console.log(results);
-    //         });
-    // }
+    ngOnInit() {
+        // this.getDirection();
+    }
 
     // public getDirection() {
     //     this.dir = {
@@ -51,8 +37,17 @@ export class LookForFriendsComponent implements OnInit {
     //     }
     // }
 
-    opneMarger(i) {
-        this.currentUser = this.usersLocaltion[i];
+    onMarkerClicked(i) {
+        this.currentUser = this.usersInCurrentGroup[i];
+    }
+
+    setCurrentUser(user: User) {
+        this.currentUser = user;
+    }
+
+    toggleCurrentGroupInfoOpen() {
+        console.log(this.isCurrentGroupInfoOpen)
+        this.isCurrentGroupInfoOpen = !this.isCurrentGroupInfoOpen;
     }
 
 

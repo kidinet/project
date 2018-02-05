@@ -3,13 +3,38 @@
 .look_fom_friends {
   padding: 30px;
   font-size: 0;
-  agm-map {
-    height: 500px;
+  .map {
+    display: inline-block;
+    width: calc(100% - 210px);
+    vertical-align: top;
+    agm-map {
+      height: 500px;
+      width: 100%;
+    }
   }
-  .asaid{
+  .asaid {
     display: inline-block;
     width: 180px;
-    height:50px;
-    background-color: #bce8f1;
+    height: 50px;
+    margin: 0 0 0 25px;
+    cursor: pointer;
+    .user_in_group {
+      font-size: 19px;
+      padding: 10px 10px 10px 40px;
+      position: relative;
+      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+      transition: 0.3s;
+      .profile {
+        height: 30px;
+        position: absolute;
+        @include absolute-vertical-middle();
+        left: 10px;
+      }
+      span {
+      }
+      &:hover {
+        transform: scale(1.1, 1);
+      }
+    }
   }
 }
