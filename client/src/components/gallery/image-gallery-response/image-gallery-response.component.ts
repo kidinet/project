@@ -15,9 +15,9 @@ export class ImageGalleryResponseComponent implements OnInit {
     imageGalleryResponseArray: ImageGalleryResponse[] = []
 
     ngOnInit() {
-        for (let i = 0; i < 5; i++) {
-            this.imageGalleryResponseArray.push(new ImageGalleryResponse('אהבתיאהבתיאהבתיאההב' + i, 'אחת האמהות', '03/25/2015'));
-        }
+        // for (let i = 0; i < 5; i++) {
+        //     this.imageGalleryResponseArray.push(new ImageGalleryResponse('אהבתיאהבתיאהבתיאההב' + i, 'אחת האמהות', '03/25/2015'));
+        // }
     }
 
     closeMe() {

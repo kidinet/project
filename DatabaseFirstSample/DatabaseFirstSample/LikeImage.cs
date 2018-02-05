@@ -16,8 +16,10 @@ namespace DatabaseFirstSample
     {
         public string userMail { get; set; }
         public int imageId { get; set; }
+        public int groupId { get; set; }
     
         public virtual ImageGallery ImageGallery { get; set; }
         public virtual User User { get; set; }
+        public virtual Group Group { get; set; }
     }
 }

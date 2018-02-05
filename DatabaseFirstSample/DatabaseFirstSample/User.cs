@@ -20,6 +20,7 @@ namespace DatabaseFirstSample
             this.LikeImages = new HashSet<LikeImage>();
             this.Reminders = new HashSet<Reminder>();
             this.UserInGroups = new HashSet<UserInGroup>();
+            this.chats = new HashSet<chat>();
         }
     
         public string firstName { get; set; }
@@ -41,5 +42,7 @@ namespace DatabaseFirstSample
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserInGroup> UserInGroups { get; set; }
         public virtual ResponseImage ResponseImage { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<chat> chats { get; set; }
     }
 }
