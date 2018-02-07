@@ -19,8 +19,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {WelcomeComponent} from '../components/welcome/welcome.component';
 import {NewGroup} from '../components/welcome/welcome.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import {AgmCoreModule} from '@agm/core';
-import {AgmDirectionModule} from 'agm-direction';
+import { AgmCoreModule } from '@agm/core';            // @agm/core
+import { AgmDirectionModule } from 'agm-direction';   // agm-direction
 
 //image gallery components:
 import {ImageGalleryComponent} from '../components/gallery/image-gallery/image-gallery.component'
