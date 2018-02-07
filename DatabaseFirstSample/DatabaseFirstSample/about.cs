@@ -19,6 +19,7 @@ namespace DatabaseFirstSample
         public string icon { get; set; }
         public string color { get; set; }
         public int groupId { get; set; }
+        public string content { get; set; }
     
         public virtual Group Group { get; set; }
     }

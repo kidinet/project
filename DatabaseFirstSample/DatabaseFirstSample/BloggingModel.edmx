@@ -13,6 +13,7 @@
           <Property Name="title" Type="varchar" MaxLength="30" />
           <Property Name="icon" Type="varchar" MaxLength="30" />
           <Property Name="color" Type="varchar" MaxLength="30" />
+          <Property Name="content" Type="varchar(max)" />
           <Property Name="groupId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AdministratorSettings">
@@ -22,6 +23,16 @@
           <Property Name="mail" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="chatStart" Type="date" />
           <Property Name="chatEnd" Type="date" />
+        </EntityType>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userMail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="groupId" Type="int" Nullable="false" />
+          <Property Name="text" Type="varchar(max)" />
+          <Property Name="date" Type="date" />
         </EntityType>
         <EntityType Name="FormDilemma">
           <Key>
@@ -73,6 +84,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userMail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="groupId" Type="int" Nullable="false" />
           <Property Name="imageId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Reminder">
@@ -97,6 +109,18 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <Property Name="text" Type="varchar" MaxLength="255" />
           <Property Name="userMail" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="ThisDay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="groupId" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar(max)" />
+          <Property Name="content" Type="varchar(max)" />
+          <Property Name="color" Type="varchar" MaxLength="50" />
+          <Property Name="icon" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="date" />
+        </EntityType>
         <EntityType Name="UserInGroup">
           <Key>
             <PropertyRef Name="userMail" />
@@ -107,6 +131,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <Property Name="isAdministrator" Type="bit" Nullable="false" />
           <Property Name="childFirstName" Type="varchar" MaxLength="20" />
           <Property Name="childLastName" Type="varchar" MaxLength="20" />
+          <Property Name="child_born" Type="date" />
           <Property Name="nickname" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Users">
@@ -124,7 +149,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <Property Name="latitute" Type="float" />
           <Property Name="longitude" Type="float" />
         </EntityType>
-        <Association Name="FK__about__groupId__3F115E1A">
+        <Association Name="FK__about__groupId__7A3223E8">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="about" Type="Self.about" Multiplicity="*" />
           <ReferentialConstraint>
@@ -145,6 +170,30 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
             </Principal>
             <Dependent Role="AdministratorSettings">
               <PropertyRef Name="mail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__groupId__01D345B0">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__userMail__00DF2177">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="mail" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="userMail" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -184,7 +233,19 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LikeImage__image__503BEA1C">
+        <Association Name="FK__LikeImage__group__7755B73D">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="LikeImage" Type="Self.LikeImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LikeImage">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LikeImage__image__76619304">
           <End Role="ImageGallery" Type="Self.ImageGallery" Multiplicity="1" />
           <End Role="LikeImage" Type="Self.LikeImage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +257,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LikeImage__userM__4F47C5E3">
+        <Association Name="FK__LikeImage__userM__756D6ECB">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="LikeImage" Type="Self.LikeImage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -256,7 +317,19 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserInGro__group__339FAB6E">
+        <Association Name="FK__ThisDay__groupId__625A9A57">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="ThisDay" Type="Self.ThisDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ThisDay">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserInGro__group__662B2B3B">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
           <ReferentialConstraint>
@@ -268,7 +341,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserInGro__userM__32AB8735">
+        <Association Name="FK__UserInGro__userM__65370702">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
           <ReferentialConstraint>
@@ -283,12 +356,14 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
         <EntityContainer Name="DatabaseFirstBloggingModelStoreContainer">
           <EntitySet Name="about" EntityType="Self.about" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdministratorSettings" EntityType="Self.AdministratorSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chat" EntityType="Self.chat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormDilemma" EntityType="Self.FormDilemma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormResponse" EntityType="Self.FormResponse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageGallery" EntityType="Self.ImageGallery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LikeImage" EntityType="Self.LikeImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reminder" EntityType="Self.Reminder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThisDay" EntityType="Self.ThisDay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInGroup" EntityType="Self.UserInGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResponseImage" EntityType="Self.ResponseImage" store:Type="Tables" store:Schema="dbo">
@@ -299,13 +374,21 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
     [ResponseImage].[userMail] AS [userMail]
     FROM [dbo].[ResponseImage] AS [ResponseImage]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__about__groupId__3F115E1A" Association="Self.FK__about__groupId__3F115E1A">
+          <AssociationSet Name="FK__about__groupId__7A3223E8" Association="Self.FK__about__groupId__7A3223E8">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="about" EntitySet="about" />
           </AssociationSet>
           <AssociationSet Name="FK__Administra__mail__367C1819" Association="Self.FK__Administra__mail__367C1819">
             <End Role="Users" EntitySet="Users" />
             <End Role="AdministratorSettings" EntitySet="AdministratorSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__groupId__01D345B0" Association="Self.FK__chat__groupId__01D345B0">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__userMail__00DF2177" Association="Self.FK__chat__userMail__00DF2177">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="chat" EntitySet="chat" />
           </AssociationSet>
           <AssociationSet Name="FK__FormDilem__group__41EDCAC5" Association="Self.FK__FormDilem__group__41EDCAC5">
             <End Role="Groups" EntitySet="Groups" />
@@ -319,11 +402,15 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
             <End Role="Groups" EntitySet="Groups" />
             <End Role="ImageGallery" EntitySet="ImageGallery" />
           </AssociationSet>
-          <AssociationSet Name="FK__LikeImage__image__503BEA1C" Association="Self.FK__LikeImage__image__503BEA1C">
+          <AssociationSet Name="FK__LikeImage__group__7755B73D" Association="Self.FK__LikeImage__group__7755B73D">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="LikeImage" EntitySet="LikeImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LikeImage__image__76619304" Association="Self.FK__LikeImage__image__76619304">
             <End Role="ImageGallery" EntitySet="ImageGallery" />
             <End Role="LikeImage" EntitySet="LikeImage" />
           </AssociationSet>
-          <AssociationSet Name="FK__LikeImage__userM__4F47C5E3" Association="Self.FK__LikeImage__userM__4F47C5E3">
+          <AssociationSet Name="FK__LikeImage__userM__756D6ECB" Association="Self.FK__LikeImage__userM__756D6ECB">
             <End Role="Users" EntitySet="Users" />
             <End Role="LikeImage" EntitySet="LikeImage" />
           </AssociationSet>
@@ -343,11 +430,15 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
             <End Role="Users" EntitySet="Users" />
             <End Role="ResponseImage" EntitySet="ResponseImage" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserInGro__group__339FAB6E" Association="Self.FK__UserInGro__group__339FAB6E">
+          <AssociationSet Name="FK__ThisDay__groupId__625A9A57" Association="Self.FK__ThisDay__groupId__625A9A57">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="ThisDay" EntitySet="ThisDay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserInGro__group__662B2B3B" Association="Self.FK__UserInGro__group__662B2B3B">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="UserInGroup" EntitySet="UserInGroup" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserInGro__userM__32AB8735" Association="Self.FK__UserInGro__userM__32AB8735">
+          <AssociationSet Name="FK__UserInGro__userM__65370702" Association="Self.FK__UserInGro__userM__65370702">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserInGroup" EntitySet="UserInGroup" />
           </AssociationSet>
@@ -420,6 +511,24 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
             <End Role="User" EntitySet="Users" />
             <End Role="ResponseImage" EntitySet="ResponseImages" />
           </AssociationSet>
+          <EntitySet Name="ThisDays" EntityType="DatabaseFirst.BloggingModel.ThisDay" />
+          <AssociationSet Name="FK__ThisDay__groupId__625A9A57" Association="DatabaseFirst.BloggingModel.FK__ThisDay__groupId__625A9A57">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="ThisDay" EntitySet="ThisDays" />
+          </AssociationSet>
+          <EntitySet Name="chats" EntityType="DatabaseFirst.BloggingModel.chat" />
+          <AssociationSet Name="FK__chat__groupId__01D345B0" Association="DatabaseFirst.BloggingModel.FK__chat__groupId__01D345B0">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="chat" EntitySet="chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__userMail__00DF2177" Association="DatabaseFirst.BloggingModel.FK__chat__userMail__00DF2177">
+            <End Role="User" EntitySet="Users" />
+            <End Role="chat" EntitySet="chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LikeImage__group__7755B73D" Association="DatabaseFirst.BloggingModel.FK__LikeImage__group__7755B73D">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="LikeImage" EntitySet="LikeImages" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="about">
           <Key>
@@ -431,6 +540,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <Property Name="color" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="groupId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A" FromRole="about" ToRole="Group" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AdministratorSetting">
           <Key>
@@ -481,6 +591,9 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <NavigationProperty Name="ImageGalleries" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__395884C4" FromRole="Group" ToRole="ImageGallery" />
           <NavigationProperty Name="Reminders" Relationship="DatabaseFirst.BloggingModel.FK__Reminder__groupI__489AC854" FromRole="Group" ToRole="Reminder" />
           <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E" FromRole="Group" ToRole="UserInGroup" />
+          <NavigationProperty Name="ThisDays" Relationship="DatabaseFirst.BloggingModel.FK__ThisDay__groupId__625A9A57" FromRole="Group" ToRole="ThisDay" />
+          <NavigationProperty Name="chats" Relationship="DatabaseFirst.BloggingModel.FK__chat__groupId__01D345B0" FromRole="Group" ToRole="chat" />
+          <NavigationProperty Name="LikeImages" Relationship="DatabaseFirst.BloggingModel.FK__LikeImage__group__7755B73D" FromRole="Group" ToRole="LikeImage" />
         </EntityType>
         <EntityType Name="ImageGallery">
           <Key>
@@ -504,6 +617,8 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <Property Name="imageId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ImageGallery" Relationship="DatabaseFirst.BloggingModel.FK__LikeImage__image__503BEA1C" FromRole="LikeImage" ToRole="ImageGallery" />
           <NavigationProperty Name="User" Relationship="DatabaseFirst.BloggingModel.FK__LikeImage__userM__4F47C5E3" FromRole="LikeImage" ToRole="User" />
+          <Property Name="groupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__LikeImage__group__7755B73D" FromRole="LikeImage" ToRole="Group" />
         </EntityType>
         <EntityType Name="Reminder">
           <Key>
@@ -531,6 +646,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <Property Name="nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E" FromRole="UserInGroup" ToRole="Group" />
           <NavigationProperty Name="User" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__32AB8735" FromRole="UserInGroup" ToRole="User" />
+          <Property Name="child_born" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -551,6 +667,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <NavigationProperty Name="Reminders" Relationship="DatabaseFirst.BloggingModel.FK__Reminder__userMa__47A6A41B" FromRole="User" ToRole="Reminder" />
           <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__32AB8735" FromRole="User" ToRole="UserInGroup" />
           <NavigationProperty Name="ResponseImage" Relationship="DatabaseFirst.BloggingModel.FK__ResponseI__userM__3B40CD36" FromRole="User" ToRole="ResponseImage" />
+          <NavigationProperty Name="chats" Relationship="DatabaseFirst.BloggingModel.FK__chat__userMail__00DF2177" FromRole="User" ToRole="chat" />
         </EntityType>
         <EntityType Name="ResponseImage">
           <Key>
@@ -719,6 +836,79 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ThisDay">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="groupId" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="icon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__ThisDay__groupId__625A9A57" FromRole="ThisDay" ToRole="Group" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK__ThisDay__groupId__625A9A57">
+          <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="DatabaseFirst.BloggingModel.ThisDay" Role="ThisDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ThisDay">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userMail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="groupId" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__chat__groupId__01D345B0" FromRole="chat" ToRole="Group" />
+          <NavigationProperty Name="User" Relationship="DatabaseFirst.BloggingModel.FK__chat__userMail__00DF2177" FromRole="chat" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__chat__groupId__01D345B0">
+          <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="DatabaseFirst.BloggingModel.chat" Role="chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__userMail__00DF2177">
+          <End Type="DatabaseFirst.BloggingModel.User" Role="User" Multiplicity="1" />
+          <End Type="DatabaseFirst.BloggingModel.chat" Role="chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="mail" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="userMail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LikeImage__group__7755B73D">
+          <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="DatabaseFirst.BloggingModel.LikeImage" Role="LikeImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LikeImage">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -728,6 +918,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <EntitySetMapping Name="abouts">
             <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.about">
               <MappingFragment StoreEntitySet="about">
+                <ScalarProperty Name="content" ColumnName="content" />
                 <ScalarProperty Name="groupId" ColumnName="groupId" />
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="icon" ColumnName="icon" />
@@ -795,6 +986,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <EntitySetMapping Name="LikeImages">
             <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.LikeImage">
               <MappingFragment StoreEntitySet="LikeImage">
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
                 <ScalarProperty Name="imageId" ColumnName="imageId" />
                 <ScalarProperty Name="userMail" ColumnName="userMail" />
               </MappingFragment>
@@ -815,6 +1007,7 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
           <EntitySetMapping Name="UserInGroups">
             <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.UserInGroup">
               <MappingFragment StoreEntitySet="UserInGroup">
+                <ScalarProperty Name="child_born" ColumnName="child_born" />
                 <ScalarProperty Name="nickname" ColumnName="nickname" />
                 <ScalarProperty Name="childLastName" ColumnName="childLastName" />
                 <ScalarProperty Name="childFirstName" ColumnName="childFirstName" />
@@ -847,6 +1040,30 @@ warning 6002: The table/view 'C:\PROJECT\SOLUTION\WEBAPI\APP_DATA\DATABASEFIRST.
                 <ScalarProperty Name="text" ColumnName="text" />
                 <ScalarProperty Name="date_added" ColumnName="date_added" />
                 <ScalarProperty Name="imageId" ColumnName="imageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThisDays">
+            <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.ThisDay">
+              <MappingFragment StoreEntitySet="ThisDay">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chats">
+            <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.chat">
+              <MappingFragment StoreEntitySet="chat">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="userMail" ColumnName="userMail" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

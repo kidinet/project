@@ -81,6 +81,9 @@
     </Compile>
     <Compile Include="bl_classes\BL_USER.cs" />
     <Compile Include="bl_classes\Result.cs" />
+    <Compile Include="chat.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="FormDilemma.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
@@ -103,6 +106,9 @@
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ResponseImage.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThisDay.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">

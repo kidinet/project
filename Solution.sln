@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseFirstSample", "DatabaseFirstSample\DatabaseFirstSample\DatabaseFirstSample.csproj", "{0CB1EF60-7DD1-4B5C-AABC-22547C2E3C3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB_project", "DB_project\DB_project.csproj", "{3CC0FC92-1DF4-4BD2-AE28-2A35D9066B0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client", "DB_project\client.csproj", "{3CC0FC92-1DF4-4BD2-AE28-2A35D9066B0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
