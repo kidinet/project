@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
+import {ThisDayContent} from '../../entities/thisDay/ThisDayContent';
 import * as moment from 'moment';
+import * as appGlobalsService from '../../store/app-globals';
 moment.locale('he');
 @Component({
     selector: 'app-this-week',
@@ -34,9 +36,28 @@ export class ThisWeekComponent implements OnInit {
     get currentDate() {
         return moment(this.displayDay).format('MMM Do YY');
     }
+     get thisDayOfGroupArray(){
+        return appGlobalsService.thisDayOfGroupArray;
+    }
+     get thisDayContentArray(){
+     let map = {};
+        appGlobalsService.thisDayOfGroupArray.forEach(element => {
+             let thisDay: ThisDayContent;
+             thisDay= appGlobalsService.thisDayContentArray.find((item) => {
+                return item.titleId==element.id;
+             });
+             if(!thisDay){
+                thisDay= new ThisDayContent(this.displayDay,element.id,'');
+                 appGlobalsService.addThisDayContent(thisDay);
+              }
+              map[element.id] = thisDay
+        });
+        return map;
+    }
 
     ngOnInit() {
-
+      console.log(this.thisDayOfGroupArray);
+    //  console.log(this.thisDayContentArray);
     }
 
     nextDay() {
@@ -63,9 +84,11 @@ export class ThisWeekComponent implements OnInit {
         });
     }
 
-    updateThisDayTitles() {
-        this.apiService.updateThisDayTitles(this.displayDay, this.thisDayTitles);
-    }
 
+    updateThisDayTitles() {
+       // this.apiService.updateThisDayTitles(this.displayDay, this.thisDayTitles);
+       console.log(this.thisDayContentArray);
+    }
+    
 
 }
