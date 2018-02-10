@@ -3,6 +3,8 @@ import {User} from '../entities/user/user';
 import {UserInGroup} from '../entities/user/UserInGroup';
 import {AboutTitle} from '../entities/about/aboutTitles';
 import {ImageGallery} from '../entities/gallery/imageGallery';
+import {ThisDayContent} from '../entities/thisDay/thisDayContent';
+import {ThisDayOfGroup} from '../entities/thisDay/ThisDayOfGroup';
 
 
 // variables
@@ -30,6 +32,18 @@ export let imageGallery: ImageGallery[] = [];
 export let likeItems = [];
 export let likeItemsCount = {};
 
+export let thisDayOfGroupArray = [
+new ThisDayOfGroup(1,123,'מה למדנו','fa fa-cutlery'),
+new ThisDayOfGroup(2,123,'מושגים ונושאים','fa fa-cutlery'),
+new ThisDayOfGroup(3,123,'משחק.יצירה','fa fa-cutlery'),
+new ThisDayOfGroup(4,123,'מה עשינו היום בחוג','fa fa-cutlery'),
+new ThisDayOfGroup(5,123,'ספר שקראנו','fa fa-cutlery')
+];
+
+export let thisDayContentArray = [
+   new ThisDayContent(new Date(),1,'ארוחת בוקר'),
+   new ThisDayContent(new Date(),2,'מושגים חדשים')
+]
 
 // setters
 export function setGroup(groupParam) {
@@ -78,7 +92,11 @@ export function deleteImageFromGallery(id) {
     })
     imageGallery.splice(imageGallery.indexOf(item), 1);
 }
-
+// ====================thisDay=============
+export function addThisDayContent(thisDayParam:ThisDayContent) {
+    thisDayContentArray.push(thisDayParam);
+}    
+// =====================================
 
 // getters
 export function getCurrentUser() {

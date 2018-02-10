@@ -27,6 +27,8 @@
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0;
     margin: 10px;
     transition: all 0.3s;
+    background-color: #fff6d6;
+    color: #5f583b;
     .title {
       font-size: 30px;
       font-weight: bold;
@@ -45,60 +47,15 @@
     }
     i {
       position: absolute;
+      top:5px;
+      left:5px;
       font-size: 40px;
       z-index: 100;
+      cursor: pointer;
     }
-    &.what_we_ate {
-      color: #703a3a;
-      background-color: #ffdede;
-      h4 {
-        max-height: 150px;
-      }
-      i.fa-cutlery {
-        top: 30px;
-        left: -15px;
-      }
-    }
-    &.learn {
-      color: #596172;
-      background-color: #e1faf8;
-      i.fa-leanpub {
-        bottom: -15px;
-        left: 30px;
-      }
-    }
-    &.subjects {
-      background-color: #fff6d6;
-      color: #5f583b;
-      i.fa-exclamation {
-        bottom: -15px;
-        left: 30px;
-      }
-    }
-    &.games {
-      background-color: #daffeb;
-      color: #3f5755;
-      i.fa-gamepad {
-        bottom: 15px;
-        left: -15px;
-      }
-    }
-    &.what_we_do {
-      background-color: #f5e4f6;
-      color: #854e4e;
-      i.fa-thumb-tack {
-        bottom: -15px;
-        left: 35px;
-      }
-    }
-    &.read {
-      background-color: #dee5ff;
-      color: #7b4f8f;
-      i.fa-book {
-        top: 15px;
-        left: -15px;
-      }
-    }
+  
+  
+  
     &:hover {
       transform: scale(1.05, 1.05);
       z-index: 100;
