@@ -25,17 +25,18 @@ export class LookForFriendsComponent implements OnInit {
     get usersInCurrentGroup() {
         return appGlobalsService.usersInCurrentGroup;
     }
+    dir;
 
     ngOnInit() {
         // this.getDirection();
     }
 
-    // public getDirection() {
-    //     this.dir = {
-    //         origin: {lat: 24.799448, lng: 120.979021},
-    //         destination: {lat: 24.799524, lng: 120.975017}
-    //     }
-    // }
+    public getDirection() {
+        this.dir = {
+            origin: {lat: 32.090606, lng:  34.825582},
+            destination: {lat: 32.087851, lng:  34.829069}
+        }
+    }
 
     onMarkerClicked(i) {
         this.currentUser = this.usersInCurrentGroup[i];
