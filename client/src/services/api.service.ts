@@ -187,7 +187,18 @@ export class ApiService {
         return {123: 1, 113: 5};
     }
 
-    // this day functions:
+    // ========================this day functions:=====================================================
+    // the function get add the titles of this group from table thisDayOfGroup
+    getCurrentGroupThisDayTitltes():any{
+        /* const promise = new Promise(() => {
+         const url = `${appGlobalsService.baseAPIUrl}'getCurrentGroupThisDayTitltes/he/true?`
+         this.http.post(url,
+         {
+         groupId: appGlobalsService.getCurrentGroup().groupId,
+         }, httpOptions).toPromise();
+         });*/
+    }
+    // the function get the content of the cards according to the displayedDay and rhe groupId
     getDisplayDayParam(displayDay: Date): any {
         /* const promise = new Promise(() => {
          const url = `${appGlobalsService.baseAPIUrl}'getDisplayDayParam/he/true?`
@@ -198,16 +209,33 @@ export class ApiService {
          }, httpOptions).toPromise();
          });*/
     }
-
-    updateThisDayTitles(displayDay: Date, updatetThisDayTitleParam): any {
-       /* const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'updateThisDayTitles/he/true?`
+    // the function get card of group and update the title
+    updateThisDayTitle(updatetThisDayTitleParam): any {
+        const promise = new Promise(() => {
+            const url = `${appGlobalsService.baseAPIUrl}'updateThisDayTitle/he/true?`
             this.http.post(url,
                 {
-                    groupId: appGlobalsService.getCurrentGroup().groupId,
-                    date: displayDay,
                     title: updatetThisDayTitleParam
                 }, httpOptions).toPromise();
-        });*/
+        });
     }
+    updateThisDayOfGroupTitle(updateThisDayOfGroupTitleParam): any {
+        const promise = new Promise(() => {
+            const url = `${appGlobalsService.baseAPIUrl}'updateThisDayOfGroupTitleParam/he/true?`
+            this.http.post(url,
+                {
+                    title: updateThisDayOfGroupTitleParam
+                }, httpOptions).toPromise();
+        });
+    }
+    addThisDayOfGroupTitle(addThisDayOfGroupTitleParam): any {
+        const promise = new Promise(() => {
+            const url = `${appGlobalsService.baseAPIUrl}'addThisDayOfGroupTitleParam/he/true?`
+            this.http.post(url,
+                {
+                    title: addThisDayOfGroupTitleParam
+                }, httpOptions).toPromise();
+        });
+    }
+    // =============================================================================================
 }

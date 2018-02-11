@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {ThisDayContent} from '../../entities/thisDay/ThisDayContent';
+import {ThisDayContent} from '../../entities/thisDay/thisDayContent';
+import {ThisDayOfGroup} from '../../entities/thisDay/thisDayOfGroup';
 import * as moment from 'moment';
 import * as appGlobalsService from '../../store/app-globals';
 moment.locale('he');
@@ -14,20 +15,10 @@ export class ThisWeekComponent implements OnInit {
     constructor(private apiService: ApiService) {
     }
 
-    thisDayTitles = {
-        'eat_morning': {title: 'בלה בוקר בוקר בוקר'},
-        'eat_noon': {title: 'תהריים צהרים צהרים'},
-        'learn': {title: 'ללמוד, ללמוד '},
-        'read': {title: 'בלה בוקר לקרוא בוקר'},
-        'do': {title: 'בלה בוקר לקרוא בוקר'},
-        'game': {title: 'בלה בוקר לקרוא בוקר'},
-        'sing': {title: 'בלה בוקר לקרוא בוקר'},
-        'subjects': {title: 'בלה בוקר לקרוא בוקר'},
-    }
-
     displayDay = new Date();
     isEditable = true;
     isLoading = false;
+    newTitle: ThisDayOfGroup = new ThisDayOfGroup(null, null, null, 'fa fa-question-circle');
 
     get currentDay() {
         return moment(this.displayDay).format('dddd');
@@ -36,28 +27,48 @@ export class ThisWeekComponent implements OnInit {
     get currentDate() {
         return moment(this.displayDay).format('MMM Do YY');
     }
-     get thisDayOfGroupArray(){
+
+    get thisDayOfGroupArray() {
         return appGlobalsService.thisDayOfGroupArray;
     }
-     get thisDayContentArray(){
-     let map = {};
+
+    get thisDayContentArray() {
+        let map = {};
         appGlobalsService.thisDayOfGroupArray.forEach(element => {
-             let thisDay: ThisDayContent;
-             thisDay= appGlobalsService.thisDayContentArray.find((item) => {
-                return item.titleId==element.id;
-             });
-             if(!thisDay){
-                thisDay= new ThisDayContent(this.displayDay,element.id,'');
-                 appGlobalsService.addThisDayContent(thisDay);
-              }
-              map[element.id] = thisDay
+            let thisDay: ThisDayContent;
+            thisDay = appGlobalsService.thisDayContentArray.find((item) => {
+                return item.titleId == element.id;
+            });
+            if (!thisDay) {
+                thisDay = new ThisDayContent(this.displayDay, element.id, '');
+                appGlobalsService.addThisDayContent(thisDay);
+            }
+            map[element.id] = thisDay
         });
         return map;
     }
 
+    get appGlobalsService() {
+        return appGlobalsService;
+    }
+
+    getColor(event: string, title: any) {
+        title.color = event;
+    }
+
+    getIcon(event: string, title: any) {
+        title.icon = event;
+    }
+
+    toggleStyleOpen(title) {
+        title.isStyleOpen = !title.isStyleOpen;
+    }
+
     ngOnInit() {
-      console.log(this.thisDayOfGroupArray);
-    //  console.log(this.thisDayContentArray);
+       this.apiService.getDisplayDayParam(this.displayDay).then(result=>{
+           appGlobalsService.initThisDayOfGroupArray(result.returnOject);
+       })
+        //  console.log(this.thisDayContentArray);
     }
 
     nextDay() {
@@ -85,10 +96,25 @@ export class ThisWeekComponent implements OnInit {
     }
 
 
-    updateThisDayTitles() {
-       // this.apiService.updateThisDayTitles(this.displayDay, this.thisDayTitles);
-       console.log(this.thisDayContentArray);
+    updateThisDayTitle(thisDayTitle) {
+        this.apiService.updateThisDayTitle(thisDayTitle);
     }
-    
+
+    updateThisDayOfGroupTitle(titleOfGroup) {
+        // this.apiService.updateThisDayOfGroupTitle(titleOfGroup);
+    }
+
+    addNewTitle() {
+        if (this.newTitle.title) {
+            this.newTitle.icon = this.newTitle.setIcon();
+            this.isLoading = true;
+            this.apiService.addThisDayOfGroupTitle(this.newTitle).then(result => {
+                appGlobalsService.addThisDayOfGroup(result.retureObject);
+                this.newTitle = new ThisDayOfGroup(null, null, null, 'fa fa-question-circle');
+                this.isLoading = false;
+            })
+        }
+    }
+
 
 }

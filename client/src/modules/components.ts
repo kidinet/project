@@ -21,13 +21,13 @@ import {NewGroup} from '../components/welcome/welcome.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AgmCoreModule } from '@agm/core';            // @agm/core
 import { AgmDirectionModule } from 'agm-direction';   // agm-direction
-
+//globals
+import { StyleComponent } from '../components/style/style.component';
 //image gallery components:
 import {ImageGalleryComponent} from '../components/gallery/image-gallery/image-gallery.component'
 import {LikeComponentComponent} from '../components/gallery/image-gallery/like-component/like-component.component';
 import {ImageGalleryResponseComponent} from '../components/gallery/image-gallery-response/image-gallery-response.component'
 import {AddNewImageComponent} from '../components/gallery/add-new-image/add-new-image.component';
-
 
 // form components:
 import {FormListComponent} from '../components/parents-form/form-list/form-list.component';
@@ -36,7 +36,6 @@ import {ReplyComponent} from '../components/parents-form/reply/reply.component';
 
 // about components:
 import {AboutTitleComponent} from '../components/about/about-title/about-title.component';
-import {AboutTitleStyleComponent} from '../components/about/about-title-style/about-title-style.component';
 
 // personal area components:
 import {ChatComponent} from '../components/personal-area/chat/chat.component';
@@ -88,13 +87,13 @@ const routes: Routes = [
         FormSubjectsComponent,
         ReplyComponent,
         AboutTitleComponent,
-        AboutTitleStyleComponent,
         ChatComponent,
         PersonalAreaSettingsComponent,
         RemindersComponent,
         AddNewImageComponent,
         ConfirmPasswordComponent,
-        GroupSettingsComponent
+        GroupSettingsComponent,
+        StyleComponent
     ],
     entryComponents: [NewGroup, AddNewImageComponent, ConfirmPasswordComponent,GroupSettingsComponent],
     imports: [
@@ -135,7 +134,6 @@ const routes: Routes = [
         FormSubjectsComponent,
         ReplyComponent,
         AboutTitleComponent,
-        AboutTitleStyleComponent,
         ChatComponent,
         PersonalAreaSettingsComponent,
         RemindersComponent,
