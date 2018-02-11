@@ -1,15 +1,15 @@
-@import '../../../assets/style/globalStyle';
+@import '../../assets/style/globalStyle';
 
 .wrapper {
   background-color: $light_gray;
   display: inline-block;
   font-size: 0;
-  width: 200px;
+  width: 400px;
   padding: 0 0 7px 7px;
   box-shadow: 0 0 3px 0 rgb(146, 146, 146);
   .color_option {
     height: 40px;
-    width: calc(25% - 7px);
+    width: calc(14% - 7px);
     display: inline-block;
     margin: 7px 7px 0 0;
     border-radius: 7px;
