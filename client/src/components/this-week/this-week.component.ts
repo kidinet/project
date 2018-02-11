@@ -65,10 +65,9 @@ export class ThisWeekComponent implements OnInit {
     }
 
     ngOnInit() {
-       this.apiService.getDisplayDayParam(this.displayDay).then(result=>{
-           appGlobalsService.initThisDayOfGroupArray(result.returnOject);
-       })
-        //  console.log(this.thisDayContentArray);
+       // this.apiService.getDisplayDayParam(this.displayDay).then(result=>{
+       //     appGlobalsService.initThisDayOfGroupArray(result.returnOject);
+       // })
     }
 
     nextDay() {
