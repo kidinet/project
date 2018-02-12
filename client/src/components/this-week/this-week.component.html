@@ -25,7 +25,7 @@
                 [textContent]="thisDayContentArray[title.id].content"
                 (input)="thisDayContentArray[title.id].content=$event.target.textContent"></h4>
             <i [ngClass]="title.icon" aria-hidden="true" (click)="toggleStyleOpen(title)"></i>
-            <app-style *ngIf="title.isStyleOpen" [colors]="appGlobalsService.colors" [icons]="appGlobalsService.icons"
+            <app-style *ngIf="title.isStyleOpen" [colors]="appGlobalsStyle.colors" [icons]="appGlobalsStyle.icons"
                        class="app_style" (color)="getColor($event,title)"
                        (icon)="getIcon($event,title)"></app-style>
             <div class="fixed" *ngIf="title.isStyleOpen" (click)="toggleStyleOpen(title)"></div>

@@ -5,6 +5,7 @@
             <span>{{user.lastName}}</span>
             <img src="../../assets/images/progile.jpg"  class="profile">
         </div>
+        <button mat-raised-button color="accent" (click)=showKinderGardenDirection()>הגן שלנו</button>
     </div>
     <div class="map">
         <agm-map #gm [latitude]="groupLatitude" [longitude]="groupLongitude" [zoom]="14">
@@ -12,7 +13,7 @@
             <agm-marker *ngFor="let user of usersInCurrentGroup; let i = index" (markerClick)="onMarkerClicked(i)"
                         [latitude]="user.latitude" [longitude]="user.longitude"></agm-marker>
             <agm-info-window #infoWindow *ngFor="let user of usersInCurrentGroup; let i = index"
-                             [latitude]="user.latitude" [longitude]="user.longitude" [isOpen]="currentUser===user">
+                             [latitude]="user.latitude" [longitude]="user.longitude" [isOpen]="currentFriend===user">
                 <div class="info_window">
                     <span>{{user.firstName}}</span>
                     <span>{{user.lastName}}</span>
@@ -26,10 +27,19 @@
                     <span>{{currentGroup.groupName}}</span>
                 </div>
             </agm-info-window>
+            <agm-marker
+                        [latitude]="currentUser.latitude" [longitude]="currentUser.longitude"></agm-marker>
+            <agm-info-window #infoWindowCurrentGroup
+                             [latitude]="currentUser.latitude" [longitude]="currentUser.longitude" [isOpen]="true">
+                <div class="info_window">
+                    <span>אני</span>
+                </div>
+            </agm-info-window>
         </agm-map>
-        <div #myPanel>
+        <div #myPanel class="direction_details">
+            <!--<h3 *ngIf="!this.currentUser.latitude||!currentUser.longitude||!currentFriend.latitude||!currentFriend.longitude">לא ניתן להציג מיקום זה</h3>-->
         </div>
-        <button type="button" (click)="getDirection()">Get</button>
+
     </div>
 </div>
 

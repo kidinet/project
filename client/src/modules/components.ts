@@ -15,15 +15,16 @@ import {HomeComponent} from '../components/home/home.component';
 import {HeaderComponent} from '../components/header/header.component';
 import {TopMessageComponent} from '../components/top-message/top-message.component';
 import {NavComponent} from '../components/nav/nav.component';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes, ROUTES} from '@angular/router';
 import {WelcomeComponent} from '../components/welcome/welcome.component';
 import {NewGroup} from '../components/welcome/welcome.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { AgmCoreModule } from '@agm/core';            // @agm/core
-import { AgmDirectionModule } from 'agm-direction';   // agm-direction
-//globals
-import { StyleComponent } from '../components/style/style.component';
-//image gallery components:
+import {AgmCoreModule} from '@agm/core';            // @agm/core
+import {AgmDirectionModule} from 'agm-direction';   // agm-direction
+import * as globals from '../store/app-globals';
+// globals
+import {StyleComponent} from '../components/style/style.component';
+// image gallery components:
 import {ImageGalleryComponent} from '../components/gallery/image-gallery/image-gallery.component'
 import {LikeComponentComponent} from '../components/gallery/image-gallery/like-component/like-component.component';
 import {ImageGalleryResponseComponent} from '../components/gallery/image-gallery-response/image-gallery-response.component'
@@ -42,29 +43,9 @@ import {ChatComponent} from '../components/personal-area/chat/chat.component';
 import {PersonalAreaSettingsComponent} from '../components/personal-area/personal-area-settings/personal-area-settings.component';
 import {RemindersComponent} from '../components/personal-area/reminders/reminders.component';
 import {ConfirmPasswordComponent} from '../components/personal-area/confirm-password/confirm-password.component';
-import {GroupSettingsComponent } from '../components/personal-area/group-settings/group-settings.component';
+import {GroupSettingsComponent} from '../components/personal-area/group-settings/group-settings.component';
+import {AppRoutes} from './route';
 
-
-const routes: Routes = [
-    {path: '', component: WelcomeComponent},
-    {
-        path: ':id', component: HomeComponent, children: [
-        {path: 'about', component: AboutComponent},
-        {path: 'gallery', component: GalleryComponent},
-        {path: 'form', component: ParentsFormComponent},
-        {path: 'look-for-friends', component: LookForFriendsComponent},
-        {path: 'this-week', component: ThisWeekComponent},
-        {
-            path: 'presonal-area', component: PersonalAreaComponent,
-            children: [
-                {path: 'chat', component: ChatComponent},
-                {path: 'remiders', component: RemindersComponent},
-                {path: 'settings', component: PersonalAreaSettingsComponent},
-            ]
-        }
-    ]
-    }
-];
 
 @NgModule({
     declarations: [
@@ -95,9 +76,9 @@ const routes: Routes = [
         GroupSettingsComponent,
         StyleComponent
     ],
-    entryComponents: [NewGroup, AddNewImageComponent, ConfirmPasswordComponent,GroupSettingsComponent],
+    entryComponents: [NewGroup, AddNewImageComponent, ConfirmPasswordComponent, GroupSettingsComponent],
     imports: [
-        RouterModule.forRoot(routes),
+        AppRoutes,
         BrowserModule,
         FormsModule,
         CommonModule,
@@ -141,4 +122,5 @@ const routes: Routes = [
     ],
 })
 export class components {
+
 }

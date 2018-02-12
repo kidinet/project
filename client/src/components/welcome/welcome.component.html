@@ -2,14 +2,15 @@
   <header></header>
   <div class="content">
     <img src="../../assets/images/logo/kidinet_logo.svg" />
-    <form [formGroup]="loginForm" (ngSubmit)="login() ">
-      <input placeholder="הכנס שם" type="text" name="username" [formControl]="password">
-      <div [hidden]="!password.hasError('required')">
-        שדה חובה
-      </div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
       <input placeholder="מייל" type="mail" name="mail" [formControl]="mail">
       <div [hidden]="mail.valid|| mail.untouched">כתובת המייל אינה בתבנית הנכונה</div>
-      <button mat-raised-button type="submit" [disabled]="!loginForm.valid" class=welcome>
+      <input placeholder="הכנס סיסמא" type="password" name="password" [formControl]="password">
+      <div [hidden]="!password.hasError('required')||password.untouched">
+        שדה חובה
+      </div>
+      <div *ngIf="logInFailed">שם המשתמש או הסיסמא אינם נכונים</div>
+      <button color="accent" mat-raised-button type="submit" [disabled]="!loginForm.valid" class=welcome>
         <span>הכנס</span>
         <i class="fa fa-sign-in" aria-hidden="true"></i>
       </button>

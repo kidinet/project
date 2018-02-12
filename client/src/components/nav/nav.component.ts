@@ -3,6 +3,7 @@ import {PersonalAreaSettingsComponent} from '../personal-area/personal-area-sett
 import {ConfirmPasswordComponent} from '../personal-area/confirm-password/confirm-password.component';
 import {GroupSettingsComponent} from '../personal-area/group-settings/group-settings.component';
 import {MatDialog} from '@angular/material';
+import * as appGlobalsService from '../../store/app-globals';
 
 @Component({
     selector: 'app-nav',
@@ -35,5 +36,12 @@ export class NavComponent implements OnInit {
 
     toggleSettings() {
         this.isPersonalAreaNavOpen = !this.isPersonalAreaNavOpen;
+    }
+
+    logOut() {
+        location.reload();
+    }
+    get appGlobalsService() {
+        return appGlobalsService;
     }
 }
