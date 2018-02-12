@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f53e32d11eb84fe8bddec0ecad437aa3" Name="Diagram1">
+      <Diagram DiagramId="f53e32d11eb84fe8bddec0ecad437aa3" Name="Diagram1" ZoomLevel="62">
         <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.about" Width="1.5" PointX="8.375" PointY="4.75" />
         <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.AdministratorSetting" Width="1.5" PointX="10" PointY="2.125" />
         <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.FormDilemma" Width="1.5" PointX="8.25" PointY="2.125" />
@@ -29,12 +29,14 @@
         <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__Reminder__userMa__47A6A41B" />
         <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__UserInGro__userM__32AB8735" />
         <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__ResponseI__userM__3B40CD36" />
-        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.ThisDay" Width="1.5" PointX="3.75" PointY="26.5" />
-        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__ThisDay__groupId__625A9A57" />
         <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.chat" Width="1.5" PointX="1" PointY="6.375" />
         <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__chat__groupId__01D345B0" />
         <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__chat__userMail__00DF2177" />
         <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__LikeImage__group__7755B73D" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.ThisDayContent" Width="1.5" PointX="11" PointY="8.625" />
+        <EntityTypeShape EntityType="DatabaseFirst.BloggingModel.ThisDayOfGroup" Width="1.5" PointX="8.75" PointY="8.25" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__ThisDayOf__group__0880433F" />
+        <AssociationConnector Association="DatabaseFirst.BloggingModel.FK__ThisDayCo__title__0B5CAFEA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

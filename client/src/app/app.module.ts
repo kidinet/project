@@ -18,9 +18,22 @@ import {FormValidateService} from '../services/form-validate.service';
 import {ApiService} from '../services/api.service';
 import {CookieService} from 'ngx-cookie-service';
 import {ImagesService} from '../services/images.service';
+import {AdService} from '../services/ad.service'
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 
-
-
+export const environment = {
+    production: false,
+    firebase: {
+    apiKey: "AIzaSyCdNBLoYL1Oz64Gx9VtKEfolj2fIbnkgCo",
+    authDomain: "newkidinet.firebaseapp.com",
+    databaseURL: "https://newkidinet.firebaseio.com",
+    projectId: "newkidinet",
+    storageBucket: "",
+    messagingSenderId: "945647659389"
+    }
+};
 
 @NgModule({
     declarations: [
@@ -38,8 +51,11 @@ import {ImagesService} from '../services/images.service';
         CommonModule,
         MatDialogModule,
         FormsModule,
-        ReactiveFormsModule,
         HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule.enablePersistence(),
+        ReactiveFormsModule
+       
     ],
     providers: [
         UserService,
@@ -47,7 +63,9 @@ import {ImagesService} from '../services/images.service';
         FormValidateService,
         CookieService,
         ImagesService,
-        ApiService],
+        ApiService,
+        AdService,
+        AngularFireDatabase],
     exports: [],
 
     bootstrap: [AppComponent]

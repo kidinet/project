@@ -108,7 +108,10 @@
     <Compile Include="ResponseImage.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ThisDay.cs">
+    <Compile Include="ThisDayContent.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThisDayOfGroup.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">

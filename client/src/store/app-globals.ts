@@ -12,7 +12,7 @@ import {ThisDayContent} from '../entities/thisDay/thisDayContent';
 export let baseAppUrl = 'http://localhost:4200/';
 export let baseAPIUrl = 'http://localhost:7022/api/';
 // ===================================================================
-export let enableNavigation: false;
+export let enableNavigation= false;
 // =======================group and users=============================
 
 // variables:
