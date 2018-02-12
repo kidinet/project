@@ -46,6 +46,22 @@ import {ConfirmPasswordComponent} from '../components/personal-area/confirm-pass
 import {GroupSettingsComponent} from '../components/personal-area/group-settings/group-settings.component';
 import {AppRoutes} from './route';
 
+// firebase:
+import { AngularFireModule } from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+// import { AngularFirestoreModule } from 'angularfire2/database';
+
+export const environment = {
+    production: false,
+    firebase: {
+        apiKey: '<your-key>',
+        authDomain: '<your-project-authdomain>',
+        databaseURL: '<your-database-URL>',
+        projectId: '<your-project-id>',
+        storageBucket: '<your-storage-bucket>',
+        messagingSenderId: '<your-messaging-sender-id>'
+    }
+};
 
 @NgModule({
     declarations: [
@@ -90,7 +106,9 @@ import {AppRoutes} from './route';
             apiKey: 'AIzaSyAftTULF-1UvfWrffosDlIChTWfhN_EqRU',
             language: 'he'
         }),
-        AgmDirectionModule
+        AgmDirectionModule,
+       // AngularFireModule.initializeApp(environment.firebase),
+      //  AngularFirestoreModule
     ],
     exports: [
         AboutComponent,
@@ -118,7 +136,9 @@ import {AppRoutes} from './route';
         ChatComponent,
         PersonalAreaSettingsComponent,
         RemindersComponent,
-        AddNewImageComponent
+        AddNewImageComponent,
+      //  AngularFireModule.initializeApp(environment.firebase),
+      //  AngularFirestoreModule
     ],
 })
 export class components {
