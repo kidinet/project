@@ -21,7 +21,7 @@ export class ApiService {
     constructor(private http: HttpClient) {
     }
 
-    // about page api:
+    // ============================= about page api=============================================:
     initAllAboutTitles(): any {
         /* const promise = new Promise(() => {
          const url = `${appGlobalsService.baseAPIUrl}'initAllAboutTitles/he/true`
@@ -109,12 +109,12 @@ export class ApiService {
         });
     }
 
-// gallery api:
+// ======================================== gallery api:================================================
     initImagesForGallery(start): any {
         /* const promise = new Promise(() => {
          const url = `${appGlobalsService.baseAPIUrl}initImagesForGallery/he/true?`
          this.http.post(url, {
-         groupId: appGlobalsService.getCurrentGroup().groupId,
+         groupId: appGlobalsService.currentGroup.groupId,
          start: start
          }, httpOptions)
          .toPromise();
@@ -136,14 +136,14 @@ export class ApiService {
             new ImageGallery(553, new Date(), '../../assets/images/kinder-garden/kinder-garden-13.jpg', 'השבוע בגן'),
             new ImageGallery(553, new Date(), '../../assets/images/kinder-garden/kinder-garden-13.jpg', 'השבוע בגן'),
             new ImageGallery(553, new Date(), '../../assets/images/kinder-garden/kinder-garden-12.jpg', 'השבוע בגן'),
-            new ImageGallery(198, new Date(), '../../assets/images/kinder-garden/kinder-garden-6.jpg', 'השבוע בגן')]
+            new ImageGallery(198, new Date(), '../../assets/images/kinder-garden/kinder-garden-6.jpg', 'השבוע בגן')];
         // ===================================================================================
     }
 
     initAllResponseImage(start): any {
         const promise = new Promise(() => {
             const url = `${appGlobalsService.baseAPIUrl}'initAllResponseImage/he/true?`
-            this.http.post(url, {groupId: appGlobalsService.getCurrentGroup().groupId}, httpOptions)
+            this.http.post(url, {groupId: appGlobalsService.currentGroup.groupId}, httpOptions)
                 .toPromise();
         });
     }
@@ -161,7 +161,7 @@ export class ApiService {
          const promise = new Promise(() => {
          const url = `${appGlobalsService.baseAPIUrl}'addImageToGallery/he/true?`
          this.http.post(url, {
-         groupId: appGlobalsService.getCurrentGroup().groupId,
+         groupId: appGlobalsService.currentGroup.groupId,
          src: src,
          date: new Date(),
          subject: subject
@@ -172,7 +172,7 @@ export class ApiService {
     initLikeItems(): any {
         /* const promise = new Promise(() => {
          const url = `${appGlobalsService.baseAPIUrl}'initLikeItems/he/true?`
-         this.http.post(url, {userMail: appGlobalsService.getCurrentUser().mail}, httpOptions).toPromise();
+         this.http.post(url, {userMail: appGlobalsService.CurrentUser.mail}, httpOptions).toPromise();
          });*/
         return [123, 113];
     }
@@ -181,7 +181,7 @@ export class ApiService {
         /*
          const promise = new Promise(() => {
          const url = `${appGlobalsService.baseAPIUrl}'initLikeItemsCount/he/true?`
-         this.http.post(url, {groupId: appGlobalsService.getCurrentGroup().groupId}, httpOptions).toPromise();
+         this.http.post(url, {groupId: appGlobalsService.currentGroup.groupId}, httpOptions).toPromise();
          });*/
 
         return {123: 1, 113: 5};
@@ -194,7 +194,7 @@ export class ApiService {
          const url = `${appGlobalsService.baseAPIUrl}'getCurrentGroupThisDayTitltes/he/true?`
          this.http.post(url,
          {
-         groupId: appGlobalsService.getCurrentGroup().groupId,
+         groupId: appGlobalsService.currentGroup.groupId,
          }, httpOptions).toPromise();
          });*/
     }
@@ -204,7 +204,7 @@ export class ApiService {
          const url = `${appGlobalsService.baseAPIUrl}'getDisplayDayParam/he/true?`
          this.http.post(url,
          {
-         groupId: appGlobalsService.getCurrentGroup().groupId,
+         groupId: appGlobalsService.currentGroup.groupId,
          date: displayDay
          }, httpOptions).toPromise();
          });*/

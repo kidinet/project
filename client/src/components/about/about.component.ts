@@ -31,7 +31,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
     })
 
     ngOnInit() {
-        this.titles = appGlobalsService.getAboutTitles();
+        this.titles = appGlobalsService.aboutTitles;
     }
 
     ngAfterViewInit() {

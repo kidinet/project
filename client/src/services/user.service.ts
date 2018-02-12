@@ -47,7 +47,7 @@ export class UserService {
             latitude: user.latitude,
             longitude: user.longitude,
             isAdministrator: isAdministrator,
-            groupId: appGlobalsService.getCurrentGroup().groupId
+            groupId: appGlobalsService.currentGroup.groupId
         }, httpOptions).toPromise();
     }
 

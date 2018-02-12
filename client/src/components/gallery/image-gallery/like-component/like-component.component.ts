@@ -23,17 +23,17 @@ export class LikeComponentComponent implements OnInit {
     toggleLike(): any {
         const promise = new Promise(() => {
             const url = `${appGlobalsService.baseAPIUrl}'ToggleLike/he/true?
-            &mail${appGlobalsService.getCurrentUser().mail}&id=${this.id}&isLike${this.isLike}`;
+            &mail${appGlobalsService.currentUser.mail}&id=${this.id}&isLike${this.isLike}`;
             // this.http.get(url)
             //     .toPromise();
         });
         appGlobalsService.toggleLikeItem(this.id);
     }
     get isLike(){
-       return appGlobalsService.getLikeItems().indexOf(this.id) > -1;
+       return appGlobalsService.likeItems.indexOf(this.id) > -1;
     }
     get likeCount(){
-        return appGlobalsService.getLikeItemsCount()[this.id];
+        return appGlobalsService.likeItemsCount[this.id];
     }
 
 }
