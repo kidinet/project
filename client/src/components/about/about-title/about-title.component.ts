@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import * as appGlobalsService from '../../../store/app-globals';
+import * as appGlobalStyle from '../../../store/app-global-style';
 
 @Component({
     selector: 'app-about-title',
@@ -16,8 +16,9 @@ export class AboutTitleComponent implements OnInit {
     @Output() color = new EventEmitter();
     @Output() icon = new EventEmitter();
 
-    get appGlobalsService(){
-        return appGlobalsService;
+
+    get appGlobalStyle(){
+        return appGlobalStyle;
     }
     getColor(event: string) {
         this.titleColor = event;

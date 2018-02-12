@@ -5,8 +5,8 @@ import {FormControl, Validators, FormBuilder} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {GroupService} from '../../services/group.service';
 import {FormValidateService} from '../../services/form-validate.service';
-import * as appGlobalsService from '../../store/app-globals'
-import {Group} from '../../entities/group';
+import * as appGlobalsService from '../../store/app-globals';
+
 
 @Component({
     selector: 'app-welcome',
@@ -28,13 +28,15 @@ export class WelcomeComponent implements OnInit {
         mail: this.mail,
         password: this.password
     });
+    // show error message if invalid mail or password:
+    logInFailed = false;
 
     openNewGroupDialog(): void {
         const NewGroupDialogRef = this.newGroupDialog.open(NewGroup, {});
     }
 
     login() {
-        console.log(this.loginForm.value);
+        this.logInFailed = !this.userService.logIn(this.loginForm.value);
     }
 
 

@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import {User} from '../entities/user/user';
 import * as appGlobalsService from '../store/app-globals';
 import {UserInGroup} from '../entities/user/UserInGroup';
+import {CookieService} from 'ngx-cookie-service';
 import {catchError} from 'rxjs/operators';
 
 const httpOptions = {
@@ -17,12 +18,12 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private cookieService: CookieService) {
     }
 
     API_KEY = 'AIzaSyAftTULF-1UvfWrffosDlIChTWfhN_EqRU'
     API_URL = `https://maps.googleapis.com/maps/api/geocode/json?key: ${this.API_KEY}address=`;
-    dir = undefined;
 
     // =======================API==========================
     creatUser(user: User, isAdministrator: boolean): any {
@@ -99,4 +100,35 @@ export class UserService {
         const url = `${this.API_URL}${compositeAddress.join(',')}`;
         return this.http.get(url).toPromise();
     }
+
+    logIn(loginFormValue): any {
+        /*  const url = `${appGlobalsService.baseAPIUrl}logIn/he/true`
+         this.http.post(url, {
+         mail: loginFormValue.mail,
+         password: loginFormValue.password
+         }, httpOptions).toPromise().then(result => {
+         if (result.Success) {
+         appGlobalsService.setCurreUser(new User(
+         result.returbObject.firstName,
+         result.returbObject.lastName,
+         result.returbObject.city,
+         result.returbObject.street,
+         result.returbObject.bulid,
+         result.returbObject.phone,
+         result.returbObject.mail,
+         result.returbObject.profile,
+         null,
+         result.returbObject.latitude,
+         result.returbObject.longitude,
+         ));
+         return true;
+         } else {
+         return false;
+         }
+         });
+         */
+        return false;
+    }
+
 }
+

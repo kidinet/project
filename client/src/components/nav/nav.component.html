@@ -26,14 +26,8 @@
             <span (click)="openPersonalSettings()">פרטים אישיים</span>
             <span (click)="openConfirmPassword()">שנה סיסמא</span>
             <span (click)="openGroupSettings()">פרטי הגן</span>
+            <span (click)="logOut()">התנתק</span>
         </div>
     </span>
     <div class="fixed" *ngIf="isPersonalAreaNavOpen" (click)="toggleSettings()"></div>
-    <!--<div class="personal_area_nav" >-->
-    <!--<a [routerLink]="['/home/presonal-area/settings']"> <i class="fa fa-cog" aria-hidden="true"></i>הגדרות</a>-->
-    <!--<a [routerLink]="['/home/presonal-area/remiders']"><i class="fa fa-bell" aria-hidden="true"></i>תזכורות-->
-    <!--חשובות</a>-->
-    <!--<a [routerLink]="['/home/presonal-area/chat']"><i class="fa fa-comments" aria-hidden="true"></i>chat</a>-->
-    <!--<router-outlet></router-outlet>-->
-    <!--</div>-->
 </nav>

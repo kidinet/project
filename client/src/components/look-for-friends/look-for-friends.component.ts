@@ -18,36 +18,52 @@ export class LookForFriendsComponent implements OnInit {
     title = 'My first AGM project';
     groupLatitude = appGlobalsService.currentGroup.latitude;
     groupLongitude = appGlobalsService.currentGroup.longitude;
-    currentUser: User;
+    currentFriend: User = new User();
     currentGroup = appGlobalsService.currentGroup;
     isCurrentGroupInfoOpen = true;
+    dir: {};
 
     get usersInCurrentGroup() {
         return appGlobalsService.usersInCurrentGroup;
     }
-    dir;
+
+    get currentUser() {
+        return appGlobalsService.currentUser;
+    }
+
+    get appGlobalsService() {
+        return appGlobalsService;
+    }
+
 
     ngOnInit() {
         // this.getDirection();
     }
 
-    public getDirection() {
-        this.dir = {
-            origin: {lat: 32.090606, lng:  34.825582},
-            destination: {lat: 32.087851, lng:  34.829069}
-        }
-    }
-
     onMarkerClicked(i) {
-        this.currentUser = this.usersInCurrentGroup[i];
+        this.currentFriend = this.usersInCurrentGroup[i];
+        this.dir = {
+            origin: {lat: this.currentUser.latitude, lng: this.currentUser.longitude},
+            destination: {lat: this.currentFriend.latitude, lng: this.currentFriend.longitude}
+        };
     }
 
-    setCurrentUser(user: User) {
-        this.currentUser = user;
+    setCurrentUser(friend: User) {
+        this.currentFriend = friend;
+        this.dir = {
+            origin: {lat: this.currentUser.latitude, lng: this.currentUser.longitude},
+            destination: {lat: this.currentFriend.latitude, lng: this.currentFriend.longitude}
+        };
+    }
+
+    showKinderGardenDirection() {
+        this.dir = {
+            origin: {lat: this.currentUser.latitude, lng: this.currentUser.longitude},
+            destination: {lat: this.currentGroup.latitude, lng: this.currentGroup.longitude}
+        };
     }
 
     toggleCurrentGroupInfoOpen() {
-        console.log(this.isCurrentGroupInfoOpen)
         this.isCurrentGroupInfoOpen = !this.isCurrentGroupInfoOpen;
     }
 

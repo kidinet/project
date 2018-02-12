@@ -3,22 +3,22 @@ import {User} from '../entities/user/user';
 import {UserInGroup} from '../entities/user/UserInGroup';
 import {AboutTitle} from '../entities/about/aboutTitles';
 import {ImageGallery} from '../entities/gallery/imageGallery';
-import {ThisDayContent} from '../entities/thisDay/thisDayContent';
+import {ImageGalleryResponse} from '../entities/gallery/imageGalleryResponse';
 import {ThisDayOfGroup} from '../entities/thisDay/thisDayOfGroup';
-import {ImageGalleryResponse} from "../entities/gallery/imageGalleryResponse";
+import {ThisDayContent} from '../entities/thisDay/thisDayContent';
 
 
 // ========================const urls=================================
 export let baseAppUrl = 'http://localhost:4200/';
 export let baseAPIUrl = 'http://localhost:7022/api/';
 // ===================================================================
-
+export let enableNavigation: false;
 // =======================group and users=============================
 
 // variables:
 export let currentGroup = new Group(123, 'הגן שלנו', 'בני ברק', 'רבי עקיבא', 12, '0606660000', 'g0504108130@gmail.com',
     '03-5555555', 32.090606, 34.825582);
-export let currentUser = new User('משה', 'ללללל', 'הרב בלוי', 'בני ברק', 12, '0504109999', 'g0504108130@gmail.com', null, '1234');
+export let currentUser = new User('משה', 'ללללל', 'הרב בלוי', 'בני ברק', 12, '0504109999', 'g0504108130@gmail.com', null, '1234', 32.087342, 34.825582);
 export let currentUserInGroup = new UserInGroup('cDasd', 'aSDASda', 'דודו');
 export let usersInCurrentGroup = [
     new User('משה', 'כהן', 'הרב בלוי', 'בני ברק', 13, '0504109999', 'g0504108130@gmail.com', null, null, 32.090606, 34.825582),
@@ -33,7 +33,7 @@ export let usersInCurrentGroup = [
 export function setGroup(groupParam) {
     this.currentGroup = groupParam;
 }
-export function setUser(user) {
+export function setCurreUser(user) {
     currentUser = user;
 }
 export function setUserInGroup(userInGroup) {

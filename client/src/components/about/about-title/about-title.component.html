@@ -2,7 +2,7 @@
     <div (click)="toggleEditStyle()" class="wrapper" [ngClass]="size" [ngStyle]="{ 'background-color': titleColor }">
         <i class="{{titleIcon}}"></i>
     </div>
-    <app-style [colors]="appGlobalsService.colors" [icons]="appGlobalsService.icons" class="app_about_title_style" (color)="getColor($event)" (icon)="getIcon($event)"
+    <app-style [colors]="appGlobalStyle.colors" [icons]="appGlobalStyle.icons" class="app_about_title_style" (color)="getColor($event)" (icon)="getIcon($event)"
                            *ngIf="isOpen"></app-style>
     <div class="overlay" (click)="toggleEditStyle()" *ngIf="isOpen"></div>
 </div>

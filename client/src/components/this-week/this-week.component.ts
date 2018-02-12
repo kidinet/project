@@ -4,6 +4,7 @@ import {ThisDayContent} from '../../entities/thisDay/thisDayContent';
 import {ThisDayOfGroup} from '../../entities/thisDay/thisDayOfGroup';
 import * as moment from 'moment';
 import * as appGlobalsService from '../../store/app-globals';
+import * as appGlobalsStyle from '../../store/app-global-style';
 moment.locale('he');
 @Component({
     selector: 'app-this-week',
@@ -50,6 +51,9 @@ export class ThisWeekComponent implements OnInit {
 
     get appGlobalsService() {
         return appGlobalsService;
+    }
+    get appGlobalsStyle(){
+        return appGlobalsStyle;
     }
 
     getColor(event: string, title: any) {
