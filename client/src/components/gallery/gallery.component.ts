@@ -28,7 +28,7 @@ export class GalleryComponent implements OnInit {
     images: ImageGallery[];
 
     ngOnInit() {
-        this.images = appGlobalsService.getImageGallery();
+        this.images = appGlobalsService.imageGallery;
     }
 
     addMoreImages() {

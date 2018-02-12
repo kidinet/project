@@ -5,12 +5,17 @@ import {AboutTitle} from '../entities/about/aboutTitles';
 import {ImageGallery} from '../entities/gallery/imageGallery';
 import {ThisDayContent} from '../entities/thisDay/thisDayContent';
 import {ThisDayOfGroup} from '../entities/thisDay/thisDayOfGroup';
+import {ImageGalleryResponse} from "../entities/gallery/imageGalleryResponse";
 
 
-// variables
+// ========================const urls=================================
 export let baseAppUrl = 'http://localhost:4200/';
 export let baseAPIUrl = 'http://localhost:7022/api/';
+// ===================================================================
 
+// =======================group and users=============================
+
+// variables:
 export let currentGroup = new Group(123, 'הגן שלנו', 'בני ברק', 'רבי עקיבא', 12, '0606660000', 'g0504108130@gmail.com',
     '03-5555555', 32.090606, 34.825582);
 export let currentUser = new User('משה', 'ללללל', 'הרב בלוי', 'בני ברק', 12, '0504109999', 'g0504108130@gmail.com', null, '1234');
@@ -24,6 +29,19 @@ export let usersInCurrentGroup = [
     new User('צפורה', 'שמש', 'הרב בלוי', 'בני ברק', 77, '0504109999', 'g0504108130@gmail.com', null, null, 32.087851, 34.829069),
     new User('שרית', 'ירח', 'הרב בלוי', 'בני ברק', 99, '0504109999', 'g0504108130@gmail.com', null, null, 32.087396, 34.830217)
 ]
+// setters:
+export function setGroup(groupParam) {
+    this.currentGroup = groupParam;
+}
+export function setUser(user) {
+    currentUser = user;
+}
+export function setUserInGroup(userInGroup) {
+    currentUserInGroup = userInGroup;
+}
+export function setUsersInCurrentGroup(UsersInCurrentGroupParam: User[]) {
+    usersInCurrentGroup = UsersInCurrentGroupParam;
+}
 // ==================================style==================================
 export const colors = [
     '#ffb876',
@@ -64,13 +82,57 @@ export const icons = [
     'umbrella',
     'birthday-cake'
 ]
-// =======================================================================
+// ============================== about =================================
 
+// variables
 export let aboutTitles: AboutTitle[] = [];
-export let imageGallery: ImageGallery[] = [];
 
+// setters
+export function addAboutTitles(aboutTitlesParam) {
+    aboutTitles.push(aboutTitlesParam);
+}
+export function setAboutTitles(aboutTitlesArray) {
+    aboutTitles = aboutTitlesArray;
+}
+
+// =============================image gallery==============================
+// variables:
+export let imageGallery: ImageGallery[] = [];
+export let imageGalleryResponse: ImageGalleryResponse[] = [];
 export let likeItems = [];
 export let likeItemsCount = {};
+
+// setters:
+export function toggleLikeItem(id) {
+    const index = likeItems.indexOf(id);
+    if (index === -1) {
+        likeItemsCount[id]++;
+        likeItems.push(id);
+    } else {
+        likeItemsCount[id]--;
+        likeItems.splice(index, 1);
+    }
+}
+export function addImagesForGallery(ImageGallryArray) {
+    imageGallery.push.apply(imageGallery, ImageGallryArray);
+}
+export function addImageGalleryResponse(imageGalleryResponseArray) {
+    imageGalleryResponse.push.apply(imageGalleryResponseArray);
+}
+export function setLikeItems(likeItemsArray) {
+    likeItems = likeItemsArray;
+}
+export function setLikeItemsCount(likeItemsCountObject) {
+    likeItemsCount = likeItemsCountObject;
+}
+export function deleteImageFromGallery(id) {
+    const item = imageGallery.find(item => {
+        return item.id === id;
+    })
+    imageGallery.splice(imageGallery.indexOf(item), 1);
+}
+
+// =============================this day ===================================
 
 export let thisDayOfGroupArray = [
     new ThisDayOfGroup(1, 123, 'מה למדנו'),
@@ -86,54 +148,6 @@ export let thisDayContentArray = [
 ]
 
 // setters
-export function setGroup(groupParam) {
-    this.currentGroup = groupParam;
-}
-export function setUser(user) {
-    currentUser = user;
-}
-export function setUserInGroup(userInGroup) {
-    currentUserInGroup = userInGroup;
-}
-export function setUsersInCurrentGroup(UsersInCurrentGroupParam: User[]) {
-    usersInCurrentGroup = UsersInCurrentGroupParam;
-}
-// ==================about=====================
-export function addAboutTitles(aboutTitlesParam) {
-    aboutTitles.push(aboutTitlesParam);
-}
-export function setAboutTitles(aboutTitlesArray) {
-    aboutTitles = aboutTitlesArray;
-}
-
-// =================gallery=====================
-export function toggleLikeItem(id) {
-    const index = likeItems.indexOf(id);
-    if (index === -1) {
-        likeItemsCount[id]++;
-        likeItems.push(id);
-    } else {
-        likeItemsCount[id]--;
-        likeItems.splice(index, 1);
-    }
-}
-export function addImagesForGallery(ImageGallryArray) {
-    imageGallery.push.apply(imageGallery, ImageGallryArray);
-}
-export function setLikeItems(likeItemsArray) {
-    likeItems = likeItemsArray;
-}
-export function setLikeItemsCount(likeItemsCountObject) {
-    likeItemsCount = likeItemsCountObject;
-}
-export function deleteImageFromGallery(id) {
-    const item = imageGallery.find((item) => {
-        return item.id === id;
-    })
-    imageGallery.splice(imageGallery.indexOf(item), 1);
-}
-// ====================thisDay=============
-
 export function initThisDayOfGroupArray(thisDayOfGroupArrayParams) {
     this.thisDayOfGroupArray = thisDayOfGroupArrayParams;
 }
@@ -144,34 +158,7 @@ export function addThisDayOfGroup(addThisDayOfGroupParam: ThisDayOfGroup) {
     thisDayOfGroupArray.push(addThisDayOfGroupParam);
 }
 
-// =====================================
 
-// getters
-export function getCurrentUser() {
-    return currentUser;
-}
-export function getCurrentUserInGroup() {
-    return currentUserInGroup;
-}
-
-export function getCurrentGroup() {
-    return currentGroup;
-}
-// ==================about===================
-export function getAboutTitles() {
-    return aboutTitles;
-}
-
-// ==========gallery=============
-export function getImageGallery() {
-    return imageGallery;
-}
-export function getLikeItems() {
-    return likeItems;
-}
-export function getLikeItemsCount() {
-    return likeItemsCount;
-}
 
 
 

@@ -16,26 +16,25 @@ export class HomeComponent implements OnInit {
     isLoading = true;
 
     ngOnInit() {
-        /* this.apiService.initAllAboutTitles().then(result => {
-         if (result.Success) {
-         appGlobalsService.setAboutTitles(result.returnObject);
-         } else {
-         console.warn('cant get the aboutTitle');
-         }
-         }
-         );
-         */
+    /*    this.apiService.initAllAboutTitles().then(result => {
+                if (result.Success) {
+                    appGlobalsService.setAboutTitles(result.returnObject);
+                } else {
+                    console.warn('cant get the aboutTitle');
+                }
+            }
+        );*/
 
-        /*
-         this.apiService.initImagesForGallery(0).then(result => {
-         if (result.Success) {
-         appGlobalsService.addImagesForGallery(result.returnObject);
-         } else {
-         console.warn('cant get the aboutTitle');
-         }
-         }
-         );
-         */
+
+     /*   this.apiService.initImagesForGallery(0).then(result => {
+                if (result.Success) {
+                    appGlobalsService.addImagesForGallery(result.returnObject);
+                } else {
+                    console.warn('cant get the aboutTitle');
+                }
+            }
+        );
+        */
 
         // =======================================mock=============================
         setTimeout(() => {
@@ -44,7 +43,7 @@ export class HomeComponent implements OnInit {
             appGlobalsService.setLikeItems(this.apiService.initLikeItems())
             appGlobalsService.setLikeItemsCount(this.apiService.initLikeItemsCount())
             this.isLoading = false;
-        }, 1000)
+        }, 1000);
         // =========================================================================
 
 
