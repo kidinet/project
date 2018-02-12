@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {AgmCoreModule} from '@agm/core';            // @agm/core
 import {AgmDirectionModule} from 'agm-direction';   // agm-direction
 import * as globals from '../store/app-globals';
+import { ReactiveFormsModule } from '@angular/forms';
 // globals
 import {StyleComponent} from '../components/style/style.component';
 // image gallery components:
@@ -46,22 +47,7 @@ import {ConfirmPasswordComponent} from '../components/personal-area/confirm-pass
 import {GroupSettingsComponent} from '../components/personal-area/group-settings/group-settings.component';
 import {AppRoutes} from './route';
 
-// firebase:
-import { AngularFireModule } from 'angularfire2';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
-// import { AngularFirestoreModule } from 'angularfire2/database';
 
-export const environment = {
-    production: false,
-    firebase: {
-        apiKey: '<your-key>',
-        authDomain: '<your-project-authdomain>',
-        databaseURL: '<your-database-URL>',
-        projectId: '<your-project-id>',
-        storageBucket: '<your-storage-bucket>',
-        messagingSenderId: '<your-messaging-sender-id>'
-    }
-};
 
 @NgModule({
     declarations: [
@@ -90,7 +76,8 @@ export const environment = {
         AddNewImageComponent,
         ConfirmPasswordComponent,
         GroupSettingsComponent,
-        StyleComponent
+        StyleComponent,
+        
     ],
     entryComponents: [NewGroup, AddNewImageComponent, ConfirmPasswordComponent, GroupSettingsComponent],
     imports: [
@@ -107,8 +94,6 @@ export const environment = {
             language: 'he'
         }),
         AgmDirectionModule,
-       // AngularFireModule.initializeApp(environment.firebase),
-      //  AngularFirestoreModule
     ],
     exports: [
         AboutComponent,
@@ -137,8 +122,7 @@ export const environment = {
         PersonalAreaSettingsComponent,
         RemindersComponent,
         AddNewImageComponent,
-      //  AngularFireModule.initializeApp(environment.firebase),
-      //  AngularFirestoreModule
+        ReactiveFormsModule
     ],
 })
 export class components {

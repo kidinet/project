@@ -36,7 +36,8 @@ namespace DatabaseFirstSample
         public virtual DbSet<UserInGroup> UserInGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ResponseImage> ResponseImages { get; set; }
-        public virtual DbSet<ThisDay> ThisDays { get; set; }
         public virtual DbSet<chat> chats { get; set; }
+        public virtual DbSet<ThisDayContent> ThisDayContents { get; set; }
+        public virtual DbSet<ThisDayOfGroup> ThisDayOfGroups { get; set; }
     }
 }
