@@ -1,5 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DatabaseFirst.BloggingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="about">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="30" />
+    <Property Name="icon" Type="varchar" MaxLength="30" />
+    <Property Name="color" Type="varchar" MaxLength="30" />
+    <Property Name="content" Type="varchar(max)" />
+    <Property Name="groupId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdministratorSettings">
+    <Key>
+      <PropertyRef Name="mail" />
+    </Key>
+    <Property Name="mail" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="chatStart" Type="date" />
+    <Property Name="chatEnd" Type="date" />
+  </EntityType>
   <EntityType Name="Groups">
     <Key>
       <PropertyRef Name="id" />
@@ -10,17 +29,52 @@
     <Property Name="streat" Type="varchar" MaxLength="20" />
     <Property Name="build" Type="int" />
     <Property Name="phone" Type="varchar" MaxLength="10" />
-    <Property Name="mail" Type="varchar" MaxLength="30" />
+    <Property Name="mail" Type="varchar" MaxLength="100" />
     <Property Name="fax" Type="varchar" MaxLength="10" />
+    <Property Name="latitute" Type="float" />
+    <Property Name="longitude" Type="float" />
   </EntityType>
-  <EntityType Name="UserInGroup">
+  <EntityType Name="ImageGallery">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="userMail" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="groupId" Type="int" Nullable="false" />
-    <Property Name="type_" Type="bit" Nullable="false" />
+    <Property Name="date_added" Type="date" />
+    <Property Name="src" Type="varbinary(max)" />
+    <Property Name="subject" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="ThisDayContent">
+    <Key>
+      <PropertyRef Name="date" />
+      <PropertyRef Name="titleId" />
+    </Key>
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="titleId" Type="int" Nullable="false" />
+    <Property Name="content" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ThisDayOfGroup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="groupId" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="255" />
+    <Property Name="icon" Type="varchar" MaxLength="50" />
+    <Property Name="color" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="UserInGroup">
+    <Key>
+      <PropertyRef Name="userMail" />
+      <PropertyRef Name="groupId" />
+    </Key>
+    <Property Name="userMail" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="groupId" Type="int" Nullable="false" />
+    <Property Name="isAdministrator" Type="bit" Nullable="false" />
+    <Property Name="childFirstName" Type="varchar" MaxLength="20" />
+    <Property Name="childLastName" Type="varchar" MaxLength="20" />
+    <Property Name="child_born" Type="date" />
+    <Property Name="nickname" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -28,17 +82,76 @@
     </Key>
     <Property Name="firstName" Type="varchar" MaxLength="20" />
     <Property Name="lastName" Type="varchar" MaxLength="20" />
-    <Property Name="childFirstName" Type="varchar" MaxLength="20" />
-    <Property Name="childLastName" Type="varchar" MaxLength="20" />
-    <Property Name="nickname" Type="varchar" MaxLength="20" />
-    <Property Name="profile_" Type="varchar" MaxLength="30" />
-    <Property Name="mail" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="profile_" Type="varbinary(max)" />
+    <Property Name="mail" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="password_" Type="varchar" MaxLength="30" />
     <Property Name="city" Type="varchar" MaxLength="20" />
     <Property Name="streat" Type="varchar" MaxLength="20" />
     <Property Name="build" Type="int" />
+    <Property Name="latitute" Type="float" />
+    <Property Name="longitude" Type="float" />
   </EntityType>
-  <Association Name="FK__UserInGro__group__1CBC4616">
+  <Association Name="FK__about__groupId__7A3223E8">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+    <End Role="about" Type="Self.about" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="about">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Administra__mail__367C1819">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="AdministratorSettings" Type="Self.AdministratorSettings" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="mail" />
+      </Principal>
+      <Dependent Role="AdministratorSettings">
+        <PropertyRef Name="mail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ImageGall__group__395884C4">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+    <End Role="ImageGallery" Type="Self.ImageGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ImageGallery">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThisDayCo__title__0B5CAFEA">
+    <End Role="ThisDayOfGroup" Type="Self.ThisDayOfGroup" Multiplicity="1" />
+    <End Role="ThisDayContent" Type="Self.ThisDayContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThisDayOfGroup">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ThisDayContent">
+        <PropertyRef Name="titleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThisDayOf__group__0880433F">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+    <End Role="ThisDayOfGroup" Type="Self.ThisDayOfGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ThisDayOfGroup">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserInGro__group__662B2B3B">
     <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
     <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
     <ReferentialConstraint>
@@ -50,7 +163,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserInGro__userM__1BC821DD">
+  <Association Name="FK__UserInGro__userM__65370702">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
     <ReferentialConstraint>
@@ -63,14 +176,39 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DatabaseFirstBloggingModelStoreContainer">
+    <EntitySet Name="about" EntityType="Self.about" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministratorSettings" EntityType="Self.AdministratorSettings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageGallery" EntityType="Self.ImageGallery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThisDayContent" EntityType="Self.ThisDayContent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThisDayOfGroup" EntityType="Self.ThisDayOfGroup" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInGroup" EntityType="Self.UserInGroup" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__UserInGro__group__1CBC4616" Association="Self.FK__UserInGro__group__1CBC4616">
+    <AssociationSet Name="FK__about__groupId__7A3223E8" Association="Self.FK__about__groupId__7A3223E8">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="about" EntitySet="about" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Administra__mail__367C1819" Association="Self.FK__Administra__mail__367C1819">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="AdministratorSettings" EntitySet="AdministratorSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ImageGall__group__395884C4" Association="Self.FK__ImageGall__group__395884C4">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="ImageGallery" EntitySet="ImageGallery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThisDayCo__title__0B5CAFEA" Association="Self.FK__ThisDayCo__title__0B5CAFEA">
+      <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroup" />
+      <End Role="ThisDayContent" EntitySet="ThisDayContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThisDayOf__group__0880433F" Association="Self.FK__ThisDayOf__group__0880433F">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserInGro__group__662B2B3B" Association="Self.FK__UserInGro__group__662B2B3B">
       <End Role="Groups" EntitySet="Groups" />
       <End Role="UserInGroup" EntitySet="UserInGroup" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserInGro__userM__1BC821DD" Association="Self.FK__UserInGro__userM__1BC821DD">
+    <AssociationSet Name="FK__UserInGro__userM__65370702" Association="Self.FK__UserInGro__userM__65370702">
       <End Role="Users" EntitySet="Users" />
       <End Role="UserInGroup" EntitySet="UserInGroup" />
     </AssociationSet>

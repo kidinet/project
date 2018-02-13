@@ -1,9 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DatabaseFirstBloggingModelStoreContainer" CdmEntityContainer="BloggingContext">
+    <EntitySetMapping Name="abouts">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.about">
+        <MappingFragment StoreEntitySet="about">
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministratorSettings">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.AdministratorSetting">
+        <MappingFragment StoreEntitySet="AdministratorSettings">
+          <ScalarProperty Name="chatEnd" ColumnName="chatEnd" />
+          <ScalarProperty Name="chatStart" ColumnName="chatStart" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Groups">
       <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Group">
         <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitute" ColumnName="latitute" />
           <ScalarProperty Name="fax" ColumnName="fax" />
           <ScalarProperty Name="mail" ColumnName="mail" />
           <ScalarProperty Name="phone" ColumnName="phone" />
@@ -15,27 +38,61 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Users">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="build" ColumnName="build" />
-          <ScalarProperty Name="streat" ColumnName="streat" />
-          <ScalarProperty Name="city" ColumnName="city" />
-          <ScalarProperty Name="password_" ColumnName="password_" />
-          <ScalarProperty Name="mail" ColumnName="mail" />
-          <ScalarProperty Name="profile_" ColumnName="profile_" />
-          <ScalarProperty Name="nickname" ColumnName="nickname" />
-          <ScalarProperty Name="childLastName" ColumnName="childLastName" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
-          <ScalarProperty Name="firstName" ColumnName="firstName" />
+    <EntitySetMapping Name="ImageGalleries">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.ImageGallery">
+        <MappingFragment StoreEntitySet="ImageGallery">
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="src" ColumnName="src" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserInGroups">
       <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.UserInGroup">
         <MappingFragment StoreEntitySet="UserInGroup">
-          <ScalarProperty Name="type_" ColumnName="type_" />
+          <ScalarProperty Name="child_born" ColumnName="child_born" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="childLastName" ColumnName="childLastName" />
+          <ScalarProperty Name="childFirstName" ColumnName="childFirstName" />
+          <ScalarProperty Name="isAdministrator" ColumnName="isAdministrator" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
           <ScalarProperty Name="userMail" ColumnName="userMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitute" ColumnName="latitute" />
+          <ScalarProperty Name="build" ColumnName="build" />
+          <ScalarProperty Name="streat" ColumnName="streat" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="password_" ColumnName="password_" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="profile_" ColumnName="profile_" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThisDayContents">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.ThisDayContent">
+        <MappingFragment StoreEntitySet="ThisDayContent">
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="titleId" ColumnName="titleId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThisDayOfGroups">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.ThisDayOfGroup">
+        <MappingFragment StoreEntitySet="ThisDayOfGroup">
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="groupId" ColumnName="groupId" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
