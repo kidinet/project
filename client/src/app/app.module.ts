@@ -18,20 +18,19 @@ import {FormValidateService} from '../services/form-validate.service';
 import {ApiService} from '../services/api.service';
 import {CookieService} from 'ngx-cookie-service';
 import {ImagesService} from '../services/images.service';
-import {AdService} from '../services/ad.service'
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database-deprecated';
 
 export const environment = {
     production: false,
     firebase: {
-    apiKey: "AIzaSyCdNBLoYL1Oz64Gx9VtKEfolj2fIbnkgCo",
-    authDomain: "newkidinet.firebaseapp.com",
-    databaseURL: "https://newkidinet.firebaseio.com",
-    projectId: "newkidinet",
-    storageBucket: "",
-    messagingSenderId: "945647659389"
+        apiKey: 'AIzaSyCdNBLoYL1Oz64Gx9VtKEfolj2fIbnkgCo',
+        authDomain: 'newkidinet.firebaseapp.com',
+        databaseURL: 'https://newkidinet.firebaseio.com',
+        projectId: 'newkidinet',
+        storageBucket: '',
+        messagingSenderId: '945647659389'
     }
 };
 
@@ -55,7 +54,7 @@ export const environment = {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule.enablePersistence(),
         ReactiveFormsModule
-       
+
     ],
     providers: [
         UserService,
@@ -64,7 +63,6 @@ export const environment = {
         CookieService,
         ImagesService,
         ApiService,
-        AdService,
         AngularFireDatabase],
     exports: [],
 

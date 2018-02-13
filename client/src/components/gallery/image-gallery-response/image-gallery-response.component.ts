@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ImageGalleryResponse} from '../../../entities/gallery/imageGalleryResponse';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database-deprecated';
+import * as appGlobalsService from '../../../store/app-globals';
+import * as appGlobalStyle from '../../../store/app-global-style';
 
 @Component({
     selector: 'app-image-gallery-response',
@@ -8,20 +11,36 @@ import {ImageGalleryResponse} from '../../../entities/gallery/imageGalleryRespon
 })
 export class ImageGalleryResponseComponent implements OnInit {
 
-    constructor() {
-    }
+    items: FirebaseListObservable<ImageGalleryResponse[]>;
+    myReply;
+
     @Output() close = new EventEmitter();
     @Input() imageGallery;
-    imageGalleryResponseArray: ImageGalleryResponse[] = []
+
+    constructor(public af: AngularFireDatabase) {
+
+    }
 
     ngOnInit() {
-        // for (let i = 0; i < 5; i++) {
-        //     this.imageGalleryResponseArray.push(new ImageGalleryResponse('אהבתיאהבתיאהבתיאההב' + i, 'אחת האמהות', '03/25/2015'));
-        // }
+        const path = `${appGlobalsService.currentGroup.groupId}/${this.imageGallery.id}/imagesReply`;
+        // put the chat message on database;
+        this.items = this.af.list(path, {
+            query: {
+                limitToLast: 5
+            }
+        });
     }
 
     closeMe() {
         this.close.emit();
+    }
+
+    sendReply() {
+        this.items.push(new ImageGalleryResponse(this.imageGallery.id, this.myReply, appGlobalsService.currentUser.firstName + appGlobalsService.currentUser.lastName, new Date()));
+    }
+
+    get colors() {
+        return appGlobalStyle.lightColors;
     }
 
 }

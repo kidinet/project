@@ -1,4 +1,3 @@
-
 export const colors = [
     '#ffb876',
     '#acf1ac',
@@ -37,6 +36,25 @@ export const icons = [
     'music',
     'umbrella',
     'birthday-cake'
+]
+
+export const lightColors = [
+    '#ffe6e6',
+    '#fff1ba',
+    '#e4fff7',
+    '#ffece4',
+    '#dbf4ff',
+    '#dedbff',
+    '#ffdbfd',
+    '#ffdbe1',
+    '#dbf3ff',
+    '#dbffef',
+    '#f9ffdb',
+    '#ffdbdb',
+    '#cde7fd',
+    '#fdcdd5',
+    '#cdf7fd',
+    '#ddfdda'
 ]
 
 

@@ -6,7 +6,7 @@ import {User} from '../../../entities/user/user';
 import {UserInGroup} from '../../../entities/user/UserInGroup';
 import * as appGlobalsService from '../../../store/app-globals';
 import {ImagesService} from '../../../services/images.service';
-import {UserService} from '../../../services/user.service'
+import {UserService} from '../../../services/user.service';
 
 @Component({
     selector: 'app-personal-area-settings',

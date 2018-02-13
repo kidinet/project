@@ -1,114 +1,16 @@
-<p>
-  chat works!
-</p>
-<div class="content columns" *ngIf="ad">
-  <div class="column is-6">
-    <h1>Ad Listing Preview</h1>
-    <article class="message">
-      <div class="message-header">
-        <p>{{(ad | async).title}}</p>
-      </div>
-      <div class="message-body">
-        <img [src]="(ad | async).image" width="350px"><br>
-        <p>{{ (ad | async).content }}</p>
-        <hr>
-        <h4>List Price: {{ (ad | async).price | currency}}</h4>
-      </div>
-    </article>
-    <h3>Form Values</h3>
-    <p>Form value: <br> {{ adForm.value | json }}</p>
-    <p>Form status: {{ adForm.status | json }}</p>
-  </div>
-  <div class="column">
-    <form  [formGroup]="adForm" novalidate>
-    <h1>Create your Listing</h1>
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">Title</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <div class="control">
-            <input class="input" type="text"
-                   formControlName="title"
-                   (change)="saveAdChanges()"
-                   [ngClass]="{
-                                'is-success' :  adForm.get('title').valid &&  adForm.get('title').dirty,
-                                'is-danger'  :  !adForm.get('title').valid
-                              }">
-          </div>
-          <p class="error is-danger" [hidden]="adForm.get('title').valid">
-            Title is required
-          </p>
+<div class="chat_wrapper">
+    <div class="chat_container_wrapper" *ngFor="let message of this.items | async ; index as i">
+        <div class="chat_container">
+            <h5 class="chat_content"
+                [ngStyle]="{backgroundColor: i%2?'#ffffe8':'#e6f9ff', color:i%2?'#ffffe8':'#e6f9ff'}">
+                <span>{{message.message}}</span>
+            </h5>
+            <h6 class="details">
+                <span>{{message.name}},</span>
+                <span>{{message.date}}</span>
+            </h6>
         </div>
-      </div>
     </div>
-    <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">Image URL</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <div class="control">
-            <input class="input" type="text"
-                   formControlName="image"
-                   (change)="saveAdChanges()"
-                   [ngClass]="{
-                               'is-success' :  adForm.get('image').valid &&  adForm.get('image').dirty,
-                               'is-danger'  :  !adForm.get('image').valid
-                             }">
-          </div>
-          <p class="error is-danger" [hidden]="adForm.get('image').valid">
-            Image is required
-          </p>
-        </div>
-      </div>
-    </div>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal"><label class="label">Price</label></div>
-        <div class="field-body">
-          <div class="field is-expanded">
-            <div class="field has-addons">
-              <p class="control">
-                <a class="button is-static">
-                  $
-                </a>
-              </p>
-              <p class="control is-expanded">
-                <input class="input" type="number"
-                       formControlName="price"
-                       (change)="saveAdChanges()"
-                       [ngClass]="{
-                                   'is-success' :  adForm.get('price').valid &&  adForm.get('price').dirty,
-                                   'is-danger'  :  !adForm.get('price').valid
-                                 }">
-              </p>
-            </div>
-            <p class="error" [hidden]="adForm.get('price').valid">Price is not valid</p>
-          </div>
-        </div>
-      </div>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Details</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <textarea class="textarea"
-                  formControlName="content"
-                  (change)="saveAdChanges()"
-                  [ngClass]="{
-                               'is-success' :  adForm.get('content').valid &&  adForm.get('content').dirty,
-                               'is-danger'  :  !adForm.get('content').valid
-                             }">
-              </textarea>
-              <p class="error" [hidden]="adForm.get('content').valid">Content is not valid</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+    <textarea type="text" [(ngModel)]="msg" (keyup.enter)="send()"></textarea>
 </div>
-<button class="button is-success" (click)="startNewAdListing()" *ngIf="!ad" >Start New Ad Listing</button>
+<div class="overlay" (click)="closeMe()"></div>
