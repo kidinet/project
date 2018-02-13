@@ -1,1 +1,2 @@
-<i [ngClass]="{'is_like':isLike}" class="fa fa-thumbs-up" (click)="toggleLike()" aria-hidden="true"></i><span class="count">{{likeCount}}</span>
+<i [ngClass]="{'is_like':isImageLike}" class="fa fa-thumbs-up" (click)="toggleLike()" aria-hidden="true"></i>
+<span class="count">{{(items | async)?(items | async).length:''}}</span>

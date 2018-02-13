@@ -3,6 +3,6 @@ export class ImageGalleryResponse {
         public imageId?: number,
         public text?: string,
         public details?: string ,
-        public date?: string,
+        public date?: Date,
     ) { }
 }

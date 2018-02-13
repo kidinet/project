@@ -10,15 +10,16 @@
   .response_container_wrapper {
     text-align: right;
     .response_container {
-      //  display: inline-block;
       .response_content {
         padding: 6px 10px;
-        background-color: rgb(245, 255, 219);
         border-radius: 8px;
         position: relative;
         display: inline-block;
         max-width: 100%;
         word-wrap: break-word;
+        * {
+          color: black;
+        }
         &:after {
           content: '';
           position: absolute;
@@ -28,7 +29,7 @@
           width: 0;
           height: 0;
           border-top: 5px solid transparent;
-          border-left: 9px solid rgb(245, 255, 219);
+          border-left: 9px solid;
           border-bottom: 5px solid transparent;
         }
       }

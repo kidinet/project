@@ -1,7 +1,9 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import * as appGlobalsService from '../../../../store/app-globals'
+import * as appGlobalsService from '../../../../store/app-globals';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database-deprecated';
+import {currentUser} from '../../../../store/app-globals';
 
 @Component({
     selector: 'app-like-component',
@@ -11,29 +13,31 @@ import * as appGlobalsService from '../../../../store/app-globals'
 export class LikeComponentComponent implements OnInit {
 
     constructor(private cookieService: CookieService,
-                private httpClient: HttpClient) {
+                private httpClient: HttpClient,
+                public af: AngularFireDatabase) {
     }
 
     @Input() id: number;
+    items: FirebaseListObservable<any>;
+    isImageLike = null;
 
     ngOnInit() {
+        const path = `${appGlobalsService.currentGroup.groupId}/${this.id}/likes`;
+        // put the chat message on database;
+        this.items = this.af.list(path);
+        this.items.subscribe(likeItems => {
+            this.isImageLike = likeItems.find(likeItem => {
+                return likeItem.$value === currentUser.mail;
+            });
+        });
 
     }
 
     toggleLike(): any {
-        const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'ToggleLike/he/true?
-            &mail${appGlobalsService.currentUser.mail}&id=${this.id}&isLike${this.isLike}`;
-            // this.http.get(url)
-            //     .toPromise();
-        });
-        appGlobalsService.toggleLikeItem(this.id);
+        if (!this.isImageLike) {
+            this.items.push(appGlobalsService.currentUser.mail);
+        } else {
+            this.items.remove();
+        }
     }
-    get isLike(){
-       return appGlobalsService.likeItems.indexOf(this.id) > -1;
-    }
-    get likeCount(){
-        return appGlobalsService.likeItemsCount[this.id];
-    }
-
 }

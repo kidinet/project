@@ -1,49 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { AdService, } from '../../../services/ad.service';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators, FormGroup} from '@angular/forms';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+import * as appGlobalsService from '../../../store/app-globals';
+import {
+    AngularFireDatabase,
+    FirebaseListObservable,
+    FirebaseObjectObservable,
+} from 'angularfire2/database-deprecated';
 export class AdListing {
-  title = 'Your Title'
-  content = 'Ad Content'
-  price = 5.00
+    title = 'Your Title'
+    content = 'Ad Content'
+    price = 5.00;
 }
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+    selector: 'app-chat',
+    templateUrl: './chat.component.html',
+    styleUrls: ['./chat.component.scss']
 })
 
 export class ChatComponent {
 
-  ad: any;
-  adForm: FormGroup;
-  constructor(
-    private fb: FormBuilder,
-    private adService: AdService) { }
-    
-  startNewAdListing() {
-   this.ad = this.adService.createAd()
-   this.buildForm()
-  }
-  saveAdChanges() {
-    if (this.adForm.status != 'VALID') {
-      console.log('form is not valid, cannot save to database')
-      return
+    items: FirebaseListObservable<any>;
+    name: any = 'Gila';
+    msg = '';
+
+    constructor(public af: AngularFireDatabase) {
+        const path = `${appGlobalsService.currentGroup.groupId}/${appGlobalsService.currentUser.mail.replace('@', 'A').replace('.', 'B')}/chat`;
+
+        // put the chat message on database;
+        this.items = af.list(path, {
+            query: {
+                limitToLast: 5
+            }
+        });
+        // this.af.auth.subscribe(auth => {
+        //     if (auth) {
+        //         this.name = auth;
+        //     }
+        // });
     }
-    const data = this.adForm.value
-    this.adService.updateAd(this.ad, data)
-  }
-  private buildForm() {
-    this.adForm = this.fb.group({
-      title: ['',],
-      content: ['',],
-      price: ['',],
-      image: ['',]
-    });
-    this.ad.subscribe(ad => {
-      this.adForm.patchValue(ad)
-    })
-  }
+
+    send() {
+        this.items.push({'message': this.msg, name: this.name});
+        this.msg = '';
+    }
+
 }
