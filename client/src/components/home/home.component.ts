@@ -13,9 +13,9 @@ import {DOCUMENT} from '@angular/common';
 export class HomeComponent implements OnInit {
 
     constructor(private apiService: ApiService,
-                @Inject(DOCUMENT) private document: Document,
-                private activatedRoute: ActivatedRoute,
-                private router: Router) {
+        @Inject(DOCUMENT) private document: Document,
+        private activatedRoute: ActivatedRoute,
+        private router: Router) {
         if (appGlobalsService.currentUser.lastName && appGlobalsService.currentUser.firstName) {
             const index = this.document.location.href.lastIndexOf('/') + 1;
             if (this.document.location.href.substr(index) === 'home') {
@@ -30,14 +30,14 @@ export class HomeComponent implements OnInit {
     isLoading = true;
 
     ngOnInit() {
-        /*    this.apiService.initAllAboutTitles().then(result => {
-         if (result.Success) {
-         appGlobalsService.setAboutTitles(result.returnObject);
-         } else {
-         console.warn('cant get the aboutTitle');
-         }
-         }
-         );*/
+      
+      /*  this.apiService.initAllAboutTitles().then(result => {
+            if (result.Success) {
+                appGlobalsService.setAboutTitles(result.returnObject);
+            } else {
+                console.warn('cant get the aboutTitle');
+            }
+        });*/
 
 
         /*   this.apiService.initImagesForGallery(0).then(result => {

@@ -27,16 +27,10 @@ namespace DatabaseFirstSample
     
         public virtual DbSet<about> abouts { get; set; }
         public virtual DbSet<AdministratorSetting> AdministratorSettings { get; set; }
-        public virtual DbSet<FormDilemma> FormDilemmas { get; set; }
-        public virtual DbSet<FormResponse> FormResponses { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<ImageGallery> ImageGalleries { get; set; }
-        public virtual DbSet<LikeImage> LikeImages { get; set; }
-        public virtual DbSet<Reminder> Reminders { get; set; }
         public virtual DbSet<UserInGroup> UserInGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<ResponseImage> ResponseImages { get; set; }
-        public virtual DbSet<chat> chats { get; set; }
         public virtual DbSet<ThisDayContent> ThisDayContents { get; set; }
         public virtual DbSet<ThisDayOfGroup> ThisDayOfGroups { get; set; }
     }

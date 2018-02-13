@@ -29,17 +29,17 @@ export class GroupService {
                     group.longitude = results.results[0].geometry.location.lng;
                 }
             });
-        const url = `${appGlobalsService.baseAPIUrl}createGroup/he/true?`
+        const url = `${appGlobalsService.baseAPIUrl}createGroup/he/true`
         return this.http.post(url, {
             name: group.groupName,
-            city: group.groupCity,
-            street: group.groupCity,
-            build: group.groupBuild,
-            phone: group.groupPhone,
-            mail: group.groupMail,
-            fax: group.groupFax,
-            latitude: group.latitude,
-            longitude: group.longitude
+            // city: group.groupCity,
+            // street: group.groupCity,
+            // build: group.groupBuild,
+            // phone: group.groupPhone,
+            // mail: group.groupMail,
+            // fax: group.groupFax,
+            // latitude: group.latitude,
+            // longitude: group.longitude
         }, httpOptions)
             .toPromise();
     }

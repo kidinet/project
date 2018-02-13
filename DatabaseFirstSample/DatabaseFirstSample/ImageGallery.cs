@@ -14,13 +14,6 @@ namespace DatabaseFirstSample
     
     public partial class ImageGallery
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ImageGallery()
-        {
-            this.LikeImages = new HashSet<LikeImage>();
-            this.ResponseImages = new HashSet<ResponseImage>();
-        }
-    
         public int id { get; set; }
         public int groupId { get; set; }
         public Nullable<System.DateTime> date_added { get; set; }
@@ -28,9 +21,5 @@ namespace DatabaseFirstSample
         public string subject { get; set; }
     
         public virtual Group Group { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LikeImage> LikeImages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ResponseImage> ResponseImages { get; set; }
     }
 }
