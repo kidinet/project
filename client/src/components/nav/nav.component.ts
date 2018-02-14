@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PersonalAreaSettingsComponent} from '../personal-area/personal-area-settings/personal-area-settings.component';
 import {ConfirmPasswordComponent} from '../personal-area/confirm-password/confirm-password.component';
 import {GroupSettingsComponent} from '../personal-area/group-settings/group-settings.component';
@@ -18,6 +18,8 @@ export class NavComponent implements OnInit {
     }
 
     isPersonalAreaNavOpen = false;
+    isChat = false;
+    @Output() chatStatusChange: EventEmitter<any> = new EventEmitter();
 
     ngOnInit() {
     }
@@ -38,9 +40,15 @@ export class NavComponent implements OnInit {
         this.isPersonalAreaNavOpen = !this.isPersonalAreaNavOpen;
     }
 
+    toggleChatStatus() {
+        this.isChat = !this.isChat;
+        this.chatStatusChange.emit(this.isChat);
+    }
+
     logOut() {
         location.reload();
     }
+
     get appGlobalsService() {
         return appGlobalsService;
     }
