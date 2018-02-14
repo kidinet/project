@@ -5,6 +5,7 @@ nav {
   margin: 10px 0 0 0;
   padding: 18px;
   max-height: 64px;
+  position: relative;
   a, .personal_area {
     box-sizing: content-box;
     padding: 3px 10px;
@@ -26,8 +27,8 @@ nav {
     }
     &:last-child {
       border-left: none;
-    }
 
+    }
     .personal_area_nav {
       transition: 0.3s;
       position: absolute;
@@ -72,6 +73,28 @@ nav {
         }
       }
     }
+  }
+  .left_side {
+    position: absolute;
+    @include absolute-vertical-middle();
+    left: 20px;
+    button {
+      position: relative;
+      padding: 0 15px 0 60px;
+      font-size: 25px;
+
+      i {
+        position: absolute;
+        padding: 5px;
+        top: 7px;
+        left: 7px;
+        @include absolute-vertical-middle();
+      }
+      &.selected{
+        border: solid 2px;
+      }
+    }
+
   }
   &.show {
     a {

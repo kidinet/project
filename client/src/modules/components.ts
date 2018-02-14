@@ -22,7 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {AgmCoreModule} from '@agm/core';            // @agm/core
 import {AgmDirectionModule} from 'agm-direction';   // agm-direction
 import * as globals from '../store/app-globals';
-import { ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 // globals
 import {StyleComponent} from '../components/style/style.component';
 // image gallery components:
@@ -46,7 +46,7 @@ import {RemindersComponent} from '../components/personal-area/reminders/reminder
 import {ConfirmPasswordComponent} from '../components/personal-area/confirm-password/confirm-password.component';
 import {GroupSettingsComponent} from '../components/personal-area/group-settings/group-settings.component';
 import {AppRoutes} from './route';
-
+import {ScrollDirective} from "../directives/scroll.directive";
 
 
 @NgModule({
@@ -77,7 +77,8 @@ import {AppRoutes} from './route';
         ConfirmPasswordComponent,
         GroupSettingsComponent,
         StyleComponent,
-        
+        ScrollDirective
+
     ],
     entryComponents: [NewGroup, AddNewImageComponent, ConfirmPasswordComponent, GroupSettingsComponent],
     imports: [
@@ -122,7 +123,8 @@ import {AppRoutes} from './route';
         PersonalAreaSettingsComponent,
         RemindersComponent,
         AddNewImageComponent,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ScrollDirective
     ],
 })
 export class components {
