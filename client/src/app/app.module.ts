@@ -21,7 +21,6 @@ import {ImagesService} from '../services/images.service';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database-deprecated';
-import { SendReminderComponent } from './send-reminder/send-reminder.component';
 
 export const environment = {
     production: false,
@@ -38,7 +37,6 @@ export const environment = {
 @NgModule({
     declarations: [
         AppComponent,
-        SendReminderComponent,
     ],
     imports: [
         BrowserModule,

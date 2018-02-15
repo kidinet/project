@@ -47,6 +47,8 @@ import {ConfirmPasswordComponent} from '../components/personal-area/confirm-pass
 import {GroupSettingsComponent} from '../components/personal-area/group-settings/group-settings.component';
 import {AppRoutes} from './route';
 import {ScrollDirective} from "../directives/scroll.directive";
+import { SendReminderComponent } from '../components/personal-area/send-reminder/send-reminder.component';
+
 
 
 @NgModule({
@@ -77,10 +79,11 @@ import {ScrollDirective} from "../directives/scroll.directive";
         ConfirmPasswordComponent,
         GroupSettingsComponent,
         StyleComponent,
-        ScrollDirective
+        ScrollDirective,
+        SendReminderComponent
 
     ],
-    entryComponents: [NewGroup, AddNewImageComponent, ConfirmPasswordComponent, GroupSettingsComponent],
+    entryComponents: [NewGroup, AddNewImageComponent, ConfirmPasswordComponent, GroupSettingsComponent,SendReminderComponent],
     imports: [
         AppRoutes,
         BrowserModule,
@@ -124,7 +127,8 @@ import {ScrollDirective} from "../directives/scroll.directive";
         RemindersComponent,
         AddNewImageComponent,
         ReactiveFormsModule,
-        ScrollDirective
+        ScrollDirective,
+        SendReminderComponent
     ],
 })
 export class components {
