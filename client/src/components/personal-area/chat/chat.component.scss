@@ -1,65 +1,77 @@
 @import '../../../assets/style/globalStyle';
 
+:host {
+  position: relative;
+}
+
+.show_more {
+  position: absolute;
+  top: 13px;
+  left: 135px;
+  z-index: 100;
+  .fa-upload {
+    font-size: 25px;
+  }
+}
+
 .chat_wrapper {
   width: 250px;
   background-color: lightgray;
-  padding: 15px 15px 10px;
+  padding: 70px 15px 10px;
   border-radius: 5px;
   z-index: 50;
   margin: auto;
   max-height: 100%;
   overflow: scroll;
+  position: relative;
   @include fadeInAnimate(0.6);
-  .scroll_wrapper {
-    height: calc(110% + 10px);
-    .chat_container_wrapper {
-      text-align: right;
-      .chat_container {
-        margin: 0 0 20px;
-        .chat_content {
-          padding: 10px;
-          border-radius: 8px;
-          position: relative;
-          display: inline-block;
-          max-width: 100%;
-          word-wrap: break-word;
-          background-color: #f9ffcf;
-          color: #f9ffcf;
-          * {
-            color: black;
-            font-size: 19px;
-          }
-          &:after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            right: -2px;
-            transform: rotate(156deg);
-            width: 0;
-            height: 0;
-            border-top: 5px solid transparent;
-            border-left: 9px solid;
-            border-bottom: 5px solid transparent;
-          }
+  .chat_container_wrapper {
+    text-align: right;
+    .chat_container {
+      margin: 0 0 20px;
+      .chat_content {
+        padding: 10px;
+        border-radius: 8px;
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
+        word-wrap: break-word;
+        background-color: #f9ffcf;
+        color: #f9ffcf;
+        * {
+          color: black;
+          font-size: 19px;
         }
-        .details {
-          font-size: 10px;
-          margin: 5px 0 !important;
-          color: #6666b4;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -3px;
+          right: -2px;
+          transform: rotate(156deg);
+          width: 0;
+          height: 0;
+          border-top: 5px solid transparent;
+          border-left: 9px solid;
+          border-bottom: 5px solid transparent;
         }
-
       }
-      &.manager {
-        text-align: left;
-        .chat_container {
-          .chat_content {
-            background-color: #e2f6ff;
-            color: #e2f6ff;
-            &:after {
-              left: -4px;
-              transform: rotate(151deg);
-              right: unset;
-            }
+      .details {
+        font-size: 10px;
+        margin: 5px 0 !important;
+        color: #6666b4;
+      }
+
+    }
+    &.manager {
+      text-align: left;
+      .chat_container {
+        .chat_content {
+          background-color: #e2f6ff;
+          color: #e2f6ff;
+          &:after {
+            left: -4px;
+            transform: rotate(151deg);
+            right: unset;
           }
         }
       }

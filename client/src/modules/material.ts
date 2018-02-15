@@ -12,7 +12,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
-    imports: [MatButtonModule,
+    imports: [
+        MatButtonModule,
         MatCheckboxModule,
         MatSelectModule,
         MatInputModule,
@@ -25,7 +26,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
         MatProgressSpinnerModule,
         MatAutocompleteModule,
         MatTooltipModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+
     ],
     exports: [
         MatButtonModule,
