@@ -1,17 +1,29 @@
 @import '../../../assets/style/globalStyle';
 
-.chat_wrapper {
+.wrapper {
+  position: relative;
   width: 250px;
-  background-color: lightgray;
-  padding: 15px 15px 10px;
-  border-radius: 5px;
-  z-index: 50;
   margin: auto;
-  max-height: 100%;
-  overflow: scroll;
-  @include fadeInAnimate(0.6);
-  .scroll_wrapper {
-    height: calc(110% + 10px);
+  height: 100%;
+  box-shadow: 0 1px 2px 0px #737070;
+  background-color: lightgray;
+  .show_more {
+    position: absolute;
+    top: 13px;
+    left: 105px;
+    z-index: 100;
+    .fa-upload {
+      font-size: 25px;
+    }
+  }
+  .chat_wrapper {
+    padding: 70px 15px 10px;
+    border-radius: 2px;
+    z-index: 50;
+    width: 100%;
+    overflow: scroll;
+    max-height: 100%;
+    @include fadeInAnimate(0.6);
     .chat_container_wrapper {
       text-align: right;
       .chat_container {
@@ -63,42 +75,32 @@
           }
         }
       }
-    }
-    .value {
-      box-shadow: 0 1px 2px 0px #737070;
-      width: 100%;
-      padding: 10px;
-      border-radius: 3px;
-      font-size: 18px;
-      margin: 20px 0 5px 0;
-      background-color: white;
-      &:focus {
-        outline: red;
+      .button_container {
+        text-align: left;
+        button {
+          @include md-button(white, $app_red, 15);
+          font-size: 15px;
+        }
       }
     }
-    .button_container {
-      text-align: left;
-      button {
-        @include md-button(white, $app_red, 15);
-        font-size: 15px;
-      }
-    }
-    &:before {
-      content: '';
-      position: absolute;
-      top: 2px;
-      right: -25px;
-      -webkit-transform: rotate(156deg);
-      transform: rotate(91deg);
-      width: 0;
-      height: 0;
-      border-top: 24px solid transparent;
-      border-left: 32px solid rgb(211, 211, 211);
-      border-bottom: 3px solid transparent;
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
-  //&::-webkit-scrollbar {
-  //  display: none;
-  //}
-}
 
+  .value {
+    width: 100%;
+    padding: 10px;
+    border-radius: 2px;
+    font-size: 18px;
+    margin: 20px 0 0;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    &:focus {
+      outline: red;
+    }
+  }
+}

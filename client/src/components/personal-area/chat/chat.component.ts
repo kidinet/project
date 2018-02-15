@@ -1,6 +1,6 @@
 import {AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, Validators, FormGroup} from '@angular/forms';
-import {Chat} from '../../../entities/chat/chat'
+import {Chat} from '../../../entities/chat/chat';
 import * as appGlobalsService from '../../../store/app-globals';
 import * as moment from 'moment';
 moment.locale('he');
@@ -16,7 +16,7 @@ import {
     styleUrls: ['./chat.component.scss']
 })
 
-export class ChatComponent implements OnInit {
+export class ChatComponent implements AfterContentInit {
 
     items: FirebaseListObservable<Chat[]>;
     msg = '';
@@ -39,36 +39,27 @@ export class ChatComponent implements OnInit {
         // });
     }
 
-    ngOnInit(){
-        this.chat.nativeElement.scrollTop = 50;
-        console.log(this.chat.nativeElement.scrollTop, 'first');
-
-    }
-
-    send() {
-        this.items.push(new Chat(appGlobalsService.currentUser.mail, this.msg, new Date().toString()));
-        this.msg = '';
-    }
-
     get moment() {
         return moment;
     }
 
-    showHistoryChat(value: number) {
-        console.log(this.chat.nativeElement.scrollTop);
-        if (value == 0) {
-            setTimeout(() => {
-                this.limitToLast += 10;
-                this.items = this.af.list(this.path, {
-                    query: {
-                        limitToLast: this.limitToLast
-                    }
-                });
-                console.log(this.chat.nativeElement.scrollTop, 'second');
-
-            })
-        }
+    ngAfterContentInit() {
 
     }
 
+    send() {
+        if (this.msg !== '') {
+            this.items.push(new Chat(appGlobalsService.currentUser.mail, this.msg, new Date().toString()));
+            this.msg = '';
+        }
+    }
+
+    showHistoryChat() {
+        this.limitToLast += 10;
+        this.items = this.af.list(this.path, {
+            query: {
+                limitToLast: this.limitToLast
+            }
+        });
+    }
 }
