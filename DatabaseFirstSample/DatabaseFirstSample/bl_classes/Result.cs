@@ -13,13 +13,17 @@ namespace DatabaseFirstSample.bl_classes
     [DataContract]
     public class Result<T>
     {
+        private bool v1;
+        private User user;
+        private int v2;
+
         [DataMember]
         public bool Success { get; set; }
         [DataMember]
         public string ErrorMessage { get; set; }
         [DataMember]
         public T returnObject { get; set; }
-        public Result(bool seccess, string errorMessage)
+        public Result(string errorMessage)
         {
             this.Success = Success;
             this.ErrorMessage = errorMessage;
@@ -36,6 +40,18 @@ namespace DatabaseFirstSample.bl_classes
             this.returnObject = returnObject;
             this.ErrorMessage = errorMessage;
         }
+
+        public Result(bool v1, User user, int v2)
+        {
+            this.v1 = v1;
+            this.user = user;
+            this.v2 = v2;
+        }
+
+        public Result()
+        {
+        }
+
         public T getType(T returnObject)
         {
             Type obj = returnObject.GetType();

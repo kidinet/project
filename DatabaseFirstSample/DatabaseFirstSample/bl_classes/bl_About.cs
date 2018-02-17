@@ -34,7 +34,7 @@ namespace DatabaseFirstSample
                 }
                 catch (Exception ex)
                 {
-                    return new Result<about>(false, ex.Message);
+                    return new Result<about>(ex.Message);
                     throw ex;
                 }
             }
@@ -69,7 +69,7 @@ namespace DatabaseFirstSample
                 }
                 catch (Exception ex)
                 {
-                    return new Result<about>(false, ex.Message);
+                    return new Result<about>(ex.Message);
                     throw ex;
                 }
 

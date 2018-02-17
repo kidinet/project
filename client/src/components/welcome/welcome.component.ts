@@ -122,8 +122,7 @@ export class NewGroup {
     }
 
     createGroup() {
-        this.groupService.createGroup(this.createGroupForm.value);
-        this.groupService.createGroup(this.createGroupForm.value).then(result => {
+         this.groupService.createGroup(this.createGroupForm.value).then(result => {
             if (result.Success) {
                 appGlobalsService.setGroup(result.returnObject);
                 this.stepper.selectedIndex += 1;
@@ -134,6 +133,7 @@ export class NewGroup {
         });
         this.isLoading = true;
     }
+  
 
     createManager() {
         this.userService.creatUser(this.createUserForm.value, true).then(result => {

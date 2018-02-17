@@ -23,7 +23,6 @@ export class ApiService {
 
     // ============================= about page api=============================================:
     initAllAboutTitles(): any {
-          debugger
          const url = `${appGlobalsService.baseAPIUrl}initAllAboutTitles/he/true`
          this.http.post(url, {groupId: appGlobalsService.currentGroup.groupId}, httpOptions).toPromise();
         // return [
