@@ -1,4 +1,4 @@
-import {Component, Directive, OnInit} from '@angular/core';
+import {Component, Directive, OnInit, Input} from '@angular/core';
 import 'ng2-ripple-directive/src/scss/ripple.scss';
 import * as appGlobalsService from '../../../store/app-globals';
 import {FormReply} from  '../../../entities/form/forunReply';
@@ -8,8 +8,9 @@ import {
     FirebaseObjectObservable,
 } from 'angularfire2/database-deprecated';
 import * as moment from 'moment';
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
 moment.locale('he');
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {Observable} from 'rxjs/Observable';
 
 @Component({
     selector: 'app-form-list',
@@ -21,33 +22,43 @@ export class FormListComponent implements OnInit {
 
     showMoreTextTitle = false;
     // ====================== forum============================
-    currentForumKey = '-L5hjWTQWJAy3YxTVIWB';
-    currentForum: FirebaseListObservable<FormReply[]>;
-    // ====================== reply:============
-    replyContent = new FormControl('', Validators.required);
+    replysList: FirebaseListObservable<FormReply[]>;
+    @Input() currentForum: any;
+
+    // reply:
+    replyContent = new FormControl(null);
     replyForm = this.builder.group({
         replyContent: this.replyContent
     });
-    replysList;
-
 
     constructor(public af: AngularFireDatabase,
-                private builder: FormBuilder) {
-        const path = `${appGlobalsService.currentGroup.groupId}/forum/${this.currentForumKey}/replys`;
-        this.replysList = af.list(path, {});
+        private builder: FormBuilder) {
     }
 
     ngOnInit() {
-
+        
     }
-
+    ngOnChanges(value: any) {
+        const replyPath = `${appGlobalsService.currentGroup.groupId}/forum/${this.currentForum['$key']}/replys`;
+        this.replysList = this.af.list(replyPath, {});
+    }
     toggleMoreText() {
         this.showMoreTextTitle = !this.showMoreTextTitle;
     }
 
     reply() {
         this.replysList.push(new FormReply(this.replyForm.value['replyContent'], appGlobalsService.currentUser.mail, new Date().toString()))
-        this.replyForm.markAsPristine();
         this.replyForm.reset();
+    }
+
+    get usersDetails() {
+        let usersInCurrentGroup = {};
+        appGlobalsService.usersInCurrentGroup.forEach(user => {
+            usersInCurrentGroup[user.mail] = `${user.firstName} ${user.lastName}`
+        })
+        return usersInCurrentGroup
+    }
+    get moment() {
+        return moment
     }
 }

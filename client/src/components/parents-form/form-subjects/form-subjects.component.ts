@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormSubject} from '../../../entities/form/formSubject';
 import {FormReply} from  '../../../entities/form/forunReply';
-import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
 import * as appGlobalsService from '../../../store/app-globals';
+import {FormControl, Validators, FormBuilder} from '@angular/forms';
 import {
     AngularFireDatabase,
     FirebaseListObservable,
@@ -28,13 +28,21 @@ export class FormSubjectsComponent implements OnInit {
     items: FirebaseListObservable<FormSubject[]>;
     limitToLast = 8;
     path = `${appGlobalsService.currentGroup.groupId}/forum`;
+    @Output() selectForumDilemma = new EventEmitter<any>();
     //
     // new dilemma:
     newDilemmaTitle = '';
     isShowNew = false;
 
+    // form declare:
+    newDilemaTitle = new FormControl('');
+    newDilemaContent = new FormControl('')
+    newDilemaaForm = this.builder.group({
+        newDilemaTitle: this.newDilemaTitle,
+        newDilemaContent: this.newDilemaContent
+    });
 
-// =====================mock  ================================
+    // =====================mock  ================================
     formSubjects: FormSubject[] = [
         new FormSubject('אבל?', 'אחת האמהות', '01/01/18'),
         new FormSubject('לא?', 'אחת האמהות', '01/01/18'),
@@ -45,7 +53,9 @@ export class FormSubjectsComponent implements OnInit {
 
     filteredOptions: Observable<FormSubject[]>;
 
-    constructor(public af: AngularFireDatabase) {
+    constructor(
+        public af: AngularFireDatabase,
+        private builder: FormBuilder) {
         this.items = af.list(this.path, {
             // preserveSnapshot: true,
             query: {
@@ -58,18 +68,18 @@ export class FormSubjectsComponent implements OnInit {
     ngOnInit() {
         this.filteredOptions = this.searchControl.valueChanges
             .pipe(
-                startWith<string | FormSubject>(''),
-                map(value => typeof value === 'string' ? value : value.text),
-                map(text => text ? this.filter(text) : this.formSubjects.slice())
+            startWith<string | FormSubject>(''),
+            map(value => typeof value === 'string' ? value : value.text),
+            map(text => text ? this.filter(text) : this.formSubjects.slice())
             );
     }
 
     filter(text: string): FormSubject[] {
         return this.formSubjects.filter(option =>
-        option.text.toLowerCase().indexOf(text.toLowerCase()) === 0);
+            option.text.toLowerCase().indexOf(text.toLowerCase()) === 0);
     }
 
-    displayFn(formSubject ?: FormSubject): string | undefined {
+    displayFn(formSubject?: FormSubject): string | undefined {
         return formSubject ? formSubject.text : undefined;
     }
 
@@ -81,31 +91,15 @@ export class FormSubjectsComponent implements OnInit {
         console.log(event);
     }
 
-// ===============================================================
+    // ===============================================================
     createNewDilemma() {
-        this.items.push(new FormSubject(this.newDilemmaTitle, appGlobalsService.currentUser.mail, new Date().toString()));
-        this.newDilemmaTitle = '';
+        this.items.push(new FormSubject(this.newDilemaaForm.value['newDilemaTitle'], this.newDilemaaForm.value['newDilemaContent'], appGlobalsService.currentUser.mail, new Date().toString()));
+        this.newDilemaaForm.reset();
         this.isShowNew = false;
     }
 
-    showForumReplys(index, item) {
-        let snapshotKey;
-        this.items
-            .subscribe(snapshots => {
-                // snapshotKey = snapshots.find(snapshot => {
-                //         console.log(snapshot, item, snapshot === item, 'snapshot');
-                //         // console.log(snapshot['key']);
-                //         return snapshot === item;
-                //     }
-                // );
-                console.log(index, item)
-                console.log(snapshots[index]['$key']);
-                console.log(item['$key']);
-            });
-        // const uid = '-L5hjWTQWJAy3YxTVIWB';
-        // const list = this.af.list(`${appGlobalsService.currentGroup.groupId}/forum/${uid}/replys`);
-        // list.push(new FormReply('התגובה שליייייי1111', appGlobalsService.currentUser.mail, new Date().toString()));
-        // list.push(new FormReply('התגובה שליייייי1111', appGlobalsService.currentUser.mail, new Date().toString()));
+    showForumReplys(item) {
+        this.selectForumDilemma.emit(item);
     }
 
     // ==================pipes===========

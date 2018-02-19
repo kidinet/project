@@ -1,9 +1,9 @@
 <div class="prents_form">
     <div class="form_list">
-        <app-form-list></app-form-list>
+        <app-form-list [currentForum]="selectedForumDilemma"></app-form-list>
     </div>
     <div class="subjects">
-        <app-form-subjects></app-form-subjects>
+        <app-form-subjects (selectForumDilemma)=selectForumDilemma($event)></app-form-subjects>
     </div>
 
 

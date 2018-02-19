@@ -13,16 +13,12 @@
 </div>
 
 <div class="form_subjects" [ngClass]="{'expanded':isExpanded}">
-    <div class="subject" (click)="showForumReplys(i,subject)"  *ngFor="let subject of this.items | async ; index as i">
-        <h3>{{subject.text}}</h3>
+    <div class="subject" (click)="showForumReplys(subject)" *ngFor="let subject of this.items | async ; index as i">
+        <h3>{{subject.title}}</h3>
         <div class="details">
             <h6>{{subject.details}}</h6>
             <h6>{{moment(subject.date).calendar()}}</h6>
         </div>
-        <h5 class="count">
-            <span>{{subject.replys}}</span>
-            <span>תגובות</span>
-        </h5>
     </div>
 </div>
 
@@ -31,14 +27,17 @@
     <button class="new_dilemma_button" mat-raised-button color="primary" (click)="isShowNew=true">יש לי משהו לשאול
         אתכם
     </button>
-    <div
-            class="new_dilemma_content"
-            [attr.contenteditable]="true"
-            [textContent]="newDilemmaTitle"
-            (input)="newDilemmaTitle=$event.target.textContent"></div>
+    <form [formGroup]="newDilemaaForm">
+        <mat-form-field class="input">
+            <input matInput placeholder="כותרת" type="text" name="newDilemaTitle" [formControl]="newDilemaTitle">
+        </mat-form-field>
+        <mat-form-field class="input">
+            <textarea matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" matInput placeholder="תוכן" name="newDilemaContent"
+                [formControl]="newDilemaContent"></textarea>
+        </mat-form-field>
+    </form>
     <div class="actions">
-        <button mat-raised-button color="accent" class="create" (click)="createNewDilemma()" [disabled]="newDilemmaTitle==''">אישור</button>
-        <button mat-raised-button color="accent" class="cancel" (click)="isShowNew=false">ביטול</button>
+        <button mat-raised-button color="accent" class="create" (click)="createNewDilemma()" [disabled]="!newDilemaaForm.controls['newDilemaTitle'].value||!newDilemaaForm.controls['newDilemaContent'].value">אישור</button>
+        <button mat-raised-button color="accent" class="cancel">ביטול</button>
     </div>
-
 </div>
