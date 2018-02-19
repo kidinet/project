@@ -1,16 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, Validators, FormGroup} from '@angular/forms';
+import {Chat} from '../../../entities/chat/chat';
 import * as appGlobalsService from '../../../store/app-globals';
+import * as moment from 'moment';
+moment.locale('he');
 import {
     AngularFireDatabase,
     FirebaseListObservable,
     FirebaseObjectObservable,
 } from 'angularfire2/database-deprecated';
-export class AdListing {
-    title = 'Your Title'
-    content = 'Ad Content'
-    price = 5.00;
-}
 
 @Component({
     selector: 'app-chat',
@@ -18,19 +16,20 @@ export class AdListing {
     styleUrls: ['./chat.component.scss']
 })
 
-export class ChatComponent {
+export class ChatComponent implements AfterContentInit {
 
-    items: FirebaseListObservable<any>;
-    name: any = 'Gila';
+    items: FirebaseListObservable<Chat[]>;
     msg = '';
+    limitToLast = 8;
+    path = `${appGlobalsService.currentGroup.groupId}/${appGlobalsService.currentUser.mail.replace('@', 'A').replace('.', 'B')}/chat`;
+    @ViewChild('chat') private chat: ElementRef;
 
     constructor(public af: AngularFireDatabase) {
-        const path = `${appGlobalsService.currentGroup.groupId}/${appGlobalsService.currentUser.mail.replace('@', 'A').replace('.', 'B')}/chat`;
 
         // put the chat message on database;
-        this.items = af.list(path, {
+        this.items = af.list(this.path, {
             query: {
-                limitToLast: 5
+                limitToLast: this.limitToLast
             }
         });
         // this.af.auth.subscribe(auth => {
@@ -40,9 +39,27 @@ export class ChatComponent {
         // });
     }
 
-    send() {
-        this.items.push({'message': this.msg, name: this.name});
-        this.msg = '';
+    get moment() {
+        return moment;
     }
 
+    ngAfterContentInit() {
+
+    }
+
+    send() {
+        if (this.msg !== '') {
+            this.items.push(new Chat(appGlobalsService.currentUser.mail, this.msg, new Date().toString()));
+            this.msg = '';
+        }
+    }
+
+    showHistoryChat() {
+        this.limitToLast += 10;
+        this.items = this.af.list(this.path, {
+            query: {
+                limitToLast: this.limitToLast
+            }
+        });
+    }
 }

@@ -22,7 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {AgmCoreModule} from '@agm/core';            // @agm/core
 import {AgmDirectionModule} from 'agm-direction';   // agm-direction
 import * as globals from '../store/app-globals';
-import { ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 // globals
 import {StyleComponent} from '../components/style/style.component';
 // image gallery components:
@@ -34,7 +34,6 @@ import {AddNewImageComponent} from '../components/gallery/add-new-image/add-new-
 // form components:
 import {FormListComponent} from '../components/parents-form/form-list/form-list.component';
 import {FormSubjectsComponent} from '../components/parents-form/form-subjects/form-subjects.component';
-import {ReplyComponent} from '../components/parents-form/reply/reply.component';
 
 // about components:
 import {AboutTitleComponent} from '../components/about/about-title/about-title.component';
@@ -46,7 +45,8 @@ import {RemindersComponent} from '../components/personal-area/reminders/reminder
 import {ConfirmPasswordComponent} from '../components/personal-area/confirm-password/confirm-password.component';
 import {GroupSettingsComponent} from '../components/personal-area/group-settings/group-settings.component';
 import {AppRoutes} from './route';
-
+import {ScrollDirective} from "../directives/scroll.directive";
+import {SendReminderComponent} from '../components/personal-area/send-reminder/send-reminder.component';
 
 
 @NgModule({
@@ -68,7 +68,6 @@ import {AppRoutes} from './route';
         ImageGalleryResponseComponent,
         FormListComponent,
         FormSubjectsComponent,
-        ReplyComponent,
         AboutTitleComponent,
         ChatComponent,
         PersonalAreaSettingsComponent,
@@ -77,9 +76,19 @@ import {AppRoutes} from './route';
         ConfirmPasswordComponent,
         GroupSettingsComponent,
         StyleComponent,
-        
+        ScrollDirective,
+        SendReminderComponent,
+
+
     ],
-    entryComponents: [NewGroup, AddNewImageComponent, ConfirmPasswordComponent, GroupSettingsComponent],
+    entryComponents: [
+        NewGroup,
+        AddNewImageComponent,
+        ConfirmPasswordComponent,
+        GroupSettingsComponent,
+        SendReminderComponent,
+
+    ],
     imports: [
         AppRoutes,
         BrowserModule,
@@ -116,13 +125,15 @@ import {AppRoutes} from './route';
         ImageGalleryResponseComponent,
         FormListComponent,
         FormSubjectsComponent,
-        ReplyComponent,
         AboutTitleComponent,
         ChatComponent,
         PersonalAreaSettingsComponent,
         RemindersComponent,
         AddNewImageComponent,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ScrollDirective,
+        SendReminderComponent,
+
     ],
 })
 export class components {

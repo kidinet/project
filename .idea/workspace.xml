@@ -2,22 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd4e6c10-39c1-45f0-b98e-01dcf5fee451" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.spec.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/services/ad.service.ts" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/entities/form/forunReply.ts" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.html" afterPath="$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.scss" afterPath="$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.ts" afterPath="$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/gallery/image-gallery/like-component/like-component.component.html" afterPath="$PROJECT_DIR$/client/src/components/gallery/image-gallery/like-component/like-component.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/gallery/image-gallery/like-component/like-component.component.ts" afterPath="$PROJECT_DIR$/client/src/components/gallery/image-gallery/like-component/like-component.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html" afterPath="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.scss" afterPath="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.ts" afterPath="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/personal-area/personal-area-settings/personal-area-settings.component.ts" afterPath="$PROJECT_DIR$/client/src/components/personal-area/personal-area-settings/personal-area-settings.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/entities/gallery/imageGalleryResponse.ts" afterPath="$PROJECT_DIR$/client/src/entities/gallery/imageGalleryResponse.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/store/app-global-style.ts" afterPath="$PROJECT_DIR$/client/src/store/app-global-style.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/store/app-globals.ts" afterPath="$PROJECT_DIR$/client/src/store/app-globals.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/home/home.component.ts" afterPath="$PROJECT_DIR$/client/src/components/home/home.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.scss" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.scss" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.html" afterPath="$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/this-week/this-week.component.ts" afterPath="$PROJECT_DIR$/client/src/components/this-week/this-week.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/entities/form/formSubject.ts" afterPath="$PROJECT_DIR$/client/src/entities/form/formSubject.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/modules/components.ts" afterPath="$PROJECT_DIR$/client/src/modules/components.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/services/api.service.ts" afterPath="$PROJECT_DIR$/client/src/services/api.service.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/services/group.service.ts" afterPath="$PROJECT_DIR$/client/src/services/group.service.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/services/user.service.ts" afterPath="$PROJECT_DIR$/client/src/services/user.service.ts" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,110 +30,92 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="nav.component.ts" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/client/src/components/nav/nav.component.ts">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="395">
+                    <caret line="32" column="5" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
+                    <folding>
+                      <element signature="e#0#70#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="chat.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html">
+      <file leaf-file-name="form-list.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="648">
+              <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form-list.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="50" column="40" lean-forward="false" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FormResponse.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/entities/cs/FormResponse.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parents-form.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="39" lean-forward="false" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="components.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/modules/components.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1312">
+              <caret line="126" column="30" lean-forward="false" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+                <element signature="e#2228#2319#0" expanded="true" />
+                <element signature="e#2567#2645#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form-subjects.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chat.component.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="image-gallery-response.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="image-gallery-response.component.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chat.component.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="this-week.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/this-week/this-week.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="25" column="90" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="25" selection-end-column="90" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="image-gallery-response.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="41" column="3" lean-forward="false" selection-start-line="41" selection-start-column="3" selection-end-line="43" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="imageGalleryResponse.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/entities/gallery/imageGalleryResponse.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="like-component.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/gallery/image-gallery/like-component/like-component.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="31" column="11" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="31" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="like-component.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/gallery/image-gallery/like-component/like-component.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="36" lean-forward="false" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+              <caret line="15" column="59" lean-forward="false" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -139,17 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>appGlobalsStyle</find>
-      <find>appGlobalsStyl</find>
-      <find>appGlobalsSty</find>
-      <find>appGlobalsSt</find>
-      <find>appGlobalsS</find>
-      <find>appGlobalsSe</find>
-      <find>appGlobalsSer</find>
-      <find>appGlobalsServ</find>
-      <find>appGlobalsServi</find>
-      <find>appGlobalsServic</find>
-      <find>appGlobalsService</find>
       <find>appGlobalsService.</find>
       <find>appGlobalsService.i</find>
       <find>appGlobalsService.ic</find>
@@ -169,6 +144,17 @@
       <find>name</find>
       <find>image_gallery_chat_wrapper</find>
       <find>respone</find>
+      <find>Group</find>
+      <find>before</find>
+      <find>getCurrentGroupThisDayTitltes</find>
+      <find>updateThisDayOfGroupTitle</find>
+      <find>displayFn</find>
+      <find>AddNewDilemmaComponent</find>
+      <find>AddNewDilemma</find>
+      <find>display</find>
+      <find>Reply</find>
+      <find>items</find>
+      <find>'kkkkkkkkkkkkkxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxkkkkkkkkkkkkk' +</find>
     </findStrings>
     <replaceStrings>
       <replace>:</replace>
@@ -184,12 +170,13 @@
       <replace>routerLink=`</replace>
       <replace>appGlobalsStyle</replace>
       <replace>isImageLike</replace>
-      <replace>'</replace>
       <replace>chat</replace>
       <replace>reply</replace>
       <replace>myReply</replace>
       <replace>hat_wrapper</replace>
       <replace>message</replace>
+      <replace>'</replace>
+      <replace>currentForum</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -198,15 +185,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/src/services/images.service.ts" />
-        <option value="$PROJECT_DIR$/client/src/services/group.service.ts" />
-        <option value="$PROJECT_DIR$/client/.angular-cli.json" />
-        <option value="$PROJECT_DIR$/client/src/app/app.component.html" />
-        <option value="$PROJECT_DIR$/client/src/app/app.component.scss" />
-        <option value="$PROJECT_DIR$/client/src/components/this-week/this-week.component.scss" />
-        <option value="$PROJECT_DIR$/client/src/services/api.service.ts" />
-        <option value="$PROJECT_DIR$/client/src/entities/thisDay/thisDayOfGroup.ts" />
-        <option value="$PROJECT_DIR$/client/src/components/this-week/this-week.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/this-week/this-week.component.html" />
         <option value="$PROJECT_DIR$/client/src/components/about/about-title/about-title.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/about/about-title/about-title.component.html" />
@@ -215,19 +193,15 @@
         <option value="$PROJECT_DIR$/client/src/components/welcome/welcome.component.scss" />
         <option value="$PROJECT_DIR$/client/src/components/welcome/welcome.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/welcome/welcome.component.html" />
-        <option value="$PROJECT_DIR$/client/src/services/user.service.ts" />
         <option value="$PROJECT_DIR$/client/src/components/nav/nav.component.scss" />
         <option value="$PROJECT_DIR$/client/src/components/look-for-friends/look-for-friends.component.scss" />
-        <option value="$PROJECT_DIR$/client/src/components/home/home.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/look-for-friends/look-for-friends.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/nav/nav.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/nav/nav.component.html" />
         <option value="$PROJECT_DIR$/client/src/modules/route.ts" />
         <option value="$PROJECT_DIR$/client/src/components/home/home.component.html" />
-        <option value="$PROJECT_DIR$/client/src/modules/components.ts" />
         <option value="$PROJECT_DIR$/client/src/services/ad.service.ts" />
         <option value="$PROJECT_DIR$/client/src/components/personal-area/personal-area-settings/personal-area-settings.component.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/client/src/store/app-globals.ts" />
         <option value="$PROJECT_DIR$/client/src/entities/gallery/imageGalleryResponse.ts" />
         <option value="$PROJECT_DIR$/client/src/components/gallery/image-gallery/like-component/like-component.component.html" />
@@ -236,9 +210,32 @@
         <option value="$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.scss" />
         <option value="$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.html" />
-        <option value="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.scss" />
-        <option value="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html" />
+        <option value="$PROJECT_DIR$/client/src/modules/material.ts" />
+        <option value="$PROJECT_DIR$/client/src/entities/reminder/reminder.ts" />
         <option value="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/personal-area/reminders/reminders.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html" />
+        <option value="$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.scss" />
+        <option value="$PROJECT_DIR$/client/src/components/home/home.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/this-week/this-week.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/services/api.service.ts" />
+        <option value="$PROJECT_DIR$/client/src/services/group.service.ts" />
+        <option value="$PROJECT_DIR$/client/src/services/user.service.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/add-new-dilemma/add-new-dilemma.component.html" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.scss" />
+        <option value="$PROJECT_DIR$/client/src/entities/form/formSubject.ts" />
+        <option value="$PROJECT_DIR$/client/src/entities/form/forunReply.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.scss" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.html" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.scss" />
+        <option value="$PROJECT_DIR$/client/src/modules/components.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.html" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts" />
       </list>
     </option>
   </component>
@@ -253,10 +250,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="-4" />
-    <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="x" value="69" />
+    <option name="y" value="272" />
+    <option name="width" value="1851" />
+    <option name="height" value="984" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -273,6 +270,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -335,326 +334,12 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entities" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entities" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gallery" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="personal-area" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="personal-area" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gallery" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gallery" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="image-gallery-response" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gallery" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="image-gallery" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gallery" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="image-gallery" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="like-component" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="solution" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -663,11 +348,18 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../html/new/mapview" />
-    <property name="SearchEverywhereHistoryKey" value="thisW&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/this-week/this-week.component.html&#10;ike&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/gallery/image-gallery/like-component/like-component.component.ts&#10;home.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.html&#10;app.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/app/app.component.html&#10;nav&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/nav/nav.component.html&#10;group.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/group.ts&#10;ome&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.ts&#10;nav.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/nav/nav.component.html&#10;home.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.ts&#10;user&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/user.service.ts&#10;api&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/api.service.ts&#10;user.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/user/user.ts&#10;app&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/store/app-globals.ts&#10;cookie&#9;null&#9;null&#10;like&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/gallery/image-gallery/like-component/like-component.component.ts&#10;formlist.scss&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/parents-form/form-list/form-list.component.scss&#10;form.scss&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/parents-form/form-subjects/form-subjects.component.scss&#10;global&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/global.ts&#10;angularcli&#9;FILE&#9;file:///var/www/kidinet/solution/client/.angular-cli.json&#10;this&#9;null&#9;null&#10;user.se&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/user.service.ts&#10;about.cs&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/about.cs" />
+    <property name="SearchEverywhereHistoryKey" value="chat&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/personal-area/chat/chat.component.html&#10;thisDayContent&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/ThisDayContent.cs&#10;thisDay&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/ThisDayOfGroup.cs&#10;this&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/this-week/this-week.component.ts&#10;home.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.ts&#10;api&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/api.service.ts&#10;reminder&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/cs/Reminder.cs&#10;thisW&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/this-week/this-week.component.html&#10;ike&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/gallery/image-gallery/like-component/like-component.component.ts&#10;home.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.html&#10;app.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/app/app.component.html&#10;nav&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/nav/nav.component.html&#10;group.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/group.ts&#10;ome&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.ts&#10;nav.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/nav/nav.component.html&#10;user&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/user.service.ts&#10;user.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/user/user.ts&#10;app&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/store/app-globals.ts&#10;cookie&#9;null&#9;null&#10;like&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/gallery/image-gallery/like-component/like-component.component.ts&#10;formlist.scss&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/parents-form/form-list/form-list.component.scss&#10;form.scss&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/parents-form/form-subjects/form-subjects.component.scss&#10;global&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/global.ts&#10;angularcli&#9;FILE&#9;file:///var/www/kidinet/solution/client/.angular-cli.json&#10;user.se&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/user.service.ts&#10;about.cs&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/about.cs" />
     <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v8.4.0/bin/node" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/client/node_modules/tslint" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components/parents-form" />
+      <recent name="$PROJECT_DIR$/client/src/components/personal-area" />
+      <recent name="$PROJECT_DIR$/client/src/components" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -767,29 +459,34 @@
       <workItem from="1517814095897" duration="21849000" />
       <workItem from="1518417579353" duration="5839000" />
       <workItem from="1518423516488" duration="16831000" />
-      <workItem from="1518502364436" duration="22567000" />
+      <workItem from="1518502364436" duration="23235000" />
+      <workItem from="1518679645439" duration="3783000" />
+      <workItem from="1518684950603" duration="4743000" />
+      <workItem from="1518703849003" duration="58000" />
+      <workItem from="1518934857782" duration="645000" />
+      <workItem from="1519021443484" duration="528000" />
+      <workItem from="1519022105792" duration="21124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72471000" />
+    <option name="totallyTimeSpent" value="104020000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
+    <frame x="69" y="272" width="1851" height="984" extended-state="0" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26091763" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28144044" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34029227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3846154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -811,300 +508,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/src/global.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/app.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1044">
-          <caret line="58" column="5" lean-forward="false" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
-          <caret line="87" column="34" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="87" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/this-week/this-week.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/gallery/gallery.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/entities/thisDay/thisDayContent.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/entities/thisDay/thisDayOfGroup.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="27" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/this-week/this-week.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="54" column="23" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/about/about-title/about-title.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="77" lean-forward="false" selection-start-line="0" selection-start-column="77" selection-end-line="0" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/about/about-title/about-title.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/welcome/welcome.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="43" column="22" lean-forward="false" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/node_modules/ngx-cookie-service/cookie-service/cookie.service.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/services/api.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="148" column="5" lean-forward="true" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
-          <folding>
-            <element signature="e#1039#3133#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/welcome/welcome.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/app-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/welcome/welcome.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="38" column="73" lean-forward="false" selection-start-line="38" selection-start-column="73" selection-end-line="38" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/modules/routing.ts" />
-    <entry file="file://$PROJECT_DIR$/client/src/services/user.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2304">
-          <caret line="128" column="11" lean-forward="false" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/nav/nav.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="60" column="23" lean-forward="false" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/look-for-friends/look-for-friends.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="45" column="18" lean-forward="false" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/entities/group.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/look-for-friends/look-for-friends.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/look-for-friends/look-for-friends.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="35" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/nav/nav.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="86" lean-forward="false" selection-start-line="31" selection-start-column="86" selection-end-line="31" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/nav/nav.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="45" column="5" lean-forward="false" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/home/home.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#56#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/modules/route.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#53#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/home/home.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="10" lean-forward="false" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/modules/components.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1944">
-          <caret line="125" column="6" lean-forward="false" selection-start-line="125" selection-start-column="6" selection-end-line="125" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#56#0" expanded="false" />
-            <marker date="1518506310230" expanded="true" signature="5230:5236" ph="//..." />
-            <marker date="1518506310230" expanded="true" signature="5230:5242" ph="[...]" />
-            <marker date="1518506310230" expanded="true" signature="5230:5245" ph="{...}" />
-            <marker date="1518506310230" expanded="true" signature="5271:5275" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/entities/user/user.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/services/ad.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/personal-area.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/services/ad.service.ts" />
     <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/personal-area-settings/personal-area-settings.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="57" lean-forward="false" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1112,7 +520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1120,7 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1128,7 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="20" column="109" lean-forward="false" selection-start-line="20" selection-start-column="109" selection-end-line="20" selection-end-column="109" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1136,7 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="40" column="24" lean-forward="false" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1144,7 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1152,17 +555,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="36" lean-forward="false" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/gallery/image-gallery/like-component/like-component.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
+        <state relative-caret-position="468">
           <caret line="31" column="11" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="31" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1170,58 +569,348 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-          <folding />
+          <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/gallery/image-gallery-response/image-gallery-response.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="666">
           <caret line="41" column="3" lean-forward="false" selection-start-line="41" selection-start-column="3" selection-end-line="43" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/this-week/this-week.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="90" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="25" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/home/home.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="10" lean-forward="false" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/modules/material.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="70" lean-forward="false" selection-start-line="3" selection-start-column="70" selection-end-line="3" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/reminders/reminders.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/entities/cs/Reminder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="50" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="21" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/entities/group.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/entities/reminder/reminder.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/reminders/reminders.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
           <folding>
-            <element signature="e#0#77#0" expanded="true" />
+            <element signature="e#0#48#0" expanded="false" />
+            <element signature="e#231#365#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+        <state relative-caret-position="234">
+          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/this-week/this-week.component.html">
+    <entry file="file://$PROJECT_DIR$/client/src/components/home/home.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="25" column="90" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="25" selection-end-column="90" />
+        <state relative-caret-position="396">
+          <caret line="57" column="78" lean-forward="false" selection-start-line="57" selection-start-column="78" selection-end-line="57" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html">
+    <entry file="file://$PROJECT_DIR$/DatabaseFirstSample/DatabaseFirstSample/ThisDayContent.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatabaseFirstSample/DatabaseFirstSample/ThisDayOfGroup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/this-week/this-week.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="107" column="5" lean-forward="false" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/services/api.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="92" column="40" lean-forward="true" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/services/group.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/services/user.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1674">
+          <caret line="104" column="23" lean-forward="false" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#56#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/personal-area.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/nav/nav.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="32" column="5" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/add-new-dilemma/add-new-dilemma.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/confirm-password/confirm-password.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#48#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="95" column="20" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/entities/chat/chat.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+        <state relative-caret-position="-62">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
           <folding>
-            <element signature="e#0#48#0" expanded="true" />
+            <element signature="e#0#104#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="99" lean-forward="false" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/entities/form/forunReply.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="15" column="59" lean-forward="false" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/entities/form/formSubject.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/entities/cs/FormResponse.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="28" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/modules/components.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1312">
+          <caret line="126" column="30" lean-forward="false" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+            <element signature="e#2228#2319#0" expanded="true" />
+            <element signature="e#2567#2645#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="121" column="1" lean-forward="false" selection-start-line="121" selection-start-column="1" selection-end-line="121" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="39" lean-forward="false" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="91" column="24" lean-forward="true" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#48#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="50" column="40" lean-forward="false" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>

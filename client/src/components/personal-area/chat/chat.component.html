@@ -1,16 +1,26 @@
-<div class="chat_wrapper">
-    <div class="chat_container_wrapper" *ngFor="let message of this.items | async ; index as i">
-        <div class="chat_container">
-            <h5 class="chat_content"
-                [ngStyle]="{backgroundColor: i%2?'#ffffe8':'#e6f9ff', color:i%2?'#ffffe8':'#e6f9ff'}">
-                <span>{{message.message}}</span>
-            </h5>
-            <h6 class="details">
-                <span>{{message.name}},</span>
-                <span>{{message.date}}</span>
-            </h6>
+<div class="wrapper">
+    <button mat-mini-fab color="accent" class="show_more">
+        <i class="fa fa-upload" aria-hidden="true" (click)="showHistoryChat()"></i>
+    </button>
+    <h4
+            class="value"
+            [attr.contenteditable]="true"
+            [textContent]="msg"
+            (input)="msg=$event.target.textContent"
+            (keyup.enter)="send()"></h4>
+    <div class="overlay" (click)="closeMe()"></div>
+    <div class="chat_wrapper" #chat scroll-directive>
+        <div class="chat_container_wrapper" *ngFor="let message of this.items | async ; index as i">
+            <div class="chat_container">
+                <h5 class="chat_content"
+                    [ngClass]="{'manager':message.userMail=='gfhf'}">
+                    <span>{{message.message}}</span>
+                </h5>
+                <h6 class="details">
+                    <span>{{moment(message.date).fromNow()}}</span>
+                </h6>
+            </div>
         </div>
     </div>
-    <textarea type="text" [(ngModel)]="msg" (keyup.enter)="send()"></textarea>
 </div>
-<div class="overlay" (click)="closeMe()"></div>
+
