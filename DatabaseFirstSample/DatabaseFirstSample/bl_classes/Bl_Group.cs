@@ -26,7 +26,7 @@ namespace DatabaseFirstSample
                 }
                 catch (Exception ex)
                 {
-                    return new Result<Group>(false, 1);
+                    return new Result<Group>();
                     throw ex;
                 }
             } 
