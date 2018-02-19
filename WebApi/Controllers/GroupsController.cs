@@ -30,7 +30,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("createGroup/{Language}/{Registered}")]
-        public IHttpActionResult createGroup(string Language, bool Registered, [FromBody] string name)
+        public IHttpActionResult createGroup(string Language, bool Registered, [FromBody]Group name)
         {
             //  localhost:7022/api/createGroup/he/true?name=kidinet&city=BneiBraq&street=lklklklk&build=2&phone=5798888&mail=kidinet@gmail.com&fax=1234567
             return Ok(true);
