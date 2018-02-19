@@ -22,18 +22,16 @@
         </div>
         <div class="profile"></div>
     </div>
+</div>
 
-    <div class="response">
-        <div class="content">
-            <i class="fa fa-comments" aria-hidden="true"></i>
-            <div class="details">
-                <h6>אחת האמהות</h6>
-                <h6>01/02/17</h6>
-            </div>
-            <div class="text">יוואלה איזה מגניב!!!!!!!!!!!!!!!איזה מגניב!!!!!!!!!!!!!!!איזה מגניב!!!!!!!!!!!!!!!איזה
-                מגניב!!!!!!!!!!!!!!!איזה מגניב!!!!!!!!!!!!!!!!
-            </div>
+<div class="reply_wrapper">
+    <form [formGroup]="replyForm" (ngSubmit)="reply() ">
+        <mat-form-field class="input">
+            <textarea matInput placeholder="התגובה שלך כאן" name="replyContent" [formControl]="replyContent"></textarea>
+        </mat-form-field>
+        <!--<div [hidden]="replyTitle.untouched||!replyTitle.hasError('required')">שדה נדרש</div>-->
+        <div class="button_wrapper">
+            <button type="submit" mat-raised-button color="accent" [disabled]="!replyForm.valid">שלח</button>
         </div>
-        <div class="profile"></div>
-    </div>
+    </form>
 </div>

@@ -55,8 +55,8 @@ export class HomeComponent implements OnInit {
         setTimeout(() => {
             appGlobalsService.setAboutTitles(this.apiService.initAllAboutTitles());
             appGlobalsService.addImagesForGallery(this.apiService.initImagesForGallery(0));
-            appGlobalsService.setLikeItems(this.apiService.initLikeItems())
-            appGlobalsService.setLikeItemsCount(this.apiService.initLikeItemsCount())
+            // appGlobalsService.setLikeItems(this.apiService.initLikeItems())
+            // appGlobalsService.setLikeItemsCount(this.apiService.initLikeItemsCount())
             this.isLoading = false;
         }, 1000);
         // =========================================================================

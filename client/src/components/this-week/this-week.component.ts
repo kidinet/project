@@ -104,7 +104,7 @@ export class ThisWeekComponent implements OnInit {
     }
 
     updateThisDayOfGroupTitle(titleOfGroup) {
-        // this.apiService.updateThisDayOfGroupTitle(titleOfGroup);
+         this.apiService.updateThisDayOfGroupTitle(titleOfGroup);
     }
 
     addNewTitle() {

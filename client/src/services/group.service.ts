@@ -30,32 +30,13 @@ export class GroupService {
                 }
             });
         const url = `${appGlobalsService.baseAPIUrl}createGroup/he/true`
-        return this.http.post(url, {
-            name: group.groupName,
-            // city: group.groupCity,
-            // street: group.groupCity,
-            // build: group.groupBuild,
-            // phone: group.groupPhone,
-            // mail: group.groupMail,
-            // fax: group.groupFax,
-            // latitude: group.latitude,
-            // longitude: group.longitude
-        }, httpOptions)
+        return this.http.post(url, group, httpOptions)
             .toPromise();
     }
 
     updateGroup(group: Group): any {
-        const url = `${appGlobalsService.baseAPIUrl}updateGroup/he/true?`;
-        return this.http.post(url, {
-            id: group.groupId,
-            name: group.groupName,
-            city: group.groupCity,
-            street: group.groupCity,
-            build: group.groupBuild,
-            phone: group.groupPhone,
-            mail: group.groupMail,
-            fax: group.groupFax
-        }, httpOptions)
+        const url = `${appGlobalsService.baseAPIUrl}updateGroup/he/true`;
+        return this.http.post(url, group, httpOptions)
             .toPromise();
     }
 }

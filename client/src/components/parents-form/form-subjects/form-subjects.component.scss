@@ -16,7 +16,7 @@
     padding: 5px;
 
   }
-  .mat-form-field-underline{
+  .mat-form-field-underline {
     display: none;
   }
   .fa-search {
@@ -65,7 +65,8 @@
 
   }
 }
-.button_wrapper{
+
+.button_wrapper {
   text-align: left;
   .mat-button {
     background-color: $app_red;
@@ -76,3 +77,47 @@
     font-size: 18px;
   }
 }
+
+.new_dilemma_wrapper {
+  transition: 0.3s;
+  height: 70px;
+  overflow: hidden;
+  .new_dilemma_button {
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin: 20px 0 0 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .new_dilemma_content {
+    height: 70px;
+    padding: 5px;
+    margin: 15px 2px;
+    font-size: 20px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    &:focus {
+      outline: none;
+    }
+  }
+  .actions {
+    button {
+      color: white;
+      width: 49%;
+
+      &.create {
+        float: left;
+        color: white;
+      }
+      &.cancel {
+        float: right;
+      }
+    }
+  }
+
+  &.show {
+    height: 200px;
+    //overflow: unset;
+  }
+}
+

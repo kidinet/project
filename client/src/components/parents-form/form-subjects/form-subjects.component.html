@@ -1,30 +1,44 @@
-
-
-
-    <mat-form-field class="input_wrapper">
-        <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto">
-        <i class="fa fa-search" aria-hidden="true"></i>
-        <mat-autocomplete (optionSelected)="chooseOption($event)" #auto="matAutocomplete" [displayWith]="displayFn">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{ option.text }}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
+<mat-form-field class="input_wrapper">
+    <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <mat-autocomplete (optionSelected)="chooseOption($event)" #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option.text }}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
 
 <div class="button_wrapper">
     <button mat-button (click)="toggleShowDetails()">{{isExpanded?'הסתר פרטים':'הראה פרטים'}}</button>
 </div>
 
 <div class="form_subjects" [ngClass]="{'expanded':isExpanded}">
-    <div class="subject" *ngFor="let subject of formSubjects">
+    <div class="subject" (click)="showForumReplys(i,subject)"  *ngFor="let subject of this.items | async ; index as i">
         <h3>{{subject.text}}</h3>
         <div class="details">
             <h6>{{subject.details}}</h6>
-            <h6>{{subject.date}}</h6>
+            <h6>{{moment(subject.date).calendar()}}</h6>
         </div>
         <h5 class="count">
-            <span>{{subject.cout}}</span>
+            <span>{{subject.replys}}</span>
             <span>תגובות</span>
         </h5>
     </div>
+</div>
+
+
+<div class="new_dilemma_wrapper" [ngClass]="{'show': isShowNew}">
+    <button class="new_dilemma_button" mat-raised-button color="primary" (click)="isShowNew=true">יש לי משהו לשאול
+        אתכם
+    </button>
+    <div
+            class="new_dilemma_content"
+            [attr.contenteditable]="true"
+            [textContent]="newDilemmaTitle"
+            (input)="newDilemmaTitle=$event.target.textContent"></div>
+    <div class="actions">
+        <button mat-raised-button color="accent" class="create" (click)="createNewDilemma()" [disabled]="newDilemmaTitle==''">אישור</button>
+        <button mat-raised-button color="accent" class="cancel" (click)="isShowNew=false">ביטול</button>
+    </div>
+
 </div>
