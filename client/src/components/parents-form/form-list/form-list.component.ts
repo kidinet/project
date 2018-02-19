@@ -23,12 +23,11 @@ export class FormListComponent implements OnInit {
     // ====================== forum============================
     currentForumKey = '-L5hjWTQWJAy3YxTVIWB';
     currentForum: FirebaseListObservable<FormReply[]>;
-    // reply:
+    // ====================== reply:============
     replyContent = new FormControl('', Validators.required);
     replyForm = this.builder.group({
         replyContent: this.replyContent
     });
-
     replysList;
 
 

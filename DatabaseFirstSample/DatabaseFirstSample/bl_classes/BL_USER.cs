@@ -12,7 +12,7 @@ namespace DatabaseFirstSample
     {
         public BL_USER() { }
         
-        public Users getUser(string mail)
+        public User getUser(string mail)
         {
             using (var db = new BloggingContext())
             {
@@ -29,7 +29,7 @@ namespace DatabaseFirstSample
         }
 
 
-        public Result<Users> createUser(
+        public Result<User> createUser(
             string mail,
             string firstName,
             string lastName,
@@ -48,14 +48,14 @@ namespace DatabaseFirstSample
         {
             using (var db = new BloggingContext())
             {
-                Users existentUser = db.Users.FirstOrDefault(x => x.mail == mail);
+                User existentUser = db.Users.FirstOrDefault(x => x.mail == mail);
                 if (existentUser != null)
                 {
-                    return new Result<Users>(false, new Users(),1);
+                    return new Result<User>(false, new User(),1);
                 }
                 try
                 {
-                    Users user = new Users(mail,
+                    User user = new User(mail,
                     firstName,
                     lastName,
                     childFirstName,
@@ -70,7 +70,7 @@ namespace DatabaseFirstSample
                         db.Users.Add(user);
                         //db.UserInGroups.Add(new UserInGroup(groupId, mail, type));
                         db.SaveChanges();
-                        return new Result<Users>(true,user);
+                        return new Result<User>(true,user);
                 }
                 catch (Exception ex)
                 {
