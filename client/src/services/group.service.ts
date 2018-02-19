@@ -20,21 +20,6 @@ export class GroupService {
     constructor(private http: HttpClient, private userService: UserService) {
     }
 
-    createGroup2(group: Group): any {
-        // {
-        //     name: group.groupName,
-        //     city: group.groupCity,
-        //     street: group.groupCity,
-        //     build: group.groupBuild,
-        //     phone: group.groupPhone,
-        //     mail: group.groupMail,
-        //     fax: group.groupFax,
-        //     latitude: group.latitude,
-        //     longitude: group.longitude
-        // }
-        const url = `${appGlobalsService.baseAPIUrl}createGroup/he/true`
-        return this.http.post(url,'kjkj' , httpOptions).toPromise();
-    }
 
     createGroup(group: Group): any {
         this.userService.findFromAddress(`${group.groupCity} ${group.groupStreet} ${group.groupBuild}`).then(
@@ -45,21 +30,7 @@ export class GroupService {
                 }
             });
         const url = `${appGlobalsService.baseAPIUrl}createGroup/he/true`
-<<<<<<< HEAD
-        return this.http.post(url, {
-            name: group.groupName,
-            city: group.groupCity,
-            street: group.groupCity,
-            build: group.groupBuild,
-            phone: group.groupPhone,
-            mail: group.groupMail,
-            fax: group.groupFax,
-            latitude: group.latitude,
-            longitude: group.longitude
-        }, httpOptions)
-=======
         return this.http.post(url, group, httpOptions)
->>>>>>> master
             .toPromise();
     }
 

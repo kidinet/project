@@ -23,54 +23,6 @@ export class ApiService {
 
     // ============================= about page api=============================================:
     initAllAboutTitles(): any {
-<<<<<<< HEAD
-         const url = `${appGlobalsService.baseAPIUrl}initAllAboutTitles/he/true`
-         this.http.post(url, {groupId: appGlobalsService.currentGroup.groupId}, httpOptions).toPromise();
-        // return [
-        //     new AboutTitle(
-        //         'סתם כותרת',
-        //         'פירוט יותר מורחב' +
-        //         ' על הכותרת' +
-        //         ' על הכותרת' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         ' על הכותרת' +
-        //         ' על הכותרת' +
-        //         ' על הכותרת' +
-        //         ' בלה בלה בלה', 'color', 'icon', 123, true),
-        //     new AboutTitle(
-        //         'סתם כותרת',
-        //         'פירוט יותר מורחב' +
-        //         ' על הכותרת' +
-        //         ' על הכותרת' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         'להבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבלהבל' +
-        //         ' על הכותרת' +
-        //         ' על הכותרת' +
-        //         ' על הכותרת' +
-        //         ' בלה בלה בלה', 'color', 'icon', 123, true)
-        // ];
-=======
         /*const url = `${appGlobalsService.baseAPIUrl}initAllAboutTitles/he/true?groupId=${ppGlobalsService.currentGroup.groupId}`
          this.http.get(url).toPromise();*/
         return [
@@ -117,7 +69,6 @@ export class ApiService {
                 ' על הכותרת' +
                 ' בלה בלה בלה', 'color', 'icon', 123, true)
         ];
->>>>>>> master
     }
 
     addAboutTitle(aboutTitle: AboutTitle): any {
@@ -136,24 +87,20 @@ export class ApiService {
 
 
     updateAboutTitle(aboutTitle: AboutTitle): any {
-        const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'updateAboutTitle/he/true?`
-            this.http.post(url, {
-                title: aboutTitle.title,
-                content: aboutTitle.content,
-                color: aboutTitle.color.toString(),
-                icon: aboutTitle.icon.toString(),
-                groupId: appGlobalsService.currentGroup.groupId
-            }, httpOptions)
-                .toPromise();
-        });
+        const url = `${appGlobalsService.baseAPIUrl}'updateAboutTitle/he/true?`
+        this.http.post(url, {
+            title: aboutTitle.title,
+            content: aboutTitle.content,
+            color: aboutTitle.color.toString(),
+            icon: aboutTitle.icon.toString(),
+            groupId: appGlobalsService.currentGroup.groupId
+        }, httpOptions)
+            .toPromise();
     }
 
     deleteAboutTitle(id: number): any {
-        const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'deleteAboutTitle/he/true?id=${id}`
-            this.http.get(url).toPromise();
-        });
+        const url = `${appGlobalsService.baseAPIUrl}'deleteAboutTitle/he/true?id=${id}`
+        this.http.get(url).toPromise();
     }
 
 // ======================================== gallery api:================================================
@@ -193,7 +140,6 @@ export class ApiService {
 
     addImageToGallery(src, subject) {
         /*
-         const promise = new Promise(() => {
          const url = `${appGlobalsService.baseAPIUrl}'addImageToGallery/he/true`
          this.http.post(url, {
          groupId: appGlobalsService.currentGroup.groupId,
@@ -201,7 +147,7 @@ export class ApiService {
          date: new Date(),
          subject: subject
          }, httpOptions).toPromise();
-         });*/
+        */
     }
 
     // ========================this day functions:=====================================================
