@@ -31,9 +31,6 @@ export class FormListComponent implements OnInit {
         replyContent: this.replyContent
     });
 
-
-
-
     constructor(public af: AngularFireDatabase,
         private builder: FormBuilder) {
     }
