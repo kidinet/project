@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
@@ -34,46 +34,22 @@ export class UserService {
                     user.longitude = results.results[0].geometry.location.lng;
                 }
             });
-        const url = `${appGlobalsService.baseAPIUrl}createUser/he/true?`;
+        const url = `${appGlobalsService.baseAPIUrl}createUser/he/true`;
         return this.http.post(url, {
-            mail: user.mail,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            profile: null,
-            password: user.password,
-            city: user.city,
-            build: user.build,
-            streat: user.street,
-            phone: user.phone,
-            latitude: user.latitude,
-            longitude: user.longitude,
+            user: user,
             isAdministrator: isAdministrator,
             groupId: appGlobalsService.currentGroup.groupId
         }, httpOptions).toPromise();
     }
 
     updateUser(user: User): any {
-        const url = `${appGlobalsService.baseAPIUrl}updateUser/he/true?`
-        return this.http.post(url, {
-            mail: appGlobalsService.currentUser.mail,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            city: user.city,
-            build: user.build,
-            streat: user.street,
-            phone: user.phone
-        }, httpOptions).toPromise();
+        const url = `${appGlobalsService.baseAPIUrl}updateUser/he/true`
+        return this.http.post(url, user, httpOptions).toPromise();
     }
 
     updateUserInGroup(userInGroup: UserInGroup): any {
         const url = `${appGlobalsService.baseAPIUrl}updateUserInGroup/he/true?`
-        return this.http.post(url, {
-            mail: appGlobalsService.currentUser.mail,
-            groupId: appGlobalsService.currentGroup.groupId,
-            childFirstName: userInGroup.childFirstName,
-            childLastName: userInGroup.childLastName,
-            nickname: userInGroup.nickname
-        }, httpOptions)
+        return this.http.post(url, UserInGroup, httpOptions)
             .toPromise();
     }
 
@@ -81,7 +57,7 @@ export class UserService {
         const url = `${appGlobalsService.baseAPIUrl}updateProfileImage/he/true?`
         return this.http.post(url, {
             mail: appGlobalsService.currentUser.mail,
-            progile: profileData
+            profile: profileData
         }, httpOptions).toPromise();
     }
 
@@ -102,32 +78,31 @@ export class UserService {
     }
 
     logIn(loginFormValue): any {
-        /*  const url = `${appGlobalsService.baseAPIUrl}logIn/he/true`
-         this.http.post(url, {
-         mail: loginFormValue.mail,
-         password: loginFormValue.password
-         }, httpOptions).toPromise().then(result => {
-         if (result.Success) {
-         appGlobalsService.setCurreUser(new User(
-         result.returbObject.firstName,
-         result.returbObject.lastName,
-         result.returbObject.city,
-         result.returbObject.street,
-         result.returbObject.bulid,
-         result.returbObject.phone,
-         result.returbObject.mail,
-         result.returbObject.profile,
-         null,
-         result.returbObject.latitude,
-         result.returbObject.longitude,
-         ));
-         return true;
-         } else {
-         return false;
-         }
-         });
-         */
-        return false;
+       /* const url = `${appGlobalsService.baseAPIUrl}logIn/he/true`
+        this.http.post(url, {
+            mail: loginFormValue.mail,
+            password: loginFormValue.password
+        }, httpOptions).toPromise().then(result => {
+            if (result.Success) {
+                appGlobalsService.setCurreUser(new User(
+                    result.returbObject.firstName,
+                    result.returbObject.lastName,
+                    result.returbObject.city,
+                    result.returbObject.street,
+                    result.returbObject.bulid,
+                    result.returbObject.phone,
+                    result.returbObject.mail,
+                    result.returbObject.profile,
+                    null,
+                    result.returbObject.latitude,
+                    result.returbObject.longitude,
+                ));
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;*/
     }
 
 }

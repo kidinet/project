@@ -23,8 +23,8 @@ export class ApiService {
 
     // ============================= about page api=============================================:
     initAllAboutTitles(): any {
-        /* const url = `${appGlobalsService.baseAPIUrl}initAllAboutTitles/he/true`
-         this.http.post(url, {groupId: appGlobalsService.currentGroup.groupId}, httpOptions).toPromise();*/
+        /*const url = `${appGlobalsService.baseAPIUrl}initAllAboutTitles/he/true?groupId=${ppGlobalsService.currentGroup.groupId}`
+         this.http.get(url).toPromise();*/
         return [
             new AboutTitle(
                 'סתם כותרת',
@@ -102,19 +102,18 @@ export class ApiService {
 
     deleteAboutTitle(id: number): any {
         const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'deleteAboutTitle/he/true?`
-            this.http.post(url, {id: id}, httpOptions).toPromise();
+            const url = `${appGlobalsService.baseAPIUrl}'deleteAboutTitle/he/true?id=${id}`
+            this.http.get(url).toPromise();
         });
     }
 
 // ======================================== gallery api:================================================
     initImagesForGallery(start): any {
-        /* const promise = new Promise(() => {
-         const url = `${appGlobalsService.baseAPIUrl}initImagesForGallery/he/true?`
-         this.http.post(url, {
-         groupId: appGlobalsService.currentGroup.groupId,
-         start: start
-         }, httpOptions)
+        /*  const promise = new Promise(() => {
+         const url = `${appGlobalsService.baseAPIUrl}initImagesForGallery/he/true?
+         groupId=${appGlobalsService.currentGroup.groupId}
+         &start=${start}`
+         this.http.get(url)
          .toPromise();
          });*/
         // ======================================mock=========================================
@@ -138,26 +137,15 @@ export class ApiService {
         // ===================================================================================
     }
 
-    initAllResponseImage(start): any {
-        const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'initAllResponseImage/he/true?`
-            this.http.post(url, {groupId: appGlobalsService.currentGroup.groupId}, httpOptions)
-                .toPromise();
-        });
-    }
-
-    deleteImageFromGallery(id) {
-        const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'deleteImageFromGallery/he/true?`
-            this.http.post(url, {id: id}, httpOptions)
-                .toPromise();
-        });
+    deleteImageFromGallery(id): any {
+        const url = `${appGlobalsService.baseAPIUrl}'deleteImageFromGallery/he/true?id=${id}`
+        this.http.get(url).toPromise();
     }
 
     addImageToGallery(src, subject) {
         /*
          const promise = new Promise(() => {
-         const url = `${appGlobalsService.baseAPIUrl}'addImageToGallery/he/true?`
+         const url = `${appGlobalsService.baseAPIUrl}'addImageToGallery/he/true`
          this.http.post(url, {
          groupId: appGlobalsService.currentGroup.groupId,
          src: src,
@@ -167,73 +155,38 @@ export class ApiService {
          });*/
     }
 
-    initLikeItems(): any {
-        /* const promise = new Promise(() => {
-         const url = `${appGlobalsService.baseAPIUrl}'initLikeItems/he/true?`
-         this.http.post(url, {userMail: appGlobalsService.CurrentUser.mail}, httpOptions).toPromise();
-         });*/
-        return [123, 113];
-    }
-
-    initLikeItemsCount(): any {
-        /*
-         const promise = new Promise(() => {
-         const url = `${appGlobalsService.baseAPIUrl}'initLikeItemsCount/he/true?`
-         this.http.post(url, {groupId: appGlobalsService.currentGroup.groupId}, httpOptions).toPromise();
-         });*/
-
-        return {123: 1, 113: 5};
-    }
-
     // ========================this day functions:=====================================================
-    // the function get add the titles of this group from table thisDayOfGroup
-    getCurrentGroupThisDayTitltes():any{
-        /* const promise = new Promise(() => {
-         const url = `${appGlobalsService.baseAPIUrl}'getCurrentGroupThisDayTitltes/he/true?`
-         this.http.post(url,
-         {
-         groupId: appGlobalsService.currentGroup.groupId,
-         }, httpOptions).toPromise();
-         });*/
+    // the function get the titles of this group from table thisDayOfGroup
+    getCurrentGroupThisDayTitles(): any {
+        /* const url = `${appGlobalsService.baseAPIUrl}'getCurrentGroupThisDayTitltes/he/true?
+         groupId=${appGlobalsService.currentGroup.groupId}`
+         this.http.get(url).toPromise();*/
     }
+
     // the function get the content of the cards according to the displayedDay and rhe groupId
     getDisplayDayParam(displayDay: Date): any {
-        /* const promise = new Promise(() => {
-         const url = `${appGlobalsService.baseAPIUrl}'getDisplayDayParam/he/true?`
-         this.http.post(url,
-         {
-         groupId: appGlobalsService.currentGroup.groupId,
-         date: displayDay
-         }, httpOptions).toPromise();
-         });*/
+        const url = `${appGlobalsService.baseAPIUrl}'getDisplayDayParam/he/true?
+         groupId=${appGlobalsService.currentGroup.groupId}
+         &date${displayDay}`
+        this.http.get(url).toPromise();
     }
+
     // the function get card of group and update the title
     updateThisDayTitle(updatetThisDayTitleParam): any {
-        const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'updateThisDayTitle/he/true?`
-            this.http.post(url,
-                {
-                    title: updatetThisDayTitleParam
-                }, httpOptions).toPromise();
-        });
+        const url = `${appGlobalsService.baseAPIUrl}'updateThisDayTitle/he/true`
+        this.http.post(url, updatetThisDayTitleParam, httpOptions).toPromise();
+
     }
+
     updateThisDayOfGroupTitle(updateThisDayOfGroupTitleParam): any {
-        const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'updateThisDayOfGroupTitleParam/he/true?`
-            this.http.post(url,
-                {
-                    title: updateThisDayOfGroupTitleParam
-                }, httpOptions).toPromise();
-        });
+        const url = `${appGlobalsService.baseAPIUrl}'updateThisDayOfGroupTitle/he/true`
+        this.http.post(url, updateThisDayOfGroupTitleParam, httpOptions).toPromise();
     }
+
     addThisDayOfGroupTitle(addThisDayOfGroupTitleParam): any {
-        const promise = new Promise(() => {
-            const url = `${appGlobalsService.baseAPIUrl}'addThisDayOfGroupTitleParam/he/true?`
-            this.http.post(url,
-                {
-                    title: addThisDayOfGroupTitleParam
-                }, httpOptions).toPromise();
-        });
+        const url = `${appGlobalsService.baseAPIUrl}'addThisDayOfGroupTitle/he/true`
+        this.http.post(url, addThisDayOfGroupTitleParam, httpOptions).toPromise();
     }
+
     // =============================================================================================
 }

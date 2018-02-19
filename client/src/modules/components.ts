@@ -34,7 +34,6 @@ import {AddNewImageComponent} from '../components/gallery/add-new-image/add-new-
 // form components:
 import {FormListComponent} from '../components/parents-form/form-list/form-list.component';
 import {FormSubjectsComponent} from '../components/parents-form/form-subjects/form-subjects.component';
-import {ReplyComponent} from '../components/parents-form/reply/reply.component';
 
 // about components:
 import {AboutTitleComponent} from '../components/about/about-title/about-title.component';
@@ -47,8 +46,7 @@ import {ConfirmPasswordComponent} from '../components/personal-area/confirm-pass
 import {GroupSettingsComponent} from '../components/personal-area/group-settings/group-settings.component';
 import {AppRoutes} from './route';
 import {ScrollDirective} from "../directives/scroll.directive";
-import { SendReminderComponent } from '../components/personal-area/send-reminder/send-reminder.component';
-
+import {SendReminderComponent} from '../components/personal-area/send-reminder/send-reminder.component';
 
 
 @NgModule({
@@ -70,7 +68,6 @@ import { SendReminderComponent } from '../components/personal-area/send-reminder
         ImageGalleryResponseComponent,
         FormListComponent,
         FormSubjectsComponent,
-        ReplyComponent,
         AboutTitleComponent,
         ChatComponent,
         PersonalAreaSettingsComponent,
@@ -80,10 +77,18 @@ import { SendReminderComponent } from '../components/personal-area/send-reminder
         GroupSettingsComponent,
         StyleComponent,
         ScrollDirective,
-        SendReminderComponent
+        SendReminderComponent,
+
 
     ],
-    entryComponents: [NewGroup, AddNewImageComponent, ConfirmPasswordComponent, GroupSettingsComponent,SendReminderComponent],
+    entryComponents: [
+        NewGroup,
+        AddNewImageComponent,
+        ConfirmPasswordComponent,
+        GroupSettingsComponent,
+        SendReminderComponent,
+
+    ],
     imports: [
         AppRoutes,
         BrowserModule,
@@ -120,7 +125,6 @@ import { SendReminderComponent } from '../components/personal-area/send-reminder
         ImageGalleryResponseComponent,
         FormListComponent,
         FormSubjectsComponent,
-        ReplyComponent,
         AboutTitleComponent,
         ChatComponent,
         PersonalAreaSettingsComponent,
@@ -128,7 +132,8 @@ import { SendReminderComponent } from '../components/personal-area/send-reminder
         AddNewImageComponent,
         ReactiveFormsModule,
         ScrollDirective,
-        SendReminderComponent
+        SendReminderComponent,
+
     ],
 })
 export class components {
