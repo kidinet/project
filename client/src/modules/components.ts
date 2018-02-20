@@ -47,10 +47,12 @@ import {GroupSettingsComponent} from '../components/personal-area/group-settings
 import {AppRoutes} from './route';
 import {ScrollDirective} from "../directives/scroll.directive";
 import {SendReminderComponent} from '../components/personal-area/send-reminder/send-reminder.component';
-
+// pipe
+import { KeysPipe } from '../pipes/keys.pipe';
 
 @NgModule({
     declarations: [
+        KeysPipe,
         AboutComponent,
         GalleryComponent,
         ParentsFormComponent,

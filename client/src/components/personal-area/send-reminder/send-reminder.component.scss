@@ -1,0 +1,21 @@
+@import "../../../assets/style/globalStyle";
+.send_reminder_wrapper{
+   width: 300px;
+   .input{
+       width:100%;
+       textarea::-webkit-scrollbar{
+           display: none;
+                }
+   }
+   
+   .user{
+       padding:5px 0;
+   }
+   .warn{
+       text-align: center;
+       color: $app_red;
+   }
+   button{
+      float: left;
+   }
+}

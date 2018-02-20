@@ -32,11 +32,11 @@ export class FormListComponent implements OnInit {
     });
 
     constructor(public af: AngularFireDatabase,
-                private builder: FormBuilder) {
+        private builder: FormBuilder) {
     }
 
     ngOnInit() {
-        console.log(this.currentForum);
+       
     }
 
     ngOnChanges(value: any) {

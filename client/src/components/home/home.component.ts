@@ -3,6 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {Routes, RouterModule, Router, ActivatedRoute} from '@angular/router';
 import * as appGlobalsService from '../../store/app-globals';
 import {ImageGallery} from '../../entities/gallery/imageGallery';
+import {User} from '../../entities/user/User'
 import {DOCUMENT} from '@angular/common';
 
 @Component({
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
 
     isLoading = true;
     isChat = false;
+    currentUserForChat: User;
 
     ngOnInit() {
 
@@ -66,6 +68,16 @@ export class HomeComponent implements OnInit {
 
     toggleChatStatus(isChat) {
         this.isChat = isChat;
+    }
+    // ==================pipes===========
+    get appGlobalsService(){
+        return appGlobalsService
+    }
+     get usersInCurrentGroup() {
+        return appGlobalsService.usersInCurrentGroup;
+    }
+    setCurrentUser(user: User) {
+        this.currentUserForChat = user;
     }
 
 }

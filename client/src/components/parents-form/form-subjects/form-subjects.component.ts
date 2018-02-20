@@ -26,7 +26,6 @@ export class FormSubjectsComponent implements OnInit {
     //
     // forum items:
     items: FirebaseListObservable<FormSubject[]>;
-    limitToLast = 8;
     path = `${appGlobalsService.currentGroup.groupId}/forum`;
     @Output() selectForumDilemma = new EventEmitter<any>();
     selectedForumKey: string;
@@ -42,27 +41,12 @@ export class FormSubjectsComponent implements OnInit {
         newDilemaContent: this.newDilemaContent
     });
 
-    // =====================mock  ================================
-    // formSubjects: FormSubject[] = [
-    //     new FormSubject('אבל?', 'אחת האמהות', '01/01/18'),
-    //     new FormSubject('לא?', 'אחת האמהות', '01/01/18'),
-    //     new FormSubject('כן?', 'אחת האמהות', '01/01/18'),
-    //     new FormSubject('כדאי?', 'אחת האמהות', '01/01/18'),
-    //     new FormSubject('איפה?', 'אחת האמהות', '01/01/18'),
-    // ];
-
     filteredOptions: Observable<FormSubject[]>;
     formSubjects: FormSubject[] = [];
 
     constructor(public af: AngularFireDatabase,
-                private builder: FormBuilder) {
-        this.items = af.list(this.path, {
-            // preserveSnapshot: true,
-            query: {
-                limitToLast: this.limitToLast
-            }
-        });
-
+        private builder: FormBuilder) {
+        this.items = af.list(this.path);
     }
 
     ngOnInit() {
@@ -70,16 +54,16 @@ export class FormSubjectsComponent implements OnInit {
             this.formSubjects = items;
             this.filteredOptions = this.searchControl.valueChanges
                 .pipe(
-                    startWith<string | FormSubject>(''),
-                    map(value => typeof value === 'string' ? value : value.text),
-                    map(text => text ? this.filter(text) : this.formSubjects.slice())
+                startWith<string | FormSubject>(''),
+                map(value => typeof value === 'string' ? value : value.text),
+                map(text => text ? this.filter(text) : this.formSubjects.slice().reverse())
                 );
         });
     }
 
     filter(text: string): FormSubject[] {
-        return this.formSubjects.filter(option =>
-        option.text.toLowerCase().indexOf(text.toLowerCase()) === 0);
+        return this.formSubjects.reverse().filter(option =>
+            option.title.toLowerCase().indexOf(text.toLowerCase()) === 0);
     }
 
     displayFn(formSubject?: FormSubject): string | undefined {
@@ -90,20 +74,19 @@ export class FormSubjectsComponent implements OnInit {
         this.isExpanded = !this.isExpanded;
     }
 
-    chooseOption(event) {
-        console.log(event['option']['value']);
-    }
-
     // ===============================================================
     createNewDilemma() {
         this.items.push(new FormSubject(this.newDilemaaForm.value['newDilemaTitle'], this.newDilemaaForm.value['newDilemaContent'], appGlobalsService.currentUser.mail, new Date().toString()));
         this.newDilemaaForm.reset();
         this.isShowNew = false;
     }
+    cancel() {
+        this.newDilemaaForm.reset();
+        this.isShowNew = false;
+    }
 
     showForumReplys(item) {
-        this.selectedForumKey = [item]['$key'];
-        console.log(this.selectedForumKey);
+        this.selectedForumKey = item['$key'];
         this.selectForumDilemma.emit(item);
     }
 

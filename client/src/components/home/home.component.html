@@ -1,11 +1,26 @@
 <div class="home" *ngIf="!isLoading">
     <app-header></app-header>
-    <app-nav></app-nav>
+    <app-nav (chatStatusChange)=toggleChatStatus($event)></app-nav>
     <div class="router">
         <router-outlet></router-outlet>
     </div>
 
-    <div class="asaid">
-        <app-chat [hidden]="isChat"></app-chat>
+    <div class="asaid" *ngIf=isChat >
+        <!--<app-chat [user]="appGlobalsService.currentUser" [hidden]="isChat"></app-chat>-->
+        <div class="manager_wrapper">
+            <i (click)="setCurrentUser(null)" *ngIf="currentUserForChat" class="fa fa-window-close" aria-hidden="true"></i>
+            <div class="user_in_group" *ngFor="let user of usersInCurrentGroup" (click)="setCurrentUser(user)">
+                <span>{{user.firstName}}</span>
+                <span>{{user.lastName}}</span>
+                <img src="../../assets/images/progile.jpg" class="profile">
+            </div>
+            <app-chat *ngIf="currentUserForChat" [user]="currentUserForChat">
+                <div class="current_user_chat">
+                    <img src="../../assets/images/progile.jpg" class="profile">
+                    <span>{{currentUserForChat.firstName}}</span>
+                    <span>{{currentUserForChat.lastName}}</span>
+                </div>
+            </app-chat>
+        </div>
     </div>
 </div>
