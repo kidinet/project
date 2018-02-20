@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd4e6c10-39c1-45f0-b98e-01dcf5fee451" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/services/api.service.ts" afterPath="$PROJECT_DIR$/client/src/services/api.service.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts" afterPath="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.ts" afterPath="$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.ts" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,37 +16,37 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="nav.component.ts" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/client/src/components/nav/nav.component.ts">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="395">
-                    <caret line="32" column="5" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
-                    <folding>
-                      <element signature="e#0#70#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="chat.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chat.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="99" lean-forward="false" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="99" />
+            <state relative-caret-position="414">
+              <caret line="23" column="10" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app-globals.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/store/app-globals.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form-subjects.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="105" column="43" lean-forward="true" selection-start-line="104" selection-start-column="8" selection-end-line="105" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#70#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,8 +54,8 @@
       <file leaf-file-name="form-list.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+            <state relative-caret-position="-36">
+              <caret line="10" column="56" lean-forward="false" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -61,11 +64,19 @@
       <file leaf-file-name="form-list.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#59#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="353">
+              <caret line="45" column="9" lean-forward="false" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parents-form.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -73,18 +84,8 @@
       <file leaf-file-name="api.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/services/api.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="146" column="26" lean-forward="true" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormResponse.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/entities/cs/FormResponse.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="2502">
+              <caret line="146" column="26" lean-forward="false" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -103,7 +104,7 @@
       <file leaf-file-name="components.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/modules/components.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1312">
+            <state relative-caret-position="1674">
               <caret line="126" column="30" lean-forward="false" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
@@ -117,8 +118,8 @@
       <file leaf-file-name="form-subjects.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="15" column="59" lean-forward="false" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+            <state relative-caret-position="54">
+              <caret line="3" column="44" lean-forward="false" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -128,15 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>appGlobalsService.</find>
-      <find>appGlobalsService.i</find>
-      <find>appGlobalsService.ic</find>
-      <find>appGlobalsService.ico</find>
-      <find>appGlobalsService.icon</find>
-      <find>home</find>
-      <find>routerLink=&quot;</find>
-      <find>enableNavigation</find>
-      <find>ra</find>
       <find>ran</find>
       <find>rando</find>
       <find>random</find>
@@ -158,6 +150,15 @@
       <find>Reply</find>
       <find>'kkkkkkkkkkkkkxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxkkkkkkkkkkkkk' +</find>
       <find>items</find>
+      <find>s</find>
+      <find>su</find>
+      <find>sub</find>
+      <find>subscri</find>
+      <find>subscribe(</find>
+      <find>subscribe</find>
+      <find>formSubjects</find>
+      <find>choo</find>
+      <find>selectForumDilemma</find>
     </findStrings>
     <replaceStrings>
       <replace>:</replace>
@@ -188,7 +189,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/src/components/this-week/this-week.component.html" />
         <option value="$PROJECT_DIR$/client/src/components/about/about-title/about-title.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/about/about-title/about-title.component.html" />
         <option value="$PROJECT_DIR$/client/src/components/look-for-friends/look-for-friends.component.html" />
@@ -228,8 +228,6 @@
         <option value="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.scss" />
         <option value="$PROJECT_DIR$/client/src/entities/form/formSubject.ts" />
         <option value="$PROJECT_DIR$/client/src/entities/form/forunReply.ts" />
-        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html" />
-        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.scss" />
         <option value="$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.html" />
         <option value="$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.ts" />
@@ -237,8 +235,11 @@
         <option value="$PROJECT_DIR$/client/src/modules/components.ts" />
         <option value="$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.html" />
         <option value="$PROJECT_DIR$/client/src/services/api.service.ts" />
-        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.ts" />
         <option value="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts" />
       </list>
     </option>
   </component>
@@ -273,8 +274,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -337,7 +336,93 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solution" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parents-form" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solution" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parents-form" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="form-subjects" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solution" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parents-form" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="form-list" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -365,6 +450,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -372,8 +459,8 @@
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../html/new/mapview" />
-    <property name="SearchEverywhereHistoryKey" value="chat&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/personal-area/chat/chat.component.html&#10;api&#9;null&#9;null&#10;group&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/group.service.ts&#10;thisDayContent&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/ThisDayContent.cs&#10;thisDay&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/ThisDayOfGroup.cs&#10;this&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/this-week/this-week.component.ts&#10;home.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.ts&#10;reminder&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/cs/Reminder.cs&#10;thisW&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/this-week/this-week.component.html&#10;ike&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/gallery/image-gallery/like-component/like-component.component.ts&#10;home.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.html&#10;app.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/app/app.component.html&#10;nav&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/nav/nav.component.html&#10;group.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/group.ts&#10;ome&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.ts&#10;nav.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/nav/nav.component.html&#10;user&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/user.service.ts&#10;user.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/user/user.ts&#10;app&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/store/app-globals.ts&#10;cookie&#9;null&#9;null&#10;like&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/gallery/image-gallery/like-component/like-component.component.ts&#10;formlist.scss&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/parents-form/form-list/form-list.component.scss&#10;form.scss&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/parents-form/form-subjects/form-subjects.component.scss&#10;global&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/global.ts&#10;angularcli&#9;FILE&#9;file:///var/www/kidinet/solution/client/.angular-cli.json&#10;user.se&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/user.service.ts&#10;about.cs&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/about.cs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SearchEverywhereHistoryKey" value="subject&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/parents-form/form-subjects/form-subjects.component.ts&#10;global&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/store/app-globals.ts&#10;chat&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/personal-area/chat/chat.component.html&#10;api&#9;null&#9;null&#10;group&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/group.service.ts&#10;thisDayContent&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/ThisDayContent.cs&#10;thisDay&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/ThisDayOfGroup.cs&#10;this&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/this-week/this-week.component.ts&#10;home.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.ts&#10;reminder&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/cs/Reminder.cs&#10;thisW&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/this-week/this-week.component.html&#10;ike&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/gallery/image-gallery/like-component/like-component.component.ts&#10;home.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.html&#10;app.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/app/app.component.html&#10;nav&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/nav/nav.component.html&#10;group.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/group.ts&#10;ome&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/home/home.component.ts&#10;nav.html&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/nav/nav.component.html&#10;user&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/user.service.ts&#10;user.ts&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/entities/user/user.ts&#10;app&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/store/app-globals.ts&#10;cookie&#9;null&#9;null&#10;like&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/gallery/image-gallery/like-component/like-component.component.ts&#10;formlist.scss&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/parents-form/form-list/form-list.component.scss&#10;form.scss&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/components/parents-form/form-subjects/form-subjects.component.scss&#10;angularcli&#9;FILE&#9;file:///var/www/kidinet/solution/client/.angular-cli.json&#10;user.se&#9;FILE&#9;file:///var/www/kidinet/solution/client/src/services/user.service.ts&#10;about.cs&#9;FILE&#9;file:///var/www/kidinet/solution/DatabaseFirstSample/DatabaseFirstSample/about.cs" />
     <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v8.4.0/bin/node" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -490,29 +577,31 @@
       <workItem from="1518703849003" duration="58000" />
       <workItem from="1518934857782" duration="645000" />
       <workItem from="1519021443484" duration="528000" />
-      <workItem from="1519022105792" duration="21779000" />
+      <workItem from="1519022105792" duration="22284000" />
+      <workItem from="1519107858794" duration="612000" />
+      <workItem from="1519131210950" duration="3770000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104675000" />
+    <option name="totallyTimeSpent" value="109562000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28081813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28800443" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34446764" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38517746" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -553,13 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/store/app-globals.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="20" column="109" lean-forward="false" selection-start-line="20" selection-start-column="109" selection-end-line="20" selection-end-column="109" />
         </state>
       </provider>
     </entry>
@@ -644,7 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="50" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="21" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -652,7 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -660,7 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -668,10 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-            <element signature="e#231#365#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -679,7 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -687,7 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="57" column="78" lean-forward="false" selection-start-line="57" selection-start-column="78" selection-end-line="57" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -695,7 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -703,7 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -711,7 +782,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="107" column="5" lean-forward="false" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -719,7 +789,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1674">
           <caret line="104" column="23" lean-forward="false" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -727,9 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -737,43 +803,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/nav/nav.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="32" column="5" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/add-new-dilemma/add-new-dilemma.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/add-new-dilemma/add-new-dilemma.component.html" />
     <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/confirm-password/confirm-password.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -781,7 +818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
           <caret line="95" column="20" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -789,7 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,15 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="59" lean-forward="false" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -823,7 +849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,33 +860,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="28" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.html" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.scss" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/reply/reply.component.ts" />
     <entry file="file://$PROJECT_DIR$/client/src/modules/components.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1312">
+        <state relative-caret-position="1674">
           <caret line="126" column="30" lean-forward="false" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
@@ -875,7 +879,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
           <caret line="121" column="1" lean-forward="false" selection-start-line="121" selection-start-column="1" selection-end-line="121" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -887,55 +890,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="91" column="24" lean-forward="true" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/services/group.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
           <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/services/api.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="146" column="26" lean-forward="true" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
+        <state relative-caret-position="2502">
+          <caret line="146" column="26" lean-forward="false" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/nav/nav.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="32" column="5" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="10" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/store/app-globals.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/parents-form.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="10" column="56" lean-forward="false" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="353">
+          <caret line="45" column="9" lean-forward="false" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="44" lean-forward="false" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-subjects/form-subjects.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="105" column="43" lean-forward="true" selection-start-line="104" selection-start-column="8" selection-end-line="105" selection-end-column="43" />
           <folding>
-            <element signature="e#0#59#0" expanded="true" />
+            <element signature="e#0#70#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/parents-form/form-list/form-list.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/personal-area/chat/chat.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="99" lean-forward="false" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="99" />
-          <folding />
         </state>
       </provider>
     </entry>

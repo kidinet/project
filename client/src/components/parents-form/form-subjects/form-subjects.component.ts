@@ -29,9 +29,9 @@ export class FormSubjectsComponent implements OnInit {
     limitToLast = 8;
     path = `${appGlobalsService.currentGroup.groupId}/forum`;
     @Output() selectForumDilemma = new EventEmitter<any>();
+    selectedForumKey: string;
     //
     // new dilemma:
-    newDilemmaTitle = '';
     isShowNew = false;
 
     // form declare:
@@ -43,19 +43,19 @@ export class FormSubjectsComponent implements OnInit {
     });
 
     // =====================mock  ================================
-    formSubjects: FormSubject[] = [
-        new FormSubject('אבל?', 'אחת האמהות', '01/01/18'),
-        new FormSubject('לא?', 'אחת האמהות', '01/01/18'),
-        new FormSubject('כן?', 'אחת האמהות', '01/01/18'),
-        new FormSubject('כדאי?', 'אחת האמהות', '01/01/18'),
-        new FormSubject('איפה?', 'אחת האמהות', '01/01/18'),
-    ];
+    // formSubjects: FormSubject[] = [
+    //     new FormSubject('אבל?', 'אחת האמהות', '01/01/18'),
+    //     new FormSubject('לא?', 'אחת האמהות', '01/01/18'),
+    //     new FormSubject('כן?', 'אחת האמהות', '01/01/18'),
+    //     new FormSubject('כדאי?', 'אחת האמהות', '01/01/18'),
+    //     new FormSubject('איפה?', 'אחת האמהות', '01/01/18'),
+    // ];
 
     filteredOptions: Observable<FormSubject[]>;
+    formSubjects: FormSubject[] = [];
 
-    constructor(
-        public af: AngularFireDatabase,
-        private builder: FormBuilder) {
+    constructor(public af: AngularFireDatabase,
+                private builder: FormBuilder) {
         this.items = af.list(this.path, {
             // preserveSnapshot: true,
             query: {
@@ -66,17 +66,20 @@ export class FormSubjectsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.filteredOptions = this.searchControl.valueChanges
-            .pipe(
-            startWith<string | FormSubject>(''),
-            map(value => typeof value === 'string' ? value : value.text),
-            map(text => text ? this.filter(text) : this.formSubjects.slice())
-            );
+        this.items.subscribe(items => {
+            this.formSubjects = items;
+            this.filteredOptions = this.searchControl.valueChanges
+                .pipe(
+                    startWith<string | FormSubject>(''),
+                    map(value => typeof value === 'string' ? value : value.text),
+                    map(text => text ? this.filter(text) : this.formSubjects.slice())
+                );
+        });
     }
 
     filter(text: string): FormSubject[] {
         return this.formSubjects.filter(option =>
-            option.text.toLowerCase().indexOf(text.toLowerCase()) === 0);
+        option.text.toLowerCase().indexOf(text.toLowerCase()) === 0);
     }
 
     displayFn(formSubject?: FormSubject): string | undefined {
@@ -88,7 +91,7 @@ export class FormSubjectsComponent implements OnInit {
     }
 
     chooseOption(event) {
-        console.log(event);
+        console.log(event['option']['value']);
     }
 
     // ===============================================================
@@ -99,11 +102,21 @@ export class FormSubjectsComponent implements OnInit {
     }
 
     showForumReplys(item) {
+        this.selectedForumKey = [item]['$key'];
+        console.log(this.selectedForumKey);
         this.selectForumDilemma.emit(item);
     }
 
     // ==================pipes===========
     get moment() {
         return moment;
+    }
+
+    get usersDetails() {
+        let usersInCurrentGroup = {};
+        appGlobalsService.usersInCurrentGroup.forEach(user => {
+            usersInCurrentGroup[user.mail] = `${user.firstName} ${user.lastName}`
+        })
+        return usersInCurrentGroup;
     }
 }

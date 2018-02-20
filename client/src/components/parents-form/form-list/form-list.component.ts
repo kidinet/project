@@ -32,16 +32,20 @@ export class FormListComponent implements OnInit {
     });
 
     constructor(public af: AngularFireDatabase,
-        private builder: FormBuilder) {
+                private builder: FormBuilder) {
     }
 
     ngOnInit() {
-        
+        console.log(this.currentForum);
     }
+
     ngOnChanges(value: any) {
-        const replyPath = `${appGlobalsService.currentGroup.groupId}/forum/${this.currentForum['$key']}/replys`;
-        this.replysList = this.af.list(replyPath, {});
+        if (this.currentForum) {
+            const replyPath = `${appGlobalsService.currentGroup.groupId}/forum/${this.currentForum['$key']}/replys`;
+            this.replysList = this.af.list(replyPath, {});
+        }
     }
+
     toggleMoreText() {
         this.showMoreTextTitle = !this.showMoreTextTitle;
     }
@@ -56,9 +60,10 @@ export class FormListComponent implements OnInit {
         appGlobalsService.usersInCurrentGroup.forEach(user => {
             usersInCurrentGroup[user.mail] = `${user.firstName} ${user.lastName}`
         })
-        return usersInCurrentGroup
+        return usersInCurrentGroup;
     }
+
     get moment() {
-        return moment
+        return moment;
     }
 }
