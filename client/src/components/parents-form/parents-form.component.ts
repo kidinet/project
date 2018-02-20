@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parents-form.component.scss']
 })
 export class ParentsFormComponent implements OnInit {
-  selectedForumDilemma = 'sdsdf';
+  selectedForumDilemma = null;
   constructor() { }
 
   ngOnInit() {
