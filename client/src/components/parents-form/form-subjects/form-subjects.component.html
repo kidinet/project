@@ -1,10 +1,7 @@
 <mat-form-field class="input_wrapper">
     <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto">
     <i class="fa fa-search" aria-hidden="true"></i>
-    <mat-autocomplete (optionSelected)="chooseOption($event)" #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{ option.text }}
-        </mat-option>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
     </mat-autocomplete>
 </mat-form-field>
 
@@ -13,7 +10,7 @@
 </div>
 
 <div class="form_subjects" [ngClass]="{'expanded':isExpanded}">
-    <div class="subject" (click)="showForumReplys(subject)" *ngFor="let subject of this.items | async ; index as i">
+    <div class="subject" [ngClass]="{'selected':subject.$key==selectedForumKey}" (click)="showForumReplys(subject)" *ngFor="let subject of filteredOptions | async ; index as i">
         <h3>{{subject.title}}</h3>
         <div class="details">
             <h6>{{usersDetails[subject.details]}}</h6>
@@ -38,6 +35,6 @@
     </form>
     <div class="actions">
         <button mat-raised-button color="accent" class="create" (click)="createNewDilemma()" [disabled]="!newDilemaaForm.controls['newDilemaTitle'].value||!newDilemaaForm.controls['newDilemaContent'].value">אישור</button>
-        <button mat-raised-button color="accent" class="cancel">ביטול</button>
+        <button mat-raised-button color="accent" class="cancel" (click)="cancel()">ביטול</button>
     </div>
 </div>

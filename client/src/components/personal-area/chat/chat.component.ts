@@ -1,4 +1,4 @@
-import {AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, Validators, FormGroup} from '@angular/forms';
 import {Chat} from '../../../entities/chat/chat';
 import * as appGlobalsService from '../../../store/app-globals';
@@ -21,22 +21,10 @@ export class ChatComponent implements AfterContentInit {
     items: FirebaseListObservable<Chat[]>;
     msg = '';
     limitToLast = 8;
-    path = `${appGlobalsService.currentGroup.groupId}/${appGlobalsService.currentUser.mail.replace('@', 'A').replace('.', 'B')}/chat`;
+    @Input() user;
     @ViewChild('chat') private chat: ElementRef;
-
+    path: string;
     constructor(public af: AngularFireDatabase) {
-
-        // put the chat message on database;
-        this.items = af.list(this.path, {
-            query: {
-                limitToLast: this.limitToLast
-            }
-        });
-        // this.af.auth.subscribe(auth => {
-        //     if (auth) {
-        //         this.name = auth;
-        //     }
-        // });
     }
 
     get moment() {
@@ -44,7 +32,13 @@ export class ChatComponent implements AfterContentInit {
     }
 
     ngAfterContentInit() {
-
+       // put the chat message on database;
+        this.path = `${appGlobalsService.currentGroup.groupId}/${this.user.mail.replace('@', 'A').replace('.', 'B')}/chat`;
+        this.items = this.af.list(this.path, {
+            query: {
+                limitToLast: this.limitToLast
+            }
+        });
     }
 
     send() {

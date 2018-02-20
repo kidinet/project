@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PersonalAreaSettingsComponent} from '../personal-area/personal-area-settings/personal-area-settings.component';
 import {ConfirmPasswordComponent} from '../personal-area/confirm-password/confirm-password.component';
 import {GroupSettingsComponent} from '../personal-area/group-settings/group-settings.component';
+import {SendReminderComponent} from '../personal-area/send-reminder/send-reminder.component';
 import {MatDialog} from '@angular/material';
 import * as appGlobalsService from '../../store/app-globals';
 
@@ -13,8 +14,9 @@ import * as appGlobalsService from '../../store/app-globals';
 export class NavComponent implements OnInit {
 
     constructor(public personalSettings: MatDialog,
-                public confirmPassword: MatDialog,
-                public groupSettings: MatDialog) {
+        public confirmPassword: MatDialog,
+        public groupSettings: MatDialog,
+        public reminder: MatDialog) {
     }
 
     isPersonalAreaNavOpen = false;
@@ -23,24 +25,29 @@ export class NavComponent implements OnInit {
 
     ngOnInit() {
     }
-
+    //=================popups=========================
     openPersonalSettings() {
-        const addNewImageDialogRef = this.personalSettings.open(PersonalAreaSettingsComponent, {});
+        this.personalSettings.open(PersonalAreaSettingsComponent, {});
     }
 
     openConfirmPassword() {
-        const addNewImageDialogRef = this.confirmPassword.open(ConfirmPasswordComponent, {});
+        this.confirmPassword.open(ConfirmPasswordComponent, {});
     }
 
     openGroupSettings() {
-        const addNewImageDialogRef = this.groupSettings.open(GroupSettingsComponent, {});
+        this.groupSettings.open(GroupSettingsComponent, {});
     }
+    openReminderPopup() {
+        this.reminder.open(SendReminderComponent, {});
+    }
+    // =========================================================
 
     toggleSettings() {
         this.isPersonalAreaNavOpen = !this.isPersonalAreaNavOpen;
     }
 
     toggleChatStatus() {
+        this.openReminderPopup();
         this.isChat = !this.isChat;
         this.chatStatusChange.emit(this.isChat);
     }
@@ -48,7 +55,7 @@ export class NavComponent implements OnInit {
     logOut() {
         location.reload();
     }
-
+    // ===================pipes=======================
     get appGlobalsService() {
         return appGlobalsService;
     }
