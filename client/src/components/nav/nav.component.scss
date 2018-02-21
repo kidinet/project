@@ -82,7 +82,7 @@ nav {
       position: relative;
       padding: 0 15px 0 60px;
       font-size: 25px;
-
+      vertical-align: middle;
       i {
         position: absolute;
         padding: 5px;
@@ -90,8 +90,11 @@ nav {
         left: 7px;
         @include absolute-vertical-middle();
       }
-      &.selected{
+      &.selected {
         border: solid 2px;
+      }
+      &.reminders_poup {
+        font-size: 20px;
       }
     }
 

@@ -47,7 +47,6 @@ export class NavComponent implements OnInit {
     }
 
     toggleChatStatus() {
-        this.openReminderPopup();
         this.isChat = !this.isChat;
         this.chatStatusChange.emit(this.isChat);
     }

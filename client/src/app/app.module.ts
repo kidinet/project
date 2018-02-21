@@ -21,6 +21,7 @@ import {ImagesService} from '../services/images.service';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database-deprecated';
+import { AddMembersComponent } from './add-members/add-members.component';
 
 
 export const environment = {
@@ -38,6 +39,7 @@ export const environment = {
 @NgModule({
     declarations: [
         AppComponent,
+        AddMembersComponent,
     ],
     imports: [
         BrowserModule,
