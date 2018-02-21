@@ -38,6 +38,11 @@
             <span>צאט</span>
             <i class="fa fa-commenting-o" aria-hidden="true"></i>
         </button>
+
+        <button mat-raised-button color="accent" class="reminders_poup" (click)="openReminderPopup()">
+            <span>שליחת הודעות</span>
+            <i class="fa fa-commenting" aria-hidden="true"></i>
+        </button>
     </div>
 
     <div class="fixed" *ngIf="isPersonalAreaNavOpen" (click)="toggleSettings()"></div>

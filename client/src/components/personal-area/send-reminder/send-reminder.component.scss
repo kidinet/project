@@ -1,21 +1,30 @@
 @import "../../../assets/style/globalStyle";
-.send_reminder_wrapper{
-   width: 300px;
-   .input{
-       width:100%;
-       textarea::-webkit-scrollbar{
-           display: none;
-                }
-   }
-   
-   .user{
-       padding:5px 0;
-   }
-   .warn{
-       text-align: center;
-       color: $app_red;
-   }
-   button{
-      float: left;
-   }
+
+.send_reminder_wrapper {
+  width: 300px;
+  position:relative ;
+  i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .input {
+    width: 100%;
+    textarea::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .user {
+    padding: 5px 0;
+  }
+  .warn {
+    text-align: center;
+    color: $app_red;
+  }
+  button {
+    float: left;
+  }
 }
