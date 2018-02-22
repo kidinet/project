@@ -4,15 +4,21 @@
   .router {
     width: calc(100% - 300px);
     display: inline-block;
+    height: calc(100vh - 230px);
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+      display:none;
+    }
   }
   .asaid {
     width: 293px;
     display: inline-block;
     vertical-align: top;
-    height: 700px;
+    height: calc(100vh - 240px);
     border-right: solid 2px $primary_color;
-    margin: 50px 0;
+    margin: 5px 0;
     padding: 20px;
+    overflow-y: scroll;
     .reminder {
       padding: 0 10px;
       background-color: rgba(0, 150, 136, 0.44);
@@ -47,7 +53,7 @@
           transform: scale(1.05, 1);
         }
       }
-      &.open,&:hover {
+      &.open, &:hover {
         max-height: 1000px;
         .text {
           white-space: normal;
@@ -99,6 +105,10 @@
           }
         }
       }
+    }
+    &::-webkit-scrollbar {
+      width: 2px;
+      color: $primary_color;
     }
   }
 }

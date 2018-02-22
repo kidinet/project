@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ImageGallery} from '../../entities/gallery/imageGallery'
-import {ApiService} from '../../services/api.service'
-import {AddNewImageComponent} from './add-new-image/add-new-image.component'
+import {ImageGallery} from '../../entities/gallery/imageGallery';
+import {ApiService} from '../../services/api.service';
+import {AddNewImageComponent} from './add-new-image/add-new-image.component';
 import * as appGlobalsService from '../../store/app-globals';
-import {MatDialog} from "@angular/material";
+import {MatDialog} from '@angular/material';
 
 
 @Component({
