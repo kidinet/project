@@ -17,6 +17,7 @@ import {TopMessageComponent} from '../components/top-message/top-message.compone
 import {NavComponent} from '../components/nav/nav.component';
 import {RouterModule, Routes, ROUTES} from '@angular/router';
 import {WelcomeComponent} from '../components/welcome/welcome.component';
+import {ChooseGroupComponent} from '../components/welcome/dialogs/choose-group/choose-group.component';
 import {NewGroup} from '../components/welcome/welcome.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AgmCoreModule} from '@agm/core';            // @agm/core
@@ -41,7 +42,6 @@ import {AboutTitleComponent} from '../components/about/about-title/about-title.c
 // personal area components:
 import {ChatComponent} from '../components/personal-area/chat/chat.component';
 import {PersonalAreaSettingsComponent} from '../components/personal-area/personal-area-settings/personal-area-settings.component';
-import {RemindersComponent} from '../components/personal-area/reminders/reminders.component';
 import {ConfirmPasswordComponent} from '../components/personal-area/confirm-password/confirm-password.component';
 import {GroupSettingsComponent} from '../components/personal-area/group-settings/group-settings.component';
 import {AppRoutes} from './route';
@@ -50,11 +50,11 @@ import {SendReminderComponent} from '../components/personal-area/send-reminder/s
 // settings:
 import {AddMembersComponent} from '../components/add-members/add-members.component';
 // pipe
-import { KeysPipe } from '../pipes/keys.pipe';
+import { ReversePipe } from '../pipes/keys.pipe';
 
 @NgModule({
     declarations: [
-        KeysPipe,
+        ReversePipe,
         AboutComponent,
         GalleryComponent,
         ParentsFormComponent,
@@ -75,14 +75,14 @@ import { KeysPipe } from '../pipes/keys.pipe';
         AboutTitleComponent,
         ChatComponent,
         PersonalAreaSettingsComponent,
-        RemindersComponent,
         AddNewImageComponent,
         ConfirmPasswordComponent,
         GroupSettingsComponent,
         StyleComponent,
         ScrollDirective,
         SendReminderComponent,
-        AddMembersComponent
+        AddMembersComponent,
+        ChooseGroupComponent
 
 
     ],
@@ -92,7 +92,8 @@ import { KeysPipe } from '../pipes/keys.pipe';
         ConfirmPasswordComponent,
         GroupSettingsComponent,
         SendReminderComponent,
-        AddMembersComponent
+        AddMembersComponent,
+        ChooseGroupComponent
 
     ],
     imports: [
@@ -134,7 +135,6 @@ import { KeysPipe } from '../pipes/keys.pipe';
         AboutTitleComponent,
         ChatComponent,
         PersonalAreaSettingsComponent,
-        RemindersComponent,
         AddNewImageComponent,
         ReactiveFormsModule,
         ScrollDirective,

@@ -11,21 +11,20 @@ import {MatDialog} from '@angular/material';
     templateUrl: './gallery.component.html',
     styleUrls: ['./gallery.component.scss']
 })
-export class GalleryComponent implements OnInit, AfterViewInit {
+export class GalleryComponent implements OnInit {
 
     constructor(private apiService: ApiService,
                 public addNewImageDialog: MatDialog) {
     }
 
     @ViewChild('swiper') swiper;
-    grid = 'swiper';
+    grid = 'list';
     config: SwiperOptions = {
         pagination: '.swiper-pagination',
         paginationClickable: true,
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         spaceBetween: 30,
-        loop: true,
     };
 
     images: ImageGallery[];
@@ -33,10 +32,6 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.images = appGlobalsService.imageGallery;
 
-    }
-
-    ngAfterViewInit() {
-        console.log(this.swiper.swiper);
     }
 
     addMoreImages() {
