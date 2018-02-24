@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        .mail_to_parent {
+            text-align: center;
+            width: 750px;
+            height: 500px;
+            margin: auto;
+            background-color: aliceblue;
+            padding: 0 0 50px 0;
+        }
+
+        .mail_to_parent .header {
+            background: radial-gradient(rgb(217, 227, 236), rgba(75, 182, 209, 0.8) 80%);
+            padding: 20px;
+        }
+
+        .mail_to_parent .header h1 {
+            display: inline-block;
+            font-size: 35px;
+            color: white;
+            margin: 12px;
+        }
+
+        .mail_to_parent .content {
+            background-color: aliceblue;
+            padding: 35px;
+        }
+
+        .mail_to_parent .content h2 {
+            margin: 5px 0;
+            color: #2a5661;
+        }
+
+        .mail_to_parent .content h2 span {
+            vertical-align: middle;
+        }
+
+        .mail_to_parent .content h2 span.top_content {
+            display: block;
+        }
+
+        .mail_to_parent .content h3 {
+            margin: 100px 5px 5px;
+            padding: 0 0 20px;
+            color: #bc1e50;
+        }
+
+
+        .mail_to_parent .content a {
+            padding: 14px 20px;
+            background-color: white;
+            border-radius: 14px;
+            border: solid 1px;
+            margin: 9px;
+            box-shadow: 0 0 5px 0 #6fc4da;
+            font-weight: bold;
+            text-decoration: none;
+            color: #bc1e50;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body dir="rtl">
+<div class="mail_to_parent">
+    <div class="header">
+        <h1>ברוכים הבאים לkidinet</h1>
+    </div>
+    <div class="content">
+        <h2>
+            <span class="top_content">
+                <span>קיבלתם הודעה זו משום שצורפתם לקבוצת </span>
+                <span>{groupName}</span>
+            </span>
+            <span>של</span>
+            <span>kidinet</span>
+        </h2>
+        <h3>{{password}}</h3>
+        <a href="http://localhost:4200">
+            <span>היכנסו עכשיו ל</span>
+            <span>kidint</span>
+        </a>
+    </div>
+
+</div>
+</body>
+</html>

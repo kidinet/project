@@ -1,3 +1,24 @@
-<p>
-  add-members works!
-</p>
+<div class="wrapper">
+    <i (click)="dialogRef.close()" class="fa fa-times" aria-hidden="true"></i>
+    <div class="add_members_wrapper" [hidden]="successAddMembers" [ngClass]="{'blur':isLoading}">
+        <form [formGroup]="addMembersForm" (ngSubmit)="addMember()">
+            <mat-form-field>
+                <input matInput placeholder="מייל" type="mail" name="mail" [formControl]="mail">
+            </mat-form-field>
+            <button mat-raised-button color="accent" type="submit" [disabled]="!addMembersForm.valid">הוסף</button>
+            <div [hidden]="!mail.hasError('validateEmail')|| mail.untouched">כתובת המייל אינה בתבנית הנכונה</div>
+            <div [hidden]="!mail.hasError('checkExistMail')|| mail.untouched">לא ניתן להוסיף כתובת מייל זו שוב</div>
+        </form>
+
+        <ul class="members_list">
+            <li *ngFor="let user of members"><i class="fa fa-user" aria-hidden="true"></i>{{user.mail}}</li>
+        </ul>
+        <button mat-raised-button class="add_members" color="accent" (click)="addMembers()"
+                [disabled]="!members.length">אישור
+        </button>
+    </div>
+    <div class="success_add_members" [hidden]="!successAddMembers">המשתמשים נוספו בהצלחה</div>
+    <mat-spinner *ngIf=isLoading ></mat-spinner>
+</div>
+
+

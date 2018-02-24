@@ -3,18 +3,30 @@
         <i class="fa fa-plus" aria-hidden="true"></i>
         הוסף תמונה חדשה
     </button>
+    <div class="grid">
+        <i class="fa fa-th" aria-hidden="true" (click)="grid='list'"><span>רשימה</span></i>
+        <i class="fa fa-picture-o" aria-hidden="true" (click)="grid='swiper'"><span>גלריה</span></i>
+    </div>
     <div class="gallery_content">
-        <div class="filters_container">
-            <mat-form-field>
-                <mat-select>
-                    <mat-option *ngFor="let filter of sortFilters" [value]="filter.value">
-                        {{ filter.title }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+
+        <div *ngIf="grid=='list'">
+            <app-image-gallery *ngFor="let image of images" [imageGallery]="image" [type]="'list'"
+                               class="image_galley_wrapper list"
+                               (close)="closeImageResponse"></app-image-gallery>
         </div>
-        <app-image-gallery *ngFor="let image of images" [imageGallery]="image" class="image_galley_wrapper"
-                           (close)="closeImageResponse"></app-image-gallery>
+
+        <swiper #swiper [config]="config" *ngIf="grid=='swiper'" (slideChange)="slideChange()">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let image of images">
+                    <app-image-gallery [imageGallery]="image" [type]="'swiper'" class="image_galley_wrapper swiper"
+                                       (close)="closeImageResponse"></app-image-gallery>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </swiper>
         <div class="show_more">
             <button mat-raised-button color="accent" (click)="addMoreImages()">
                 הצג עוד

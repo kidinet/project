@@ -1,7 +1,8 @@
 import {MatButtonModule, MatInputModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
-import {NgModule} from "@angular/core";
+import {NgModule} from '@angular/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { SwiperModule } from 'angular2-useful-swiper';
 // import {FormControl, Validators} from '@angular/forms';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -27,6 +28,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
         MatAutocompleteModule,
         MatTooltipModule,
         MatButtonToggleModule,
+        SwiperModule
 
     ],
     exports: [
@@ -43,7 +45,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
         MatProgressSpinnerModule,
         MatAutocompleteModule,
         MatTooltipModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        SwiperModule
     ]
 })
 export class material {

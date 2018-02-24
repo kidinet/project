@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FormControl, Validators, FormBuilder} from '@angular/forms';
 import * as appGlobalsService from '../store/app-globals';
+import {User} from "../entities/user/user";
 
 @Injectable()
 export class FormValidateService {
@@ -27,7 +28,6 @@ export class FormValidateService {
     }
 
     checkCurrentPassword(formControl: FormControl) {
-        console.log(appGlobalsService.currentUser.password);
         return appGlobalsService.currentUser.password === formControl.value ? null : {
             validatePhone: {
                 valid: false
@@ -39,6 +39,23 @@ export class FormValidateService {
         return function (formControl: FormControl) {
             return formControl.value === password.value ? null : {
                 validatePassword: {
+                    valid: false
+                }
+            };
+        };
+    }
+
+    checkExistMail(members: User[]) {
+        return function (formControl: FormControl) {
+            let isValid = true
+            members.forEach((member) => {
+                if (member.mail === formControl.value) {
+                    isValid = false;
+
+                }
+            })
+            return isValid ? null : {
+                checkExistMail: {
                     valid: false
                 }
             };
