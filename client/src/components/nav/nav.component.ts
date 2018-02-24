@@ -4,6 +4,7 @@ import {ConfirmPasswordComponent} from '../personal-area/confirm-password/confir
 import {GroupSettingsComponent} from '../personal-area/group-settings/group-settings.component';
 import {SendReminderComponent} from '../personal-area/send-reminder/send-reminder.component';
 import {MatDialog} from '@angular/material';
+import {AddMembersComponent} from '../add-members/add-members.component'
 import * as appGlobalsService from '../../store/app-globals';
 
 @Component({
@@ -14,9 +15,10 @@ import * as appGlobalsService from '../../store/app-globals';
 export class NavComponent implements OnInit {
 
     constructor(public personalSettings: MatDialog,
-        public confirmPassword: MatDialog,
-        public groupSettings: MatDialog,
-        public reminder: MatDialog) {
+                public confirmPassword: MatDialog,
+                public groupSettings: MatDialog,
+                public addMembers: MatDialog,
+                public reminder: MatDialog) {
     }
 
     isPersonalAreaNavOpen = false;
@@ -25,6 +27,7 @@ export class NavComponent implements OnInit {
 
     ngOnInit() {
     }
+
     //=================popups=========================
     openPersonalSettings() {
         this.personalSettings.open(PersonalAreaSettingsComponent, {});
@@ -37,9 +40,15 @@ export class NavComponent implements OnInit {
     openGroupSettings() {
         this.groupSettings.open(GroupSettingsComponent, {});
     }
+
     openReminderPopup() {
         this.reminder.open(SendReminderComponent, {});
     }
+
+    openAddMembers() {
+        this.addMembers.open(AddMembersComponent, {});
+    }
+
     // =========================================================
 
     toggleSettings() {
@@ -47,7 +56,6 @@ export class NavComponent implements OnInit {
     }
 
     toggleChatStatus() {
-        this.openReminderPopup();
         this.isChat = !this.isChat;
         this.chatStatusChange.emit(this.isChat);
     }
@@ -55,6 +63,7 @@ export class NavComponent implements OnInit {
     logOut() {
         location.reload();
     }
+
     // ===================pipes=======================
     get appGlobalsService() {
         return appGlobalsService;

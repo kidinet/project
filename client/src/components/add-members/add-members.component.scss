@@ -1,0 +1,57 @@
+@import "../../assets/style/globalStyle";
+
+.wrapper {
+  position: relative;
+  .add_members_wrapper {
+    height: 500px;
+    position: relative;
+    padding: 0 0 20px 0;
+    .members_list {
+      padding: 10px;
+      overflow-y: scroll;
+      height: 400px;
+      li {
+        padding: 5px;
+        list-style-type: none;
+        i {
+          padding: 0 10px;
+          font-size: 20px;
+          vertical-align: middle;
+          color: $primary_color;
+        }
+      }
+      &::-webkit-scrollbar {
+        width: 2px;
+        color: $primary_color;
+      }
+    }
+    .add_members {
+      position: absolute;
+      bottom: 0px;
+      @include absolute-horizontal-middle();
+    }
+    &.blur {
+      filter: blur(2px);
+    }
+  }
+
+  .success_add_members {
+    @include fadeInAnimate(0.3);
+    font-size: 20px;
+    padding: 20px;
+  }
+
+  i.fa-times {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .mat-spinner {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+  }
+}

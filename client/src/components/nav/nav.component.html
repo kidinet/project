@@ -26,6 +26,7 @@
             <span (click)="openPersonalSettings()">פרטים אישיים</span>
             <span (click)="openConfirmPassword()">שנה סיסמא</span>
             <span (click)="openGroupSettings()">פרטי הגן</span>
+            <span (click)="openAddMembers()">הוספת משתתפים</span>
             <span (click)="logOut()">התנתק</span>
         </div>
     </span>
@@ -37,6 +38,11 @@
         <button mat-raised-button color="accent" class="chat" [ngClass]="{'selected':isChat}" (click)="toggleChatStatus()">
             <span>צאט</span>
             <i class="fa fa-commenting-o" aria-hidden="true"></i>
+        </button>
+
+        <button mat-raised-button color="accent" class="reminders_poup" (click)="openReminderPopup()">
+            <span>שליחת הודעות</span>
+            <i class="fa fa-commenting" aria-hidden="true"></i>
         </button>
     </div>
 

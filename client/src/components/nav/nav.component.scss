@@ -57,7 +57,7 @@ nav {
       display: inline-block;
       background-color: $app_red;
       color: white;
-      width: 120px;
+      width: 150px;
       height: 0;
       overflow: hidden;
       transition: 0.2s;
@@ -82,7 +82,7 @@ nav {
       position: relative;
       padding: 0 15px 0 60px;
       font-size: 25px;
-
+      vertical-align: middle;
       i {
         position: absolute;
         padding: 5px;
@@ -90,8 +90,11 @@ nav {
         left: 7px;
         @include absolute-vertical-middle();
       }
-      &.selected{
+      &.selected {
         border: solid 2px;
+      }
+      &.reminders_poup {
+        font-size: 20px;
       }
     }
 

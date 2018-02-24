@@ -31,7 +31,7 @@ import {LikeComponentComponent} from '../components/gallery/image-gallery/like-c
 import {ImageGalleryResponseComponent} from '../components/gallery/image-gallery-response/image-gallery-response.component'
 import {AddNewImageComponent} from '../components/gallery/add-new-image/add-new-image.component';
 
-// form components:
+// forum components:
 import {FormListComponent} from '../components/parents-form/form-list/form-list.component';
 import {FormSubjectsComponent} from '../components/parents-form/form-subjects/form-subjects.component';
 
@@ -47,6 +47,8 @@ import {GroupSettingsComponent} from '../components/personal-area/group-settings
 import {AppRoutes} from './route';
 import {ScrollDirective} from "../directives/scroll.directive";
 import {SendReminderComponent} from '../components/personal-area/send-reminder/send-reminder.component';
+// settings:
+import {AddMembersComponent} from '../components/add-members/add-members.component';
 // pipe
 import { KeysPipe } from '../pipes/keys.pipe';
 
@@ -80,6 +82,7 @@ import { KeysPipe } from '../pipes/keys.pipe';
         StyleComponent,
         ScrollDirective,
         SendReminderComponent,
+        AddMembersComponent
 
 
     ],
@@ -89,6 +92,7 @@ import { KeysPipe } from '../pipes/keys.pipe';
         ConfirmPasswordComponent,
         GroupSettingsComponent,
         SendReminderComponent,
+        AddMembersComponent
 
     ],
     imports: [
@@ -135,6 +139,7 @@ import { KeysPipe } from '../pipes/keys.pipe';
         ReactiveFormsModule,
         ScrollDirective,
         SendReminderComponent,
+        AddMembersComponent
 
     ],
 })

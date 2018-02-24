@@ -1,4 +1,5 @@
 <div class="send_reminder_wrapper">
+  <i (click)="dialogRef.close()" class="fa fa-times" aria-hidden="true"></i>
   <form [formGroup]="newReminderaForm">
     <mat-form-field class="input">
       <textarea matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="15" matInput placeholder="תוכן ההודעה" name="newReminderContent"

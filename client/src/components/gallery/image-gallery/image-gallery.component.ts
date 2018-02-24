@@ -14,6 +14,7 @@ export class ImageGalleryComponent implements OnInit {
 
     showResponse = false;
     @Input() imageGallery;
+    @Input() type;
 
     ngOnInit() {
     }

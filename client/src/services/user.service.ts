@@ -78,31 +78,36 @@ export class UserService {
     }
 
     logIn(loginFormValue): any {
-       /* const url = `${appGlobalsService.baseAPIUrl}logIn/he/true`
-        this.http.post(url, {
-            mail: loginFormValue.mail,
-            password: loginFormValue.password
-        }, httpOptions).toPromise().then(result => {
-            if (result.Success) {
-                appGlobalsService.setCurreUser(new User(
-                    result.returbObject.firstName,
-                    result.returbObject.lastName,
-                    result.returbObject.city,
-                    result.returbObject.street,
-                    result.returbObject.bulid,
-                    result.returbObject.phone,
-                    result.returbObject.mail,
-                    result.returbObject.profile,
-                    null,
-                    result.returbObject.latitude,
-                    result.returbObject.longitude,
-                ));
-                return true;
-            } else {
-                return false;
-            }
-        });
-        return false;*/
+        /* const url = `${appGlobalsService.baseAPIUrl}logIn/he/true`
+         this.http.post(url, {
+         mail: loginFormValue.mail,
+         password: loginFormValue.password
+         }, httpOptions).toPromise().then(result => {
+         if (result.Success) {
+         appGlobalsService.setCurreUser(new User(
+         result.returbObject.firstName,
+         result.returbObject.lastName,
+         result.returbObject.city,
+         result.returbObject.street,
+         result.returbObject.bulid,
+         result.returbObject.phone,
+         result.returbObject.mail,
+         result.returbObject.profile,
+         null,
+         result.returbObject.latitude,
+         result.returbObject.longitude,
+         ));
+         return true;
+         } else {
+         return false;
+         }
+         });
+         return false;*/
+    }
+
+    addUsersToGroup(users: User[]): any {
+        const url = `${appGlobalsService.baseAPIUrl}addUsers/he/true`;
+        this.http.post(url, {users: users, groupId: appGlobalsService.currentGroup.groupId}, httpOptions).toPromise();
     }
 
 }
