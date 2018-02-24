@@ -6,6 +6,7 @@ import {UserService} from '../../services/user.service';
 import {GroupService} from '../../services/group.service';
 import {FormValidateService} from '../../services/form-validate.service';
 import * as appGlobalsService from '../../store/app-globals';
+import {ChooseGroupComponent} from './dialogs/choose-group/choose-group.component';
 
 
 @Component({
@@ -16,9 +17,10 @@ import * as appGlobalsService from '../../store/app-globals';
 
 export class WelcomeComponent implements OnInit {
     constructor(public newGroupDialog: MatDialog,
-                private builder: FormBuilder,
-                private userService: UserService,
-                private FormValidateService: FormValidateService) {
+        private builder: FormBuilder,
+        private userService: UserService,
+        private MoreGroupDialog: MatDialog,
+        private FormValidateService: FormValidateService) {
     }
 
     password = new FormControl('', [Validators.required]);
@@ -43,6 +45,12 @@ export class WelcomeComponent implements OnInit {
     ngOnInit() {
         //  this.userService.getUser();
     }
+
+    openMoreGroup() {
+        this.MoreGroupDialog.open(ChooseGroupComponent, {
+            data: { groupS: [] },
+        });
+    }
 }
 
 
@@ -53,11 +61,11 @@ export class WelcomeComponent implements OnInit {
 })
 export class NewGroup {
     constructor(public dialogRef: MatDialogRef<NewGroup>,
-                @Inject(MAT_DIALOG_DATA) public data: any,
-                private builder: FormBuilder,
-                private userService: UserService,
-                private groupService: GroupService,
-                private formValidateService: FormValidateService) {
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        private builder: FormBuilder,
+        private userService: UserService,
+        private groupService: GroupService,
+        private formValidateService: FormValidateService) {
     }
 
     // group form variables:
@@ -122,7 +130,7 @@ export class NewGroup {
     }
 
     createGroup() {
-         this.groupService.createGroup(this.createGroupForm.value).then(result => {
+        this.groupService.createGroup(this.createGroupForm.value).then(result => {
             if (result.Success) {
                 appGlobalsService.setGroup(result.returnObject);
                 this.stepper.selectedIndex += 1;
@@ -133,7 +141,7 @@ export class NewGroup {
         });
         this.isLoading = true;
     }
-  
+
 
     createManager() {
         this.userService.creatUser(this.createUserForm.value, true).then(result => {

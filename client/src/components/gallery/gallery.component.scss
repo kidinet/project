@@ -41,6 +41,8 @@
       height: calc(100vh - 400px);
       .swiper-pagination {
         bottom: 15px;
+        @include absolute-horizontal-middle();
+        max-width: 60%;
       }
     }
   }

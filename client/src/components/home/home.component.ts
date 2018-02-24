@@ -22,10 +22,10 @@ moment.locale('he');
 export class HomeComponent implements OnInit {
 
     constructor(private apiService: ApiService,
-                @Inject(DOCUMENT) private document: Document,
-                private activatedRoute: ActivatedRoute,
-                private router: Router,
-                public af: AngularFireDatabase,) {
+        @Inject(DOCUMENT) private document: Document,
+        private activatedRoute: ActivatedRoute,
+        private router: Router,
+        public af: AngularFireDatabase, ) {
         if (appGlobalsService.currentUser.lastName && appGlobalsService.currentUser.firstName) {
             const index = this.document.location.href.lastIndexOf('/') + 1;
             if (this.document.location.href.substr(index) === 'home') {
@@ -43,7 +43,9 @@ export class HomeComponent implements OnInit {
     // database:
     path: string;
     items: FirebaseListObservable<Reminder[]>;
-    limitToLast = 10;
+    reverseItems;
+    limitToLast = 0;
+    notRead = false;
     // reminders
     openReminders = {}
 
@@ -79,12 +81,7 @@ export class HomeComponent implements OnInit {
         // =========================================================================
         // get the reminders message from database;
         this.path = `${appGlobalsService.currentGroup.groupId}/${appGlobalsService.currentUser.mail.replace('@', 'A').replace('.', 'B')}/reminders`;
-        this.items = this.af.list(this.path, {
-            query: {
-                limitToLast: this.limitToLast
-            }
-        });
-
+        this.showMoreReminders(6);
     }
 
     toggleChatStatus(isChat) {
@@ -97,7 +94,30 @@ export class HomeComponent implements OnInit {
 
     readReminder(reminder) {
         this.openReminders[reminder['$key']] = !this.openReminders[reminder['$key']];
-        this.items.update(this.items.$ref.ref.child(reminder['$key']), {isRead: true});
+        this.items.update(this.items.$ref.ref.child(reminder['$key']), { isRead: true });
+    }
+    showMoreReminders(addMore: number) {
+        if (this.notRead) {
+            this.items = this.af.list(this.path);
+        }
+        else {
+            this.limitToLast += addMore;
+            this.items = this.af.list(this.path, {
+                query: {
+                    limitToLast: this.limitToLast,
+                    // TODO: 'index rule'
+                }
+            });
+        }
+
+        this.items.subscribe(items => {
+            this.reverseItems = items.slice().reverse();
+            if (this.notRead) {
+                this.reverseItems = this.reverseItems.filter(item => {
+                    return !(item.isRead)
+                })
+            }
+        });
     }
 
     // ==================pipes===========

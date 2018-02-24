@@ -7,16 +7,17 @@
 
     <div class="asaid">
         <app-chat [user]="appGlobalsService.currentUser" [hidden]="!isChat"></app-chat>
-        <div [hidden]="isChat">
-            <div class="reminder" *ngFor="let reminder of this.items | async ; index as i" (click)="readReminder(reminder)"  [ngClass]="{is_read:reminder.isRead,open:openReminders[reminder['$key']]}">
+        <div [hidden]="isChat" class="reminders_wrapper">
+           <mat-checkbox (change)=showMoreReminders(0) class="example-margin" [(ngModel)]="notRead">הודעות שלא נקראו בלבד</mat-checkbox>
+            <div class="reminder" *ngFor="let reminder of this.reverseItems ; index as i" (click)="readReminder(reminder)" [ngClass]="{is_read:reminder.isRead,open:openReminders[reminder['$key']]}">
                 <h3 class="text">{{reminder.text}}</h3>
                 <h5 class="date">{{moment(reminder.date).fromNow()}}</h5>
             </div>
+            <button (click)="showMoreReminders(6)" class="showMoreRminders" mat-raised-button color="primary">הצג הודעות קודמות</button>
         </div>
 
         <div class="manager_wrapper" *ngIf="false">
-            <i (click)="setCurrentUser(null)" *ngIf="currentUserForChat" class="fa fa-window-close"
-               aria-hidden="true"></i>
+            <i (click)="setCurrentUser(null)" *ngIf="currentUserForChat" class="fa fa-window-close" aria-hidden="true"></i>
             <div class="user_in_group" *ngFor="let user of usersInCurrentGroup" (click)="setCurrentUser(user)">
                 <span>{{user.firstName}}</span>
                 <span>{{user.lastName}}</span>
