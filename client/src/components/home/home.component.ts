@@ -26,15 +26,15 @@ export class HomeComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private router: Router,
         public af: AngularFireDatabase, ) {
-        if (appGlobalsService.currentUser.lastName && appGlobalsService.currentUser.firstName) {
-            const index = this.document.location.href.lastIndexOf('/') + 1;
-            if (this.document.location.href.substr(index) === 'home') {
-                this.router.navigate(['/home/about']);
-            }
-        } else {
-            this.router.navigate(['/']);
-        }
-
+        // if (appGlobalsService.currentUser.lastName && appGlobalsService.currentUser.firstName) {
+        //     const index = this.document.location.href.lastIndexOf('/') + 1;
+        //     if (this.document.location.href.substr(index) === 'home') {
+        //         this.router.navigate(['/home/about']);
+        //     }
+        // } else {
+        //     this.router.navigate(['/']);
+        // }
+        this.router.navigate(['/home/about']);
     }
 
     isLoading = true;

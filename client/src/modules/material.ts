@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { SwiperModule } from 'angular2-useful-swiper';
+import {MatRadioModule} from '@angular/material/radio';
 // import {FormControl, Validators} from '@angular/forms';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -28,7 +29,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
         MatAutocompleteModule,
         MatTooltipModule,
         MatButtonToggleModule,
-        SwiperModule
+        SwiperModule,
+        MatRadioModule
 
     ],
     exports: [
@@ -46,7 +48,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
         MatAutocompleteModule,
         MatTooltipModule,
         MatButtonToggleModule,
-        SwiperModule
+        SwiperModule,
+        MatRadioModule
     ]
 })
 export class material {

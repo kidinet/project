@@ -9,7 +9,7 @@
       <div [hidden]="!password.hasError('required')||password.untouched">
         שדה חובה
       </div>
-      <div *ngIf="logInFailed">שם המשתמש או הסיסמא אינם נכונים</div>
+      <div *ngIf="logInFailed&&!loginForm.dirty">שם המשתמש או הסיסמא אינם נכונים</div>
       <button color="accent" mat-raised-button type="submit" [disabled]="!loginForm.valid" class=welcome>
         <span>הכנס</span>
         <i class="fa fa-sign-in" aria-hidden="true"></i>

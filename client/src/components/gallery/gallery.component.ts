@@ -40,7 +40,7 @@ export class GalleryComponent implements OnInit {
     }
 
     openaddNewImageDialog(): void {
-        let addNewImageDialogRef = this.addNewImageDialog.open(AddNewImageComponent, {});
+        this.addNewImageDialog.open(AddNewImageComponent, {});
     }
 
     slideChange() {
