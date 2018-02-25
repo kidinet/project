@@ -36,7 +36,7 @@ export function setGroup(groupParam) {
 export function setCurreUser(user) {
     currentUser = user;
 }
-export function setUserInGroup(userInGroup) {
+export function setCurrentUserInGroup(userInGroup) {
     currentUserInGroup = userInGroup;
 }
 export function setUsersInCurrentGroup(UsersInCurrentGroupParam: User[]) {

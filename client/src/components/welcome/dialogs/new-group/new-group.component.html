@@ -1,4 +1,4 @@
-<mat-horizontal-stepper #stepper class="stepper">
+<mat-horizontal-stepper #stepper class="stepper" optional="false">
     <mat-step [stepControl]="createGroupForm">
         <div class="wrapper">
             <ng-template matStepLabel>פרטי הגן</ng-template>
@@ -107,8 +107,11 @@
         </div>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <div class="wrapper">You are now done.</div>
+        <ng-template matStepLabel>ברוך הבא</ng-template>
+        <div class="wrapper">
+            <h2>הקבוצה שלכם נוצרה בהצלחה!</h2>
+            <h4 class="add_members" (click)="logInAndAddMembers()">לחצו כאל על מנת לצרף חברים לקבוצה</h4>
+        </div>
     </mat-step>
 </mat-horizontal-stepper>
 <div class="spinner">

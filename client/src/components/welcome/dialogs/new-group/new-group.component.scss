@@ -1,10 +1,14 @@
 @import "../../../../assets/style/globalStyle.scss";
+@import "../../../../assets/style/globalStyle.scss";
 @import '~@angular/material/theming';
 
 .stepper {
   width: 450px;
   .wrapper {
     position: relative;
+    h2,h4{
+      text-align: center;
+    }
     form {
       position: relative;
       text-align: left;
