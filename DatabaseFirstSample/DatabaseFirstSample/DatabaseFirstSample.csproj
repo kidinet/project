@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,7 +81,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BloggingModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="bl_classes\BL_USER.cs" />
+    <Compile Include="bl_classes\BL_Image.cs" />
+    <Compile Include="bl_classes\BL_This_day.cs" />
+    <Compile Include="bl_classes\BL_User.cs" />
     <Compile Include="bl_classes\Result.cs" />
     <Compile Include="Group.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
