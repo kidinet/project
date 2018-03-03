@@ -16,6 +16,8 @@ namespace DatabaseFirstSample.bl_classes
         private bool v1;
         private User user;
         private int v2;
+        private bool v;
+        private string message;
 
         [DataMember]
         public bool Success { get; set; }
@@ -50,6 +52,12 @@ namespace DatabaseFirstSample.bl_classes
 
         public Result()
         {
+        }
+
+        public Result(bool v, string message)
+        {
+            this.v = v;
+            this.message = message;
         }
 
         public T getType(T returnObject)

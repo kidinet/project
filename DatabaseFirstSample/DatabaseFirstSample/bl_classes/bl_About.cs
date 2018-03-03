@@ -14,40 +14,46 @@ namespace DatabaseFirstSample
 {
     public class BL_ABOUT
     {
-        public List<about> getTitle(int groupId)
+        public List<about> initAllAboutTitels(int groupId)
         {
             using (var db = new BloggingContext())
             {
                 return db.abouts.Where(title => title.groupId == groupId).ToList();
             }
         }
-        public Result<about> addAboutTitle(string title, string content, string icon, int groupId)
+        public Result<about> addAboutTitle(about newAboutTitle)
         {
             using (var db = new BloggingContext())
             {
                 try
                 {
-                    about aboutTitle = new about(title, content, icon, groupId);//crete constructor get all items 
-                    db.abouts.Add(aboutTitle);
+                    //about aboutTitle = new about(title, content, icon, groupId);//crete constructor get all items 
+                    db.abouts.Add(newAboutTitle);
                     db.SaveChanges();
-                    return new Result<about>(true, aboutTitle);
+                    return new Result<about>(true, newAboutTitle);
                 }
                 catch (Exception ex)
                 {
-                    return new Result<about>(ex.Message);
+                    return new Result<about>(false, ex.Message);
                     throw ex;
                 }
             }
         }
-        public void updateAboutTitle(int id, string title, string content, string icon, int groupId)
+        public void updateAboutTitle(about aboutTitle)
         {
             using (var db = new BloggingContext())
             {
                 try
                 {
-                    var aboutTitle = db.abouts.Where(about => about.id == id);
-                    aboutTitle.Select(about => about.groupId == groupId && about.title.Equals(title)
-                                && about.content.Equals(content) && about.icon.Equals(icon));
+                    //var tiltle = db.abouts.Where(x=>x.id==aboutTitle.id).Select
+                    //(about => about.groupId == aboutTitle.groupId && about.title.Equals(aboutTitle.title)
+                    // && about.content.Equals(aboutTitle.content) && about.icon.Equals(aboutTitle.icon));
+                    //db.SaveChanges();
+                    var title = db.abouts.Find(aboutTitle.id);
+                    title.title = aboutTitle.title;
+                    title.groupId = aboutTitle.groupId;
+                    title.content = aboutTitle.content;
+                    title.icon = aboutTitle.icon;
                     db.SaveChanges();
                 }
                 catch (Exception ex)
@@ -69,20 +75,15 @@ namespace DatabaseFirstSample
                 }
                 catch (Exception ex)
                 {
-                    return new Result<about>(ex.Message);
+                    return new Result<about>(false, ex.Message);
                     throw ex;
                 }
 
             }
         }
-        public List<ImageGallery> initImagesForGallery(int groupId, int start)
-        {
-            using (var db = new BloggingContext())
-            {
-                return db.ImageGalleries.Where(id => id.groupId == groupId).ToList().GetRange(start, start + 18);
-            }
-        }
+
 
 
     }
 }
+
