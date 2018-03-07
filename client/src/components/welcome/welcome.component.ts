@@ -27,19 +27,23 @@ export class WelcomeComponent implements OnInit {
     private enabled: boolean;
 
     constructor(public newGroupDialog: MatDialog,
-                private builder: FormBuilder,
-                private userService: UserService,
-                private MoreGroupDialog: MatDialog,
-                private FormValidateService: FormValidateService,
-                @Inject(DOCUMENT) private document: Document,
-                private activatedRoute: ActivatedRoute,
-                private router: Router,
-                private cookieService: CookieService) {
-        let logInValue = {
-            mail: atob(cookieService.get('kidinet')).split('/')[0],
-            passwors: atob(cookieService.get('kidinet')).split('/')[1]
-        };
-        this.login(logInValue);
+        private builder: FormBuilder,
+        private userService: UserService,
+        private MoreGroupDialog: MatDialog,
+        private FormValidateService: FormValidateService,
+        @Inject(DOCUMENT) private document: Document,
+        private activatedRoute: ActivatedRoute,
+        private router: Router,
+        private cookieService: CookieService) {
+        if (cookieService.get('kidinet') !== 'logOut') {
+            let logInValue = {
+                password: atob(cookieService.get('kidinet')).split('/')[0],
+                mail: atob(cookieService.get('kidinet')).split('/')[1],
+            };
+            let groupId = atob(cookieService.get('kidinet')).split('/')[2];
+            this.logInWithGroupId(logInValue, eval(groupId));
+        }
+
     }
 
     password = new FormControl('', [Validators.required]);
@@ -58,72 +62,59 @@ export class WelcomeComponent implements OnInit {
     }
 
     login(logInValue = this.loginForm.value) {
-        console.log(logInValue)
         let currentUserInGroup: UserInGroup;
-        this.userService.logIn(this.loginForm.value).then(result => {
+        this.userService.logIn(logInValue).then(result => {
             this.logInFailed = result.Success;
             if (result.Success) {
-                if (result.returnObject.length > 1) {
+                if (result.returnObject.groups) {
                     this.moreGroupRef = this.MoreGroupDialog.open(ChooseGroupComponent, {
-                        data: {groups: result.returnObject},
+                        data: {
+                            groups: result.returnObject.groups,
+                            user: result.returnObject.user
+                        },
                     });
                     this.moreGroupRef.componentInstance.setCurrentGroup.subscribe((groupId: number) => {
-                        currentUserInGroup = result.returbObject['userInGroup'].find(userInGroup => {
-                            return userInGroup.groupId === groupId;
-                        });
+                        this.logInWithGroupId(this.loginForm.value, groupId)
                     });
                 } else {
-                    currentUserInGroup = result.returbObject['userInGroup'][0];
+                    this.initUserSettings(result);
                 }
-                appGlobalsService.setCurrentUserInGroup(new UserInGroup(
-                    currentUserInGroup.childFirstName,
-                    currentUserInGroup.childLastName,
-                    currentUserInGroup.nickname,
-                ));
-                appGlobalsService.setCurreUser(
-                    new User(result.returbObject['user'].firstName,
-                        result.returbObject['user'].lastName,
-                        result.returbObject['user'].city,
-                        result.returbObject.street,
-                        result.returbObject['user'].bulid,
-                        result.returbObject['user'].phone,
-                        result.returbObject['user'].mail,
-                        result.returbObject['user'].profile,
-                        null,
-                        result.returbObject['user'].latitude,
-                        result.returbObject['user'].longitude)
-                );
-                this.cookieService.set('kidinet', btoa(`${result.returbObject['user'].password}/${result.returbObject['user'].mail}`));
-                this.router.navigate(['/home/about']);
             }
         });
     }
+    logInWithGroupId(loginForm, groupId: number) {
+        this.userService.logInWithGroupId(loginForm, groupId).then(result => {
+            this.logInFailed = !result.Success
+            if (result.Success) {
+                this.initUserSettings(result)
+            }
 
-    // const t = new User(
-    //     result.returbObject.firstName,
-    //     result.returbObject.lastName,
-    //     result.returbObject.city,
-    //     result.returbObject.street,
-    //     result.returbObject.bulid,
-    //     result.returbObject.phone,
-    //     result.returbObject.mail,
-    //     result.returbObject.profile,
-    //     null,
-    //     result.returbObject.latitude,
-    //     result.returbObject.longitude,
-    // );
 
+        });
+    }
     ngOnInit() {
         //  this.userService.getUser();
     }
 
     openMoreGroup() {
         this.moreGroupRef = this.MoreGroupDialog.open(ChooseGroupComponent, {
-            data: {groups: []},
+            data: { groups: [] },
         });
         this.moreGroupRef.componentInstance.setCurrentGroup.subscribe((data: any) => {
-            console.log(data, 'data');
+
         });
+    }
+
+    initUserSettings(result) {
+        appGlobalsService.setCurrentUserInGroup(result.returnObject.currentUserInGroup);
+        appGlobalsService.setCurreUser(result.returnObject.user);
+        appGlobalsService.setUsersInCurrentGroup(result.returnObject.usersInGroup);
+        appGlobalsService.setGroup(result.returnObject.group);
+        appGlobalsService.setIsAdministrator(result.returnObject.currentUserInGroup.isAdministrator);
+        appGlobalsService.setUsersInCurrentGroupDetails(result.returnObject.usersInCurrentGroupDetails)
+        console.log(appGlobalsService,'<<<<<<<');
+        this.cookieService.set('kidinet', btoa(`${result.returnObject.user.password_}/${result.returnObject.user.mail}/${result.returnObject.group.id}`));
+        this.router.navigate(['/home/about']);
     }
 
 
@@ -137,11 +128,11 @@ export class WelcomeComponent implements OnInit {
 })
 export class NewGroup {
     constructor(public dialogRef: MatDialogRef<NewGroup>,
-                @Inject(MAT_DIALOG_DATA) public data: any,
-                private builder: FormBuilder,
-                private userService: UserService,
-                private groupService: GroupService,
-                private formValidateService: FormValidateService) {
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        private builder: FormBuilder,
+        private userService: UserService,
+        private groupService: GroupService,
+        private formValidateService: FormValidateService) {
     }
 
     // group form variables:

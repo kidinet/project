@@ -22,7 +22,7 @@ export class GroupService {
 
 
     createGroup(group: Group): any {
-        this.userService.findFromAddress(`${group.groupCity} ${group.groupStreet} ${group.groupBuild}`).then(
+        this.userService.findFromAddress(`${group.city} ${group.street} ${group.build}`).then(
             results => {
                 if (results.status === 'OK') {
                     group.latitude = results.results[0].geometry.location.lat;

@@ -19,11 +19,18 @@ namespace WebApi.Controllers
     public class GroupsController : BaseController
     {
         Bl_Group Bl_Group = new Bl_Group();
-        [HttpPost]
+        //[HttpPost]
+        //[Route("createGroup/{Language}/{Registered}")]
+        //public IHttpActionResult createGroup([FromBody]Group newGroup)
+        //{
+        //    return Ok(Bl_Group.createGroup(newGroup));
+        //}
+        [HttpGet]
         [Route("createGroup/{Language}/{Registered}")]
-        public IHttpActionResult createGroup([FromBody]Group newGroup)
+        public IHttpActionResult createGroup(string Language, bool Registered, string name, string city, string street, int build, string phone, string mail, string fax)
         {
-            return Ok(Bl_Group.createGroup(newGroup));
+            //  localhost:7022/api/createGroup/he/true?name=kidinet&city=BneiBraq&street=lklklklk&build=2&phone=5798888&mail=kidinet@gmail.com&fax=1234567
+            return Ok(Bl_Group.createGroup(name, city, street, build, phone, mail, fax));
         }
         [HttpGet]
         [Route("deleteGroup/{Language}/{Registered}")]

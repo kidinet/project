@@ -22,7 +22,7 @@ export class ImageGalleryResponseComponent implements OnInit {
     }
 
     ngOnInit() {
-        const path = `${appGlobalsService.currentGroup.groupId}/${this.imageGallery.id}/imagesReply`;
+        const path = `${appGlobalsService.currentGroup.id}/${this.imageGallery.id}/imagesReply`;
         // put the chat message on database;
         this.items = this.af.list(path, {
             query: {

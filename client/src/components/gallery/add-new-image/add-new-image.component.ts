@@ -18,9 +18,9 @@ export class AddNewImageComponent implements OnInit {
     resultMessage = ''
 
     constructor(public dialogRef: MatDialogRef<AddNewImageComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any,
-                private apiService: ApiService,
-                public imagesService: ImagesService) {
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        private apiService: ApiService,
+        public imagesService: ImagesService) {
     }
 
     ngOnInit() {
@@ -44,13 +44,13 @@ export class AddNewImageComponent implements OnInit {
     createImage() {
         const toDataURL = this.canvas.nativeElement.toDataURL().replace(/^data:image\/(png|jpg);base64,/, '');
         this.isLoading = true;
-       /* this.apiService.addImageToGallery(toDataURL, this.subject).then(result => {
-            this.resultMessage = result.Success ? 'התמונה נוספה לאוסף התמונות שלך' : 'לא ניתך להוסיף תמונה זו';
-            this.isLoading = false;
-            const ctx = this.canvas.nativeElement.getContext('2d')
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            ctx.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
-        });*/
+        this.apiService.addImageToGallery(toDataURL, this.subject).then(result => {
+            // this.resultMessage = result.Success ? 'התמונה נוספה לאוסף התמונות שלך' : 'לא ניתך להוסיף תמונה זו';
+            // this.isLoading = false;
+            // const ctx = this.canvas.nativeElement.getContext('2d')
+            // ctx.setTransform(1, 0, 0, 1, 0, 0);
+            // ctx.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+        });
     }
 
 }

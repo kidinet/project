@@ -12,14 +12,15 @@ import {catchError} from 'rxjs/operators';
 const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'my-auth-token'
+        'Authorization': 'my-auth-token',
+        'Access-Control-Allow-Origin': '*'
     })
 };
 
 @Injectable()
 export class UserService {
     constructor(private http: HttpClient,
-                private cookieService: CookieService) {
+        private cookieService: CookieService) {
     }
 
     API_KEY = 'AIzaSyAftTULF-1UvfWrffosDlIChTWfhN_EqRU'
@@ -38,7 +39,7 @@ export class UserService {
         return this.http.post(url, {
             user: user,
             isAdministrator: isAdministrator,
-            groupId: appGlobalsService.currentGroup.groupId
+            id: appGlobalsService.currentGroup.id
         }, httpOptions).toPromise();
     }
 
@@ -78,16 +79,28 @@ export class UserService {
     }
 
     logIn(loginFormValue): any {
+        console.log(loginFormValue,'loginFormValue service ')
         const url = `${appGlobalsService.baseAPIUrl}logIn/he/true`
-        this.http.post(url, {
+        return this.http.post(url, {
             mail: loginFormValue.mail,
-            password: loginFormValue.password
+            password_: loginFormValue.password
+        }, httpOptions).toPromise();
+        //return this.http.post(url).toPromise();
+    }
+    logInWithGroupId(loginFormValue, id: number): any {
+        const url = `${appGlobalsService.baseAPIUrl}logInWithGroupId/he/true`
+        return this.http.post(url, {
+            userMail: loginFormValue.mail,
+            User: {
+                password_: loginFormValue.password
+            },
+            groupId: id
         }, httpOptions).toPromise();
     }
 
     addUsersToGroup(users: User[]): any {
         const url = `${appGlobalsService.baseAPIUrl}addUsers/he/true`;
-        this.http.post(url, {users: users, groupId: appGlobalsService.currentGroup.groupId}, httpOptions).toPromise();
+        this.http.post(url, { users: users, id: appGlobalsService.currentGroup.id }, httpOptions).toPromise();
     }
 
 }

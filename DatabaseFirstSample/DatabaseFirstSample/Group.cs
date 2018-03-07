@@ -14,8 +14,6 @@ namespace DatabaseFirstSample
     
     public partial class Group
     {
-        private string street;
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Group()
         {
@@ -24,24 +22,7 @@ namespace DatabaseFirstSample
             this.UserInGroups = new HashSet<UserInGroup>();
             this.ThisDayOfGroups = new HashSet<ThisDayOfGroup>();
         }
-        public Group(string name)
-        {
-            this.abouts = new HashSet<about>();
-            this.ImageGalleries = new HashSet<ImageGallery>();
-            this.UserInGroups = new HashSet<UserInGroup>();
-            this.ThisDayOfGroups = new HashSet<ThisDayOfGroup>();
-        }
-
-        public Group(string name, string city, string street, int build, string phone, string mail, string fax) : this(name)
-        {
-            this.city = city;
-            this.street = street;
-            this.build = build;
-            this.phone = phone;
-            this.mail = mail;
-            this.fax = fax;
-        }
-
+    
         public int id { get; set; }
         public string name { get; set; }
         public string city { get; set; }

@@ -26,7 +26,7 @@ export class FormSubjectsComponent implements OnInit {
     //
     // forum items:
     items: FirebaseListObservable<FormSubject[]>;
-    path = `${appGlobalsService.currentGroup.groupId}/forum`;
+    path = `${appGlobalsService.currentGroup.id}/forum`;
     @Output() selectForumDilemma = new EventEmitter<any>();
     selectedForumKey: string;
     //

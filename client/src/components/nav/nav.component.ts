@@ -60,10 +60,6 @@ export class NavComponent implements OnInit {
         this.chatStatusChange.emit(this.isChat);
     }
 
-    logOut() {
-        location.reload();
-    }
-
     // ===================pipes=======================
     get appGlobalsService() {
         return appGlobalsService;

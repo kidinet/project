@@ -11,33 +11,16 @@ namespace DatabaseFirstSample
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-
-    [Serializable]
-    [DataContract]
+    
     public partial class about
     {
-        public about(string title, string content, string icon, int groupId)
-        {
-            this.title = title;
-            this.content = content;
-            this.icon = icon;
-            this.groupId = groupId;
-        }
-        [DataMember]
         public int id { get; set; }
-        [DataMember]
         public string title { get; set; }
-        [DataMember]
         public string icon { get; set; }
-        [DataMember]
         public string color { get; set; }
-        [DataMember]
         public int groupId { get; set; }
-        [DataMember]
         public string content { get; set; }
-        [DataMember]
-
+    
         public virtual Group Group { get; set; }
     }
 }

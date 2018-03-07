@@ -1,8 +1,8 @@
 <div class="look_fom_friends">
     <div class="asaid">
         <div class="user_in_group" *ngFor="let user of usersInCurrentGroup" (click)="setCurrentUser(user)">
-            <span>{{user.firstName}}</span>
-            <span>{{user.lastName}}</span>
+            <span>{{user.childFirstName}}</span>
+            <span>{{user.childLastName}}</span>
             <img src="../../assets/images/progile.jpg"  class="profile">
         </div>
         <button mat-raised-button color="accent" (click)=showKinderGardenDirection()>הגן שלנו</button>

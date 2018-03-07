@@ -8,20 +8,22 @@ import * as appGlobalStyle from '../../../store/app-global-style';
 })
 export class AboutTitleComponent implements OnInit {
 
-    titleColor = '#c8ebd7';
-    titleIcon = 'fa fa-comment-o';
+
     isOpen = false;
     @Input() size: string;
+    @Input() titleColor = "rgb(200, 235, 215)";
+    @Input() titleIcon = "fa fa-bell";
     @Input() isEditable: boolean;
     @Output() color = new EventEmitter();
     @Output() icon = new EventEmitter();
 
 
-    get appGlobalStyle(){
+    get appGlobalStyle() {
         return appGlobalStyle;
     }
     getColor(event: string) {
         this.titleColor = event;
+        console.log('titleColor', this.titleColor)
         this.color.emit(this.titleColor);
     }
 
@@ -43,6 +45,6 @@ export class AboutTitleComponent implements OnInit {
     ngOnInit() {
         this.color.emit(this.titleColor);
         this.icon.emit(this.titleIcon);
- }
+    }
 
 }

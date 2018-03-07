@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {CookieService} from 'ngx-cookie-service';
+import * as appGlobalsService from '../../store/app-globals';
+
 
 @Component({
     selector: 'app-header',
@@ -6,7 +9,7 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-    constructor() {
+    constructor(private cookieService: CookieService) {
     }
 
     groupName: string = 'הגן שלנו';
@@ -15,5 +18,13 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
 
     }
+    logOut() {
+        this.cookieService.set('kidinet','logOut');
+        location.reload();
+    }
+    get appGlobalsService() {
+        return appGlobalsService;
+    }
+
 
 }

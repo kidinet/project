@@ -8,11 +8,38 @@ using DatabaseFirstSample.bl_classes;
 using System.IO;
 using System.Net.Mail;
 using System.Web;
+using System.Runtime.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace DatabaseFirstSample
 {
+    [Serializable]
+    [DataContract]
     public class BL_IMAGE
     {
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public int groupId { get; set; }
+        [DataMember]
+        public Nullable<System.DateTime> date_added { get; set; }
+        [DataMember]
+        public byte[] src { get; set; }
+        [DataMember]
+        public string subject { get; set; }
+        public BL_IMAGE(ImageGallery imageGallery)
+        {
+            this.id = imageGallery.id;
+            this.groupId = imageGallery.groupId;
+            this.date_added = imageGallery.date_added;
+            this.src = imageGallery.src;
+            this.subject = imageGallery.subject;
+        }
+
+        public BL_IMAGE()
+        {
+        }
+
         public Result<ImageGallery> addImage(ImageGallery newImageGallery)
         {
             using (var db = new BloggingContext())
@@ -49,45 +76,19 @@ namespace DatabaseFirstSample
                 return db.ImageGalleries.Where(images => images.groupId == groupId).ToList();
             }
         }
-        //public Result<ResponseImage> addText(string text, int imageId, DateTime date, string userMail)
-        //{
-        //    using (var db = new BloggingContext())
-        //    {
-        //        try
-        //        {
-        //            ResponseImage response = new ResponseImage();//imageId, date, text, userMail
-        //            db.ResponseImages.Add(response);
-        //            db.SaveChanges();
-        //            return new Result<ResponseImage>(true, response);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return new Result<ResponseImage>(false, ex.Message);
-        //            throw ex;
-        //        }
-        //    }
-        //}
-        //public List<ResponseImage> getResponsesbyImageId(int imageId)
-        //{
-        //    using (var db = new BloggingContext())
-        //    {
-        //        return db.ResponseImages.Where(response => response.imageId == imageId).ToList();
-        //    }
-
-        //}
-        //public List<LikeImage> getLikeImagesbyMail(string userMail)
-        //{
-        //    using (var db = new BloggingContext())
-        //    {
-        //        return db.LikeImages.Where(mail => mail.userMail == userMail).ToList();
-        //    }
-        //}
-        public List<ImageGallery> initImagesForGallery(int groupId, int start)
+        public Result<JObject>  initImagesForGallery(int groupId, int start)
         {
             using (var db = new BloggingContext())
             {
-                return db.ImageGalleries.Where(id => id.groupId == groupId).ToList().GetRange(start, 18);
+                var imagesForGallery = db.ImageGalleries.Where(id => id.groupId == groupId).ToList();
+                if(start< imagesForGallery.Count)
+                {
+                    JObject api = new JObject();
+                    api.Add("imagesForGallery", JToken.FromObject(imagesForGallery.GetRange(start, 18)));
+                    return new  Result<JObject>(true, api);
+                }
             }
+            return new Result<JObject>(false,"no more images");
         }
         public Result<ImageGallery> deleteImageFromGallery(int id)
         {

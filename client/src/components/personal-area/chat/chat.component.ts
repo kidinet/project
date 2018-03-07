@@ -33,7 +33,7 @@ export class ChatComponent implements AfterContentInit {
 
     ngAfterContentInit() {
        // put the chat message on database;
-        this.path = `${appGlobalsService.currentGroup.groupId}/${this.user.mail.replace('@', 'A').replace('.', 'B')}/chat`;
+        this.path = `${appGlobalsService.currentGroup.id}/${this.user.mail.replace('@', 'A').replace('.', 'B')}/chat`;
         this.items = this.af.list(this.path, {
             query: {
                 limitToLast: this.limitToLast

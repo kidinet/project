@@ -9,12 +9,53 @@ using System.IO;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Hosting;
+using System.Runtime.Serialization;
+
 namespace DatabaseFirstSample
 {
+    [Serializable]
+    [DataContract]
     public class Bl_Group
     {
+        public Bl_Group(Group group)
+        {
+            this.id = group.id;
+            this.name = group.name;
+            this.city = group.city;
+            this.street = group.streat;
+            this.build = group.build;
+            this.phone = group.phone;
+            this.mail = group.mail;
+            this.fax = group.fax;
+            this.latitute = group.latitute;
+            this.longitude = group.longitude;
+        }
 
-        public Result<Group> createGroup(Group newGroup)
+        public Bl_Group()
+        {
+        }
+
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public string name { get; set; }
+        [DataMember]
+        public string city { get; set; }
+        [DataMember]
+        public string street { get; set; }
+        [DataMember]
+        public Nullable<int> build { get; set; }
+        [DataMember]
+        public string phone { get; set; }
+        [DataMember]
+        public string mail { get; set; }
+        [DataMember]
+        public string fax { get; set; }
+        [DataMember]
+        public Nullable<double> latitute { get; set; }
+        [DataMember]
+        public Nullable<double> longitude { get; set; }
+        public Result<Bl_Group> createGroup(Group newGroup)
         {
             using (var db = new BloggingContext())
             {
@@ -23,12 +64,12 @@ namespace DatabaseFirstSample
                     //                   Group group = new Group(name, city, street, build, phone, mail, fax);
                     db.Groups.Add(newGroup);
                     db.SaveChanges();
-                    return new Result<Group>(true, newGroup);
+                    return new Result<Bl_Group>(true, new Bl_Group(newGroup));
 
                 }
                 catch (Exception ex)
                 {
-                    return new Result<Group>(false, ex.Message);
+                    return new Result<Bl_Group>(false, ex.Message);
                     throw ex;
                 }
             }
@@ -43,6 +84,32 @@ namespace DatabaseFirstSample
                 return -1;
             }
         }
+
+        public Result<Group> createGroup(string name, string city, string street, int build, string phone, string mail, string fax)
+        {
+            using (var db = new BloggingContext())
+            {
+                try
+                {
+                    //                   Group group = new Group(name, city, street, build, phone, mail, fax);
+                    Group newGroup = new Group(name, city, street, build, phone, mail, fax);
+                    db.Groups.Add(newGroup);
+                    User user = new User() { mail="fghfgh"};
+
+
+                    Group user_ = new Group();
+                        user_ = db.Groups.FirstOrDefault();
+                    return new Result<Group>(true, user_);
+
+                }
+                catch (Exception ex)
+                {
+                    return new Result<Group>(false, ex.Message);
+                    throw ex;
+                }
+            }
+        }
+
         /// <summary>
         /// the function get subject,groupName,password and sand email to the prant to join him to kidinet group.
         /// the function use the other function PopulateBody to create html string for the email.

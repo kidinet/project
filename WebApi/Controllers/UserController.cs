@@ -11,6 +11,8 @@ using System.Net.Http;
 using System.Web.Script.Serialization;
 using DatabaseFirstSample;
 using System.Data.Entity;
+using DatabaseFirstSample.bl_classes;
+using System.Data.Entity.Core.Objects;
 
 namespace WebApi.Controllers
 {
@@ -54,9 +56,17 @@ namespace WebApi.Controllers
         }
         [HttpPost]
         [Route("logIn/{Language}/{Registered}")]
-        public IHttpActionResult logIn([FromBody]string userMail, [FromBody]string password)
+        public IHttpActionResult logIn([FromBody]User user)
         {
-            return Ok(true);
+           
+            return Json(bl_user.logIn(user));
+        }
+        [HttpPost]
+        [Route("logInWithGroupId/{Language}/{Registered}")]
+        public IHttpActionResult logInWithGroupId([FromBody]UserInGroup userInGroup)
+        {
+
+            return Json(bl_user.logIn(userInGroup));
         }
     }
 }

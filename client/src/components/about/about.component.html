@@ -1,33 +1,33 @@
-
 <div class="about_wrapper">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
     <div class="main_title">
         <h1 class="title">ברוכים הבאים</h1>
         <h2>אנחנו ממש שמחים שאתם כאן</h2>
     </div>
-    <div class="title_wrapper" *ngFor="let title of titles" #titleElement>
+    <div class="title_wrapper" *ngFor="let title of appGlobalsService.aboutTitles" #titleElement>
         <form #values="ngForm" (ngSubmit)="updateAboutTitle(title)">
             <h2 class="title">
-                <app-about-title [size]="'medium'" [isEditable]="!title.isDisabled"
+                <app-about-title [size]="'medium'" 
+                                 [isEditable]="title.isEditable"
+                                 [titleColor]="title.color"
+                                 [titleIcon]="title.icon"
                                  (color)="setTitleColor($event,title)"
                                  (icon)="setTitleIcon($event,title)"></app-about-title>
-                <input [disabled]="title.isDisabled" class="text" [(ngModel)]="title.title"
+                <input [disabled]="!title.isEditable" class="text" [(ngModel)]="title.title"
                        [ngModelOptions]="{standalone:true}" name="first">
 
             </h2>
             <div class="content">
                 <div class="edit">
-                    <i matTooltip="ערוך" (click)="editTitle(title)" [matTooltipPosition]="'after'"
-                       class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    <i class="fa fa-trash-o" (click)="deleteAboutTitle(title)" aria-hidden="true" matTooltip="מחק"
-                       [matTooltipPosition]="'after'"></i>
+                    <i matTooltip="ערוך" (click)="editTitle(title)" [matTooltipPosition]="'after'" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <i class="fa fa-trash-o" (click)="deleteAboutTitle(title)" aria-hidden="true" matTooltip="מחק" [matTooltipPosition]="'after'"></i>
                 </div>
 
-                <textarea [disabled]="title.isDisabled"
-                          [style.height]="getStyle()" #textArea
-                          name="content" id=""
-                          [(ngModel)]="title.content"></textarea>
+                <div class="title_content" [attr.contenteditable]="title.isEditable" [textContent]="title.content" (input)="title.content=$event.target.textContent">
+                    {{title.title}}
+                </div>
             </div>
-            <button type="submit" color="accent" *ngIf="!title.isDisabled" mat-raised-button>שנה
+            <button type="submit" color="accent" *ngIf="title.isEditable" mat-raised-button>שנה
             </button>
         </form>
 
@@ -37,9 +37,7 @@
     <div class="add_about_title">
         <form [formGroup]="aboutTitleForm" (ngSubmit)="addAboutTitle() ">
             <div class="about_title_style" matTooltip="בחר צבע ואיקון" [matTooltipPosition]="'above'">
-                <app-about-title (color)="setNewAboutTitleColor($event)" (icon)="setNewAboutTitleIcon($event)"
-                                 [isEditable]="true"
-                                 [size]="'medium'"></app-about-title>
+                <app-about-title (color)="setNewAboutTitleColor($event)" (icon)="setNewAboutTitleIcon($event)" [isEditable]="true" [size]="'medium'"></app-about-title>
             </div>
             <mat-form-field class="input">
                 <input matInput placeholder="כותרת" type="text" name="title" [formControl]="newAboutTitle.title">
@@ -51,8 +49,7 @@
             </mat-form-field>
             <div [hidden]="newAboutTitle.content.untouched||!newAboutTitle.content.hasError('required')">שדה נדרש</div>
             <div class="button_wrapper">
-                <button type="submit" color="accent" [disabled]="!aboutTitleForm.valid" mat-raised-button
-                        class="new_group">הוסף
+                <button type="submit" color="accent" [disabled]="!aboutTitleForm.valid" mat-raised-button class="new_group">הוסף
                 </button>
             </div>
         </form>

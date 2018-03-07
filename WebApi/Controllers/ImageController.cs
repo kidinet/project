@@ -12,13 +12,15 @@ using DatabaseFirstSample;
 using System.Data.Entity;
 namespace WebApi.Controllers
 {
+    [EnableCors("*", "*", "*")]
+    [RoutePrefix("api")]
     public class ImageController : BaseController
     {
         BL_IMAGE bl_image = new BL_IMAGE();
 
         [HttpPost]
         [Route("addNewImage/{Language}/{Registered}")]
-        public IHttpActionResult addNewImage(ImageGallery newImage)
+        public IHttpActionResult addNewImage([FromBody]ImageGallery newImage)
         {
             return Ok(bl_image.addImage(newImage));
         }
@@ -32,6 +34,7 @@ namespace WebApi.Controllers
         [Route("initImagesForGallery/{Language}/{Registered}")]
         public IHttpActionResult initImagesForGallery(string Language, bool Registered, int groupId, int start)
         {
+            
             return Ok(bl_image.initImagesForGallery(groupId, start));
         }
         [HttpGet]

@@ -35,7 +35,7 @@ export class SendReminderComponent implements OnInit {
 
     sendReminder() {
         for (var key in this.selectedUsers) {
-            this.path = `${appGlobalsService.currentGroup.groupId}/${key.replace('@', 'A').replace('.', 'B')}/reminders`;
+            this.path = `${appGlobalsService.currentGroup.id}/${key.replace('@', 'A').replace('.', 'B')}/reminders`;
             this.af.list(this.path).push(new Reminder(this.newReminderContent.value, new Date().toString(), false));
             this.dialogRef.close();
         }

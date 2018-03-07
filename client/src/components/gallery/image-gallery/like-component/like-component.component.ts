@@ -22,7 +22,7 @@ export class LikeComponentComponent implements OnInit {
     isImageLike = null;
 
     ngOnInit() {
-        const path = `${appGlobalsService.currentGroup.groupId}/${this.id}/likes`;
+        const path = `${appGlobalsService.currentGroup.id}/${this.id}/likes`;
         // put the chat message on database;
         this.items = this.af.list(path);
         this.items.subscribe(likeItems => {
