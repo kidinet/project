@@ -29,11 +29,16 @@
                     <span>אני</span>
                 </div>
             </agm-info-window>
+            <agm-info-window #infoWindowCurrentGroup
+                             [latitude]="currentGroup.latitute" [longitude]="currentGroup.longitude" [isOpen]="isCurrentGroupInfoOpen">
+                <div class="info_window">
+                    <span>{{currentGroup.name}}</span>
+                </div>
+            </agm-info-window>
         </agm-map>
         <div #myPanel class="direction_details">
-            <!--<h3 *ngIf="!this.currentUser.latitude||!currentUser.longitude||!currentFriend.latitude||!currentFriend.longitude">לא ניתן להציג מיקום זה</h3>-->
+        
         </div>
-
     </div>
 </div>
 

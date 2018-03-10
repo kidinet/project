@@ -16,13 +16,13 @@
     <EntitySetMapping Name="Groups">
       <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Group">
         <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="street" ColumnName="street" />
           <ScalarProperty Name="longitude" ColumnName="longitude" />
           <ScalarProperty Name="latitute" ColumnName="latitute" />
           <ScalarProperty Name="fax" ColumnName="fax" />
           <ScalarProperty Name="mail" ColumnName="mail" />
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="build" ColumnName="build" />
-          <ScalarProperty Name="streat" ColumnName="streat" />
           <ScalarProperty Name="city" ColumnName="city" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id" ColumnName="id" />

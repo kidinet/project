@@ -32,6 +32,8 @@ export class FormSubjectsComponent implements OnInit {
     //
     // new dilemma:
     isShowNew = false;
+    details
+    usersDetails
 
     // form declare:
     newDilemaTitle = new FormControl('');
@@ -59,6 +61,18 @@ export class FormSubjectsComponent implements OnInit {
                 map(text => text ? this.filter(text) : this.formSubjects.slice().reverse())
                 );
         });
+        this.usersDetails = this.getusersInCurrentGroupDetails();
+        this.getChatDetails();
+    }
+    getChatDetails() {
+
+    }
+    get detail() {
+        let details = {};
+        appGlobalsService.usersInCurrentGroup.forEach(user => {
+            details[user.userMail] = user.nickname;
+        })
+        return details
     }
 
     filter(text: string): FormSubject[] {
@@ -95,11 +109,20 @@ export class FormSubjectsComponent implements OnInit {
         return moment;
     }
 
-    get usersDetails() {
-        let usersInCurrentGroup = {};
-        appGlobalsService.usersInCurrentGroup.forEach(user => {
-            usersInCurrentGroup[user.mail] = `${user.firstName} ${user.lastName}`
+    getusersInCurrentGroupDetails() {
+        let users = [];
+        appGlobalsService.usersInCurrentGroupDetails.forEach(user => {
+            user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
+                return details.userMail == user.mail;
+            })[0];
+            if (user.details) {
+                users.push(user);
+            }
         })
-        return usersInCurrentGroup;
+        return users;
     }
+    get appGlobalsService() {
+        return appGlobalsService
+    }
+
 }

@@ -45,17 +45,18 @@ export class SendReminderComponent implements OnInit {
     ngOnInit() {
         // put the chat message on database;
         this.usersInCurrentGroup = this.getusersInCurrentGroupDetails();
-        console.log(this.usersInCurrentGroup)
     }
-    getusersInCurrentGroupDetails() {
+   getusersInCurrentGroupDetails() {
         let users = [];
         appGlobalsService.usersInCurrentGroupDetails.forEach(user => {
             user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
                 return details.userMail == user.mail;
             })[0];
-            users.push(user);
+            if (user.details) {
+                users.push(user);
+            }
         })
-        return appGlobalsService.usersInCurrentGroupDetails;
+        return users;
     }
 
     // ===========pipes=============

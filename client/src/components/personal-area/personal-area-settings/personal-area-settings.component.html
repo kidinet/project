@@ -26,7 +26,7 @@
                 </div>
                 <div class="input_wrapper">
                     <mat-form-field class="input">
-                        <input matInput placeholder="רחוב" [(ngModel)]="currentUser.street" type="text"
+                        <input matInput placeholder="רחוב" [(ngModel)]="currentUser.streat" type="text"
                                name="userstreet" [formControl]="userstreet">
                     </mat-form-field>
                     <div [hidden]="userstreet.untouched||!userstreet.hasError('required')">שדה נדרש</div>
@@ -50,7 +50,7 @@
                 </div>
             </form>
         </mat-tab>
-        <!--<mat-tab label="פרטים בגן זה">
+        <mat-tab label="פרטים בגן זה">
             <form [formGroup]="createUserInGroupForm" (ngSubmit)="updateUserInGroup()">
                 <div class="input_wrapper">
                     <mat-form-field class="input">
@@ -76,7 +76,7 @@
                 </div>
             </form>
         </mat-tab>
-        <mat-tab label="תמונת פרופיל">
+        <!--<mat-tab label="תמונת פרופיל">
             <div class="add_new_image">
                 <div class="input_wrapper">
                     <input #fileInput [src]="imageSrc" (change)="setImageSrc($event)" type="file" name="file" id="file"

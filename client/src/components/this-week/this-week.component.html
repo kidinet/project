@@ -9,7 +9,7 @@
     </div>
     <div *ngFor="let title of this.items | async" class="wrapper" [ngClass]="{'blur':isLoading,'style_open':title.isStyleOpen}"
         [ngStyle]="{background: 'linear-gradient(#f6f6f6, '+title.color+')'}">
-        <i class="fa fa-times" aria-hidden="true" (click)="removeTitle(title)"></i>
+        <i class="fa fa-times" aria-hidden="true" (click)="removeTitle(title)" *ngIf="appGlobalsService.isAdministrator"></i>
         <div class="content">
             <h2 [attr.contenteditable]="isEditable" [textContent]="title.title" (input)="title.title=$event.target.textContent" (blur)="updateThisDayOfGroupTitle(title)">
                 {{title.title}}
@@ -23,7 +23,7 @@
             <div class="fixed" *ngIf="title.isStyleOpen" (click)="toggleStyleOpen(title)"></div>
         </div>
     </div>
-    <div class="wrapper" [ngClass]="{'blur':isLoading}" [ngStyle]="{background: 'linear-gradient(#f6f6f6, '+newTitle.color+')'}">
+    <div *ngIf="appGlobalsService.isAdministrator" class="wrapper" [ngClass]="{'blur':isLoading}" [ngStyle]="{background: 'linear-gradient(#f6f6f6, '+newTitle.color+')'}">
         <h4>הוסף כרטסיה חדשה</h4>
         <div class="content">
             <h2 [attr.contenteditable]="isEditable" [textContent]="newTitle.title" (input)="newTitle.title=$event.target.textContent"

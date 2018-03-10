@@ -44,8 +44,9 @@ export class UserService {
     }
 
     updateUserInGroup(userInGroup: UserInGroup): any {
-        const url = `${appGlobalsService.baseAPIUrl}updateUserInGroup/he/true?`
-        return this.http.post(url, UserInGroup, httpOptions)
+        console.log(userInGroup);
+        const url = `${appGlobalsService.baseAPIUrl}updateUserInGroup/he/true`
+        return this.http.post(url, userInGroup, httpOptions)
             .toPromise();
     }
 

@@ -14,8 +14,6 @@ namespace DatabaseFirstSample
     
     public partial class Group
     {
-        private string street;
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Group()
         {
@@ -39,13 +37,13 @@ namespace DatabaseFirstSample
         public int id { get; set; }
         public string name { get; set; }
         public string city { get; set; }
-        public string streat { get; set; }
         public Nullable<int> build { get; set; }
         public string phone { get; set; }
         public string mail { get; set; }
         public string fax { get; set; }
         public Nullable<double> latitute { get; set; }
         public Nullable<double> longitude { get; set; }
+        public string street { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<about> abouts { get; set; }

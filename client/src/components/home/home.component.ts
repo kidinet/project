@@ -26,15 +26,9 @@ export class HomeComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private router: Router,
         public af: AngularFireDatabase) {
-        if (appGlobalsService.currentUser.mail) {
-            const index = this.document.location.href.lastIndexOf('/') + 1;
-            if (this.document.location.href.substr(index) === 'home') {
-                this.router.navigate([this.document.location.href]);
-            }
-        } else {
+        if (!appGlobalsService.currentUser.mail) {
             this.router.navigate(['/']);
         }
-
     }
 
     isLoading = false;
@@ -47,28 +41,12 @@ export class HomeComponent implements OnInit {
     limitToLast = 0;
     notRead = false;
     // reminders
-    openReminders = {}
+    openReminders = {};
+    usersInCurrentGroup
 
     ngOnInit() {
-        this.apiService.initAllAboutTitles().then(result => {
-            if (result.Success) {
-                appGlobalsService.setAboutTitles(result.returnObject.aboutTitles);
-            } else {
-                console.warn('cant get the aboutTitle');
-            }
-        });
-
-
-        this.apiService.initImagesForGallery(0).then(result => {
-            if (result.Success) {
-                appGlobalsService.addImagesForGallery(result.returnObject.imagesForGallery);
-                console.log(appGlobalsService)
-               
-            } else {
-                console.warn('cant get the aboutTitle.');
-            }
-        }
-        );
+        this.usersInCurrentGroup=this.getusersInCurrentGroupDetails();
+       
 
         // get the reminders message from database;
         this.path = `${appGlobalsService.currentGroup.id}/${appGlobalsService.currentUser.mail.replace('@', 'A').replace('.', 'B')}/reminders`;
@@ -110,14 +88,22 @@ export class HomeComponent implements OnInit {
             }
         });
     }
+    getusersInCurrentGroupDetails() {
+        let users = [];
+        appGlobalsService.usersInCurrentGroupDetails.forEach(user => {
+            user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
+                return details.userMail == user.mail;
+            })[0];
+            if (user.details) {
+                users.push(user);
+            }
+        })
+        return users;
+    }
 
     // ==================pipes===========
     get appGlobalsService() {
         return appGlobalsService;
-    }
-
-    get usersInCurrentGroup() {
-        return appGlobalsService.usersInCurrentGroup;
     }
 
     get moment() {

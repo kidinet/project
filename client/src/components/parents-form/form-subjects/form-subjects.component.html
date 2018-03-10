@@ -13,7 +13,8 @@
     <div class="subject" [ngClass]="{'selected':subject.$key==selectedForumKey}" (click)="showForumReplys(subject)" *ngFor="let subject of filteredOptions | async ; index as i">
         <h3>{{subject.title}}</h3>
         <div class="details">
-            <h6>{{usersDetails[subject.details]}}</h6>
+            <h6>{{detail[subject.details]}}</h6>
+            <h6 *ngIf="subject.details==appGlobalsService.currentUser.mail">אני</h6>
             <h6>{{moment(subject.date).calendar()}}</h6>
         </div>
     </div>

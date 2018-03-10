@@ -24,13 +24,13 @@
         <i class="fa fa-cog" aria-hidden="true"></i>
         <div class="settings_nav" [ngClass]="{'show': isPersonalAreaNavOpen}">
             <span (click)="openPersonalSettings()">פרטים אישיים</span>
-            <!--<span (click)="openConfirmPassword()">שנה סיסמא</span>
-            <span (click)="openGroupSettings()">פרטי הגן</span>-->
-            <span (click)="openAddMembers()">הוספת משתתפים</span>
+            <!--<span (click)="openConfirmPassword()">שנה סיסמא</span>-->
+            <span (click)="openGroupSettings()" *ngIf="appGlobalsService.isAdministrator">פרטי הגן</span>
+            <span (click)="openAddMembers()" *ngIf="appGlobalsService.isAdministrator">הוספת משתתפים</span>
         </div>
     </span>
     <div class="left_side">
-        <button mat-raised-button color="accent" class="chat" [ngClass]="{'selected':!isChat}" (click)="toggleChatStatus()">
+        <button *ngIf="!appGlobalsService.isAdministrator" mat-raised-button color="accent" class="chat" [ngClass]="{'selected':!isChat}" (click)="toggleChatStatus()">
             <span>הודעות </span>
             <i class="fa fa-commenting" aria-hidden="true"></i>
         </button>
@@ -39,7 +39,7 @@
             <i class="fa fa-commenting-o" aria-hidden="true"></i>
         </button>
 
-        <button mat-raised-button color="accent" class="reminders_poup" (click)="openReminderPopup()">
+        <button *ngIf="appGlobalsService.isAdministrator" mat-raised-button color="accent" class="reminders_poup" (click)="openReminderPopup()">
             <span>שליחת הודעות</span>
             <i class="fa fa-commenting" aria-hidden="true"></i>
         </button>

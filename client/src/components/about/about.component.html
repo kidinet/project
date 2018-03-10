@@ -18,7 +18,7 @@
 
             </h2>
             <div class="content">
-                <div class="edit">
+                <div class="edit" *ngIf="appGlobalsService.isAdministrator">
                     <i matTooltip="ערוך" (click)="editTitle(title)" [matTooltipPosition]="'after'" class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     <i class="fa fa-trash-o" (click)="deleteAboutTitle(title)" aria-hidden="true" matTooltip="מחק" [matTooltipPosition]="'after'"></i>
                 </div>
@@ -34,7 +34,7 @@
 
     </div>
 
-    <div class="add_about_title">
+    <div class="add_about_title" *ngIf="appGlobalsService.isAdministrator">
         <form [formGroup]="aboutTitleForm" (ngSubmit)="addAboutTitle() ">
             <div class="about_title_style" matTooltip="בחר צבע ואיקון" [matTooltipPosition]="'above'">
                 <app-about-title (color)="setNewAboutTitleColor($event)" (icon)="setNewAboutTitleIcon($event)" [isEditable]="true" [size]="'medium'"></app-about-title>

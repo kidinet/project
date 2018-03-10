@@ -58,15 +58,13 @@ namespace WebApi.Controllers
         [HttpPost]
         [Route("logIn/{Language}/{Registered}")]
         public IHttpActionResult logIn([FromBody]User user)
-        {
-           
+        { 
             return Json(bl_user.logIn(user));
         }
         [HttpPost]
         [Route("logInWithGroupId/{Language}/{Registered}")]
         public IHttpActionResult logInWithGroupId([FromBody]UserInGroup userInGroup)
         {
-
             return Json(bl_user.logIn(userInGroup));
         }
     }

@@ -65,9 +65,15 @@
   }
 }
 
-app-image-gallery-response {
+app-image-gallery-response.list {
   position: absolute;
   top: 180px;
   right: 175px;
+  z-index: 100;
+}
+app-image-gallery-response.swiper {
+  position: absolute;
+  top: 0;
+  right: 0;
   z-index: 100;
 }
