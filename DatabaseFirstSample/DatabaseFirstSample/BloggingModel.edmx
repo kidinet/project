@@ -23,7 +23,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="30" />
           <Property Name="city" Type="varchar" MaxLength="20" />
-          <Property Name="streat" Type="varchar" MaxLength="20" />
+          <Property Name="street" Type="varchar" MaxLength="20" />
           <Property Name="build" Type="int" />
           <Property Name="phone" Type="varchar" MaxLength="10" />
           <Property Name="mail" Type="varchar" MaxLength="100" />
@@ -88,7 +88,7 @@
           <Property Name="latitute" Type="float" />
           <Property Name="longitude" Type="float" />
         </EntityType>
-        <Association Name="FK__about__groupId__7A3223E8">
+        <Association Name="FK__about__groupId__44952D46">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="about" Type="Self.about" Multiplicity="*" />
           <ReferentialConstraint>
@@ -100,7 +100,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ImageGall__group__2EA5EC27">
+        <Association Name="FK__ImageGall__group__43A1090D">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="ImageGallery" Type="Self.ImageGallery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -124,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThisDayOf__group__0880433F">
+        <Association Name="FK__ThisDayOf__group__41B8C09B">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="ThisDayOfGroup" Type="Self.ThisDayOfGroup" Multiplicity="*" />
           <ReferentialConstraint>
@@ -136,7 +136,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserInGro__group__214BF109">
+        <Association Name="FK__UserInGro__group__42ACE4D4">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,11 +168,11 @@
           <EntitySet Name="ThisDayOfGroup" EntityType="Self.ThisDayOfGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInGroup" EntityType="Self.UserInGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__about__groupId__7A3223E8" Association="Self.FK__about__groupId__7A3223E8">
+          <AssociationSet Name="FK__about__groupId__44952D46" Association="Self.FK__about__groupId__44952D46">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="about" EntitySet="about" />
           </AssociationSet>
-          <AssociationSet Name="FK__ImageGall__group__2EA5EC27" Association="Self.FK__ImageGall__group__2EA5EC27">
+          <AssociationSet Name="FK__ImageGall__group__43A1090D" Association="Self.FK__ImageGall__group__43A1090D">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="ImageGallery" EntitySet="ImageGallery" />
           </AssociationSet>
@@ -180,11 +180,11 @@
             <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroup" />
             <End Role="ThisDayContent" EntitySet="ThisDayContent" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThisDayOf__group__0880433F" Association="Self.FK__ThisDayOf__group__0880433F">
+          <AssociationSet Name="FK__ThisDayOf__group__41B8C09B" Association="Self.FK__ThisDayOf__group__41B8C09B">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroup" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserInGro__group__214BF109" Association="Self.FK__UserInGro__group__214BF109">
+          <AssociationSet Name="FK__UserInGro__group__42ACE4D4" Association="Self.FK__UserInGro__group__42ACE4D4">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="UserInGroup" EntitySet="UserInGroup" />
           </AssociationSet>
@@ -249,7 +249,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="streat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="build" Type="Int32" />
           <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -260,6 +259,7 @@
           <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E" FromRole="Group" ToRole="UserInGroup" />
           <NavigationProperty Name="ThisDayOfGroups" Relationship="DatabaseFirst.BloggingModel.FK__ThisDayOf__group__0880433F" FromRole="Group" ToRole="ThisDayOfGroup" />
           <NavigationProperty Name="ImageGalleries" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27" FromRole="Group" ToRole="ImageGallery" />
+          <Property Name="street" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="UserInGroup">
           <Key>
@@ -418,13 +418,13 @@
           <EntitySetMapping Name="Groups">
             <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Group">
               <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="street" ColumnName="street" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
                 <ScalarProperty Name="latitute" ColumnName="latitute" />
                 <ScalarProperty Name="fax" ColumnName="fax" />
                 <ScalarProperty Name="mail" ColumnName="mail" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="build" ColumnName="build" />
-                <ScalarProperty Name="streat" ColumnName="streat" />
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />

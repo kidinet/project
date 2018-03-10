@@ -52,7 +52,6 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="streat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="build" Type="Int32" />
     <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -63,6 +62,7 @@
     <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E" FromRole="Group" ToRole="UserInGroup" />
     <NavigationProperty Name="ThisDayOfGroups" Relationship="DatabaseFirst.BloggingModel.FK__ThisDayOf__group__0880433F" FromRole="Group" ToRole="ThisDayOfGroup" />
     <NavigationProperty Name="ImageGalleries" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27" FromRole="Group" ToRole="ImageGallery" />
+    <Property Name="street" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="UserInGroup">
     <Key>

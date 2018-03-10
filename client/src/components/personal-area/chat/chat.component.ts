@@ -24,6 +24,7 @@ export class ChatComponent implements AfterContentInit {
     @Input() user;
     @ViewChild('chat') private chat: ElementRef;
     path: string;
+    details = {};
     constructor(public af: AngularFireDatabase) {
     }
 
@@ -32,13 +33,25 @@ export class ChatComponent implements AfterContentInit {
     }
 
     ngAfterContentInit() {
-       // put the chat message on database;
+        console.log(this.user.mail, "char working")
+        // put the chat message on database;
+        this.getChatDetails();
+        console.log(this.details,"details")
         this.path = `${appGlobalsService.currentGroup.id}/${this.user.mail.replace('@', 'A').replace('.', 'B')}/chat`;
         this.items = this.af.list(this.path, {
             query: {
                 limitToLast: this.limitToLast
             }
         });
+    }
+
+    getChatDetails() {
+        appGlobalsService.usersInCurrentGroup.forEach(user => {
+            this.details[user.userMail] = user.nickname;
+        })
+    }
+    get appGlobalsService() {
+        return appGlobalsService
     }
 
     send() {

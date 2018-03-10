@@ -22,7 +22,7 @@ export class ThisWeekComponent implements OnInit {
 
 
     displayDay = new Date();
-    isEditable = true;
+    isEditable = appGlobalsService.isAdministrator;
     isLoading = false;
     dateData: string;
     newTitle: ThisDayOfGroup = new ThisDayOfGroup(null, null, null, 'fa fa-question-circle');
@@ -65,7 +65,9 @@ export class ThisWeekComponent implements OnInit {
         title.isStyleOpen = true;
     }
     toggleStyleOpen(title) {
-        title.isStyleOpen = !title.isStyleOpen;
+        if (appGlobalsService.isAdministrator) {
+            title.isStyleOpen = !title.isStyleOpen;
+        }
     }
 
 

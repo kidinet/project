@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormControl, Validators, FormBuilder} from '@angular/forms';
 import {UserService} from '../../services/user.service';
+import {ApiService} from '../../services/api.service';
 import {GroupService} from '../../services/group.service';
 import {FormValidateService} from '../../services/form-validate.service';
 import * as appGlobalsService from '../../store/app-globals';
@@ -14,7 +15,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {split} from "ts-node/dist";
 import {AddMembersComponent} from '../add-members/add-members.component'
-
 
 @Component({
     selector: 'app-welcome',
@@ -35,6 +35,7 @@ export class WelcomeComponent implements OnInit {
         private FormValidateService: FormValidateService,
         @Inject(DOCUMENT) private document: Document,
         private activatedRoute: ActivatedRoute,
+        private apiService:ApiService,
         private router: Router,
         private cookieService: CookieService) {
         if (cookieService.get('kidinet') !== 'logOut') {
@@ -90,7 +91,9 @@ export class WelcomeComponent implements OnInit {
         });
     }
     logInWithGroupId(loginForm, groupId: number, openAddMemebers: boolean) {
+        this.isLoading = true;
         this.userService.logInWithGroupId(loginForm, groupId).then(result => {
+            this.isLoading = false;
             this.logInFailed = !result.Success
             if (result.Success) {
                 this.initUserSettings(result);
@@ -118,19 +121,39 @@ export class WelcomeComponent implements OnInit {
     }
 
     initUserSettings(result) {
-        console.log(result);
         appGlobalsService.setCurrentUserInGroup(result.returnObject.currentUserInGroup);
         appGlobalsService.setCurreUser(result.returnObject.user);
         appGlobalsService.setUsersInCurrentGroup(result.returnObject.usersInGroup);
         appGlobalsService.setGroup(result.returnObject.group);
         appGlobalsService.setIsAdministrator(result.returnObject.currentUserInGroup.isAdministrator);
         appGlobalsService.setUsersInCurrentGroupDetails(result.returnObject.usersInCurrentGroupDetails)
+         this.apiService.initAllAboutTitles().then(result => {
+            if (result.Success) {
+                appGlobalsService.setAboutTitles(result.returnObject.aboutTitles);
+            } else {
+                console.warn('cant get the aboutTitle');
+            }
+        })
+        this.apiService.initImagesForGallery(0).then(result => {
+            if (result.Success) {
+                appGlobalsService.addImagesForGallery(result.returnObject.imagesForGallery);
+            }
+        }
+        );
+        
         this.cookieService.set('kidinet', btoa(`${result.returnObject.user.password_}/${result.returnObject.user.mail}/${result.returnObject.group.id}`));
-        console.log(appGlobalsService, "appGlobalsService")
-        this.router.navigate(['/home/about']);
+        const index = this.document.location.href.lastIndexOf('/') + 1;
+        console.log(appGlobalsService,"appGlobalsService")
+        if (appGlobalsService.currentUser.mail) {
+            this.router.navigate(['/home/about']);
+            if (this.document.location.href.substr(index - 1) === '/') {
+                this.router.navigate(['/home/about']);
+            }
+            else {
+                // this.router.navigate(['/about']);
+            }
+        }
     }
-
-
 }
 
 
@@ -145,7 +168,8 @@ export class NewGroup {
         private builder: FormBuilder,
         private userService: UserService,
         private groupService: GroupService,
-        private formValidateService: FormValidateService) {
+        private formValidateService: FormValidateService,
+        private cookieService: CookieService) {
     }
 
     @Output() setCurrentGroup: EventEmitter<any> = new EventEmitter();
@@ -244,8 +268,10 @@ export class NewGroup {
                 }
                 this.userService.creatUser(user, true).then(result => {
                     if (result.Success) {
+                        this.cookieService.set('kidinet', btoa(`${result.returnObject.user.password_}/${result.returnObject.user.mail}/${result.returnObject.group.id}`));
                         appGlobalsService.setCurreUser(result.returnObject);
                         this.stepper.selectedIndex += 1;
+
                     }
                 });
             });

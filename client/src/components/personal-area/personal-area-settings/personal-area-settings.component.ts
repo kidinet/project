@@ -84,7 +84,6 @@ export class PersonalAreaSettingsComponent implements OnInit {
                     appGlobalsService.setCurreUser(this.currentUser);
                     this.resultMessage = result ? 'עודכן בהצלחה' : 'נסו שנית';
                     this.isLoading = false;
-                    this.dialogRef.close();
                 });
                 this.isLoading = true;
             });

@@ -36,7 +36,7 @@
         line-height: 30px;
         text-align: right;
       .title_content{
-        height:125px;
+        min-height:125px;
       }
          *[contenteditable]:focus {
             outline: none;

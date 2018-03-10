@@ -1,6 +1,6 @@
 <div class="gallery"  [ngClass]="{'blur':isLoading}">
     <mat-spinner *ngIf=isLoading></mat-spinner>
-    <button mat-raised-button color="accent" (click)="openaddNewImageDialog()">
+    <button mat-raised-button color="accent" (click)="openaddNewImageDialog()" *ngIf="appGlobalsService.isAdministrator">
         <i class="fa fa-plus" aria-hidden="true"></i>
         הוסף תמונה חדשה
     </button>

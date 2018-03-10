@@ -30,9 +30,11 @@ export class LookForFriendsComponent implements OnInit {
             user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
                 return details.userMail == user.mail;
             })[0];
-            users.push(user);
+            if (user.details) {
+                users.push(user);
+            }
         })
-        return appGlobalsService.usersInCurrentGroupDetails;
+        return users;
     }
 
     get currentUser() {
@@ -45,8 +47,7 @@ export class LookForFriendsComponent implements OnInit {
 
 
     ngOnInit() {
-        console.log(appGlobalsService.usersInCurrentGroupDetails)
-        // this.getDirection();
+
     }
 
     onMarkerClicked(i) {
@@ -63,7 +64,6 @@ export class LookForFriendsComponent implements OnInit {
             origin: { lat: this.currentUser.latitute, lng: this.currentUser.longitude },
             destination: { lat: this.currentFriend.latitute, lng: this.currentFriend.longitude }
         };
-        console.log(this.dir)
     }
 
     showKinderGardenDirection() {

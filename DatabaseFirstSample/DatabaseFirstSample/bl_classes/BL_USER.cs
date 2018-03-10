@@ -199,8 +199,10 @@ namespace DatabaseFirstSample.bl_classes
                         api.Add("user", JToken.FromObject(new BL_User(user_)));
                         if (user_.UserInGroups.ToArray().Length == 1)
                         {
-                            var usersInGroup_ = usersInGroup.getUsersInGroup(user_.UserInGroups.ToArray()[0].Group.UserInGroups.ToArray()).ToList().Where(x => x.userMail != user_.mail);
+                            var usersInGroup_ = usersInGroup.getUsersInGroup(user_.UserInGroups.ToArray()[0].Group.UserInGroups.ToArray().Where(x=>x.userMail!= user_.mail).ToArray());
                             api.Add("usersInGroup", JToken.FromObject(usersInGroup));
+                            var usersInCurrentGroupDetails = usersInGroup.getUsersInGroupDetails(user_.UserInGroups.ToArray()[0].User.UserInGroups.ToArray()).ToList();
+                            api.Add("usersInCurrentGroupDetails", JToken.FromObject(usersInCurrentGroupDetails));
                             api.Add("currentUserInGroup", JToken.FromObject(new Bl_UserInGroup(user_.UserInGroups.ToArray()[0])));
                             api.Add("group", JToken.FromObject(new Bl_Group(user_.UserInGroups.ToArray()[0].Group)));
                             return new Result<JObject>(true, api);
@@ -231,7 +233,7 @@ namespace DatabaseFirstSample.bl_classes
                     {
                         JObject api = new JObject();
                         api.Add("user", JToken.FromObject(new BL_User(user_.User)));
-                        var usersInGroup_ = bl_usersInGroup_.getUsersInGroup(user_.Group.UserInGroups.ToArray()).ToList();
+                        var usersInGroup_ = bl_usersInGroup_.getUsersInGroup(user_.Group.UserInGroups.ToArray().Where(x => x.userMail != user_.userMail).ToArray()).ToList();
                         var usersInCurrentGroupDetails = bl_usersInGroup_.getUsersInGroupDetails(user_.Group.UserInGroups.ToArray()).ToList();
                         api.Add("usersInGroup", JToken.FromObject(usersInGroup_));
                         api.Add("currentUserInGroup", JToken.FromObject(new Bl_UserInGroup(user_)));

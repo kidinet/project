@@ -26,7 +26,7 @@ export class GalleryComponent implements OnInit {
         prevButton: '.swiper-button-prev',
         spaceBetween: 30,
     };
-    isLoading = true;
+    isLoading = false;
 
     loadingFinishEvent() {
         this.isLoading = false;
@@ -38,18 +38,16 @@ export class GalleryComponent implements OnInit {
 
     addMoreImages() {
         appGlobalsService.addImagesForGallery(this.apiService.initImagesForGallery(this.images.length));
-        console.log(this.swiper);
     }
 
     openaddNewImageDialog(): void {
         this.addNewImageDialog.open(AddNewImageComponent, {});
     }
-
-    slideChange() {
-        console.log('slideChange');
-    }
     get images() {
         return appGlobalsService.imageGallery;
+    }
+    get appGlobalsService(){
+        return appGlobalsService
     }
 
 }

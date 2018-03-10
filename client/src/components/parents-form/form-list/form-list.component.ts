@@ -21,6 +21,8 @@ import {Observable} from 'rxjs/Observable';
 export class FormListComponent implements OnInit {
 
     showMoreTextTitle = false;
+    usersDetails;
+    details = {};
     // ====================== forum============================
     replysList: FirebaseListObservable<FormReply[]>;
     @Input() currentForum: any;
@@ -36,7 +38,21 @@ export class FormListComponent implements OnInit {
     }
 
     ngOnInit() {
-       
+        this.usersDetails = this.getusersInCurrentGroupDetails();
+        this.getChatDetails();
+        console.log(this.details, "details");
+    }
+    getChatDetails() {
+        appGlobalsService.usersInCurrentGroup.forEach(user => {
+            this.details[user.userMail] = user.nickname;
+        })
+    }
+    get detail() {
+        let details = {};
+        appGlobalsService.usersInCurrentGroup.forEach(user => {
+            details[user.userMail] = user.nickname;
+        })
+        return details
     }
 
     ngOnChanges(value: any) {
@@ -55,12 +71,20 @@ export class FormListComponent implements OnInit {
         this.replyForm.reset();
     }
 
-    get usersDetails() {
-        let usersInCurrentGroup = {};
-        appGlobalsService.usersInCurrentGroup.forEach(user => {
-            usersInCurrentGroup[user.mail] = `${user.firstName} ${user.lastName}`
+    getusersInCurrentGroupDetails() {
+        let users = [];
+        appGlobalsService.usersInCurrentGroupDetails.forEach(user => {
+            user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
+                return details.userMail == user.mail;
+            })[0];
+            if (user.details) {
+                users.push(user);
+            }
         })
-        return usersInCurrentGroup;
+        return users;
+    }
+    get appGlobalsService() {
+        return appGlobalsService
     }
 
     get moment() {

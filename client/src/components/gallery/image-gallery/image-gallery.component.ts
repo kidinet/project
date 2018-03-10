@@ -32,4 +32,7 @@ export class ImageGalleryComponent implements OnInit {
         this.apiService.deleteImageFromGallery(this.imageGallery.id);
         appGlobalsService.deleteImageFromGallery(this.imageGallery.id);
     }
+    get appGlobalsService(){
+        return appGlobalsService
+    }
 }

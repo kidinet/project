@@ -22,7 +22,7 @@ namespace DatabaseFirstSample
             this.id = group.id;
             this.name = group.name;
             this.city = group.city;
-            this.street = group.streat;
+            this.street = group.street;
             this.build = group.build;
             this.phone = group.phone;
             this.mail = group.mail;
@@ -219,7 +219,7 @@ namespace DatabaseFirstSample
                     //   group.Select(g => g.name == groupName && g.city == groupCity && g.streat == groupStreet && g.build == groupBuild && g.mail == groupMail && g.fax == groupFax);
                     group.name = groupToUpate.name;
                     group.city = groupToUpate.city;
-                    group.streat = groupToUpate.streat;
+                    group.street = groupToUpate.street;
                     group.build = groupToUpate.build;
                     group.mail = groupToUpate.mail;
                     group.fax = groupToUpate.fax;

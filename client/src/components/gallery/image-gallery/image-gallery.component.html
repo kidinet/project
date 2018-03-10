@@ -2,12 +2,12 @@
     <div class="image_gallery_content" [ngStyle]="{'background-image': 'url('+imageGallery.src+')'}">
         <div class="image"></div>
         <div class="bottom">
-            <i class="fa fa-trash-o" (click)="deleteImage()"></i>
+            <i class="fa fa-trash-o" (click)="deleteImage()" *ngIf="appGlobalsService.isAdministrator"></i>
             <i [ngClass]="{'is_open':showResponse}" (click)="toggleShowResponse()" class="fa fa-reply"
                aria-hidden="true"></i>
             <app-like-component (loadingFinish)=loadingFinishEvent(); [id]="imageGallery.id"></app-like-component>
         </div>
     </div>
 </div>
-<app-image-gallery-response [imageGallery]="imageGallery" (close)="toggleShowResponse()" *ngIf="showResponse"
+<app-image-gallery-response [ngClass]="type" [imageGallery]="imageGallery" (close)="toggleShowResponse()" *ngIf="showResponse"
                             class="response_wrapper"></app-image-gallery-response>
