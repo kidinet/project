@@ -8,86 +8,97 @@ using DatabaseFirstSample.bl_classes;
 using System.IO;
 using System.Net.Mail;
 using System.Web;
+using System.Runtime.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace DatabaseFirstSample
 {
+    [Serializable]
+    [DataContract]
     public class BL_IMAGE
     {
-        public Result<ImageGallery> addImage(ImageGallery newImageGallery)
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public int groupId { get; set; }
+        [DataMember]
+        public Nullable<System.DateTime> date_added { get; set; }
+        [DataMember]
+        public string src { get; set; }
+        [DataMember]
+        public string subject { get; set; }
+        public BL_IMAGE(ImageGallery imageGallery)
+        {
+            this.id = imageGallery.id;
+            this.groupId = imageGallery.groupId;
+            this.date_added = imageGallery.date_added;
+            this.src = imageGallery.src;
+            this.subject = imageGallery.subject;
+        }
+        public List<BL_IMAGE> getImagesList(List<ImageGallery> ImagesList)
+        {
+            List<BL_IMAGE> images = new List<BL_IMAGE>();
+            foreach (var item in ImagesList)
+            {
+                images.Add(new BL_IMAGE(item));
+            }
+            return images;
+        }
+
+        public BL_IMAGE()
+        {
+        }
+
+        public Result<BL_IMAGE> addImage(ImageGallery newImageGallery)
         {
             using (var db = new BloggingContext())
             {
                 DateTime createdAt = DateTime.Now;
                 try
                 {
-                    //  ImageGallery image = new ImageGallery(groupId, src, subject, createdAt);//groupId, src, subject, createdAt
+                    newImageGallery.date_added = DateTime.Now;
                     db.ImageGalleries.Add(newImageGallery);
                     db.SaveChanges();
-                    return new Result<ImageGallery>(true, newImageGallery);
+                    return new Result<BL_IMAGE>(true, new BL_IMAGE(newImageGallery));
 
                 }
                 catch (Exception ex)
                 {
-                    return new Result<ImageGallery>(false, ex.Message);
+                    return new Result<BL_IMAGE>(false, ex.Message);
                     throw ex;
                 }
             }
         }
 
-        public List<ImageGallery> getImagesByGroupId(int groupId, string orderBy)
+        //public List<ImageGallery> getImagesByGroupId(int groupId, string orderBy)
+        //{
+        //    using (var db = new BloggingContext())
+        //    {
+        //        if (orderBy.Equals("date"))
+        //        {
+        //            return db.ImageGalleries.Where(images => images.groupId == groupId).OrderBy(filter => filter.date_added).ToList();
+        //        }
+        //        if (orderBy.Equals("subject"))
+        //        {
+        //            return db.ImageGalleries.Where(images => images.groupId == groupId).ToList(); //need to return orderBy subject
+        //        }
+        //        return db.ImageGalleries.Where(images => images.groupId == groupId).ToList();
+        //    }
+        //}
+        public Result<JObject>  initImagesForGallery(int groupId, int start)
         {
             using (var db = new BloggingContext())
             {
-                if (orderBy.Equals("date"))
+                var imagesForGallery = db.ImageGalleries.Where(id => id.groupId == groupId).ToList();
+                if(start< imagesForGallery.Count)
                 {
-                    return db.ImageGalleries.Where(images => images.groupId == groupId).OrderBy(filter => filter.date_added).ToList();
+                    int end = imagesForGallery.Count > 18 ? 18 : imagesForGallery.Count;
+                    JObject api = new JObject();
+                    api.Add("imagesForGallery", JToken.FromObject(getImagesList(imagesForGallery.GetRange(start, end))));
+                    return new  Result<JObject>(true, api);
                 }
-                if (orderBy.Equals("subject"))
-                {
-                    return db.ImageGalleries.Where(images => images.groupId == groupId).ToList(); //need to return orderBy subject
-                }
-                return db.ImageGalleries.Where(images => images.groupId == groupId).ToList();
             }
-        }
-        //public Result<ResponseImage> addText(string text, int imageId, DateTime date, string userMail)
-        //{
-        //    using (var db = new BloggingContext())
-        //    {
-        //        try
-        //        {
-        //            ResponseImage response = new ResponseImage();//imageId, date, text, userMail
-        //            db.ResponseImages.Add(response);
-        //            db.SaveChanges();
-        //            return new Result<ResponseImage>(true, response);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return new Result<ResponseImage>(false, ex.Message);
-        //            throw ex;
-        //        }
-        //    }
-        //}
-        //public List<ResponseImage> getResponsesbyImageId(int imageId)
-        //{
-        //    using (var db = new BloggingContext())
-        //    {
-        //        return db.ResponseImages.Where(response => response.imageId == imageId).ToList();
-        //    }
-
-        //}
-        //public List<LikeImage> getLikeImagesbyMail(string userMail)
-        //{
-        //    using (var db = new BloggingContext())
-        //    {
-        //        return db.LikeImages.Where(mail => mail.userMail == userMail).ToList();
-        //    }
-        //}
-        public List<ImageGallery> initImagesForGallery(int groupId, int start)
-        {
-            using (var db = new BloggingContext())
-            {
-                return db.ImageGalleries.Where(id => id.groupId == groupId).ToList().GetRange(start, 18);
-            }
+            return new Result<JObject>(false,"no more images");
         }
         public Result<ImageGallery> deleteImageFromGallery(int id)
         {
@@ -95,8 +106,8 @@ namespace DatabaseFirstSample
             {
                 try
                 {
-                    var aboutTitle = db.ImageGalleries.Where(about => about.id == id);
-                    db.ImageGalleries.Remove((ImageGallery)aboutTitle);
+                    ImageGallery aboutTitle = db.ImageGalleries.FirstOrDefault(about => about.id == id);
+                    db.ImageGalleries.Remove(aboutTitle);
                     db.SaveChanges();
                     return new Result<ImageGallery>(true, (ImageGallery)aboutTitle);
                 }

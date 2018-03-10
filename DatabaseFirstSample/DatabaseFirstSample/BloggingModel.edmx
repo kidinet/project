@@ -16,14 +16,6 @@
           <Property Name="content" Type="varchar(max)" />
           <Property Name="groupId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="AdministratorSettings">
-          <Key>
-            <PropertyRef Name="mail" />
-          </Key>
-          <Property Name="mail" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="chatStart" Type="date" />
-          <Property Name="chatEnd" Type="date" />
-        </EntityType>
         <EntityType Name="Groups">
           <Key>
             <PropertyRef Name="id" />
@@ -46,8 +38,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="groupId" Type="int" Nullable="false" />
           <Property Name="date_added" Type="date" />
-          <Property Name="src" Type="varbinary(max)" />
-          <Property Name="subject" Type="varchar" MaxLength="30" />
+          <Property Name="src" Type="varchar(max)" />
+          <Property Name="subject" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ThisDayContent">
           <Key>
@@ -108,19 +100,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Administra__mail__367C1819">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="AdministratorSettings" Type="Self.AdministratorSettings" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="mail" />
-            </Principal>
-            <Dependent Role="AdministratorSettings">
-              <PropertyRef Name="mail" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ImageGall__group__395884C4">
+        <Association Name="FK__ImageGall__group__2EA5EC27">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="ImageGallery" Type="Self.ImageGallery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,7 +136,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserInGro__group__662B2B3B">
+        <Association Name="FK__UserInGro__group__214BF109">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +148,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserInGro__userM__65370702">
+        <Association Name="FK__UserInGro__userM__2057CCD0">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
           <ReferentialConstraint>
@@ -182,7 +162,6 @@
         </Association>
         <EntityContainer Name="DatabaseFirstBloggingModelStoreContainer">
           <EntitySet Name="about" EntityType="Self.about" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AdministratorSettings" EntityType="Self.AdministratorSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageGallery" EntityType="Self.ImageGallery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThisDayContent" EntityType="Self.ThisDayContent" Schema="dbo" store:Type="Tables" />
@@ -193,11 +172,7 @@
             <End Role="Groups" EntitySet="Groups" />
             <End Role="about" EntitySet="about" />
           </AssociationSet>
-          <AssociationSet Name="FK__Administra__mail__367C1819" Association="Self.FK__Administra__mail__367C1819">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="AdministratorSettings" EntitySet="AdministratorSettings" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ImageGall__group__395884C4" Association="Self.FK__ImageGall__group__395884C4">
+          <AssociationSet Name="FK__ImageGall__group__2EA5EC27" Association="Self.FK__ImageGall__group__2EA5EC27">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="ImageGallery" EntitySet="ImageGallery" />
           </AssociationSet>
@@ -209,11 +184,11 @@
             <End Role="Groups" EntitySet="Groups" />
             <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroup" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserInGro__group__662B2B3B" Association="Self.FK__UserInGro__group__662B2B3B">
+          <AssociationSet Name="FK__UserInGro__group__214BF109" Association="Self.FK__UserInGro__group__214BF109">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="UserInGroup" EntitySet="UserInGroup" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserInGro__userM__65370702" Association="Self.FK__UserInGro__userM__65370702">
+          <AssociationSet Name="FK__UserInGro__userM__2057CCD0" Association="Self.FK__UserInGro__userM__2057CCD0">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserInGroup" EntitySet="UserInGroup" />
           </AssociationSet>
@@ -224,22 +199,12 @@
       <Schema Namespace="DatabaseFirst.BloggingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BloggingContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="abouts" EntityType="DatabaseFirst.BloggingModel.about" />
-          <EntitySet Name="AdministratorSettings" EntityType="DatabaseFirst.BloggingModel.AdministratorSetting" />
           <EntitySet Name="Groups" EntityType="DatabaseFirst.BloggingModel.Group" />
-          <EntitySet Name="ImageGalleries" EntityType="DatabaseFirst.BloggingModel.ImageGallery" />
           <EntitySet Name="UserInGroups" EntityType="DatabaseFirst.BloggingModel.UserInGroup" />
           <EntitySet Name="Users" EntityType="DatabaseFirst.BloggingModel.User" />
           <AssociationSet Name="FK__about__groupId__3F115E1A" Association="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A">
             <End Role="Group" EntitySet="Groups" />
             <End Role="about" EntitySet="abouts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Administra__mail__367C1819" Association="DatabaseFirst.BloggingModel.FK__Administra__mail__367C1819">
-            <End Role="User" EntitySet="Users" />
-            <End Role="AdministratorSetting" EntitySet="AdministratorSettings" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ImageGall__group__395884C4" Association="DatabaseFirst.BloggingModel.FK__ImageGall__group__395884C4">
-            <End Role="Group" EntitySet="Groups" />
-            <End Role="ImageGallery" EntitySet="ImageGalleries" />
           </AssociationSet>
           <AssociationSet Name="FK__UserInGro__group__339FAB6E" Association="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E">
             <End Role="Group" EntitySet="Groups" />
@@ -259,6 +224,11 @@
             <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroups" />
             <End Role="ThisDayContent" EntitySet="ThisDayContents" />
           </AssociationSet>
+          <EntitySet Name="ImageGalleries" EntityType="DatabaseFirst.BloggingModel.ImageGallery" />
+          <AssociationSet Name="FK__ImageGall__group__2EA5EC27" Association="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="ImageGallery" EntitySet="ImageGalleries" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="about">
           <Key>
@@ -271,15 +241,6 @@
           <Property Name="groupId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A" FromRole="about" ToRole="Group" />
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="AdministratorSetting">
-          <Key>
-            <PropertyRef Name="mail" />
-          </Key>
-          <Property Name="mail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="chatStart" Type="DateTime" Precision="0" />
-          <Property Name="chatEnd" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="User" Relationship="DatabaseFirst.BloggingModel.FK__Administra__mail__367C1819" FromRole="AdministratorSetting" ToRole="User" />
         </EntityType>
         <EntityType Name="Group">
           <Key>
@@ -296,20 +257,9 @@
           <Property Name="latitute" Type="Double" />
           <Property Name="longitude" Type="Double" />
           <NavigationProperty Name="abouts" Relationship="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A" FromRole="Group" ToRole="about" />
-          <NavigationProperty Name="ImageGalleries" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__395884C4" FromRole="Group" ToRole="ImageGallery" />
           <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E" FromRole="Group" ToRole="UserInGroup" />
           <NavigationProperty Name="ThisDayOfGroups" Relationship="DatabaseFirst.BloggingModel.FK__ThisDayOf__group__0880433F" FromRole="Group" ToRole="ThisDayOfGroup" />
-        </EntityType>
-        <EntityType Name="ImageGallery">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="groupId" Type="Int32" Nullable="false" />
-          <Property Name="date_added" Type="DateTime" Precision="0" />
-          <Property Name="src" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="subject" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__395884C4" FromRole="ImageGallery" ToRole="Group" />
+          <NavigationProperty Name="ImageGalleries" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27" FromRole="Group" ToRole="ImageGallery" />
         </EntityType>
         <EntityType Name="UserInGroup">
           <Key>
@@ -340,7 +290,6 @@
           <Property Name="build" Type="Int32" />
           <Property Name="latitute" Type="Double" />
           <Property Name="longitude" Type="Double" />
-          <NavigationProperty Name="AdministratorSetting" Relationship="DatabaseFirst.BloggingModel.FK__Administra__mail__367C1819" FromRole="User" ToRole="AdministratorSetting" />
           <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__32AB8735" FromRole="User" ToRole="UserInGroup" />
         </EntityType>
         <Association Name="FK__about__groupId__3F115E1A">
@@ -351,30 +300,6 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="about">
-              <PropertyRef Name="groupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Administra__mail__367C1819">
-          <End Type="DatabaseFirst.BloggingModel.User" Role="User" Multiplicity="1" />
-          <End Type="DatabaseFirst.BloggingModel.AdministratorSetting" Role="AdministratorSetting" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="mail" />
-            </Principal>
-            <Dependent Role="AdministratorSetting">
-              <PropertyRef Name="mail" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ImageGall__group__395884C4">
-          <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
-          <End Type="DatabaseFirst.BloggingModel.ImageGallery" Role="ImageGallery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Group">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ImageGallery">
               <PropertyRef Name="groupId" />
             </Dependent>
           </ReferentialConstraint>
@@ -449,6 +374,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ImageGallery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="groupId" Type="Int32" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Precision="0" />
+          <Property Name="src" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27" FromRole="ImageGallery" ToRole="Group" />
+        </EntityType>
+        <Association Name="FK__ImageGall__group__2EA5EC27">
+          <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="DatabaseFirst.BloggingModel.ImageGallery" Role="ImageGallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ImageGallery">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -467,15 +415,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AdministratorSettings">
-            <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.AdministratorSetting">
-              <MappingFragment StoreEntitySet="AdministratorSettings">
-                <ScalarProperty Name="chatEnd" ColumnName="chatEnd" />
-                <ScalarProperty Name="chatStart" ColumnName="chatStart" />
-                <ScalarProperty Name="mail" ColumnName="mail" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Groups">
             <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Group">
               <MappingFragment StoreEntitySet="Groups">
@@ -488,17 +427,6 @@
                 <ScalarProperty Name="streat" ColumnName="streat" />
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ImageGalleries">
-            <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.ImageGallery">
-              <MappingFragment StoreEntitySet="ImageGallery">
-                <ScalarProperty Name="subject" ColumnName="subject" />
-                <ScalarProperty Name="src" ColumnName="src" />
-                <ScalarProperty Name="date_added" ColumnName="date_added" />
-                <ScalarProperty Name="groupId" ColumnName="groupId" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -547,6 +475,17 @@
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="icon" ColumnName="icon" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageGalleries">
+            <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.ImageGallery">
+              <MappingFragment StoreEntitySet="ImageGallery">
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="src" ColumnName="src" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
                 <ScalarProperty Name="groupId" ColumnName="groupId" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

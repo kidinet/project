@@ -14,7 +14,7 @@ import {MatDialog} from '@angular/material';
 export class GalleryComponent implements OnInit {
 
     constructor(private apiService: ApiService,
-                public addNewImageDialog: MatDialog) {
+        public addNewImageDialog: MatDialog) {
     }
 
     @ViewChild('swiper') swiper;
@@ -26,11 +26,13 @@ export class GalleryComponent implements OnInit {
         prevButton: '.swiper-button-prev',
         spaceBetween: 30,
     };
+    isLoading = true;
 
-    images: ImageGallery[];
-
+    loadingFinishEvent() {
+        this.isLoading = false;
+    }
     ngOnInit() {
-        this.images = appGlobalsService.imageGallery;
+
 
     }
 
@@ -45,6 +47,9 @@ export class GalleryComponent implements OnInit {
 
     slideChange() {
         console.log('slideChange');
+    }
+    get images() {
+        return appGlobalsService.imageGallery;
     }
 
 }

@@ -2,6 +2,7 @@
 
 .about_wrapper {
   padding: 20px;
+  position: relative;
   .main_title {
     .title {
       color: $primary_color;
@@ -34,25 +35,14 @@
         font-size: 19px;
         line-height: 30px;
         text-align: right;
-        textarea {
-          width: 100%;
-          outline: 0;
-          border: none;
-          resize: none;
-          color: $dark_gray;
-          &:focus {
-            outline: 0;
+      .title_content{
+        height:125px;
+      }
+         *[contenteditable]:focus {
+            outline: none;
             border: none;
+            color: $dark_gray;
           }
-          &:disabled {
-            background-color: rgba(0, 0, 0, 0);
-            color: black;
-          }
-          &::-webkit-scrollbar {
-            display: none;
-            width:0;
-          }
-        }
       }
       .title {
         position: relative;
@@ -149,3 +139,7 @@
     }
   }
 }
+.mat-spinner {
+    position: absolute;
+    @include absolute-middle();
+  }

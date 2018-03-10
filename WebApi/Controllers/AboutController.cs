@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Web.Script.Serialization;
 using DatabaseFirstSample;
 using System.Data.Entity;
+using DatabaseFirstSample.bl_classes;
 
 namespace WebApi.Controllers
 {
@@ -17,38 +18,34 @@ namespace WebApi.Controllers
     [RoutePrefix("api")]
     public class AboutController : BaseController
     {
-        BL_ABOUT bl_about = new BL_ABOUT();
+        Bl_About Bl_About_ = new Bl_About();
+        
+
         [HttpGet]
         [Route("initAllAboutTitles/{Language}/{Registered}")]
         public IHttpActionResult initAllAboutTitles(string Language, bool Registered, int groupId)
         {
-            return Ok(bl_about.getTitle(groupId));
+            return Json(Bl_About_.initAllAboutTitels(groupId));
         }
         [HttpPost]
         [Route("addAboutTitle/{Language}/{Registered}")]
-        public IHttpActionResult addAboutTitle(string Language, bool Registered, string title, string content, string icon, int groupId)
+        public IHttpActionResult addAboutTitle(string Language, bool Registered,[FromBody]about aboutTitle)
         {
-            return Ok(bl_about.addAboutTitle(title, content, icon, groupId));
+
+            return Ok(Bl_About_.addAboutTitle(aboutTitle));
         }
         [HttpPost]
         [Route("updateAboutTitle/{Language}/{Registered}")]
-        public IHttpActionResult updateAboutTitle(string Language, bool Registered, int id, string title, string content, string icon, int groupId)
+        public IHttpActionResult updateAboutTitle(string Language, bool Registered, [FromBody]about aboutTitle)
         {
-            bl_about.updateAboutTitle(id, title, content, icon, groupId);
-            return Ok();
+            Bl_About_.updateAboutTitle(aboutTitle);
+            return Ok(true);
         }
-        [HttpPost]
+        [HttpGet]
         [Route("deleteAboutTitle/{Language}/{Registered}")]
         public IHttpActionResult deleteAboutTitle(int id)
         {
-            return Ok(bl_about.deleteAboutTitle(id));
+            return Ok(Bl_About_.deleteAboutTitle(id));
         }
-        [HttpPost]
-        [Route("initImagesForGallery/{Language}/{Registered}")]
-        public IHttpActionResult initImagesForGallery(string Language, bool Registered, int groupId, int start)
-        {
-            return Ok(bl_about.initImagesForGallery(groupId, start));
-        }
-
     }
 }

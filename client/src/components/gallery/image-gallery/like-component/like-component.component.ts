@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, Input,EventEmitter, OnInit, Output} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import * as appGlobalsService from '../../../../store/app-globals';
@@ -13,23 +13,27 @@ import {currentUser} from '../../../../store/app-globals';
 export class LikeComponentComponent implements OnInit {
 
     constructor(private cookieService: CookieService,
-                private httpClient: HttpClient,
-                public af: AngularFireDatabase) {
+        private httpClient: HttpClient,
+        public af: AngularFireDatabase) {
     }
 
     @Input() id: number;
+    @Output() loadingFinish=new EventEmitter();
     items: FirebaseListObservable<any>;
     isImageLike = null;
 
     ngOnInit() {
-        const path = `${appGlobalsService.currentGroup.groupId}/${this.id}/likes`;
+        const path = `${appGlobalsService.currentGroup.id}/${this.id}/likes`;
         // put the chat message on database;
         this.items = this.af.list(path);
+        console.log(this.items)
         this.items.subscribe(likeItems => {
             this.isImageLike = likeItems.find(likeItem => {
+                this.loadingFinish.emit();   
                 return likeItem.$value === currentUser.mail;
             });
         });
+
 
     }
 

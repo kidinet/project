@@ -20,20 +20,14 @@ namespace DatabaseFirstSample
         public Group()
         {
             this.abouts = new HashSet<about>();
-            this.ImageGalleries = new HashSet<ImageGallery>();
             this.UserInGroups = new HashSet<UserInGroup>();
             this.ThisDayOfGroups = new HashSet<ThisDayOfGroup>();
-        }
-        public Group(string name)
-        {
-            this.abouts = new HashSet<about>();
             this.ImageGalleries = new HashSet<ImageGallery>();
-            this.UserInGroups = new HashSet<UserInGroup>();
-            this.ThisDayOfGroups = new HashSet<ThisDayOfGroup>();
         }
 
-        public Group(string name, string city, string street, int build, string phone, string mail, string fax) : this(name)
+        public Group(string name, string city, string street, int build, string phone, string mail, string fax)
         {
+            this.name = name;
             this.city = city;
             this.street = street;
             this.build = build;
@@ -56,10 +50,10 @@ namespace DatabaseFirstSample
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<about> abouts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ImageGallery> ImageGalleries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserInGroup> UserInGroups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThisDayOfGroup> ThisDayOfGroups { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ImageGallery> ImageGalleries { get; set; }
     }
 }

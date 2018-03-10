@@ -41,7 +41,7 @@ export class FormListComponent implements OnInit {
 
     ngOnChanges(value: any) {
         if (this.currentForum) {
-            const replyPath = `${appGlobalsService.currentGroup.groupId}/forum/${this.currentForum['$key']}/replys`;
+            const replyPath = `${appGlobalsService.currentGroup.id}/forum/${this.currentForum['$key']}/replys`;
             this.replysList = this.af.list(replyPath, {});
         }
     }

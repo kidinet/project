@@ -1,15 +1,18 @@
+import {UserInGroup} from "./UserInGroup";
 export class User {
     constructor(public firstName?: string,
-                public lastName?: string,
-                public city?: string,
-                public street?: string,
-                public build?: number,
-                public phone?: string,
-                public mail?: string,
-                public profile?: string,
-                public password?: string,
-                public latitude?: number,
-                public longitude?: number) {
+        public lastName?: string,
+        public city?: string,
+        public streat?: string,
+        public build?: number,
+        public phone?: string,
+        public mail?: string,
+        public profile_?: string,
+        public password_?: string,
+        public latitute?: number,
+        public longitude?: number,
+        public UserInGroups?: UserInGroup[]) {
+        this.UserInGroups = [];
     }
 }
 

@@ -1,13 +1,13 @@
 export class Group {
-    constructor(public groupId?: number,
-                public groupName?: string,
-                public groupCity?: string,
-                public groupStreet?: string,
-                public groupBuild?: number,
-                public groupPhone?: string,
-                public groupMail?: string,
-                public groupFax?: string,
-                public latitude?: number,
+    constructor(public id?: number,
+                public name?: string,
+                public city?: string,
+                public street?: string,
+                public build?: number,
+                public phone?: string,
+                public mail?: string,
+                public fax?: string,
+                public latitute?: number,
                 public longitude?: number) {
     }
 }

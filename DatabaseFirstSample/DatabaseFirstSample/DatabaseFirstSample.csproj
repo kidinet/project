@@ -44,6 +44,10 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -61,10 +65,7 @@
     <Compile Include="about.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AdministratorSetting.cs">
-      <DependentUpon>BloggingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="bl_classes\bl_About.cs" />
+    <Compile Include="bl_classes\Bl_About_.cs" />
     <Compile Include="bl_classes\Bl_Group.cs" />
     <Compile Include="BloggingModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -83,7 +84,8 @@
     </Compile>
     <Compile Include="bl_classes\BL_Image.cs" />
     <Compile Include="bl_classes\BL_This_day.cs" />
-    <Compile Include="bl_classes\BL_User.cs" />
+    <Compile Include="bl_classes\Bl_User.cs" />
+    <Compile Include="bl_classes\Bl_UserInGroup.cs" />
     <Compile Include="bl_classes\Result.cs" />
     <Compile Include="Group.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
@@ -117,6 +119,7 @@
     </EntityDeploy>
     <None Include="BloggingModel.edmx.diagram">
       <DependentUpon>BloggingModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

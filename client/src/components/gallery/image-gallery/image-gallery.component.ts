@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component,EventEmitter, Input,Output, OnInit} from '@angular/core';
 import {ApiService} from '../../../services/api.service'
 import * as appGlobalsService from '../../../store/app-globals'
 
@@ -15,12 +15,17 @@ export class ImageGalleryComponent implements OnInit {
     showResponse = false;
     @Input() imageGallery;
     @Input() type;
+    @Output() loadingFinish = new EventEmitter();
+
 
     ngOnInit() {
     }
 
     toggleShowResponse() {
         this.showResponse = !this.showResponse;
+    }
+    loadingFinishEvent() {
+        this.loadingFinish.emit();
     }
 
     deleteImage() {

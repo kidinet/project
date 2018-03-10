@@ -22,7 +22,7 @@ export class ImageGalleryResponseComponent implements OnInit {
     }
 
     ngOnInit() {
-        const path = `${appGlobalsService.currentGroup.groupId}/${this.imageGallery.id}/imagesReply`;
+        const path = `${appGlobalsService.currentGroup.id}/${this.imageGallery.id}/imagesReply`;
         // put the chat message on database;
         this.items = this.af.list(path, {
             query: {
@@ -37,6 +37,7 @@ export class ImageGalleryResponseComponent implements OnInit {
 
     sendReply() {
         this.items.push(new ImageGalleryResponse(this.imageGallery.id, this.myReply, appGlobalsService.currentUser.firstName + appGlobalsService.currentUser.lastName, new Date()));
+        this.myReply='';
     }
 
     get colors() {

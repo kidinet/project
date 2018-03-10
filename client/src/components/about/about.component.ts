@@ -9,15 +9,14 @@ import * as appGlobalsService from '../../store/app-globals';
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements OnInit, AfterViewInit {
+export class AboutComponent implements OnInit {
 
     constructor(private builder: FormBuilder, private apiService: ApiService) {
     }
 
     @ViewChild('titleElement') titleElement: ElementRef;
-    @ViewChild('textArea') textArea: ElementRef;
-    textareaSize = 20;
     titles: AboutTitle[]
+    isLoading = false;
     newAboutTitle = {
         title: new FormControl('', Validators.required),
         content: new FormControl('', Validators.required),
@@ -33,57 +32,44 @@ export class AboutComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.titles = appGlobalsService.aboutTitles;
     }
-
-    ngAfterViewInit() {
-        this.textArea.nativeElement.addEventListener('keydown', (event) => {
-            setTimeout(() => {
-                this.textareaSize = this.textArea.nativeElement.scrollHeight;
-            }, 0);
-        });
-
-        setTimeout(() => {
-            this.textareaSize = this.textArea.nativeElement.scrollHeight + 5;
-        }, 0);
-    }
-
     addAboutTitle() {
-        /*
-         this.apiService.addAboutTitle(new AboutTitle(this.newAboutTitle.color, this.newAboutTitle.title.value, this.newAboutTitle.content.value, this.newAboutTitle.icon, null)).then(
-         results => {
-         console.log(results);
-         }
-         );
-         */
-
+        this.isLoading = true;
+        this.apiService.addAboutTitle(new AboutTitle(
+            this.newAboutTitle.title.value,
+            this.newAboutTitle.content.value,
+            this.newAboutTitle.icon,
+            this.newAboutTitle.color)
+        ).then(
+            results => {
+                this.isLoading = false;
+                this.aboutTitleForm.reset();
+                appGlobalsService.addAboutTitles(results.returnObject);
+            }
+            );
     }
 
     updateAboutTitle(title: AboutTitle) {
-        /* this.apiService.updateAboutTitle(title).then(
-         results => {
-         title.isDisabled = true;
-         }
-         );*/
-        title.isDisabled = true;
-
+        this.apiService.updateAboutTitle(title).then(
+            results => {
+                this.isLoading = false;
+            }
+        );
+        this.isLoading = true;
+        title.isEditable = false;
     }
 
     deleteAboutTitle(title: AboutTitle) {
-        /*
-         this.apiService.deleteAboutTitle(title.id).then(
-         results => {
-         title.isDisabled = true;
-         }
-         );*/
-
+        this.apiService.deleteAboutTitle(title.id).then(
+            results => {
+                appGlobalsService.deleteAboutTitle(title)
+                title.isEditable = true;
+            });
     }
 
     editTitle(title: AboutTitle) {
-        title.isDisabled = false;
+        title.isEditable = true;
     }
 
-    getStyle() {
-        return `${this.textareaSize}px`;
-    }
 
     // set the new title style:
     setNewAboutTitleColor(color: string) {
@@ -102,5 +88,10 @@ export class AboutComponent implements OnInit, AfterViewInit {
 
     setTitleIcon(icon, title) {
         title.icon = icon;
+    }
+
+    // pipe
+    get appGlobalsService() {
+        return appGlobalsService
     }
 }

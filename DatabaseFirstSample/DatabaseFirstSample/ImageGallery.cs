@@ -17,7 +17,7 @@ namespace DatabaseFirstSample
         public int id { get; set; }
         public int groupId { get; set; }
         public Nullable<System.DateTime> date_added { get; set; }
-        public byte[] src { get; set; }
+        public string src { get; set; }
         public string subject { get; set; }
     
         public virtual Group Group { get; set; }

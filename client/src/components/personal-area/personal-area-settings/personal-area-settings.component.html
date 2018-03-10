@@ -27,9 +27,9 @@
                 <div class="input_wrapper">
                     <mat-form-field class="input">
                         <input matInput placeholder="רחוב" [(ngModel)]="currentUser.street" type="text"
-                               name="userStreet" [formControl]="userStreet">
+                               name="userstreet" [formControl]="userstreet">
                     </mat-form-field>
-                    <div [hidden]="userStreet.untouched||!userStreet.hasError('required')">שדה נדרש</div>
+                    <div [hidden]="userstreet.untouched||!userstreet.hasError('required')">שדה נדרש</div>
                 </div>
                 <div class="input_wrapper">
                     <mat-form-field class="input">
@@ -50,7 +50,7 @@
                 </div>
             </form>
         </mat-tab>
-        <mat-tab label="פרטים בגן זה">
+        <!--<mat-tab label="פרטים בגן זה">
             <form [formGroup]="createUserInGroupForm" (ngSubmit)="updateUserInGroup()">
                 <div class="input_wrapper">
                     <mat-form-field class="input">
@@ -122,7 +122,7 @@
                 </div>
                 <h5>{{resultMessage}}</h5>
             </div>
-        </mat-tab>
+        </mat-tab>-->
     </mat-tab-group>
     <mat-spinner *ngIf="isLoading&&tab.selectedIndex!==2"></mat-spinner>
     <button type="submit" (click)="update()" color="accent" mat-raised-button

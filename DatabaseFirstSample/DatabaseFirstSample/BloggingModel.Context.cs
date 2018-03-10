@@ -26,12 +26,11 @@ namespace DatabaseFirstSample
         }
     
         public virtual DbSet<about> abouts { get; set; }
-        public virtual DbSet<AdministratorSetting> AdministratorSettings { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
-        public virtual DbSet<ImageGallery> ImageGalleries { get; set; }
         public virtual DbSet<UserInGroup> UserInGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ThisDayContent> ThisDayContents { get; set; }
         public virtual DbSet<ThisDayOfGroup> ThisDayOfGroups { get; set; }
+        public virtual DbSet<ImageGallery> ImageGalleries { get; set; }
     }
 }

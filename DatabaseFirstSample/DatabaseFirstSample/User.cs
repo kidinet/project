@@ -14,24 +14,12 @@ namespace DatabaseFirstSample
     
     public partial class User
     {
-        private string childFirstName;
-        private string childLastName;
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             this.UserInGroups = new HashSet<UserInGroup>();
         }
-
-        public User(string mail, string firstName, string lastName, string childFirstName, string childLastName)
-        {
-            this.mail = mail;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.childFirstName = childFirstName;
-            this.childLastName = childLastName;
-        }
-
+    
         public string firstName { get; set; }
         public string lastName { get; set; }
         public byte[] profile_ { get; set; }
@@ -43,7 +31,6 @@ namespace DatabaseFirstSample
         public Nullable<double> latitute { get; set; }
         public Nullable<double> longitude { get; set; }
     
-        public virtual AdministratorSetting AdministratorSetting { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserInGroup> UserInGroups { get; set; }
     }

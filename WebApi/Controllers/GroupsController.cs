@@ -23,8 +23,15 @@ namespace WebApi.Controllers
         [Route("createGroup/{Language}/{Registered}")]
         public IHttpActionResult createGroup([FromBody]Group newGroup)
         {
-            return Ok(Bl_Group.createGroup(newGroup));
+            return Json(Bl_Group.createGroup(newGroup));
         }
+        //[HttpGet]
+        //[Route("createGroup/{Language}/{Registered}")]
+        //public IHttpActionResult createGroup(string Language, bool Registered, string name, string city, string street, int build, string phone, string mail, string fax)
+        //{
+        //    //  localhost:7022/api/createGroup/he/true?name=kidinet&city=BneiBraq&street=lklklklk&build=2&phone=5798888&mail=kidinet@gmail.com&fax=1234567
+        //    return Ok(Bl_Group.createGroup(name, city, street, build, phone, mail, fax));
+        //}
         [HttpGet]
         [Route("deleteGroup/{Language}/{Registered}")]
         public IHttpActionResult deleteGroup(int groupId)
@@ -37,13 +44,13 @@ namespace WebApi.Controllers
         {
             return Ok(Bl_Group.updateGroup(groupToUpdte));
         }
-        //[HttpPost]
-        //[Route("addUserToGroup/{Language}/{Registered}")]
-        //public IHttpActionResult addUserToGroup([FromBody]UserToGroup userToGroup)
-        //{
-        //    Bl_Group.addUserToGroup(userToGroup.groupId, userToGroup.newUsers);
-        //    return Ok();
-        //}
+        [HttpPost]
+        [Route("addUsers/{Language}/{Registered}")]
+        public IHttpActionResult addUsers([FromBody]User[] users)
+        {
+            Bl_Group.addUserToGroup(users);
+            return Ok(true);
+        }
 
     }
 }

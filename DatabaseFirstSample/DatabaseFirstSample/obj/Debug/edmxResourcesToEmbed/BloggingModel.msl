@@ -13,15 +13,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AdministratorSettings">
-      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.AdministratorSetting">
-        <MappingFragment StoreEntitySet="AdministratorSettings">
-          <ScalarProperty Name="chatEnd" ColumnName="chatEnd" />
-          <ScalarProperty Name="chatStart" ColumnName="chatStart" />
-          <ScalarProperty Name="mail" ColumnName="mail" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Groups">
       <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.Group">
         <MappingFragment StoreEntitySet="Groups">
@@ -34,17 +25,6 @@
           <ScalarProperty Name="streat" ColumnName="streat" />
           <ScalarProperty Name="city" ColumnName="city" />
           <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ImageGalleries">
-      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.ImageGallery">
-        <MappingFragment StoreEntitySet="ImageGallery">
-          <ScalarProperty Name="subject" ColumnName="subject" />
-          <ScalarProperty Name="src" ColumnName="src" />
-          <ScalarProperty Name="date_added" ColumnName="date_added" />
-          <ScalarProperty Name="groupId" ColumnName="groupId" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -93,6 +73,17 @@
           <ScalarProperty Name="color" ColumnName="color" />
           <ScalarProperty Name="icon" ColumnName="icon" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageGalleries">
+      <EntityTypeMapping TypeName="DatabaseFirst.BloggingModel.ImageGallery">
+        <MappingFragment StoreEntitySet="ImageGallery">
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="src" ColumnName="src" />
+          <ScalarProperty Name="date_added" ColumnName="date_added" />
           <ScalarProperty Name="groupId" ColumnName="groupId" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>

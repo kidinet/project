@@ -28,7 +28,7 @@ export class FormValidateService {
     }
 
     checkCurrentPassword(formControl: FormControl) {
-        return appGlobalsService.currentUser.password === formControl.value ? null : {
+        return appGlobalsService.currentUser.password_ === formControl.value ? null : {
             validatePhone: {
                 valid: false
             }

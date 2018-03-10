@@ -13,18 +13,26 @@ import * as appGlobalsService from '../../store/app-globals';
 export class LookForFriendsComponent implements OnInit {
 
     constructor(private http: HttpClient, private userService: UserService) {
+        this.usersInCurrentGroupDetails = this.getusersInCurrentGroupDetails();
     }
-
+    usersInCurrentGroupDetails;
     title = 'My first AGM project';
-    groupLatitude = appGlobalsService.currentGroup.latitude;
+    grouplatitute = appGlobalsService.currentGroup.latitute;
     groupLongitude = appGlobalsService.currentGroup.longitude;
     currentFriend: User = new User();
     currentGroup = appGlobalsService.currentGroup;
     isCurrentGroupInfoOpen = true;
     dir: {};
 
-    get usersInCurrentGroup() {
-        return appGlobalsService.usersInCurrentGroup;
+    getusersInCurrentGroupDetails() {
+        let users = [];
+        appGlobalsService.usersInCurrentGroupDetails.forEach(user => {
+            user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
+                return details.userMail == user.mail;
+            })[0];
+            users.push(user);
+        })
+        return appGlobalsService.usersInCurrentGroupDetails;
     }
 
     get currentUser() {
@@ -37,35 +45,36 @@ export class LookForFriendsComponent implements OnInit {
 
 
     ngOnInit() {
+        console.log(appGlobalsService.usersInCurrentGroupDetails)
         // this.getDirection();
     }
 
     onMarkerClicked(i) {
-        this.currentFriend = this.usersInCurrentGroup[i];
+        this.currentFriend = this.usersInCurrentGroupDetails[i];
         this.dir = {
-            origin: {lat: this.currentUser.latitude, lng: this.currentUser.longitude},
-            destination: {lat: this.currentFriend.latitude, lng: this.currentFriend.longitude}
+            origin: { lat: this.currentUser.latitute, lng: this.currentUser.longitude },
+            destination: { lat: this.currentFriend.latitute, lng: this.currentFriend.longitude }
         };
     }
 
-    setCurrentUser(friend: User) {
-        this.currentFriend = friend;
+    setCurrentUser(i) {
+        this.currentFriend = this.usersInCurrentGroupDetails[i];;
         this.dir = {
-            origin: {lat: this.currentUser.latitude, lng: this.currentUser.longitude},
-            destination: {lat: this.currentFriend.latitude, lng: this.currentFriend.longitude}
+            origin: { lat: this.currentUser.latitute, lng: this.currentUser.longitude },
+            destination: { lat: this.currentFriend.latitute, lng: this.currentFriend.longitude }
         };
+        console.log(this.dir)
     }
 
     showKinderGardenDirection() {
         this.dir = {
-            origin: {lat: this.currentUser.latitude, lng: this.currentUser.longitude},
-            destination: {lat: this.currentGroup.latitude, lng: this.currentGroup.longitude}
+            origin: { lat: this.currentUser.latitute, lng: this.currentUser.longitude },
+            destination: { lat: this.currentGroup.latitute, lng: this.currentGroup.longitude }
         };
     }
 
     toggleCurrentGroupInfoOpen() {
         this.isCurrentGroupInfoOpen = !this.isCurrentGroupInfoOpen;
     }
-
 
 }

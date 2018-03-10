@@ -13,9 +13,9 @@ import {MatDialogRef} from '@angular/material';
 export class AddMembersComponent implements OnInit {
 
     constructor(private builder: FormBuilder,
-                private userService: UserService,
-                private FormValidateService: FormValidateService,
-                public dialogRef: MatDialogRef<AddMembersComponent>) {
+        private userService: UserService,
+        private FormValidateService: FormValidateService,
+        public dialogRef: MatDialogRef<AddMembersComponent>) {
     }
 
     members: User[] = [];
@@ -34,7 +34,7 @@ export class AddMembersComponent implements OnInit {
     addMember() {
         const user = new User();
         user.mail = this.mail.value;
-        user.password = Math.random().toString(36).slice(-8);
+        user.password_ = Math.random().toString(36).slice(-8);
         this.members.push(user);
         this.addMembersForm.reset();
     }
@@ -42,11 +42,11 @@ export class AddMembersComponent implements OnInit {
     addMembers() {
 
         this.isLoading = true;
-        // this.userService.addUsersToGroup(this.members).then(result => {
-        //     this.successAddMembers = result.success;
-        // this.isLoading = false;
-        // this.successAddMembers = true;
-        // });
+        this.userService.addUsersToGroup(this.members).then(result => {
+            this.successAddMembers = result;
+            this.isLoading = false;
+            this.successAddMembers = true;
+        });
 
 
     }

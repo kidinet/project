@@ -2,8 +2,12 @@
 @import "../../../../assets/style/globalStyle.scss";
 @import '~@angular/material/theming';
 
+.mat-horizontal-stepper-header-container{
+   pointer-events: none;
+ }
 .stepper {
   width: 450px;
+ 
   .wrapper {
     position: relative;
     h2,h4{
@@ -29,8 +33,7 @@
         border-radius: 7px;
         padding: 0 16px;
         border-radius: 7px;
-        font-size: 20px;
-        background-color: $app-red;
+        font-size: 20px; 
         color: white;
       }
     }
@@ -40,6 +43,9 @@
   position:absolute;
   @include absolute-vertical-middle();
   @include absolute-middle();
+}
+.add_members{
+  cursor:pointer;
 }
 
    

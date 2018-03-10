@@ -12,34 +12,30 @@ import {catchError} from 'rxjs/operators';
 const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'my-auth-token'
+        'Authorization': 'my-auth-token',
+        'Access-Control-Allow-Origin': '*'
     })
 };
 
 @Injectable()
 export class UserService {
     constructor(private http: HttpClient,
-                private cookieService: CookieService) {
+        private cookieService: CookieService) {
     }
 
     API_KEY = 'AIzaSyAftTULF-1UvfWrffosDlIChTWfhN_EqRU'
-    API_URL = `https://maps.googleapis.com/maps/api/geocode/json?key: ${this.API_KEY}address=`;
+    API_URL = `https://maps.googleapis.com/maps/api/geocode/json?key:${this.API_KEY}&address=`;
 
     // =======================API==========================
-    creatUser(user: User, isAdministrator: boolean): any {
-        this.findFromAddress(`${user.city} ${user.street} ${user.build}`).then(
-            results => {
-                if (results.status === 'OK') {
-                    user.latitude = results.results[0].geometry.location.lat;
-                    user.longitude = results.results[0].geometry.location.lng;
-                }
-            });
+    creatUser(user, isAdministrator: boolean): any {
         const url = `${appGlobalsService.baseAPIUrl}createUser/he/true`;
-        return this.http.post(url, {
-            user: user,
-            isAdministrator: isAdministrator,
-            groupId: appGlobalsService.currentGroup.groupId
-        }, httpOptions).toPromise();
+        console.log(user)
+        user.UserInGroups = [];
+        user.UserInGroups[0] = new UserInGroup();
+        user.UserInGroups[0].isAdministrator = true;
+        user.UserInGroups[0].groupId = appGlobalsService.currentGroup.id;
+        return this.http.post(url,
+            user, httpOptions).toPromise();
     }
 
     updateUser(user: User): any {
@@ -74,20 +70,37 @@ export class UserService {
     findFromAddress(address: string): any {
         const compositeAddress = [address];
         const url = `${this.API_URL}${compositeAddress.join(',')}`;
+        console.log(url, "findFromAddress");
         return this.http.get(url).toPromise();
     }
 
     logIn(loginFormValue): any {
+        console.log(loginFormValue, 'loginFormValue service ')
         const url = `${appGlobalsService.baseAPIUrl}logIn/he/true`
-        this.http.post(url, {
+        return this.http.post(url, {
             mail: loginFormValue.mail,
-            password: loginFormValue.password
+            password_: loginFormValue.password
+        }, httpOptions).toPromise();
+        //return this.http.post(url).toPromise();
+    }
+    logInWithGroupId(loginFormValue, id: number): any {
+        const url = `${appGlobalsService.baseAPIUrl}logInWithGroupId/he/true`
+        return this.http.post(url, {
+            userMail: loginFormValue.mail,
+            User: {
+                password_: loginFormValue.password || loginFormValue.password_
+            },
+            groupId: id
         }, httpOptions).toPromise();
     }
 
     addUsersToGroup(users: User[]): any {
+        console.log(users, "appGlobalsService.currentGroup.id")
+        users[0].UserInGroups = [];
+        users[0].UserInGroups[0] = new UserInGroup();
+        users[0].UserInGroups[0].groupId = appGlobalsService.currentGroup.id
         const url = `${appGlobalsService.baseAPIUrl}addUsers/he/true`;
-        this.http.post(url, {users: users, groupId: appGlobalsService.currentGroup.groupId}, httpOptions).toPromise();
+        return this.http.post(url, users, httpOptions).toPromise();
     }
 
 }
