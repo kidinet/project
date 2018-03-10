@@ -33,8 +33,8 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="groupId" Type="int" Nullable="false" />
     <Property Name="date_added" Type="date" />
-    <Property Name="src" Type="varbinary(max)" />
-    <Property Name="subject" Type="varchar" MaxLength="30" />
+    <Property Name="src" Type="varchar(max)" />
+    <Property Name="subject" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="ThisDayContent">
     <Key>
@@ -95,7 +95,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ImageGall__group__395884C4">
+  <Association Name="FK__ImageGall__group__2EA5EC27">
     <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
     <End Role="ImageGallery" Type="Self.ImageGallery" Multiplicity="*" />
     <ReferentialConstraint>
@@ -131,7 +131,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserInGro__group__662B2B3B">
+  <Association Name="FK__UserInGro__group__214BF109">
     <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
     <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
     <ReferentialConstraint>
@@ -143,7 +143,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserInGro__userM__65370702">
+  <Association Name="FK__UserInGro__userM__2057CCD0">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="UserInGroup" Type="Self.UserInGroup" Multiplicity="*" />
     <ReferentialConstraint>
@@ -167,7 +167,7 @@
       <End Role="Groups" EntitySet="Groups" />
       <End Role="about" EntitySet="about" />
     </AssociationSet>
-    <AssociationSet Name="FK__ImageGall__group__395884C4" Association="Self.FK__ImageGall__group__395884C4">
+    <AssociationSet Name="FK__ImageGall__group__2EA5EC27" Association="Self.FK__ImageGall__group__2EA5EC27">
       <End Role="Groups" EntitySet="Groups" />
       <End Role="ImageGallery" EntitySet="ImageGallery" />
     </AssociationSet>
@@ -179,11 +179,11 @@
       <End Role="Groups" EntitySet="Groups" />
       <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroup" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserInGro__group__662B2B3B" Association="Self.FK__UserInGro__group__662B2B3B">
+    <AssociationSet Name="FK__UserInGro__group__214BF109" Association="Self.FK__UserInGro__group__214BF109">
       <End Role="Groups" EntitySet="Groups" />
       <End Role="UserInGroup" EntitySet="UserInGroup" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserInGro__userM__65370702" Association="Self.FK__UserInGro__userM__65370702">
+    <AssociationSet Name="FK__UserInGro__userM__2057CCD0" Association="Self.FK__UserInGro__userM__2057CCD0">
       <End Role="Users" EntitySet="Users" />
       <End Role="UserInGroup" EntitySet="UserInGroup" />
     </AssociationSet>

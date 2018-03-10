@@ -37,6 +37,7 @@ export class ImageGalleryResponseComponent implements OnInit {
 
     sendReply() {
         this.items.push(new ImageGalleryResponse(this.imageGallery.id, this.myReply, appGlobalsService.currentUser.firstName + appGlobalsService.currentUser.lastName, new Date()));
+        this.myReply='';
     }
 
     get colors() {

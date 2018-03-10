@@ -39,9 +39,8 @@
                     <input matInput placeholder="מייל" type="mail" name="groupMail" [formControl]="groupMail">
                 </mat-form-field>
                 <!--<div [hidden]="groupMail.untouched||!groupMail.hasError('required')">שדה נדרש</div>                                               -->
-                <div [hidden]="groupMail.untouched||!groupMail.hasError('validateMail')">כתובת המייל אינה בתבנית הנכונה</div>
-
-                <button type="submit" mat-raised-button class="new_group">צור</button>
+                <div [hidden]="groupMail.untouched||groupMail.valid">כתובת המייל אינה בתבנית הנכונה</div>
+                <button [disabled]="!createGroupForm.valid" type="submit" mat-raised-button color="accent" class="new_group">צור</button>
             </form>
         </div>
         <h1>{{createGroupFieldMessage}}</h1>
@@ -102,7 +101,7 @@
                 <div [hidden]="!confirmPassword.hasError('validatePassword')||confirmPassword.untouched">
                     הסיסמאות אינן תואמות
                 </div>
-                <button type="submit" mat-raised-button class="new_group">צור</button>
+                <button [disabled]="!createUserForm.valid" type="submit" mat-raised-button color="accent" class="new_group">צור</button>
             </form>
         </div>
     </mat-step>

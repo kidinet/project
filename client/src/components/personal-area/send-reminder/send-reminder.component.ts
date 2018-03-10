@@ -27,10 +27,11 @@ export class SendReminderComponent implements OnInit {
         newReminderContent: this.newReminderContent
     });
     selectedUsers = {};
-
+    usersInCurrentGroup
+    
     constructor(private builder: FormBuilder,
-                public af: AngularFireDatabase,
-                public dialogRef: MatDialogRef<SendReminderComponent>) {
+        public af: AngularFireDatabase,
+        public dialogRef: MatDialogRef<SendReminderComponent>) {
     }
 
     sendReminder() {
@@ -43,13 +44,22 @@ export class SendReminderComponent implements OnInit {
 
     ngOnInit() {
         // put the chat message on database;
-
+        this.usersInCurrentGroup = this.getusersInCurrentGroupDetails();
+        console.log(this.usersInCurrentGroup)
+    }
+    getusersInCurrentGroupDetails() {
+        let users = [];
+        appGlobalsService.usersInCurrentGroupDetails.forEach(user => {
+            user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
+                return details.userMail == user.mail;
+            })[0];
+            users.push(user);
+        })
+        return appGlobalsService.usersInCurrentGroupDetails;
     }
 
     // ===========pipes=============
-    get usersInCurrentGroup() {
-        return appGlobalsService.usersInCurrentGroup;
-    }
+    ;
 
     get isSomeoneChecked() {
         for (let key in this.selectedUsers)

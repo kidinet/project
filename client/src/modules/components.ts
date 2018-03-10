@@ -93,7 +93,8 @@ import { ReversePipe } from '../pipes/keys.pipe';
         GroupSettingsComponent,
         SendReminderComponent,
         AddMembersComponent,
-        ChooseGroupComponent
+        ChooseGroupComponent,
+        PersonalAreaSettingsComponent
 
     ],
     imports: [

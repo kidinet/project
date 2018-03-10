@@ -7,7 +7,7 @@ export class Group {
                 public phone?: string,
                 public mail?: string,
                 public fax?: string,
-                public latitude?: number,
+                public latitute?: number,
                 public longitude?: number) {
     }
 }

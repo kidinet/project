@@ -77,36 +77,21 @@ namespace DatabaseFirstSample.bl_classes
                 }
             }
         }
-        public Result<User> createUser(User newUser, UserInGroup newUserInGroup)
+        public Result<BL_User> createUser(User newUser)
         {
-            byte[] profile_;
-            string varFilePath = "D:/Users/Gili/Pictures/aaa/vvv.jpg";
-            using (var stream = new FileStream(varFilePath, FileMode.Open, FileAccess.Read))
-            {
-                using (var reader = new BinaryReader(stream))
-                {
-                    profile_ = reader.ReadBytes((int)stream.Length);
-                }
-            }
 
             using (var db = new BloggingContext())
             {
-
-                string varPathToNewLocation = @"C:/pictures/aczcaa.jpg";
-                byte[] blob = db.Users.FirstOrDefault(x => x.mail == "ghjghj@kytujkjk3333j.com").profile_;
-                using (var fs = new FileStream(varPathToNewLocation, FileMode.Create, FileAccess.Write))
-                    fs.Write(blob, 0, blob.Length);
                 User existentUser = db.Users.FirstOrDefault(x => x.mail == newUser.mail);
                 if (existentUser != null)
                 {
-                    return new Result<User>(false, new User(), "");
+                    return new Result<BL_User>(false, new BL_User(), "");
                 }
                 try
                 {
                     db.Users.Add(newUser);
-                    db.UserInGroups.Add(newUserInGroup);
                     db.SaveChanges();
-                    return new Result<User>(true, newUser);
+                    return new Result<BL_User>(true, new BL_User(newUser));
                 }
                 catch (Exception ex)
                 {
@@ -123,10 +108,14 @@ namespace DatabaseFirstSample.bl_classes
                     var user = db.Users.Find(userToUpdate.mail);
                     user.firstName = userToUpdate.firstName;
                     user.lastName = userToUpdate.lastName;
-                    user.city = user.city;
+                    user.city = userToUpdate.city;
+                    user.streat = userToUpdate.streat;
                     user.streat = userToUpdate.streat;
                     user.build = userToUpdate.build;
+                    user.latitute = userToUpdate.latitute;
+                    user.longitude = userToUpdate.longitude;
                     db.SaveChanges();
+                    var user_ = db.Users.Find(userToUpdate.mail);
                     return new Result<User>(true, (User)user);
                 }
                 catch (Exception ex)
@@ -136,7 +125,7 @@ namespace DatabaseFirstSample.bl_classes
                 }
             }
         }
-        public Result<UserInGroup> updateUserIngroup(UserInGroup userInGroupToUpdate)
+        public bool updateUserIngroup(UserInGroup userInGroupToUpdate)
         {
             using (var db = new BloggingContext())
             {
@@ -148,12 +137,12 @@ namespace DatabaseFirstSample.bl_classes
                     userInGroup.childLastName = userInGroupToUpdate.childLastName;
                     userInGroup.nickname = userInGroupToUpdate.nickname;
                     db.SaveChanges();
-                    return new Result<UserInGroup>(true, userInGroup);
+                    return true;
 
                 }
                 catch (Exception ex)
                 {
-                    return new Result<UserInGroup>(false, ex.Message);
+                    return false;
                     throw ex;
                 }
             }
@@ -210,7 +199,7 @@ namespace DatabaseFirstSample.bl_classes
                         api.Add("user", JToken.FromObject(new BL_User(user_)));
                         if (user_.UserInGroups.ToArray().Length == 1)
                         {
-                            var usersInGroup_ = usersInGroup.getUsersInGroup(user_.UserInGroups.ToArray()[0].Group.UserInGroups.ToArray()).ToList();
+                            var usersInGroup_ = usersInGroup.getUsersInGroup(user_.UserInGroups.ToArray()[0].Group.UserInGroups.ToArray()).ToList().Where(x => x.userMail != user_.mail);
                             api.Add("usersInGroup", JToken.FromObject(usersInGroup));
                             api.Add("currentUserInGroup", JToken.FromObject(new Bl_UserInGroup(user_.UserInGroups.ToArray()[0])));
                             api.Add("group", JToken.FromObject(new Bl_Group(user_.UserInGroups.ToArray()[0].Group)));

@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject, Input, ViewChild} from '@angular/core';
+import {Component, OnInit, Inject, Output, EventEmitter, Input, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormControl, Validators, FormBuilder} from '@angular/forms';
@@ -13,6 +13,7 @@ import {DOCUMENT} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {split} from "ts-node/dist";
+import {AddMembersComponent} from '../add-members/add-members.component'
 
 
 @Component({
@@ -29,6 +30,7 @@ export class WelcomeComponent implements OnInit {
     constructor(public newGroupDialog: MatDialog,
         private builder: FormBuilder,
         private userService: UserService,
+        private addMemebers: MatDialog,
         private MoreGroupDialog: MatDialog,
         private FormValidateService: FormValidateService,
         @Inject(DOCUMENT) private document: Document,
@@ -41,11 +43,10 @@ export class WelcomeComponent implements OnInit {
                 mail: atob(cookieService.get('kidinet')).split('/')[1],
             };
             let groupId = atob(cookieService.get('kidinet')).split('/')[2];
-            this.logInWithGroupId(logInValue, eval(groupId));
+            this.logInWithGroupId(logInValue, eval(groupId), false);
         }
 
     }
-
     password = new FormControl('', [Validators.required]);
     mail = new FormControl('', this.FormValidateService.validateEmail)
     // form declare:
@@ -56,14 +57,23 @@ export class WelcomeComponent implements OnInit {
     // show error message if invalid mail or password:
     logInFailed = false;
     moreGroupRef;
+    newGroupRef;
+
+
+    isLoading = false;
 
     openNewGroupDialog(): void {
-        this.newGroupDialog.open(NewGroup, {});
+        this.newGroupRef = this.newGroupDialog.open(NewGroup, {});
+        this.newGroupRef.componentInstance.setCurrentGroup.subscribe((groupId: number) => {
+            this.logInWithGroupId(appGlobalsService.currentUser, appGlobalsService.currentGroup.id, true)
+        });
     }
 
     login(logInValue = this.loginForm.value) {
         let currentUserInGroup: UserInGroup;
+        this.isLoading = true;
         this.userService.logIn(logInValue).then(result => {
+            this.isLoading = false;
             this.logInFailed = result.Success;
             if (result.Success) {
                 if (result.returnObject.groups) {
@@ -73,26 +83,28 @@ export class WelcomeComponent implements OnInit {
                             user: result.returnObject.user
                         },
                     });
-                    this.moreGroupRef.componentInstance.setCurrentGroup.subscribe((groupId: number) => {
-                        this.logInWithGroupId(this.loginForm.value, groupId)
-                    });
                 } else {
                     this.initUserSettings(result);
                 }
             }
         });
     }
-    logInWithGroupId(loginForm, groupId: number) {
+    logInWithGroupId(loginForm, groupId: number, openAddMemebers: boolean) {
         this.userService.logInWithGroupId(loginForm, groupId).then(result => {
             this.logInFailed = !result.Success
             if (result.Success) {
-                this.initUserSettings(result)
+                this.initUserSettings(result);
+
+                if (openAddMemebers) {
+                    this.newGroupDialog.closeAll();
+
+                    this.addMemebers.open(AddMembersComponent, {});
+                }
             }
-
-
         });
     }
     ngOnInit() {
+
         //  this.userService.getUser();
     }
 
@@ -106,14 +118,15 @@ export class WelcomeComponent implements OnInit {
     }
 
     initUserSettings(result) {
+        console.log(result);
         appGlobalsService.setCurrentUserInGroup(result.returnObject.currentUserInGroup);
         appGlobalsService.setCurreUser(result.returnObject.user);
         appGlobalsService.setUsersInCurrentGroup(result.returnObject.usersInGroup);
         appGlobalsService.setGroup(result.returnObject.group);
         appGlobalsService.setIsAdministrator(result.returnObject.currentUserInGroup.isAdministrator);
         appGlobalsService.setUsersInCurrentGroupDetails(result.returnObject.usersInCurrentGroupDetails)
-        console.log(appGlobalsService,'<<<<<<<');
         this.cookieService.set('kidinet', btoa(`${result.returnObject.user.password_}/${result.returnObject.user.mail}/${result.returnObject.group.id}`));
+        console.log(appGlobalsService, "appGlobalsService")
         this.router.navigate(['/home/about']);
     }
 
@@ -135,12 +148,13 @@ export class NewGroup {
         private formValidateService: FormValidateService) {
     }
 
+    @Output() setCurrentGroup: EventEmitter<any> = new EventEmitter();
     // group form variables:
     groupName = new FormControl('', Validators.required)
     groupCity = new FormControl('', Validators.required)
     groupStreet = new FormControl('', Validators.required)
     groupBuild = new FormControl('', Validators.required)
-    groupPhone = new FormControl('', this.formValidateService.validatePhone)
+    groupPhone = new FormControl('', Validators.required)
     groupFax = new FormControl('', Validators.required)
     groupMail = new FormControl('', this.formValidateService.validateEmail)
 
@@ -151,20 +165,20 @@ export class NewGroup {
     userCity = new FormControl('', Validators.required)
     userStreet = new FormControl('', Validators.required)
     userBuild = new FormControl('', Validators.required)
-    userPhone = new FormControl('', this.formValidateService.validatePhone)
+    userPhone = new FormControl('', Validators.required)
     userMail = new FormControl('', this.formValidateService.validateEmail)
     password = new FormControl('', Validators.required)
     confirmPassword = new FormControl('', this.formValidateService.confirmPassword(this.password))
 
 
     createGroupForm = this.builder.group({
-        groupName: this.groupName,
-        groupCity: this.groupCity,
-        groupStreet: this.groupStreet,
-        groupBuild: this.groupBuild,
-        groupPhone: this.groupPhone,
-        groupFax: this.groupFax,
-        groupMail: this.groupMail,
+        name: this.groupName,
+        city: this.groupCity,
+        street: this.groupStreet,
+        build: this.groupBuild,
+        phone: this.groupPhone,
+        fax: this.groupFax,
+        mail: this.groupMail,
     });
 
 
@@ -197,30 +211,47 @@ export class NewGroup {
     }
 
     createGroup() {
-        this.groupService.createGroup(this.createGroupForm.value).then(result => {
-            if (result.Success) {
-                appGlobalsService.setGroup(result.returnObject);
-                this.stepper.selectedIndex += 1;
-            } else {
-                this.createGroupField = true;
-            }
-            this.isLoading = false;
-        });
+        let group = this.createGroupForm.value;
+        this.userService.findFromAddress(`${group.city}${group.street}${group.build}`).then(
+            results => {
+                if (results.status === 'OK') {
+                    group.latitute = results.results[0].geometry.location.lat;
+                    group.longitude = results.results[0].geometry.location.lng;
+                }
+                this.groupService.createGroup(group).then(result => {
+                    if (result.Success) {
+                        appGlobalsService.setGroup(result.returnObject);
+                        this.stepper.selectedIndex += 1;
+                    } else {
+                        this.createGroupField = true;
+                    }
+                    this.isLoading = false;
+                });
+            });
+
         this.isLoading = true;
     }
 
 
     createManager() {
-        this.userService.creatUser(this.createUserForm.value, true).then(result => {
-            if (result.Success) {
-                // appGlobalsService.currentUser = result.returnObject;
-                this.stepper.selectedIndex += 1;
-            }
-        });
+        let user = this.createUserForm.value;
+        user.password_ = user.password
+        this.userService.findFromAddress(`${user.city}${user.street}${user.build}`).then(
+            results => {
+                if (results.status === 'OK') {
+                    user.latitude = results.results[0].geometry.location.lat;
+                    user.longitude = results.results[0].geometry.location.lng;
+                }
+                this.userService.creatUser(user, true).then(result => {
+                    if (result.Success) {
+                        appGlobalsService.setCurreUser(result.returnObject);
+                        this.stepper.selectedIndex += 1;
+                    }
+                });
+            });
     }
 
     logInAndAddMembers() {
-
+        this.setCurrentGroup.emit()
     }
 }
-

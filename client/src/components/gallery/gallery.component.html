@@ -1,4 +1,5 @@
-<div class="gallery">
+<div class="gallery"  [ngClass]="{'blur':isLoading}">
+    <mat-spinner *ngIf=isLoading></mat-spinner>
     <button mat-raised-button color="accent" (click)="openaddNewImageDialog()">
         <i class="fa fa-plus" aria-hidden="true"></i>
         הוסף תמונה חדשה
@@ -10,16 +11,14 @@
     <div class="gallery_content">
 
         <div *ngIf="grid=='list'">
-            <app-image-gallery *ngFor="let image of images" [imageGallery]="image" [type]="'list'"
-                               class="image_galley_wrapper list"
-                               (close)="closeImageResponse"></app-image-gallery>
+            <app-image-gallery (loadingFinish)=loadingFinishEvent(); *ngFor="let image of images" [imageGallery]="image" [type]="'list'"
+                class="image_galley_wrapper list" (close)="closeImageResponse"></app-image-gallery>
         </div>
 
         <swiper #swiper [config]="config" *ngIf="grid=='swiper'" (slideChange)="slideChange()">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" *ngFor="let image of images">
-                    <app-image-gallery [imageGallery]="image" [type]="'swiper'" class="image_galley_wrapper swiper"
-                                       (close)="closeImageResponse"></app-image-gallery>
+                    <app-image-gallery [imageGallery]="image" [type]="'swiper'" class="image_galley_wrapper swiper" (close)="closeImageResponse"></app-image-gallery>
                 </div>
             </div>
             <div class="swiper-pagination"></div>

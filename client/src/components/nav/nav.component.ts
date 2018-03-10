@@ -15,10 +15,10 @@ import * as appGlobalsService from '../../store/app-globals';
 export class NavComponent implements OnInit {
 
     constructor(public personalSettings: MatDialog,
-                public confirmPassword: MatDialog,
-                public groupSettings: MatDialog,
-                public addMembers: MatDialog,
-                public reminder: MatDialog) {
+        public confirmPassword: MatDialog,
+        public groupSettings: MatDialog,
+        public addMembers: MatDialog,
+        public reminder: MatDialog) {
     }
 
     isPersonalAreaNavOpen = false;

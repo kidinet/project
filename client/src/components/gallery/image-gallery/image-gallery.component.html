@@ -5,7 +5,7 @@
             <i class="fa fa-trash-o" (click)="deleteImage()"></i>
             <i [ngClass]="{'is_open':showResponse}" (click)="toggleShowResponse()" class="fa fa-reply"
                aria-hidden="true"></i>
-            <app-like-component [id]="imageGallery.id"></app-like-component>
+            <app-like-component (loadingFinish)=loadingFinishEvent(); [id]="imageGallery.id"></app-like-component>
         </div>
     </div>
 </div>

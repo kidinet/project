@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
         if (appGlobalsService.currentUser.mail) {
             const index = this.document.location.href.lastIndexOf('/') + 1;
             if (this.document.location.href.substr(index) === 'home') {
-                this.router.navigate(['/home/about']);
+                this.router.navigate([this.document.location.href]);
             }
         } else {
             this.router.navigate(['/']);
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
 
     }
 
-    isLoading = true;
+    isLoading = false;
     isChat = false;
     currentUserForChat: User;
     // database:
@@ -51,7 +51,6 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.apiService.initAllAboutTitles().then(result => {
-            console.log(result)
             if (result.Success) {
                 appGlobalsService.setAboutTitles(result.returnObject.aboutTitles);
             } else {
@@ -62,20 +61,15 @@ export class HomeComponent implements OnInit {
 
         this.apiService.initImagesForGallery(0).then(result => {
             if (result.Success) {
-                appGlobalsService.addImagesForGallery(result.returnObject);
+                appGlobalsService.addImagesForGallery(result.returnObject.imagesForGallery);
+                console.log(appGlobalsService)
+               
             } else {
-                console.warn('cant get the aboutTitle');
+                console.warn('cant get the aboutTitle.');
             }
         }
         );
 
-
-        // =======================================mock=============================
-        setTimeout(() => {
-            // appGlobalsService.addImagesForGallery(this.apiService.initImagesForGallery(0));
-            this.isLoading = false;
-        }, 1000);
-        // =========================================================================
         // get the reminders message from database;
         this.path = `${appGlobalsService.currentGroup.id}/${appGlobalsService.currentUser.mail.replace('@', 'A').replace('.', 'B')}/reminders`;
         this.showMoreReminders(6);

@@ -1,0 +1,9 @@
+﻿alter database CURRENT 
+ COLLATE  Hebrew_CS_AS ;
+ alter database CURRENT 
+SET MULTI_USER WITH ROLLBACK IMMEDIATE
+ COLLATE  Hebrew_CI_AI ;
+ alter database CURRENT 
+
+ SET SINGLE_USER  WITH ROLLBACK IMMEDIATE
+ COLLATE  Hebrew_CI_AI ;

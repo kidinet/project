@@ -16,6 +16,7 @@ namespace DatabaseFirstSample.bl_classes
         
         private string message;
         private bool v;
+        private Bl_Group bl_Group;
 
         [DataMember]
         public bool Success { get; set; }

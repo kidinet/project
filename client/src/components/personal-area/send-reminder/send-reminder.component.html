@@ -8,8 +8,8 @@
   </form>
   <div class="user" *ngFor="let user of usersInCurrentGroup">
     <mat-checkbox [(ngModel)]="selectedUsers[user.mail]">
-      <span>{{user.firstName}}</span>
-      <span>{{user.lastName}}</span>
+      <span>{{user.details.childFirstName}}</span>
+      <span>{{user.details.childLastName}}</span>
       </mat-checkbox>
   </div>
   <h4 class="warn" *ngIf="!isSomeoneChecked">עליך לבחור לפחות משתמש אחד</h4>

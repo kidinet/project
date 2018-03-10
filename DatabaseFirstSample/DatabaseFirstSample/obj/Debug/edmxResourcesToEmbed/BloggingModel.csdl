@@ -3,16 +3,11 @@
   <EntityContainer Name="BloggingContext" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="abouts" EntityType="DatabaseFirst.BloggingModel.about" />
     <EntitySet Name="Groups" EntityType="DatabaseFirst.BloggingModel.Group" />
-    <EntitySet Name="ImageGalleries" EntityType="DatabaseFirst.BloggingModel.ImageGallery" />
     <EntitySet Name="UserInGroups" EntityType="DatabaseFirst.BloggingModel.UserInGroup" />
     <EntitySet Name="Users" EntityType="DatabaseFirst.BloggingModel.User" />
     <AssociationSet Name="FK__about__groupId__3F115E1A" Association="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A">
       <End Role="Group" EntitySet="Groups" />
       <End Role="about" EntitySet="abouts" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ImageGall__group__395884C4" Association="DatabaseFirst.BloggingModel.FK__ImageGall__group__395884C4">
-      <End Role="Group" EntitySet="Groups" />
-      <End Role="ImageGallery" EntitySet="ImageGalleries" />
     </AssociationSet>
     <AssociationSet Name="FK__UserInGro__group__339FAB6E" Association="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E">
       <End Role="Group" EntitySet="Groups" />
@@ -31,6 +26,11 @@
     <AssociationSet Name="FK__ThisDayCo__title__0B5CAFEA" Association="DatabaseFirst.BloggingModel.FK__ThisDayCo__title__0B5CAFEA">
       <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroups" />
       <End Role="ThisDayContent" EntitySet="ThisDayContents" />
+    </AssociationSet>
+    <EntitySet Name="ImageGalleries" EntityType="DatabaseFirst.BloggingModel.ImageGallery" />
+    <AssociationSet Name="FK__ImageGall__group__2EA5EC27" Association="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="ImageGallery" EntitySet="ImageGalleries" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="about">
@@ -60,20 +60,9 @@
     <Property Name="latitute" Type="Double" />
     <Property Name="longitude" Type="Double" />
     <NavigationProperty Name="abouts" Relationship="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A" FromRole="Group" ToRole="about" />
-    <NavigationProperty Name="ImageGalleries" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__395884C4" FromRole="Group" ToRole="ImageGallery" />
     <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E" FromRole="Group" ToRole="UserInGroup" />
     <NavigationProperty Name="ThisDayOfGroups" Relationship="DatabaseFirst.BloggingModel.FK__ThisDayOf__group__0880433F" FromRole="Group" ToRole="ThisDayOfGroup" />
-  </EntityType>
-  <EntityType Name="ImageGallery">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="groupId" Type="Int32" Nullable="false" />
-    <Property Name="date_added" Type="DateTime" Precision="0" />
-    <Property Name="src" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="subject" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__395884C4" FromRole="ImageGallery" ToRole="Group" />
+    <NavigationProperty Name="ImageGalleries" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27" FromRole="Group" ToRole="ImageGallery" />
   </EntityType>
   <EntityType Name="UserInGroup">
     <Key>
@@ -114,18 +103,6 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="about">
-        <PropertyRef Name="groupId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ImageGall__group__395884C4">
-    <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
-    <End Type="DatabaseFirst.BloggingModel.ImageGallery" Role="ImageGallery" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Group">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="ImageGallery">
         <PropertyRef Name="groupId" />
       </Dependent>
     </ReferentialConstraint>
@@ -197,6 +174,29 @@
       </Principal>
       <Dependent Role="ThisDayContent">
         <PropertyRef Name="titleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ImageGallery">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <Property Name="date_added" Type="DateTime" Precision="0" />
+    <Property Name="src" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27" FromRole="ImageGallery" ToRole="Group" />
+  </EntityType>
+  <Association Name="FK__ImageGall__group__2EA5EC27">
+    <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="DatabaseFirst.BloggingModel.ImageGallery" Role="ImageGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ImageGallery">
+        <PropertyRef Name="groupId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

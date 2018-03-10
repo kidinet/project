@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import {AboutTitle} from '../entities/about/aboutTitles';
 import {ImageGallery} from '../entities/gallery/imageGallery'
 import * as appGlobalsService from '../store/app-globals';
+import * as moment from 'moment';
 
 
 const httpOptions = {
@@ -60,24 +61,24 @@ export class ApiService {
     // ======================================== gallery api:================================================
     initImagesForGallery(start): any {
         const url = `${appGlobalsService.baseAPIUrl}initImagesForGallery/he/true?groupId=${appGlobalsService.currentGroup.id}&start=${start}`
-         console.log(url)
+        console.log(url, "url")
         return this.http.get(url)
             .toPromise();
     }
 
     deleteImageFromGallery(id): any {
-        const url = `${appGlobalsService.baseAPIUrl}'deleteImageFromGallery/he/true?id=${id}`
+        const url = `${appGlobalsService.baseAPIUrl}deleteImageFromGallery/he/true?id=${id}`
         return this.http.get(url).toPromise();
     }
 
     addImageToGallery(src, subject) {
         const url = `${appGlobalsService.baseAPIUrl}addImageToGallery/he/true`
-        return this.http.post(url, {
-            id: appGlobalsService.currentGroup.id,
+        let newImage = {
+            groupId: appGlobalsService.currentGroup.id,
             src: src,
-            date: new Date(),
             subject: subject
-        }, httpOptions).toPromise();
+        }
+        return this.http.post(url, newImage, httpOptions).toPromise();
 
     }
 

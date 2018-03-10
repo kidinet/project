@@ -70,8 +70,10 @@ export let imageGalleryResponse: ImageGalleryResponse[] = [];
 export function addImagesForGallery(ImageGallryArray) {
     imageGallery.push.apply(imageGallery, ImageGallryArray);
 }
-export function addImageGalleryResponse(imageGalleryResponseArray) {
-    imageGalleryResponse.push.apply(imageGalleryResponseArray);
+
+export function addImage(image) {
+    console.log(image,'image')
+    imageGallery.push(image);
 }
 
 export function deleteImageFromGallery(id) {

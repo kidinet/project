@@ -19,29 +19,23 @@ namespace WebApi.Controllers
         BL_IMAGE bl_image = new BL_IMAGE();
 
         [HttpPost]
-        [Route("addNewImage/{Language}/{Registered}")]
-        public IHttpActionResult addNewImage([FromBody]ImageGallery newImage)
+        [Route("addImageToGallery/{Language}/{Registered}")]
+        public IHttpActionResult addImageToGallery([FromBody]ImageGallery newImage)
         {
-            return Ok(bl_image.addImage(newImage));
-        }
-        [HttpPost]
-        [Route("getImages/{Language}/{Registered}")]
-        public IHttpActionResult getImages(int groupId, string orderBy)
-        {
-            return Ok(bl_image.getImagesByGroupId(groupId, orderBy));
+            return Json(bl_image.addImage(newImage));
         }
         [HttpGet]
         [Route("initImagesForGallery/{Language}/{Registered}")]
         public IHttpActionResult initImagesForGallery(string Language, bool Registered, int groupId, int start)
         {
             
-            return Ok(bl_image.initImagesForGallery(groupId, start));
+            return Json(bl_image.initImagesForGallery(groupId, start));
         }
         [HttpGet]
         [Route("deleteImageFromGallery/{Language}/{Registered}")]
         public IHttpActionResult deleteImageFromGallery(string Language, bool Registered, int id)
         {
-            return Ok(bl_image.deleteImageFromGallery(id));
+            return Json(bl_image.deleteImageFromGallery(id));
         }
     }
 }

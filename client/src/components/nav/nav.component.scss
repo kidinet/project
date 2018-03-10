@@ -63,7 +63,7 @@ nav {
       transition: 0.2s;
       z-index: map_get($z-indexes, 'popup-overlay')+1;
       &.show {
-        height: 125px;
+        height: 75px;
         span {
           padding: 2px 10px;
           display: block;

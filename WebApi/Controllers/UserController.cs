@@ -23,18 +23,19 @@ namespace WebApi.Controllers
         BL_User bl_user = new BL_User();
         [HttpPost]
         [Route("createUser/{Language}/{Registered}")]
-        public IHttpActionResult createUser([FromBody]User newUser, [FromBody]UserInGroup newUserInGroup)
+        public IHttpActionResult createUser([FromBody]User newUser)
         {
             // http://localhost:7022/api/createUser/he/true?&mail=vbnmvb&firstName=fgjfg&lastName=gfjfghj&childFirstName=undefinednickName=undefinedprofile=null&password=mm&city=gfjfg&build=7&street=fgjfgh&phone=mbvnm&isAdministrator=true&groupId=120
             //localhost:7022/api/createUser/he/true?&mail=ghjghj@kjkjk3333j.com&firstName=12334&lastName=dADSASD&childFirstName=undefined&childLastName=undefined&nickName=undefined&profile=undefined&password=1&city=sdfsda&build=3&streat=dsfa&phone=0588822808&isAdministrator=true&groupId=100
-            return Ok(bl_user.createUser(newUser, newUserInGroup));
+            return Json(bl_user.createUser(newUser));
 
         }
         [HttpPost]
         [Route("updateUser/{Language}/{Registered}")]
         public IHttpActionResult updateUser([FromBody]User userToUpdate)
         {
-            return Ok(bl_user.updateUser(userToUpdate));
+            bl_user.updateUser(userToUpdate);
+            return Ok(true);
         }
         [HttpPost]
         [Route("updateUserIngroup/{Language}/{Registered}")]

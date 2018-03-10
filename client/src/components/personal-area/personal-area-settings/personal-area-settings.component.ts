@@ -16,22 +16,22 @@ import {UserService} from '../../../services/user.service';
 export class PersonalAreaSettingsComponent implements OnInit {
 
     constructor(private builder: FormBuilder,
-                private formValidateService: FormValidateService,
-                public dialogRef: MatDialogRef<PersonalAreaSettingsComponent>,
-                public imagesService: ImagesService,
-                public userService: UserService,
-                @Inject(MAT_DIALOG_DATA) public data: any) {
+        private formValidateService: FormValidateService,
+        public dialogRef: MatDialogRef<PersonalAreaSettingsComponent>,
+        public imagesService: ImagesService,
+        public userService: UserService,
+        @Inject(MAT_DIALOG_DATA) public data: any) {
     }
 
     @ViewChild('tab') tab;
 
-    currentUser: User;
+    currentUser;
     currentUserInGroup: UserInGroup
     // variables:
     firstName = new FormControl('', Validators.required)
     lastName = new FormControl('', Validators.required)
     userCity = new FormControl('', Validators.required)
-    userStreet = new FormControl('', Validators.required)
+    userstreet = new FormControl('', Validators.required)
     userBuild = new FormControl('', Validators.required)
     userPhone = new FormControl('', this.formValidateService.validatePhone)
     password = new FormControl('', Validators.required)
@@ -45,7 +45,7 @@ export class PersonalAreaSettingsComponent implements OnInit {
         firstName: this.firstName,
         lastName: this.lastName,
         city: this.userCity,
-        street: this.userStreet,
+        street: this.userstreet,
         build: this.userBuild,
         phone: this.userPhone,
         password: this.password,
@@ -68,15 +68,26 @@ export class PersonalAreaSettingsComponent implements OnInit {
     ngOnInit() {
         this.currentUser = appGlobalsService.currentUser;
         this.currentUserInGroup = appGlobalsService.currentUserInGroup;
-        console.log(this.currentUserInGroup, 'currentUserInGroup');
+        console.log(this.currentUser, 'currentUser');
     }
 
     updateUser() {
-        this.userService.updateUser(this.currentUser).then(result => {
-            this.resultMessage = result.Success ? 'עודכן בהצלחה' : 'נסו שנית';
-            this.isLoading = false;
-        });
-        this.isLoading = true;
+        this.currentUser.streat = this.currentUser.street;
+        this.userService.findFromAddress(`${this.currentUser.city}${this.currentUser.streat}${this.currentUser.build}`).then(
+            results => {
+                console.log(results);
+                if (results.status === 'OK') {
+                    this.currentUser.latitute = results.results[0].geometry.location.lat;
+                    this.currentUser.longitude = results.results[0].geometry.location.lng;
+                }
+                this.userService.updateUser(this.currentUser).then(result => {
+                    appGlobalsService.setCurreUser(this.currentUser);
+                    this.resultMessage = result ? 'עודכן בהצלחה' : 'נסו שנית';
+                    this.isLoading = false;
+                    this.dialogRef.close();
+                });
+                this.isLoading = true;
+            });
     }
 
     updateUserInGroup() {
@@ -116,7 +127,7 @@ export class PersonalAreaSettingsComponent implements OnInit {
                 this.updateUser();
                 break;
             case 1:
-               this.updateUserInGroup();
+                this.updateUserInGroup();
                 break;
             case 2:
                 this.createImage()
