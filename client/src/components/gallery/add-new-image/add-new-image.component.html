@@ -6,9 +6,9 @@
         <span> בחר תמונה </span>
         <i class="fa fa-plus" aria-hidden="true"></i>
     </label>
-    <mat-form-field class="subject">
+    <!--<mat-form-field class="subject">
         <input matInput placeholder="נושא" [(ngModel)]="subject">
-    </mat-form-field>
+    </mat-form-field>-->
     <img [src]="imageSrc">
     <div class="edit_wrappwr" *ngIf="imageSrc&&!isLoading">
         <i class="fa fa-compress" aria-hidden="true" (click)="imagesService.scale(0.9,canvas,imageSrc)"></i>

@@ -25,7 +25,7 @@
         <div class="settings_nav" [ngClass]="{'show': isPersonalAreaNavOpen}">
             <span (click)="openPersonalSettings()">פרטים אישיים</span>
             <!--<span (click)="openConfirmPassword()">שנה סיסמא</span>-->
-            <span (click)="openGroupSettings()" *ngIf="appGlobalsService.isAdministrator">פרטי הגן</span>
+            <span (click)="openGroupSettings()" *ngIf="appGlobalsService.isAdministrator&&false">פרטי הגן</span>
             <span (click)="openAddMembers()" *ngIf="appGlobalsService.isAdministrator">הוספת משתתפים</span>
         </div>
     </span>

@@ -33,7 +33,7 @@ export class PersonalAreaSettingsComponent implements OnInit {
     userCity = new FormControl('', Validators.required)
     userstreet = new FormControl('', Validators.required)
     userBuild = new FormControl('', Validators.required)
-    userPhone = new FormControl('', this.formValidateService.validatePhone)
+    userPhone = new FormControl('')
     password = new FormControl('', Validators.required)
     confirmPassword = new FormControl('', this.formValidateService.confirmPassword(this.password))
 
@@ -63,12 +63,13 @@ export class PersonalAreaSettingsComponent implements OnInit {
     submitButtonText = ['עדכן פרטים אישיים', 'עדכן פרטים לגן זה', 'עדכן תמונה']
     imageSrc = '';
     isLoading = false;
-    resultMessage = ''
+    resultMessage = '';
+    appGlobalsService;
 
     ngOnInit() {
         this.currentUser = appGlobalsService.currentUser;
         this.currentUserInGroup = appGlobalsService.currentUserInGroup;
-        console.log(this.currentUser, 'currentUser');
+        this.appGlobalsService = appGlobalsService;
     }
 
     updateUser() {

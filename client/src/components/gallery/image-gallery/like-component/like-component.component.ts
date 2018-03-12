@@ -24,7 +24,6 @@ export class LikeComponentComponent implements OnInit {
     isImageLike = null;
 
     ngOnInit() {
-        console.log("init")
         const path = `${appGlobalsService.currentGroup.id}/${this.id}/likes`;
         this.items = this.af.list(path);
         this.items.subscribe(likeItems => {
@@ -43,7 +42,6 @@ export class LikeComponentComponent implements OnInit {
                     return likeItem.$value === currentUser.mail;
                 });
                 // this.items.remove(key.$key);
-                console.log(likeItems)
             });
         }
     }

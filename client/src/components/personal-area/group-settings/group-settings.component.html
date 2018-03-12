@@ -2,46 +2,46 @@
 
     <div class="input_wrapper">
         <mat-form-field class="input">
-            <input matInput [(ngModel)]="currentGroup.groupName" placeholder="שם" type="text" name="groupName" [formControl]="groupName">
+            <input matInput [(ngModel)]="currentGroup.name" placeholder="שם" type="text" name="groupName" [formControl]="groupName">
         </mat-form-field>
         <div [hidden]="groupName.untouched||!groupName.hasError('required')">שדה נדרש</div>
     </div>
 
     <div class="input_wrapper">
         <mat-form-field class="input">
-            <input matInput [(ngModel)]="currentGroup.groupCity" placeholder="עיר" type="text" name="groupCity" [formControl]="groupCity">
+            <input matInput [(ngModel)]="currentGroup.city" placeholder="עיר" type="text" name="groupCity" [formControl]="groupCity">
         </mat-form-field>
         <div [hidden]="groupCity.untouched||!groupCity.hasError('required')">שדה נדרש</div>
     </div>
     <div class="input_wrapper">
         <mat-form-field class="input">
-            <input matInput [(ngModel)]="currentGroup.groupPhone" placeholder="טלפון" type="text" name="groupPhone" [formControl]="groupPhone">
+            <input matInput [(ngModel)]="currentGroup.phone" placeholder="טלפון" type="text" name="groupPhone" [formControl]="groupPhone">
         </mat-form-field>
         <div [hidden]="groupPhone.untouched||!groupPhone.hasError('required')">שדה נדרש</div>
         <div [hidden]="groupPhone.untouched||!groupPhone.hasError('validatePhone')">הטלפון אינו בתבנית הנכונה</div>
     </div>
     <div class="input_wrapper">
         <mat-form-field class="input">
-            <input matInput [(ngModel)]="currentGroup.groupStreet" placeholder="רחוב" type="text" name="groupStreet" [formControl]="groupStreet">
+            <input matInput [(ngModel)]="currentGroup.street" placeholder="רחוב" type="text" name="groupStreet" [formControl]="groupStreet">
         </mat-form-field>
         <div [hidden]="groupStreet.untouched||!groupStreet.hasError('required')">שדה נדרש</div>
     </div>
     <div class="input_wrapper">
         <mat-form-field class="input">
-            <input matInput [(ngModel)]="currentGroup.groupBuild" placeholder="בנין" type="number" name="groupBuild" [formControl]="groupBuild">
+            <input matInput [(ngModel)]="currentGroup.build" placeholder="בנין" type="number" name="groupBuild" [formControl]="groupBuild">
         </mat-form-field>
         <div [hidden]="groupBuild.untouched||!groupBuild.hasError('required')">שדה נדרש</div>
     </div>
     <div class="input_wrapper">
         <mat-form-field class="input">
-            <input matInput [(ngModel)]="currentGroup.groupFax" placeholder="פקס" type="text" name="groupFax" [formControl]="groupFax">
+            <input matInput [(ngModel)]="currentGroup.fax" placeholder="פקס" type="text" name="groupFax" [formControl]="groupFax">
         </mat-form-field>
         <div [hidden]="groupFax.untouched||!groupFax.hasError('required')">שדה נדרש</div>
     </div>
     <div class="input_wrapper">
-        <mat-form-field class="input">
-            <input matInput [(ngModel)]="currentGroup.groupMail" placeholder="מייל" type="mail" name="groupMail" [formControl]="groupMail">
-        </mat-form-field>
+        <!--<mat-form-field class="input">
+            <input matInput [(ngModel)]="currentGroup.mail" placeholder="מייל" type="mail" name="groupMail" [formControl]="groupMail">
+        </mat-form-field>-->
         <!--<div [hidden]="groupMail.untouched||!groupMail.hasError('required')">שדה נדרש</div>                                               -->
         <div [hidden]="groupMail.untouched||!groupMail.hasError('validateMail')">כתובת המייל אינה בתבנית הנכונה</div>
     </div>

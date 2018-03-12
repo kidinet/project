@@ -138,11 +138,11 @@ namespace DatabaseFirstSample
                         using (var db = new BloggingContext())
                         {
                             var password = db.Users.FirstOrDefault(x => x.mail == recepientEmail.mail).password_;
-                            mail.Body = PopulateBody("groupName", "הסיסמא הזמנית שלכם:" + password);
+                            mail.Body = PopulateBody(groupName, "הסיסמא הזמנית שלכם:" + password);
                         }
                   
                     else
-                        mail.Body = PopulateBody("groupName", "");
+                        mail.Body = PopulateBody(groupName, "");
                     client.Send(mail);
                     mail.To.Remove(mailAdress);
                 }

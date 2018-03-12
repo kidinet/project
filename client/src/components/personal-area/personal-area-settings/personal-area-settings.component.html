@@ -50,7 +50,7 @@
                 </div>
             </form>
         </mat-tab>
-        <mat-tab label="פרטים בגן זה">
+        <mat-tab *ngIf="!appGlobalsService.isAdministrator" label="פרטים בגן זה">
             <form [formGroup]="createUserInGroupForm" (ngSubmit)="updateUserInGroup()">
                 <div class="input_wrapper">
                     <mat-form-field class="input">

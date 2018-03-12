@@ -52,7 +52,7 @@ export class SendReminderComponent implements OnInit {
             user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
                 return details.userMail == user.mail;
             })[0];
-            if (user.details) {
+            if (user.details&&user.mail!==appGlobalsService.currentUser.mail) {
                 users.push(user);
             }
         })
