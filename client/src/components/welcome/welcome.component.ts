@@ -145,13 +145,14 @@ export class WelcomeComponent implements OnInit {
         const index = this.document.location.href.lastIndexOf('/') + 1;
         console.log(appGlobalsService,"appGlobalsService")
         if (appGlobalsService.currentUser.mail) {
-            this.router.navigate(['/home/about']);
-            if (this.document.location.href.substr(index - 1) === '/') {
-                this.router.navigate(['/home/about']);
-            }
-            else {
-                // this.router.navigate(['/about']);
-            }
+            // this.router.navigate(['/home/about']);
+            // if (this.document.location.href.substr(index - 1) === '/') {
+            //     this.router.navigate(['/home/about']);
+            // }
+            // else {
+            //     // this.router.navigate(['/about']);
+            // }
+             this.router.navigate(['/home']);
         }
     }
 }

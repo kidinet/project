@@ -7,7 +7,7 @@
             </h3>
             <div class="content">{{currentForum.text}}</div>
             <div class="details">
-                <h6>{{detail[currentForum.details]}}</h6>
+                <h6 *ngIf="currentForum.details!==appGlobalsService.currentUser.mail">{{detail[currentForum.details]}}</h6>
                 <h6 *ngIf="currentForum.details==appGlobalsService.currentUser.mail">אני</h6>
                 <h6>{{moment(currentForum.date).calendar()}}</h6>
             </div>
@@ -16,7 +16,7 @@
             <div class="content">
                 <i class="fa fa-comments" aria-hidden="true"></i>
                 <div class="details">
-                    <h6>{{detail[reply.details]}}</h6>
+                    <h6 *ngIf="reply.details!==appGlobalsService.currentUser.mail">{{detail[reply.details]}}</h6>
                     <h6 *ngIf="reply.details==appGlobalsService.currentUser.mail">אני</h6>
                     <h6>{{moment(reply.date).calendar()}}</h6>
                 </div>

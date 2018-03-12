@@ -32,7 +32,6 @@ export function setCurreUser(user) {
 export function setCurrentUserInGroup(userInGroup) {
     currentUserInGroup = userInGroup;
     this.setIsAdministrator(currentUserInGroup.isAdministrator);
-    console.log(isAdministrator,"isAdministrator")
 }
 export function setUsersInCurrentGroup(UsersInCurrentGroupParam: User[]) {
     usersInCurrentGroup = UsersInCurrentGroupParam;

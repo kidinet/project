@@ -40,7 +40,6 @@ export class FormListComponent implements OnInit {
     ngOnInit() {
         this.usersDetails = this.getusersInCurrentGroupDetails();
         this.getChatDetails();
-        console.log(this.details, "details");
     }
     getChatDetails() {
         appGlobalsService.usersInCurrentGroup.forEach(user => {

@@ -7,7 +7,7 @@
 
     <div class="asaid">
         <app-chat *ngIf="!appGlobalsService.isAdministrator" [user]="appGlobalsService.currentUser" [hidden]="!isChat"></app-chat>
-        <div [hidden]="isChat" class="reminders_wrapper">
+        <div [hidden]="isChat" class="reminders_wrapper" *ngIf="!appGlobalsService.isAdministrator">
             <mat-checkbox (change)=showMoreReminders(0) class="example-margin" [(ngModel)]="notRead">הודעות שלא נקראו בלבד</mat-checkbox>
             <div class="reminder" *ngFor="let reminder of this.reverseItems ; index as i" (click)="readReminder(reminder)" [ngClass]="{is_read:reminder.isRead,open:openReminders[reminder['$key']]}">
                 <h3 class="text">{{reminder.text}}</h3>

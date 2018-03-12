@@ -30,7 +30,7 @@ export class LookForFriendsComponent implements OnInit {
             user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
                 return details.userMail == user.mail;
             })[0];
-            if (user.details) {
+            if (user.latitute&&user.longitude&&user.details&&user.mail!=appGlobalsService.currentUser.mail) {
                 users.push(user);
             }
         })

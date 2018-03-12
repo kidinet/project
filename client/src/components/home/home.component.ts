@@ -26,7 +26,14 @@ export class HomeComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private router: Router,
         public af: AngularFireDatabase) {
-        if (!appGlobalsService.currentUser.mail) {
+        if (appGlobalsService.currentUser.mail) {
+            console.log(appGlobalsService.currentUser.mail)
+            const index = this.document.location.href.lastIndexOf('/') + 1;
+            if (this.document.location.href.substr(index) === 'home') {
+                this.router.navigate(['/home/about']);
+            }
+            this.router.navigate(['/home/about']);
+        } else {
             this.router.navigate(['/']);
         }
     }
@@ -45,8 +52,8 @@ export class HomeComponent implements OnInit {
     usersInCurrentGroup
 
     ngOnInit() {
-        this.usersInCurrentGroup=this.getusersInCurrentGroupDetails();
-       
+        this.usersInCurrentGroup = this.getusersInCurrentGroupDetails();
+
 
         // get the reminders message from database;
         this.path = `${appGlobalsService.currentGroup.id}/${appGlobalsService.currentUser.mail.replace('@', 'A').replace('.', 'B')}/reminders`;
@@ -94,7 +101,7 @@ export class HomeComponent implements OnInit {
             user.details = appGlobalsService.usersInCurrentGroup.filter((details) => {
                 return details.userMail == user.mail;
             })[0];
-            if (user.details) {
+            if (user.details&&user.mail!==appGlobalsService.currentUser.mail) {
                 users.push(user);
             }
         })

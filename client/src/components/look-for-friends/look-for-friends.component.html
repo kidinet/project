@@ -1,45 +1,42 @@
 <div class="look_fom_friends">
     <div class="asaid">
-        <div class="user_in_group" *ngFor="let user of usersInCurrentGroupDetails; let i = index" (click)="setCurrentUser(i)">
-            <span>{{user.details.childFirstName}}</span>
-            <span>{{user.details.childLastName}}</span>
-            <img src="../../assets/images/progile.jpg"  class="profile">
+        <h2 *ngIf="!currentUser.latitute||!currentUser.longitude">פרטי המיקום שלך אינם מעודכנים!</h2>
+        <div *ngIf="currentUser.latitute&&currentUser.longitude">
+            <div class="user_in_group" *ngFor="let user of usersInCurrentGroupDetails; let i = index" (click)="setCurrentUser(i)">
+                <span>{{user.details.childFirstName}}</span>
+                <span>{{user.details.childLastName}}</span>
+                <img src="../../assets/images/progile.jpg" class="profile">
+            </div>
         </div>
         <button mat-raised-button color="accent" (click)=showKinderGardenDirection()>הגן שלנו</button>
     </div>
     <div class="map">
         <agm-map #gm [latitude]="groupLatitude" [longitude]="groupLongitude" [zoom]="14">
             <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination" [panel]="myPanel"></agm-direction>
-            <agm-marker *ngFor="let user of usersInCurrentGroupDetail; let i = index" (markerClick)="onMarkerClicked(i)"
-                        [latitude]="user.latitute" [longitude]="user.longitude"></agm-marker>
-            <agm-info-window #infoWindow *ngFor="let user of usersInCurrentGroupDetails; let i = index"
-                             [latitude]="user.latitute" [longitude]="user.longitude" [isOpen]="currentFriend===user">
+            <agm-marker *ngFor="let user of usersInCurrentGroupDetail; let i = index" (markerClick)="onMarkerClicked(i)" [latitude]="user.latitute"
+                [longitude]="user.longitude"></agm-marker>
+            <agm-info-window #infoWindow *ngFor="let user of usersInCurrentGroupDetails; let i = index" [latitude]="user.latitute" [longitude]="user.longitude"
+                [isOpen]="currentFriend===user">
                 <div class="info_window">
                     <span>{{user.details.childFirstName}}</span>
                     <span>{{user.details.childLastName}}</span>
                 </div>
             </agm-info-window>
-            <agm-marker (markerClick)="toggleCurrentGroupInfoOpen()"
-                        [latitude]="groupLatitude" [longitude]="groupLatitude"></agm-marker>
-            <agm-marker
-                        [latitude]="currentUser.latitute" [longitude]="currentUser.longitude"></agm-marker>
-            <agm-info-window #infoWindowCurrentGroup
-                             [latitude]="currentUser.latitute" [longitude]="currentUser.longitude" [isOpen]="true">
+            <agm-marker (markerClick)="toggleCurrentGroupInfoOpen()" [latitude]="groupLatitude" [longitude]="groupLatitude"></agm-marker>
+            <agm-marker [latitude]="currentUser.latitute" [longitude]="currentUser.longitude"></agm-marker>
+            <agm-info-window #infoWindowCurrentGroup [latitude]="currentUser.latitute" [longitude]="currentUser.longitude" [isOpen]="true">
                 <div class="info_window">
                     <span>אני</span>
                 </div>
             </agm-info-window>
-            <agm-info-window #infoWindowCurrentGroup
-                             [latitude]="currentGroup.latitute" [longitude]="currentGroup.longitude" [isOpen]="isCurrentGroupInfoOpen">
+            <agm-info-window #infoWindowCurrentGroup [latitude]="currentGroup.latitute" [longitude]="currentGroup.longitude" [isOpen]="isCurrentGroupInfoOpen">
                 <div class="info_window">
                     <span>{{currentGroup.name}}</span>
                 </div>
             </agm-info-window>
         </agm-map>
         <div #myPanel class="direction_details">
-        
+
         </div>
     </div>
 </div>
-
-
