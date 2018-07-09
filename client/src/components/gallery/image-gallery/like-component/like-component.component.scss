@@ -1,0 +1,20 @@
+i {
+  color: rgba(81, 79, 103, 0.9);
+  cursor: pointer;
+  padding: 0 0 6px 0;
+  font-size: 22px;
+  vertical-align: middle;
+  &.is_like {
+    color: #f9ffcf;
+  }
+}
+
+.count {
+  padding: 5px 7px;
+  font-weight: bold;
+}
+
+* {
+  vertical-align: middle;
+  font-size: 15px;
+}

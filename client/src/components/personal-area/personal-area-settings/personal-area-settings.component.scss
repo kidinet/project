@@ -1,0 +1,109 @@
+@import "../../../assets/style/globalStyle";
+
+.personal_settings {
+  height: 620px;
+  position: relative;
+  .mat-tab-group {
+    form {
+      width: 450px;
+      padding: 20px;
+      .input_wrapper {
+        display: block;
+        margin: 0 0 15px;
+        .input {
+          width: 100%;
+        }
+      }
+    }
+    &.blur {
+      filter: blur(2px);
+    }
+  }
+
+  button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 5;
+  }
+}
+
+.add_new_image {
+  padding: 50px 30px;
+  text-align: center;
+  position: relative;
+  .fa-times {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+  }
+  .input_wrapper {
+    padding: 10px;
+    .inputfile + label {
+      font-size: 1.25em;
+      font-weight: 700;
+      color: white;
+      margin: 0;
+      padding: 5px;
+      border-radius: 2px;
+      background-color: #009688;
+      display: inline-block;
+      cursor: pointer;
+    }
+    label {
+      margin: 0 0 20px 0;
+    }
+
+    .inputfile:focus + label,
+    .inputfile + label:hover {
+
+    }
+    .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+  }
+
+  .edit_wrappwr {
+    padding: 12px;
+    i {
+      font-size: 20px;
+      padding: 2px;
+      cursor: pointer;
+    }
+    &:last-child {
+      margin: 0 0 20px 0;
+    }
+  }
+  .canvas_wrapper {
+    position: relative;
+    canvas {
+      display: block;
+      transition: 0.3s;
+      margin: auto;
+    }
+    .spinner {
+      position: absolute;
+      @include absolute-vertical-middle();
+      @include absolute-middle();
+    }
+  }
+
+  img {
+    height: 300px;
+    margin: 20px;
+    display: none;
+  }
+}
+
+.mat-spinner {
+  position: absolute;
+  top: 240px;
+  right: 175px;
+}

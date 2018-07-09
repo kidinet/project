@@ -18,15 +18,40 @@ namespace WebApi.Controllers
     [RoutePrefix("api")]
     public class GroupsController : BaseController
     {
-        
         Bl_Group Bl_Group = new Bl_Group();
-        [HttpGet]
+        [HttpPost]
         [Route("createGroup/{Language}/{Registered}")]
-        public IHttpActionResult createGroup(string Language, bool Registered, string name, string city, string street, int build, string phone, string mail, string fax)
+        public IHttpActionResult createGroup([FromBody]Group newGroup)
         {
-            //  localhost:7022/api/createGroup/he/true?name=kidinet&city=BneiBraq&street=lklklklk&build=2&phone=5798888&mail=kidinet@gmail.com&fax=1234567
-            return Ok(Bl_Group.createGroup(name, city, street, build, phone, mail, fax));
+            return Json(Bl_Group.createGroup(newGroup));
+        }
+        //[HttpGet]
+        //[Route("createGroup/{Language}/{Registered}")]
+        //public IHttpActionResult createGroup(string Language, bool Registered, string name, string city, string street, int build, string phone, string mail, string fax)
+        //{
+        //    //  localhost:7022/api/createGroup/he/true?name=kidinet&city=BneiBraq&street=lklklklk&build=2&phone=5798888&mail=kidinet@gmail.com&fax=1234567
+        //    return Ok(Bl_Group.createGroup(name, city, street, build, phone, mail, fax));
+        //}
+        [HttpGet]
+        [Route("deleteGroup/{Language}/{Registered}")]
+        public IHttpActionResult deleteGroup(int groupId)
+        {
+            return Ok(Bl_Group.deleteGroup(groupId));
+        }
+        [HttpPost]
+        [Route("updateGroup/{Language}/{Registered}")]
+        public IHttpActionResult updateGroup([FromBody]Group groupToUpdte)
+        {
+            return Ok(Bl_Group.updateGroup(groupToUpdte));
+        }
+        [HttpPost]
+        [Route("addUsers/{Language}/{Registered}")]
+        public IHttpActionResult addUsers([FromBody]User[] users)
+        {
+            Bl_Group.addUserToGroup(users);
+            return Ok(true);
         }
 
     }
 }
+

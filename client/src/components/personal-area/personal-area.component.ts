@@ -1,16 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+
+
 
 @Component({
-  selector: 'app-personal-area',
-  templateUrl: './personal-area.component.html',
-  styleUrls: ['./personal-area.component.scss']
+    selector: 'app-personal-area',
+    templateUrl: './personal-area.component.html',
+    styleUrls: ['./personal-area.component.scss']
 })
 export class PersonalAreaComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+
+    }
+
 
 }

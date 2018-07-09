@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <div>
+    <div class="color_option" *ngFor="let color of colors" [ngStyle]="{backgroundColor:color}" (click)="colorClick($event)"></div>
+  </div>
+  <div>
+    <div class="color_option" *ngFor="let icon of icons" (click)="iconClick($event)">
+      <i class="fa fa-{{icon}}"></i>
+    </div>
+  </div>
+</div>

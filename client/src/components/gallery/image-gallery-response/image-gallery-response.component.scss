@@ -1,0 +1,95 @@
+@import '../../../assets/style/globalStyle';
+
+.image_gallery_response_wrapper {
+  width: 220px;
+  background-color: lightgray;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 50;
+  @include fadeInAnimate(0.6);
+  .response_container_wrapper {
+    text-align: right;
+    .response_container {
+      .response_content {
+        padding: 6px 10px;
+        border-radius: 8px;
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
+        word-wrap: break-word;
+        * {
+          color: black;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -3px;
+          right: -2px;
+          transform: rotate(156deg);
+          width: 0;
+          height: 0;
+          border-top: 5px solid transparent;
+          border-left: 9px solid;
+          border-bottom: 5px solid transparent;
+        }
+      }
+      .details {
+        font-size: 10px;
+        margin: 5px 0 !important;
+        color: #6666b4;
+      }
+
+    }
+    &:nth-child(odd) {
+      text-align: left;
+      .response_container {
+        .response_content {
+          &:after {
+            left: -4px;
+            transform: rotate(151deg);
+            right: unset;
+          }
+        }
+      }
+    }
+  }
+  input {
+    outline: none;
+    box-shadow: 0px 1px 2px 0px #737070;
+    border: none;
+    width: 100%;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 0 0 5px 0;
+  }
+  .button_container {
+    text-align: left;
+    button {
+      @include md-button(white, $app_red, 15);
+      font-size: 15px;
+    }
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: -25px;
+    -webkit-transform: rotate(156deg);
+    transform: rotate(91deg);
+    width: 0;
+    height: 0;
+    border-top: 24px solid transparent;
+    border-left: 32px solid rgb(211, 211, 211);
+    border-bottom: 3px solid transparent;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}

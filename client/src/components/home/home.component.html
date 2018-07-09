@@ -1,3 +1,37 @@
-<app-header></app-header>
-<app-nav></app-nav>
-<router-outlet></router-outlet>
+<div class="home" *ngIf="!isLoading">
+    <app-header></app-header>
+    <app-nav (chatStatusChange)=toggleChatStatus($event)></app-nav>
+    <div class="router">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div class="asaid">
+        <app-chat *ngIf="!appGlobalsService.isAdministrator" [user]="appGlobalsService.currentUser" [hidden]="!isChat"></app-chat>
+        <div [hidden]="isChat" class="reminders_wrapper" *ngIf="!appGlobalsService.isAdministrator">
+            <mat-checkbox (change)=showMoreReminders(0) class="example-margin" [(ngModel)]="notRead">הודעות שלא נקראו בלבד</mat-checkbox>
+            <div class="reminder" *ngFor="let reminder of this.reverseItems ; index as i" (click)="readReminder(reminder)" [ngClass]="{is_read:reminder.isRead,open:openReminders[reminder['$key']]}">
+                <h3 class="text">{{reminder.text}}</h3>
+                <h5 class="date">{{moment(reminder.date).fromNow()}}</h5>
+            </div>
+            <button (click)="showMoreReminders(6)" class="showMoreRminders" mat-raised-button color="primary">הצג הודעות קודמות</button>
+        </div>
+
+        <div class="manager_wrapper" [hidden]="!isChat" *ngIf="appGlobalsService.isAdministrator">
+            <i (click)="setCurrentUser(null)" *ngIf="currentUserForChat" class="fa fa-window-close" aria-hidden="true"></i>
+            <div class="user_in_group" *ngFor="let user of usersInCurrentGroup" (click)="setCurrentUser(user)">
+                <span>{{user.firstName}}</span>
+                <span>{{user.lastName}}</span>
+                <div class="nickname">
+                    <span>שם הילד: </span> {{user.details.childFirstName}}  {{user.details.childLastName}}</div>
+                <img src="../../assets/images/progile.jpg" class="profile">
+            </div>
+            <app-chat *ngIf="currentUserForChat" [user]="currentUserForChat">
+                <div class="current_user_chat">
+                    <img src="../../assets/images/progile.jpg" class="profile">
+                    <span>{{currentUserForChat.firstName}}</span>
+                    <span>{{currentUserForChat.lastName}}</span>
+                </div>
+            </app-chat>
+        </div>
+    </div>
+</div>

@@ -18,32 +18,40 @@ namespace DatabaseFirstSample
         public Group()
         {
             this.abouts = new HashSet<about>();
-            this.FormDilemmas = new HashSet<FormDilemma>();
-            this.ImageGalleries = new HashSet<ImageGallery>();
-            this.Reminders = new HashSet<Reminder>();
             this.UserInGroups = new HashSet<UserInGroup>();
+            this.ThisDayOfGroups = new HashSet<ThisDayOfGroup>();
+            this.ImageGalleries = new HashSet<ImageGallery>();
         }
-    
+
+        public Group(string name, string city, string street, int build, string phone, string mail, string fax)
+        {
+            this.name = name;
+            this.city = city;
+            this.street = street;
+            this.build = build;
+            this.phone = phone;
+            this.mail = mail;
+            this.fax = fax;
+        }
+
         public int id { get; set; }
         public string name { get; set; }
         public string city { get; set; }
-        public string streat { get; set; }
         public Nullable<int> build { get; set; }
         public string phone { get; set; }
         public string mail { get; set; }
         public string fax { get; set; }
         public Nullable<double> latitute { get; set; }
         public Nullable<double> longitude { get; set; }
+        public string street { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<about> abouts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FormDilemma> FormDilemmas { get; set; }
+        public virtual ICollection<UserInGroup> UserInGroups { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThisDayOfGroup> ThisDayOfGroups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ImageGallery> ImageGalleries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reminder> Reminders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserInGroup> UserInGroups { get; set; }
     }
 }

@@ -19,14 +19,20 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "customTheme.scss"
       ],
       "stylePreprocessorOptions": {
         "includePaths": [
-          "src/globalStyle.scss"
+          "src/globalStyle.scss",
+          "../node_modules/swiper/dist/css/swiper.css",
+          "customTheme.scss"
         ]
       },
-      "scripts": [],
+      "scripts": [
+        "../node_modules/moment/min/moment.min.js",
+        "../node_modules/swiper/dist/js/swiper.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

@@ -1,0 +1,21 @@
+<div class="chosse_group_wrapper">
+    <h4>שלום {{currentUser.firstName}}</h4>
+    <h4>אנא בחר/י את הקבוצה הרצויה:</h4>
+    <mat-radio-group class="radio-group" [(ngModel)]="selectedGroup">
+        <mat-radio-button class="radio-button" *ngFor="let group of groups" [value]="group.Key.groupId">
+            <div class="content">
+                {{group.Value.name}}
+                <span class="address">
+                {{group.Valuestreet}}
+                {{group.Value.build}}
+                 {{group.Value.croupCity}}
+            </span>
+                <span class="user">
+                {{group.Key.childFirstName}}
+                {{group.Key.childLastName}}
+            </span>
+            </div>
+        </mat-radio-button>
+    </mat-radio-group>
+    <button mat-raised-button color="primary" [disabled]="selectedGroup==-1" (click)="chooseGroup()">אישור</button>
+</div>

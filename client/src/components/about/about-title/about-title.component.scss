@@ -1,0 +1,47 @@
+@import '../../../assets/style/globalStyle';
+
+.about_title_container {
+  display: inline-block;
+  //width: calc(100% - 200px);
+  .wrapper {
+    background-color: rgba(255, 248, 46, 0.47);
+    display: inline-block;
+    position: relative;
+    transform: rotate(-3deg);
+    transition: 0.4s;
+    border-radius: 50%;
+    i {
+      color: #413737;
+      font-size: 25px;
+    }
+    &.small {
+      padding: 6px 13px;
+    }
+    &.medium {
+      padding: 7px 20px;
+      .icon {
+        padding: 0 11px;
+      }
+    }
+    &.large {
+      padding: 15px 30px;
+
+    }
+  }
+  .app_about_title_style {
+    position: absolute;
+    top: 10px;
+    right: 70px;
+    @include fadeInAnimate(0.6);
+    z-index: map_get($z-indexes, 'popup-overlay');
+  }
+  .overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top:0;
+    right:0;
+  }
+}
+
+

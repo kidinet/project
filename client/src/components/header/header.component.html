@@ -1,11 +1,16 @@
 <header>
     <div class="top">
-        <h2 class="name">ברוכים  הבאים </h2><h2 class="name">ל{{groupName}}</h2>
-        <h3>{{address}}</h3>
-        <img src="../../assets/images/kidinet_logo.svg" />
+        <h2 class="name">ברוכים  הבאים </h2>
+        <h2 class="name">ל{{appGlobalsService.currentGroup.name}}</h2>
+        <p>
+            <span>{{appGlobalsService.currentGroup.street}}</span>
+            <span>{{appGlobalsService.currentGroup.build}}</span>
+            <span>{{appGlobalsService.currentGroup.city}}</span>
+        </p>
+        <button mat-button color="accent" (click)="logOut()">התנתק</button>
+        <img src="../../assets/images/logo/kidinet_logo.svg" />
     </div>
-    <div class="content">
-        <app-top-message></app-top-message>
-    </div>
+    <div class="messege_wrapper"></div>
+
 
 </header>

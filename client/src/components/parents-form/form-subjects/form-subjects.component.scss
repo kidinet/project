@@ -1,0 +1,128 @@
+@import '../../../assets/style/globalStyle';
+
+.input_wrapper {
+  position: relative;
+  transition: 0.2s;
+  margin: 0 0 45px 0;
+  width: 100%;
+  input {
+    outline: none;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    font-size: 20px;
+
+  }
+  .mat-form-field-underline {
+    display: none;
+  }
+  .fa-search {
+    position: absolute;
+    left: 5px;
+    @include absolute-vertical-middle();
+    color: $dark_gray;
+  }
+  &:hover {
+    transform: scale(1.05, 1);
+    input {
+      padding: 7px;
+    }
+  }
+}
+
+.form_subjects {
+    max-height: 400px;
+    overflow: scroll;
+    padding: 2px;
+  .subject {
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    background-color: #f3f3f3;
+    transition: 0.3s;
+    padding: 10px;
+    margin: 7px 0;
+    max-height: 40px;
+    overflow: hidden;
+    h3{
+      display: inline-block;
+      width:100%;
+      @include text-truncate();
+    }
+    .details {
+      h6 {
+        color: $blue_details;
+        font-weight: bold;
+        display: inline-block;
+      }
+    }
+    .count {
+      font-weight: bold;
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+      cursor:pointer;
+    }
+    &.selected{
+      background-color: #a0939363;
+    }
+  }
+  &.expanded {
+    .subject {
+      max-height: 100px;
+    }
+
+  }
+  &::-webkit-scrollbar{
+    width:2px;
+  }
+}
+
+.button_wrapper {
+  text-align: left;
+  .mat-button {
+    background-color: $app_red;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 18px;
+  }
+}
+
+.new_dilemma_wrapper {
+  transition: 0.3s;
+  height: 70px;
+  overflow: hidden;
+  .new_dilemma_button {
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin: 20px 0 0 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  form {
+    margin: 15px 0;
+   .input{
+     width:100%;
+   }
+  }
+  .actions {
+    button {
+      color: white;
+      width: 49%;
+
+      &.create {
+        float: left;
+        color: white;
+      }
+      &.cancel {
+        float: right;
+      }
+    }
+  }
+
+  &.show {
+    height: 400px;
+  }
+}
+

@@ -1,3 +1,38 @@
-<p>
-  this-week works!
-</p>
+<div class="this_day">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div class="date_wrapper">
+        <i class="fa fa-angle-double-right" aria-hidden="true" (click)="prevDay()" matTooltip="היום הקודם" [matTooltipPosition]="'before'"></i>
+        <span>יום</span>
+        <span class="day">{{currentDay}}</span>
+        <span class="date">{{currentDate}}</span>
+        <i class="fa fa-angle-double-left" aria-hidden="true" (click)="nextDay()" matTooltip="היום הבא" [matTooltipPosition]="'after'"></i>
+    </div>
+    <div *ngFor="let title of this.items | async" class="wrapper" [ngClass]="{'blur':isLoading,'style_open':title.isStyleOpen}"
+        [ngStyle]="{background: 'linear-gradient(#f6f6f6, '+title.color+')'}">
+        <i class="fa fa-times" aria-hidden="true" (click)="removeTitle(title)" *ngIf="appGlobalsService.isAdministrator"></i>
+        <div class="content">
+            <h2 [attr.contenteditable]="isEditable" [textContent]="title.title" (input)="title.title=$event.target.textContent" (blur)="updateThisDayOfGroupTitle(title)">
+                {{title.title}}
+            </h2>
+            <h4 (blur)="updateThisDayOfGroupTitle(title)" class="value" [attr.contenteditable]="isEditable" [textContent]="title[this.dateData]"
+                (input)="title[this.dateData]=$event.target.textContent"></h4>
+            <i [ngClass]="title.icon" aria-hidden="true" (click)="toggleStyleOpen(title)"></i>
+            <app-style *ngIf="title.isStyleOpen" [colors]="appGlobalsStyle.colors" [icons]="appGlobalsStyle.icons" class="app_style"
+                (color)="getColor($event,title)" (icon)="getIcon($event,title)"></app-style>
+
+            <div class="fixed" *ngIf="title.isStyleOpen" (click)="toggleStyleOpen(title)"></div>
+        </div>
+    </div>
+    <div *ngIf="appGlobalsService.isAdministrator" class="wrapper" [ngClass]="{'blur':isLoading}" [ngStyle]="{background: 'linear-gradient(#f6f6f6, '+newTitle.color+')'}">
+        <h4>הוסף כרטסיה חדשה</h4>
+        <div class="content">
+            <h2 [attr.contenteditable]="isEditable" [textContent]="newTitle.title" (input)="newTitle.title=$event.target.textContent"
+                placeHolder="jhjh" (blur)="addNewTitle()">
+                {{newTitle.title}}
+            </h2>
+            <i [ngClass]="newTitle.icon" aria-hidden="true" (click)="toggleStyleOpen(newTitle)"></i>
+            <app-style *ngIf="newTitle.title&&newTitle.isStyleOpen" [colors]="appGlobalsService.colors" [icons]="appGlobalsService.icons"
+                class="app_style" (color)="getColor($event,newTitle)" (icon)="getIcon($event,newTitle)"></app-style>
+        </div>
+    </div>
+</div>

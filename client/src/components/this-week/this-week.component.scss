@@ -1,1 +1,111 @@
-@import "../../globalStyle.scss";
+@import "../../assets/style/globalStyle";
+
+.this_day {
+  padding: 10px;
+  font-size: 0;
+  height: calc(100vh - 175px);
+  position: relative;
+  text-align: center;
+  .date_wrapper {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: $primary_color;
+    .date {
+      margin: 0 10px 0 0;
+    }
+    i {
+      cursor: pointer;
+      font-size: 17px;
+      vertical-align: middle;
+    }
+  }
+  .wrapper {
+    text-align: right;
+    display: inline-block;
+    border-radius: 5px;
+    position: relative;
+    width: 250px;
+    padding: 10px;
+    vertical-align: top;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0;
+    margin: 15px;
+    position: relative;
+    transition: all 0.3s;
+    //background: linear-gradient(rgb(246, 246, 246), rgb(118, 228, 225));
+    color: #5f583b;
+    .content {
+      background-color: white;
+      padding: 20px 20px 10px 10px;
+      border-radius: 7px;
+      box-shadow: 1px 2px 6px 0 rgba(41, 37, 37, 0.66);
+      .title {
+        font-size: 30px;
+        font-weight: bold;
+        padding: 0 0 10px 0;
+      }
+      *[contenteditable]:focus {
+        outline: none;
+        border: none;
+        color: $dark_gray;
+      }
+      h4 {
+        min-height: 100px;
+        color: black;
+        max-height: 300px;
+        overflow: hidden;
+      }
+      i {
+        position: absolute;
+        top: 5px;
+        left: -20px;
+        font-size: 40px;
+        z-index: 100;
+        cursor: pointer;
+       
+      }
+      
+      .app_style {
+        position: absolute;
+        left: 15px;
+        bottom: 15px;
+      }
+    }
+       i.fa-times{
+          position:absolute;
+          top: 12px;
+          right: 15px;
+          font-size: 20px;
+          color:black;
+          cursor:pointer;
+          }
+
+    &:hover {
+      transform: scale(1.05, 1.05);
+    }
+    &.blur {
+      filter: blur(2px);
+    }
+    &.style_open {
+      min-height: 300px;
+      &:hover {
+        transform: unset;
+      }
+      .app_style {
+        z-index: map_get($z-indexes, 'popup-overlay')+1;
+      }
+    }
+  }
+  .fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: map_get($z-indexes, 'popup-overlay');
+  }
+  .mat-spinner {
+    position: absolute;
+    @include absolute-middle();
+  }
+}

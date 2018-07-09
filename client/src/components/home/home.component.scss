@@ -1,1 +1,123 @@
-@import "../../globalStyle.scss";
+@import "../../assets/style/globalStyle";
+
+.home {
+  .router {
+    width: calc(100% - 300px);
+    display: inline-block;
+    height: calc(100vh - 230px);
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+      display:none;
+    }
+  }
+  .asaid {
+    width: 293px;
+    display: inline-block;
+    vertical-align: top;
+    height: calc(100vh - 240px);
+    border-right: solid 2px $primary_color;
+    margin: 5px 0;
+    padding: 20px;
+    overflow-y: scroll;
+    .reminder {
+      padding: 0 10px;
+      background-color: rgba(0, 150, 136, 0.44);
+      border-radius: 2px;
+      margin: 5px;
+      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      transition: all 0.3s;
+      max-height: 65px;
+      transform: scale(1.03, 1);
+      @include fadeInAnimate(0.6);
+      .text {
+        font-size: 20px;
+        padding: 10px 0 0 0;
+        display: inline-block;
+        max-width: 100%;
+        @include text-truncate();
+      }
+      .date {
+        font-size: 13px;
+        text-align: left;
+        color: #1a1a80;
+        padding: 5px 0;
+      }
+      &:hover {
+        transform: scale(1.05, 1);
+      }
+      &.is_read {
+        background-color: rgba(179, 214, 212, 0.8);
+        transform: scale(1, 1);
+        &:hover {
+          transform: scale(1.05, 1);
+        }
+      }
+      &.open, &:hover {
+        max-height: 1000px;
+        .text {
+          white-space: normal;
+        }
+      }
+    }
+    .showMoreRminders{
+      color:white;
+      font-size: 20px;
+      margin: 21px auto;
+      display: block;
+    }
+    .manager_wrapper {
+      height: 100%;
+      position: relative;
+      i {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        z-index: 10;
+        color: $app_red;
+        cursor: pointer;
+      }
+      .user_in_group {
+        font-size: 19px;
+        padding: 10px 10px 10px 40px;
+        position: relative;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        transition: 0.3s;
+        text-align: right;
+        .nickname{
+          font-size: 13px;
+        }
+        .profile {
+          height: 30px;
+          position: absolute;
+          @include absolute-vertical-middle();
+          left: 10px;
+        }
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.14);
+          cursor: pointer;
+        }
+      }
+      app-chat {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: calc(100vh - 300px);
+        .current_user_chat {
+          color: #656594;
+          font-weight: bold;
+          padding: 10px;
+          font-size: 18px;
+          img {
+            height: 30px;
+          }
+        }
+      }
+    }
+    &::-webkit-scrollbar {
+      width: 2px;
+      color: $primary_color;
+    }
+  }
+}

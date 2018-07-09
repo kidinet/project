@@ -17,8 +17,6 @@ namespace DatabaseFirstSample
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.LikeImages = new HashSet<LikeImage>();
-            this.Reminders = new HashSet<Reminder>();
             this.UserInGroups = new HashSet<UserInGroup>();
         }
     
@@ -33,13 +31,7 @@ namespace DatabaseFirstSample
         public Nullable<double> latitute { get; set; }
         public Nullable<double> longitude { get; set; }
     
-        public virtual AdministratorSetting AdministratorSetting { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LikeImage> LikeImages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reminder> Reminders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserInGroup> UserInGroups { get; set; }
-        public virtual ResponseImage ResponseImage { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace DatabaseFirstSample
         public string childFirstName { get; set; }
         public string childLastName { get; set; }
         public string nickname { get; set; }
+        public Nullable<System.DateTime> child_born { get; set; }
     
         public virtual Group Group { get; set; }
         public virtual User User { get; set; }

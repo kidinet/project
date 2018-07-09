@@ -1,0 +1,51 @@
+@mixin  md-button($color,$bgColor,$lineHigh){
+ background-color: $bgColor;
+ color:$color;
+ line-height: $lineHigh+px;
+ min-width: 0;
+ min-height: 0;
+ padding:10px;
+}
+@mixin absolute-horizontal-middle() {
+ left: 50%;
+ transform: translateX(-50%);
+ -webkit-transform: translateX(-50%);
+ -moz-transform: translateX(-50%);
+ -o-transform: translateX(-50%);
+ -ms-transform: translateX(-50%);
+}
+
+@mixin absolute-vertical-middle() {
+ top: 50%;
+ transform: translateY(-50%);
+ -webkit-transform: translateY(-50%);
+ -moz-transform: translateY(-50%);
+ -o-transform: translateY(-50%);
+ -ms-transform: translateY(-50%);
+}
+
+@mixin absolute-middle() {
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ -webkit-transform: translate(-50%,-50%);
+ -moz-transform: translate(-50%,-50%);
+ -o-transform: translate(-50%,-50%);
+ -ms-transform: translate(-50%,-50%);
+}
+
+@mixin clear-absolute() {
+ top: auto;
+ left: auto;
+ position: initial;
+ transform: none;
+ -webkit-transform: none;
+ -moz-transform: none;
+ -o-transform: none;
+ -ms-transform: none;
+}
+@mixin text-truncate {
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}

@@ -1,0 +1,21 @@
+<div class="chat_main_wrapper">
+    <!--<i class="fa fa-upload" aria-hidden="true" (click)="showHistoryChat()"></i>-->
+    <ng-content></ng-content>
+    <h4 class="value" [attr.contenteditable]="true" [textContent]="msg" (input)="msg=$event.target.textContent" (keyup.enter)="send()"></h4>
+    <div class="overlay" (click)="closeMe()"></div>
+    <div class="chat_wrapper" #chat scroll-directive>
+        <div class="chat_container_wrapper " [ngClass]="{'administrator':message.userMail!==appGlobalsService.currentUser.mail}" *ngFor="let message of this.items | async ; index as i">
+            <div class="chat_container">
+                <h5 class="chat_content">
+                    <span>{{message.message}}</span>
+                </h5>
+                <h6 class="details">
+                    <span *ngIf="message.userMail!==appGlobalsService.currentUser.mail">{{details[message.userMail]}}</span>
+                    <span *ngIf="message.userMail==appGlobalsService.currentUser.mail">אני</span>
+                    <br/>                    
+                    <span>{{moment(message.date).fromNow()}}</span>
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>

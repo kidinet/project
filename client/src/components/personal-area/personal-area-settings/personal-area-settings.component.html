@@ -1,0 +1,134 @@
+<div class="personal_settings">
+    <mat-tab-group #tab [ngClass]="{'blur':isLoading}">
+        <mat-tab label="פרטים אישיים">
+            <form [formGroup]="createUserForm" (ngSubmit)="updateUser()">
+                <div class="input_wrapper">
+                    <mat-form-field class="input">
+                        <input matInput placeholder="שם פרטי" type="text" [(ngModel)]="currentUser.firstName"
+                               name="firstName" [formControl]="firstName">
+                    </mat-form-field>
+                    <div [hidden]="firstName.untouched||!firstName.hasError('required')">שדה נדרש</div>
+                </div>
+
+                <div class="input_wrapper">
+                    <mat-form-field class="input">
+                        <input matInput placeholder="שם משפחה" [(ngModel)]="currentUser.lastName" type="text"
+                               name="lastName" [formControl]="lastName">
+                    </mat-form-field>
+                    <div [hidden]="lastName.untouched||!lastName.hasError('required')">שדה נדרש</div>
+                </div>
+                <div class="input_wrapper">
+                    <mat-form-field class="input">
+                        <input matInput placeholder="עיר" [(ngModel)]="currentUser.city" type="text" name="userCity"
+                               [formControl]="userCity">
+                    </mat-form-field>
+                    <div [hidden]="userCity.untouched||!userCity.hasError('required')">שדה נדרש</div>
+                </div>
+                <div class="input_wrapper">
+                    <mat-form-field class="input">
+                        <input matInput placeholder="רחוב" [(ngModel)]="currentUser.streat" type="text"
+                               name="userstreet" [formControl]="userstreet">
+                    </mat-form-field>
+                    <div [hidden]="userstreet.untouched||!userstreet.hasError('required')">שדה נדרש</div>
+                </div>
+                <div class="input_wrapper">
+                    <mat-form-field class="input">
+                        <input matInput placeholder="בנין" [(ngModel)]="currentUser.build" type="number"
+                               name="userBuild" [formControl]="userBuild">
+                    </mat-form-field>
+                    <div [hidden]="userBuild.untouched||!userBuild.hasError('required')">שדה נדרש</div>
+                </div>
+                <div class="input_wrapper">
+                    <mat-form-field class="input">
+                        <input matInput placeholder="טלפון" [(ngModel)]="currentUser.phone" type="text" name="userPhone"
+                               [formControl]="userPhone">
+                    </mat-form-field>
+                    <div [hidden]="userPhone.untouched||!userPhone.hasError('required')">שדה נדרש</div>
+                    <div [hidden]="userPhone.untouched||!userPhone.hasError('validatePhone')">
+                        הטלפון אינו בתבנית הנכונה
+                    </div>
+                </div>
+            </form>
+        </mat-tab>
+        <mat-tab *ngIf="!appGlobalsService.isAdministrator" label="פרטים בגן זה">
+            <form [formGroup]="createUserInGroupForm" (ngSubmit)="updateUserInGroup()">
+                <div class="input_wrapper">
+                    <mat-form-field class="input">
+                        <input matInput placeholder="שם  הילד" type="text" name="childfirstName"
+                               [formControl]="childfirstName" [(ngModel)]="currentUserInGroup.childFirstName">
+                    </mat-form-field>
+                    <div [hidden]="childfirstName.untouched||!childfirstName.hasError('required')">שדה נדרש</div>
+                </div>
+                <div class="input_wrapper">
+                    <mat-form-field class="input">
+                        <input matInput placeholder="שם משפחת הילד" [(ngModel)]="currentUserInGroup.childLastName"
+                               type="text" name="childlastName"
+                               [formControl]="childlastName">
+                    </mat-form-field>
+                    <div [hidden]="childlastName.untouched||!childlastName.hasError('required')">שדה נדרש</div>
+                </div>
+                <div class="input_wrapper">
+                    <mat-form-field class="input">
+                        <input matInput [(ngModel)]="currentUserInGroup.nickname" placeholder="כינוי" type="text"
+                               name="nickName" [formControl]="nickName">
+                    </mat-form-field>
+                    <div [hidden]="nickName.untouched">שדה נדרש</div>
+                </div>
+            </form>
+        </mat-tab>
+        <!--<mat-tab label="תמונת פרופיל">
+            <div class="add_new_image">
+                <div class="input_wrapper">
+                    <input #fileInput [src]="imageSrc" (change)="setImageSrc($event)" type="file" name="file" id="file"
+                           class="inputfile"/>
+                    <label for="file">
+                        <span> בחר תמונה </span>
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </label>
+                </div>
+
+                <img [src]="imageSrc">
+                <div class="edit_wrappwr">
+                    <div *ngIf="imageSrc&&!isLoading">
+                        <i class="fa fa-compress" aria-hidden="true"
+                           (click)="imagesService.scale(0.9,canvas,imageSrc)"></i>
+                        <i class="fa fa-undo" aria-hidden="true"
+                           (click)="imagesService.rotate(-90,canvas,imageSrc)"></i>
+                        <i class="fa fa-repeat" aria-hidden="true"
+                           (click)="imagesService.rotate(90,canvas,imageSrc)"></i>
+                        <i class="fa fa-expand" aria-hidden="true"
+                           (click)="imagesService.scale(1.1,canvas,imageSrc)"></i>
+                    </div>
+                    <div *ngIf="imageSrc&&!isLoading">
+                        <i class="fa fa-angle-double-down" aria-hidden="true"
+                           (click)="imagesService.translate(0,5,canvas,imageSrc)"></i>
+                        <i class="fa fa-angle-double-right" aria-hidden="true"
+                           (click)="imagesService.translate(5,0,canvas,imageSrc)"></i>
+                        <i class="fa fa-angle-double-up" aria-hidden="true"
+                           (click)="imagesService.translate(0,-5,canvas,imageSrc)"></i>
+                        <i class="fa fa-angle-double-left" aria-hidden="true"
+                           (click)="imagesService.translate(-5,0,canvas,imageSrc)"></i>
+                    </div>
+                </div>
+
+                <div class="canvas_wrapper">
+                    <canvas #canvas height="180" width="150"
+                            style="border:1px solid #d3d3d3;">
+                    </canvas>
+                    <div class="spinner" *ngIf="isLoading">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <h5>{{resultMessage}}</h5>
+            </div>
+        </mat-tab>-->
+    </mat-tab-group>
+    <mat-spinner *ngIf="isLoading&&tab.selectedIndex!==2"></mat-spinner>
+    <button type="submit" (click)="update()" color="accent" mat-raised-button
+            class="new_group">
+        {{submitButtonText[tab.selectedIndex]}}
+    </button>
+</div>
+
+

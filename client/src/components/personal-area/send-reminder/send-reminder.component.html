@@ -1,0 +1,17 @@
+<div class="send_reminder_wrapper">
+  <i (click)="dialogRef.close()" class="fa fa-times" aria-hidden="true"></i>
+  <form [formGroup]="newReminderaForm">
+    <mat-form-field class="input">
+      <textarea matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="15" matInput placeholder="תוכן ההודעה" name="newReminderContent"
+        [formControl]="newReminderContent"></textarea>
+    </mat-form-field>
+  </form>
+  <div class="user" *ngFor="let user of usersInCurrentGroup">
+    <mat-checkbox [(ngModel)]="selectedUsers[user.mail]">
+      <span>{{user.details.childFirstName}}</span>
+      <span>{{user.details.childLastName}}</span>
+      </mat-checkbox>
+  </div>
+  <h4 class="warn" *ngIf="!isSomeoneChecked">עליך לבחור לפחות משתמש אחד</h4>
+  <button mat-raised-button color="accent" class="create" (click)="sendReminder()" [disabled]="!isSomeoneChecked||!newReminderaForm.controls['newReminderContent'].value">אישור</button>
+</div>

@@ -18,7 +18,7 @@ namespace WebApi
         {
 
             var cors1 = new EnableCorsAttribute("*", "*", "*");
-            var cors = new EnableCorsAttribute("http://localhost:4200"," http://localhost:4200","*");
+            var cors = new EnableCorsAttribute("http://localhost:4200", " http://localhost:4200", "*");
             config.EnableCors(cors);
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -31,7 +31,9 @@ namespace WebApi
             json.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.MicrosoftDateFormat;
             json.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
             json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            json.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             config.Routes.MapHttpRoute(
@@ -39,6 +41,9 @@ namespace WebApi
                 routeTemplate: "api/{controller}/{id}",
                defaults: new { id = RouteParameter.Optional }
             );
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.LocalOnly;
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Never;
         }
     }
 }

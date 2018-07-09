@@ -1,0 +1,40 @@
+<div class="wrapper" *ngIf="currentForum">
+    <div class="form_list">
+        <div class="dilemma">
+            <h3 class="title" [ngClass]="{'show_more_text_title':this.showMoreTextTitle}">
+                {{currentForum.title}}
+                <i (click)="toggleMoreText()" class="fa fa-ellipsis-h" aria-hidden="true"></i>
+            </h3>
+            <div class="content">{{currentForum.text}}</div>
+            <div class="details">
+                <h6 *ngIf="currentForum.details!==appGlobalsService.currentUser.mail">{{detail[currentForum.details]}}</h6>
+                <h6 *ngIf="currentForum.details==appGlobalsService.currentUser.mail">אני</h6>
+                <h6>{{moment(currentForum.date).calendar()}}</h6>
+            </div>
+        </div>
+        <div class="response" *ngFor="let reply of this.replysList | async ; index as i">
+            <div class="content">
+                <i class="fa fa-comments" aria-hidden="true"></i>
+                <div class="details">
+                    <h6 *ngIf="reply.details!==appGlobalsService.currentUser.mail">{{detail[reply.details]}}</h6>
+                    <h6 *ngIf="reply.details==appGlobalsService.currentUser.mail">אני</h6>
+                    <h6>{{moment(reply.date).calendar()}}</h6>
+                </div>
+                <div class="text">
+                    {{reply.text}}
+                </div>
+            </div>
+            <div class="profile"></div>
+        </div>
+    </div>
+    <div class="reply_wrapper">
+        <form [formGroup]="replyForm" (ngSubmit)="reply() ">
+            <mat-form-field class="input">
+                <textarea matInput placeholder="התגובה שלך כאן" name="replyContent" [formControl]="replyContent"></textarea>
+            </mat-form-field>
+            <div class="button_wrapper">
+                <button type="submit" mat-raised-button color="accent" [disabled]="replyContent.value==null">שלח</button>
+            </div>
+        </form>
+    </div>
+</div>

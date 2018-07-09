@@ -1,0 +1,79 @@
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(-5deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(5deg) scale(1.1);
+
+  }
+  100% {
+    transform: rotate(0deg) scale(1.2);
+  }
+}
+@keyframes heighAnimate {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 300px;
+  }
+}
+
+
+@mixin fadeInAnimate($during) {
+  -webkit-animation: fade-in $during+s; /* Safari 4+ */
+  -moz-animation: fade-in $during+s; /* Fx 5+ */
+  -o-animation: fade-in $during+s; /* Opera 12+ */
+  animation: fade-in $during+s; /* IE 10+, Fx 29+ */
+}
+
+@mixin spin($during){
+  -webkit-animation: spin $during+s; /* Safari 4+ */
+  -moz-animation: spin $during+s; /* Fx 5+ */
+  -o-animation: spin $during+s; /* Opera 12+ */
+  animation: spin $during+s; /* IE 10+, Fx 29+ */
+  transform: rotate(0deg);
+}
+
+@mixin  heighAnimate($during){
+  -webkit-animation: heighAnimate $during+s; /* Safari 4+ */
+  -moz-animation: heighAnimate $during+s; /* Fx 5+ */
+  -o-animation: heighAnimate $during+s; /* Opera 12+ */
+  animation: heighAnimate $during+s; /* IE 10+, Fx 29+ */
+}

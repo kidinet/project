@@ -44,11 +44,16 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,9 +65,7 @@
     <Compile Include="about.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AdministratorSetting.cs">
-      <DependentUpon>BloggingModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="bl_classes\Bl_About_.cs" />
     <Compile Include="bl_classes\Bl_Group.cs" />
     <Compile Include="BloggingModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -79,30 +82,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BloggingModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="bl_classes\BL_USER.cs" />
+    <Compile Include="bl_classes\BL_Image.cs" />
+    <Compile Include="bl_classes\BL_This_day.cs" />
+    <Compile Include="bl_classes\Bl_User.cs" />
+    <Compile Include="bl_classes\Bl_UserInGroup.cs" />
     <Compile Include="bl_classes\Result.cs" />
-    <Compile Include="FormDilemma.cs">
-      <DependentUpon>BloggingModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FormResponse.cs">
-      <DependentUpon>BloggingModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Group.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ImageGallery.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LikeImage.cs">
-      <DependentUpon>BloggingModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reminder.cs">
+    <Compile Include="ThisDayContent.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ResponseImage.cs">
+    <Compile Include="ThisDayOfGroup.cs">
       <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
@@ -122,6 +119,7 @@
     </EntityDeploy>
     <None Include="BloggingModel.edmx.diagram">
       <DependentUpon>BloggingModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

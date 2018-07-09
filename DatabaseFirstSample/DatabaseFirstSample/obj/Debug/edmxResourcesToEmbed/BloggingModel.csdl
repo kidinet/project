@@ -1,18 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DatabaseFirst.BloggingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="BloggingContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="abouts" EntityType="DatabaseFirst.BloggingModel.about" />
     <EntitySet Name="Groups" EntityType="DatabaseFirst.BloggingModel.Group" />
-    <EntitySet Name="Users" EntityType="DatabaseFirst.BloggingModel.Users" />
     <EntitySet Name="UserInGroups" EntityType="DatabaseFirst.BloggingModel.UserInGroup" />
-    <AssociationSet Name="FK__UserInGro__group__1CBC4616" Association="DatabaseFirst.BloggingModel.FK__UserInGro__group__1CBC4616">
+    <EntitySet Name="Users" EntityType="DatabaseFirst.BloggingModel.User" />
+    <AssociationSet Name="FK__about__groupId__3F115E1A" Association="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="about" EntitySet="abouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserInGro__group__339FAB6E" Association="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E">
       <End Role="Group" EntitySet="Groups" />
       <End Role="UserInGroup" EntitySet="UserInGroups" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserInGro__userM__1BC821DD" Association="DatabaseFirst.BloggingModel.FK__UserInGro__userM__1BC821DD">
-      <End Role="Users" EntitySet="Users" />
+    <AssociationSet Name="FK__UserInGro__userM__32AB8735" Association="DatabaseFirst.BloggingModel.FK__UserInGro__userM__32AB8735">
+      <End Role="User" EntitySet="Users" />
       <End Role="UserInGroup" EntitySet="UserInGroups" />
     </AssociationSet>
+    <EntitySet Name="ThisDayContents" EntityType="DatabaseFirst.BloggingModel.ThisDayContent" />
+    <EntitySet Name="ThisDayOfGroups" EntityType="DatabaseFirst.BloggingModel.ThisDayOfGroup" />
+    <AssociationSet Name="FK__ThisDayOf__group__0880433F" Association="DatabaseFirst.BloggingModel.FK__ThisDayOf__group__0880433F">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThisDayCo__title__0B5CAFEA" Association="DatabaseFirst.BloggingModel.FK__ThisDayCo__title__0B5CAFEA">
+      <End Role="ThisDayOfGroup" EntitySet="ThisDayOfGroups" />
+      <End Role="ThisDayContent" EntitySet="ThisDayContents" />
+    </AssociationSet>
+    <EntitySet Name="ImageGalleries" EntityType="DatabaseFirst.BloggingModel.ImageGallery" />
+    <AssociationSet Name="FK__ImageGall__group__2EA5EC27" Association="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="ImageGallery" EntitySet="ImageGalleries" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="about">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="icon" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="color" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A" FromRole="about" ToRole="Group" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="Group">
     <Key>
       <PropertyRef Name="id" />
@@ -20,41 +52,62 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="streat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="build" Type="Int32" />
     <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="fax" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__1CBC4616" FromRole="Group" ToRole="UserInGroup" />
+    <Property Name="latitute" Type="Double" />
+    <Property Name="longitude" Type="Double" />
+    <NavigationProperty Name="abouts" Relationship="DatabaseFirst.BloggingModel.FK__about__groupId__3F115E1A" FromRole="Group" ToRole="about" />
+    <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E" FromRole="Group" ToRole="UserInGroup" />
+    <NavigationProperty Name="ThisDayOfGroups" Relationship="DatabaseFirst.BloggingModel.FK__ThisDayOf__group__0880433F" FromRole="Group" ToRole="ThisDayOfGroup" />
+    <NavigationProperty Name="ImageGalleries" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27" FromRole="Group" ToRole="ImageGallery" />
+    <Property Name="street" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="Users">
+  <EntityType Name="UserInGroup">
+    <Key>
+      <PropertyRef Name="userMail" />
+      <PropertyRef Name="groupId" />
+    </Key>
+    <Property Name="userMail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <Property Name="isAdministrator" Type="Boolean" Nullable="false" />
+    <Property Name="childFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="childLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__339FAB6E" FromRole="UserInGroup" ToRole="Group" />
+    <NavigationProperty Name="User" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__32AB8735" FromRole="UserInGroup" ToRole="User" />
+    <Property Name="child_born" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="User">
     <Key>
       <PropertyRef Name="mail" />
     </Key>
     <Property Name="firstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="lastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="childLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="profile_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="profile_" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="mail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="password_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="streat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="build" Type="Int32" />
-    <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__1BC821DD" FromRole="Users" ToRole="UserInGroup" />
+    <Property Name="latitute" Type="Double" />
+    <Property Name="longitude" Type="Double" />
+    <NavigationProperty Name="UserInGroups" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__32AB8735" FromRole="User" ToRole="UserInGroup" />
   </EntityType>
-  <EntityType Name="UserInGroup">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="groupId" Type="Int32" Nullable="false" />
-    <Property Name="userMail" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__group__1CBC4616" FromRole="UserInGroup" ToRole="Group" />
-    <NavigationProperty Name="User" Relationship="DatabaseFirst.BloggingModel.FK__UserInGro__userM__1BC821DD" FromRole="UserInGroup" ToRole="Users" />
-    <Property Name="type_" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <Association Name="FK__UserInGro__group__1CBC4616">
+  <Association Name="FK__about__groupId__3F115E1A">
+    <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="DatabaseFirst.BloggingModel.about" Role="about" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="about">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserInGro__group__339FAB6E">
     <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
     <End Type="DatabaseFirst.BloggingModel.UserInGroup" Role="UserInGroup" Multiplicity="*" />
     <ReferentialConstraint>
@@ -66,15 +119,84 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserInGro__userM__1BC821DD">
-    <End Type="DatabaseFirst.BloggingModel.Users" Role="Users" Multiplicity="1" />
+  <Association Name="FK__UserInGro__userM__32AB8735">
+    <End Type="DatabaseFirst.BloggingModel.User" Role="User" Multiplicity="1" />
     <End Type="DatabaseFirst.BloggingModel.UserInGroup" Role="UserInGroup" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Users">
+      <Principal Role="User">
         <PropertyRef Name="mail" />
       </Principal>
       <Dependent Role="UserInGroup">
         <PropertyRef Name="userMail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ThisDayContent">
+    <Key>
+      <PropertyRef Name="date" />
+      <PropertyRef Name="titleId" />
+    </Key>
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="titleId" Type="Int32" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ThisDayOfGroup" Relationship="DatabaseFirst.BloggingModel.FK__ThisDayCo__title__0B5CAFEA" FromRole="ThisDayContent" ToRole="ThisDayOfGroup" />
+  </EntityType>
+  <EntityType Name="ThisDayOfGroup">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="icon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__ThisDayOf__group__0880433F" FromRole="ThisDayOfGroup" ToRole="Group" />
+    <NavigationProperty Name="ThisDayContents" Relationship="DatabaseFirst.BloggingModel.FK__ThisDayCo__title__0B5CAFEA" FromRole="ThisDayOfGroup" ToRole="ThisDayContent" />
+  </EntityType>
+  <Association Name="FK__ThisDayOf__group__0880433F">
+    <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="DatabaseFirst.BloggingModel.ThisDayOfGroup" Role="ThisDayOfGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ThisDayOfGroup">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThisDayCo__title__0B5CAFEA">
+    <End Type="DatabaseFirst.BloggingModel.ThisDayOfGroup" Role="ThisDayOfGroup" Multiplicity="1" />
+    <End Type="DatabaseFirst.BloggingModel.ThisDayContent" Role="ThisDayContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThisDayOfGroup">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ThisDayContent">
+        <PropertyRef Name="titleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ImageGallery">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <Property Name="date_added" Type="DateTime" Precision="0" />
+    <Property Name="src" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Group" Relationship="DatabaseFirst.BloggingModel.FK__ImageGall__group__2EA5EC27" FromRole="ImageGallery" ToRole="Group" />
+  </EntityType>
+  <Association Name="FK__ImageGall__group__2EA5EC27">
+    <End Type="DatabaseFirst.BloggingModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="DatabaseFirst.BloggingModel.ImageGallery" Role="ImageGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ImageGallery">
+        <PropertyRef Name="groupId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
